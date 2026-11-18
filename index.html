@@ -7,10 +7,64 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Roboto:wght@400;500;700&display=swap');
     body {
       font-family: 'Plus Jakarta Sans', sans-serif;
       -webkit-tap-highlight-color: transparent;
+    }
+    /* EOS / Exam Browser exact typography & UI style */
+    .eos-card {
+      font-family: 'Roboto', 'Segoe UI', Arial, Helvetica, sans-serif;
+      background: #ffffff;
+      border: 1px solid #d8e2ef;
+      box-shadow: 0 1px 3px rgba(15, 23, 42, 0.04);
+    }
+    .eos-banner {
+      background-color: #eaf2fb;
+      border-bottom: 1px solid #d5e4f5;
+    }
+    .eos-title {
+      color: #1d62d8;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      font-size: 13px;
+    }
+    .eos-question-text {
+      color: #1c1e21;
+      font-size: 14.5px;
+      font-weight: 400;
+      line-height: 1.6;
+    }
+    .eos-option {
+      color: #1c1e21;
+      font-size: 14.5px;
+      font-weight: 400;
+      line-height: 1.55;
+      padding: 6px 10px;
+      border-radius: 4px;
+      border: 1px solid transparent;
+      transition: background-color 0.12s ease, border-color 0.12s ease;
+    }
+    .eos-option:hover {
+      background-color: #f3f7fc;
+    }
+    .eos-option-selected {
+      background-color: #e8f0fe !important;
+      border-color: #93c5fd !important;
+      color: #1e40af !important;
+      font-weight: 500;
+    }
+    .eos-option-correct {
+      background-color: #ecfdf5 !important;
+      border-color: #6ee7b7 !important;
+      color: #065f46 !important;
+      font-weight: 600;
+    }
+    .eos-option-wrong {
+      background-color: #fef2f2 !important;
+      border-color: #fca5a5 !important;
+      color: #991b1b !important;
+      font-weight: 500;
     }
     .custom-scrollbar::-webkit-scrollbar { width: 6px; height: 6px; }
     .custom-scrollbar::-webkit-scrollbar-track { background: #f1f5f9; border-radius: 4px; }
@@ -4300,7 +4354,7 @@
       const starBtn = document.getElementById('star-btn-' + qId);
       if (starBtn) {
         const isStarred = starredQuestions.has(qId);
-        starBtn.className = (isStarred ? 'text-amber-500 hover:text-amber-600 bg-amber-50 border-amber-200' : 'text-slate-400 hover:text-amber-400 bg-slate-50 border-slate-200') + ' w-9 h-9 rounded-xl border flex items-center justify-center text-base transition active:scale-90';
+        starBtn.className = (isStarred ? 'text-amber-500 bg-amber-50 border-amber-200' : 'text-slate-400 hover:text-amber-500 bg-white/80 border-blue-200/80') + ' w-7 h-7 rounded border flex items-center justify-center text-sm transition active:scale-90';
         starBtn.innerHTML = '<i class="' + (isStarred ? 'fa-solid' : 'fa-regular') + ' fa-star"></i>';
       }
 
@@ -4439,10 +4493,18 @@
       if (btnNext) btnNext.disabled = current >= total;
     }
 
+    function escapeHtml(str) {
+      if (!str) return '';
+      return String(str)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;');
+    }
+
     function createQuestionCard(q) {
       const div = document.createElement('div');
       div.id = 'question-card-' + q.id;
-      div.className = 'bg-white rounded-2xl border border-slate-200 shadow-sm p-4 sm:p-6 transition hover:border-slate-300 flex flex-col gap-3.5 sm:gap-4';
+      div.className = 'eos-card rounded-none sm:rounded-md overflow-hidden transition flex flex-col';
 
       const selected = userAnswers[q.id];
       const isAnswered = selected !== undefined;
@@ -4451,42 +4513,42 @@
       const isStarred = starredQuestions.has(q.id);
 
       const examBadgeHtml = activeExamId === 'all'
-        ? `<span class="px-2 py-0.5 rounded-md text-[10px] font-extrabold ${q.examLabel === 'SP26' ? 'bg-blue-100 text-blue-700' : 'bg-indigo-100 text-indigo-700'}">${q.examLabel} #${q.origId}</span>`
+        ? `<span class="px-1.5 py-0.5 rounded text-[10px] font-bold ${q.examLabel === 'SP26' ? 'bg-blue-100/80 text-blue-800' : 'bg-indigo-100/80 text-indigo-800'}">${q.examLabel} #${q.origId}</span>`
         : '';
 
       let html = `
-        <div class="flex items-center justify-between gap-2">
-          <div class="flex items-center gap-2 flex-wrap min-w-0">
-            <span class="px-2.5 h-8 rounded-xl bg-blue-600 text-white font-extrabold text-xs sm:text-sm flex items-center justify-center shadow-xs shrink-0">
-              Câu ${q.id}
-            </span>
+        <!-- Top EOS Banner: MULTIPLE CHOICE -->
+        <div class="eos-banner px-4 sm:px-6 py-2 flex items-center justify-between gap-2">
+          <div class="flex items-center gap-2.5 flex-wrap min-w-0">
+            <span class="eos-title uppercase tracking-wide">MULTIPLE CHOICE</span>
+            <span class="text-xs text-blue-700/60 font-medium">• Câu ${q.id}</span>
             ${examBadgeHtml}
-            <span class="px-2.5 py-1 rounded-lg text-[11px] sm:text-xs font-semibold bg-sky-50 text-sky-700 border border-sky-100 truncate max-w-[175px] sm:max-w-none">
-              ${q.topic}
-            </span>
+            <span class="hidden sm:inline-block text-[11px] text-slate-500 font-normal truncate">(${escapeHtml(q.topic)})</span>
             ${isAnswered && showFeedback ? (
               isCorrect 
-                ? '<span class="px-2 py-0.5 rounded-full text-[11px] font-bold bg-emerald-100 text-emerald-700 flex items-center gap-1"><i class="fa-solid fa-check"></i> Đúng</span>'
-                : '<span class="px-2 py-0.5 rounded-full text-[11px] font-bold bg-rose-100 text-rose-700 flex items-center gap-1"><i class="fa-solid fa-xmark"></i> Sai</span>'
+                ? '<span class="px-2 py-0.5 rounded text-[11px] font-bold bg-emerald-100 text-emerald-700 flex items-center gap-1"><i class="fa-solid fa-check"></i> Đúng</span>'
+                : '<span class="px-2 py-0.5 rounded text-[11px] font-bold bg-rose-100 text-rose-700 flex items-center gap-1"><i class="fa-solid fa-xmark"></i> Sai</span>'
             ) : ''}
           </div>
 
           <div class="flex items-center gap-1.5 shrink-0">
-            <button onclick="openImageModal(${q.id})" title="Xem ảnh chụp gốc từ đề" class="h-9 px-2.5 text-xs font-semibold rounded-xl border border-slate-200 bg-slate-50 hover:bg-slate-100 active:bg-slate-200 text-slate-600 transition flex items-center gap-1.5">
-              <i class="fa-regular fa-image text-blue-500"></i> <span>Ảnh gốc</span>
+            <button onclick="openImageModal(${q.id})" title="Xem ảnh chụp gốc từ đề" class="px-2 py-1 text-[11px] font-medium rounded border border-blue-200/80 bg-white/80 hover:bg-white text-slate-600 transition flex items-center gap-1">
+              <i class="fa-regular fa-image text-blue-600"></i> <span>Ảnh gốc</span>
             </button>
-            <button id="star-btn-${q.id}" onclick="toggleStar(${q.id})" title="Đánh dấu câu hỏi này" class="${isStarred ? 'text-amber-500 hover:text-amber-600 bg-amber-50 border-amber-200' : 'text-slate-400 hover:text-amber-400 bg-slate-50 border-slate-200'} w-9 h-9 rounded-xl border flex items-center justify-center text-base transition active:scale-90">
+            <button id="star-btn-${q.id}" onclick="toggleStar(${q.id})" title="Đánh dấu câu hỏi này" class="${isStarred ? 'text-amber-500 bg-amber-50 border-amber-200' : 'text-slate-400 hover:text-amber-500 bg-white/80 border-blue-200/80'} w-7 h-7 rounded border flex items-center justify-center text-sm transition active:scale-90">
               <i class="${isStarred ? 'fa-solid' : 'fa-regular'} fa-star"></i>
             </button>
           </div>
         </div>
 
-        <div class="text-[15px] sm:text-base font-bold text-slate-900 leading-relaxed">
-          ${q.question}
-        </div>
+        <!-- Question & Options Body (EOS plain white style) -->
+        <div class="px-5 sm:px-9 pt-4 pb-6 bg-white flex flex-col gap-3">
+          <div class="eos-question-text">
+            ${escapeHtml(q.question)}
+          </div>
 
-        <!-- Options Grid -->
-        <div class="grid grid-cols-1 gap-2.5 pt-0.5">
+          <!-- Options List: A. B. C. D. -->
+          <div class="flex flex-col gap-1.5 pt-1">
       `;
 
       const optKeys = ['A', 'B', 'C', 'D'];
@@ -4494,31 +4556,25 @@
         const optText = q.options[k];
         if (!optText) return;
 
-        let optClass = 'border-slate-200 hover:border-blue-300 active:bg-blue-50/60 text-slate-700 bg-white';
-        let badgeClass = 'bg-slate-100 text-slate-700 border-slate-200';
+        let stateClass = '';
         let iconHtml = '';
 
         if (showFeedback) {
           if (k === q.answer) {
-            optClass = 'border-emerald-400 bg-emerald-50/90 text-emerald-950 font-semibold ring-1 ring-emerald-400';
-            badgeClass = 'bg-emerald-600 text-white border-emerald-600';
-            iconHtml = '<i class="fa-solid fa-circle-check text-emerald-600 text-lg ml-auto shrink-0"></i>';
+            stateClass = 'eos-option-correct';
+            iconHtml = '<i class="fa-solid fa-check text-emerald-600 text-sm ml-auto pl-2 shrink-0"></i>';
           } else if (selected === k) {
-            optClass = 'border-rose-400 bg-rose-50/90 text-rose-950 font-semibold ring-1 ring-rose-400';
-            badgeClass = 'bg-rose-600 text-white border-rose-600';
-            iconHtml = '<i class="fa-solid fa-circle-xmark text-rose-600 text-lg ml-auto shrink-0"></i>';
+            stateClass = 'eos-option-wrong';
+            iconHtml = '<i class="fa-solid fa-xmark text-rose-600 text-sm ml-auto pl-2 shrink-0"></i>';
           }
         } else if (selected === k) {
-          optClass = 'border-blue-500 bg-blue-50 text-blue-950 font-semibold ring-1 ring-blue-500';
-          badgeClass = 'bg-blue-600 text-white border-blue-600';
+          stateClass = 'eos-option-selected';
         }
 
         html += `
-          <button onclick="selectOption(${q.id}, '${k}')" class="w-full text-left p-3.5 sm:p-4 rounded-2xl border ${optClass} transition flex items-start sm:items-center gap-3 group text-xs sm:text-sm active:scale-[0.99]">
-            <span class="w-7 h-7 sm:w-8 sm:h-8 rounded-xl ${badgeClass} font-extrabold text-xs flex items-center justify-center border shrink-0 mt-0.5 sm:mt-0">
-              ${k}
-            </span>
-            <span class="flex-1 leading-relaxed text-[13px] sm:text-sm">${optText}</span>
+          <button onclick="selectOption(${q.id}, '${k}')" class="eos-option ${stateClass} w-full text-left flex items-baseline gap-2 active:scale-[0.995]">
+            <span class="shrink-0 select-none">${k}.</span>
+            <span class="flex-1">${escapeHtml(optText)}</span>
             ${iconHtml}
           </button>
         `;
@@ -4528,17 +4584,19 @@
 
       if (showFeedback) {
         html += `
-          <div class="mt-1 p-3.5 sm:p-4 rounded-2xl bg-indigo-50/60 border border-indigo-100 text-xs flex flex-col gap-1.5">
-            <div class="font-bold flex items-center gap-1.5 text-slate-800">
-              <i class="fa-solid fa-circle-info text-blue-600"></i> Đáp án đúng: <span class="text-emerald-700 font-extrabold text-sm">${q.answer}</span>
+          <div class="mt-3 pt-3 border-t border-slate-200/80 text-[13px] text-slate-700 flex flex-col gap-1">
+            <div class="font-bold text-slate-900 flex items-center gap-1.5">
+              <i class="fa-solid fa-circle-info text-blue-600 text-xs"></i>
+              <span>Đáp án đúng: <strong class="text-emerald-700">${q.answer}</strong></span>
             </div>
-            <div class="text-slate-600 leading-relaxed text-xs sm:text-[13px]">
-              ${q.explanation}
+            <div class="text-slate-600 leading-relaxed">
+              ${escapeHtml(q.explanation)}
             </div>
           </div>
         `;
       }
 
+      html += '</div>';
       div.innerHTML = html;
       return div;
     }
