@@ -1,0 +1,327 @@
+[
+  {
+    "id": 26,
+    "question": "How do you create a new scene in Unity?",
+    "options": {
+      "A": "Go to File > New Scene and save it in your preferred location.",
+      "B": "Go to File > Save As and save as a new scene.",
+      "C": "Use the Unity Asset Store to download a new scene template.",
+      "D": "Right click in the Hierarchy panel and select 'New Scene'."
+    },
+    "answer": "A",
+    "topic": "Unity Editor Basics",
+    "explanation": "Trong Unity, để tạo một Scene mới, bạn vào menu File > New Scene (hoặc phím tắt Ctrl+N / Cmd+N), sau đó lưu lại vào thư mục mong muốn trong dự án."
+  },
+  {
+    "id": 27,
+    "question": "What happens to cloned physics objects when the Simulated property is enabled?",
+    "options": {
+      "A": "They are destroyed after use",
+      "B": "They are moved to the GPU",
+      "C": "They are temporarily disabled",
+      "D": "They remain in memory"
+    },
+    "answer": "D",
+    "topic": "Physics & Rigidbody",
+    "explanation": "Khi các đối tượng vật lý được sao chép (clone/instantiate), ngay cả khi thuộc tính Simulated được bật (tham gia mô phỏng vật lý), chúng vẫn tồn tại và lưu trữ trong bộ nhớ (RAM) của ứng dụng cho đến khi được hủy bằng Destroy() hoặc dọn dẹp khi chuyển scene."
+  },
+  {
+    "id": 28,
+    "question": "What is the primary difference between Update() and FixedUpdate() in Unity?",
+    "options": {
+      "A": "Update() runs every frame, while FixedUpdate() runs at a fixed time step.",
+      "B": "Update() is used for physics calculations, while FixedUpdate() is not.",
+      "C": "FixedUpdate() is called only when physics objects collide.",
+      "D": "Update() stops running when the game is paused, while FixedUpdate() doesn't."
+    },
+    "answer": "A",
+    "topic": "C# Scripting & Lifecycle",
+    "explanation": "Trong Unity, Update() được gọi một lần mỗi frame với khoảng thời gian biến đổi phụ thuộc vào tốc độ khung hình, trong khi FixedUpdate() được gọi theo chu kỳ thời gian cố định độc lập với tốc độ khung hình (mặc định 0.02s) và đồng bộ với hệ thống tính toán vật lý."
+  },
+  {
+    "id": 29,
+    "question": "Given the following script:\n```csharp\nusing UnityEngine;\n\npublic class PhysicsMove : MonoBehaviour\n{\n    private Rigidbody2D rb;\n\n    void Start()\n    {\n        rb = GetComponent<Rigidbody2D>();\n    }\n\n    void Update()\n    {\n        rb.velocity = new Vector2(2f, 0);\n    }\n}\n```\nWhat does this script do in play mode?",
+    "options": {
+      "A": "Moves the object left and right",
+      "B": "Keeps object still",
+      "C": "Constantly moves the object to the right",
+      "D": "Causes a physics error"
+    },
+    "answer": "C",
+    "topic": "Physics & Rigidbody",
+    "explanation": "Trong hàm Update(), biến vận tốc rb.velocity liên tục được gán bằng new Vector2(2f, 0), với thành phần x dương (2f) và y bằng 0, khiến đối tượng di chuyển liên tục sang phải với vận tốc 2 đơn vị/giây."
+  },
+  {
+    "id": 30,
+    "question": "What is the fundamental role of components in Unity's Entity Component System (ECS)?",
+    "options": {
+      "A": "To define the graphical appearance of entities.",
+      "B": "To serve as data containers that represent the attributes and behavior of entities.",
+      "C": "To manage the game engine's physics simulations.",
+      "D": "To provide sound effects for entities."
+    },
+    "answer": "B",
+    "topic": "Unity Architecture & ECS",
+    "explanation": "Trong kiến trúc Entity Component System (ECS) của Unity, Component đóng vai trò là các thùng chứa dữ liệu thuần túy (data containers) đại diện cho các thuộc tính và trạng thái của Entity, tách rời hoàn toàn với logic xử lý nằm trong các System."
+  },
+  {
+    "id": 31,
+    "question": "Which window in Unity displays a hierarchical text representation of every GameObject in the Scene?",
+    "options": {
+      "A": "Project",
+      "B": "Inspector",
+      "C": "Hierarchy",
+      "D": "Console"
+    },
+    "answer": "C",
+    "topic": "Unity Interface & Windows",
+    "explanation": "Cửa sổ Hierarchy trong Unity hiển thị cấu trúc dạng cây phân cấp (cha - con) của tất cả các GameObject đang có mặt trong Scene hiện hành."
+  },
+  {
+    "id": 32,
+    "question": "Which tool in Unity allows you to set breakpoints, inspect variables, and step through code execution?",
+    "options": {
+      "A": "Console Window",
+      "B": "Profiler",
+      "C": "Debugger",
+      "D": "Remote Debugging"
+    },
+    "answer": "C",
+    "topic": "Debugging & Profiling",
+    "explanation": "Debugger (tích hợp trong các IDE như Visual Studio, Rider...) cho phép lập trình viên đặt các điểm dừng (breakpoints), kiểm tra giá trị của các biến và chạy từng dòng mã (step through) để gỡ lỗi mã nguồn."
+  },
+  {
+    "id": 33,
+    "question": "What is the primary function of an Animator Controller in Unity?",
+    "options": {
+      "A": "To store animation data for game objects.",
+      "B": "To create visual effects for animations.",
+      "C": "To organize animation states and transitions.",
+      "D": "To manage physics interactions between animated objects."
+    },
+    "answer": "C",
+    "topic": "Animation & Rigging",
+    "explanation": "Animator Controller tổ chức và quản lý các trạng thái hoạt ảnh (animation states) cũng như các bước chuyển tiếp (transitions) giữa chúng thông qua một State Machine và các tham số điều khiển."
+  },
+  {
+    "id": 34,
+    "question": "Which method should you use to print informational messages about the program's execution to the Console Window?",
+    "options": {
+      "A": "Debug.LogWarning()",
+      "B": "Debug.LogError()",
+      "C": "Debug.Log()",
+      "D": "Debug.Draw()"
+    },
+    "answer": "C",
+    "topic": "Debugging & Logging",
+    "explanation": "Trong Unity, Debug.Log() được dùng để in các thông báo thông tin chung (informational messages) ra Console. Debug.LogWarning() dùng cho cảnh báo và Debug.LogError() dùng cho lỗi."
+  },
+  {
+    "id": 35,
+    "question": "Which tool profiles CPU, GPU, and memory usage?",
+    "options": {
+      "A": "Animator",
+      "B": "Console",
+      "C": "Profiler",
+      "D": "Timeline"
+    },
+    "answer": "C",
+    "topic": "Debugging & Profiling",
+    "explanation": "Unity Profiler là công cụ đo lường hiệu năng của trò chơi, giúp theo dõi chi tiết mức sử dụng CPU, GPU, bộ nhớ (Memory), âm thanh, vật lý và dựng hình."
+  },
+  {
+    "id": 36,
+    "question": "Which exception indicates a variable referencing no object instance?",
+    "options": {
+      "A": "InvalidCastException",
+      "B": "NullReferenceException",
+      "C": "IndexOutOfRangeException",
+      "D": "ArgumentException"
+    },
+    "answer": "B",
+    "topic": "C# Scripting & Exceptions",
+    "explanation": "NullReferenceException xảy ra khi chương trình cố gắng truy cập thành viên (thuộc tính, phương thức) của một biến tham chiếu đang có giá trị null (không trỏ tới đối tượng nào trong bộ nhớ)."
+  },
+  {
+    "id": 37,
+    "question": "What type of error occurs due to mistakes in the code's syntax that prevent compilation?",
+    "options": {
+      "A": "Logic Errors",
+      "B": "Runtime Errors",
+      "C": "Syntax Errors",
+      "D": "Performance Issues"
+    },
+    "answer": "C",
+    "topic": "Debugging & Errors",
+    "explanation": "Syntax Errors (lỗi cú pháp) là những lỗi vi phạm quy tắc ngữ pháp của ngôn ngữ C# khiến mã nguồn không thể biên dịch thành công (compile error)."
+  },
+  {
+    "id": 38,
+    "question": "Which of the following statements about events in C# is NOT true?",
+    "options": {
+      "A": "Events provide a more robust and secure way of implementing the observer pattern.",
+      "B": "Events allow objects to subscribe to and unsubscribe from notifications.",
+      "C": "Events can be invoked from any class in the application.",
+      "D": "Events are typically declared using the event keyword."
+    },
+    "answer": "C",
+    "topic": "C# Scripting & Events",
+    "explanation": "Trong C#, một event chỉ có thể được kích hoạt (invoke/raise) từ bên trong chính class định nghĩa nó. Các class bên ngoài chỉ có thể đăng ký (+=) hoặc hủy đăng ký (-=). Do đó phương án C là SAI (NOT true)."
+  },
+  {
+    "id": 39,
+    "question": "In Unity, what is the primary purpose of the Update function within a MonoBehaviour script?",
+    "options": {
+      "A": "Handling initialization tasks before gameplay",
+      "B": "Controlling GameObject actions for each frame during gameplay",
+      "C": "Responding to user input during gameplay",
+      "D": "Executing actions triggered by collisions"
+    },
+    "answer": "B",
+    "topic": "C# Scripting & Lifecycle",
+    "explanation": "Phương thức Update() của MonoBehaviour được gọi một lần mỗi frame trong quá trình chơi, phục vụ mục đích chính là điều khiển các hành động, cập nhật trạng thái và vị trí của GameObject trong từng khung hình."
+  },
+  {
+    "id": 40,
+    "question": "How can mouse input be customized in Unity?",
+    "options": {
+      "A": "By adding Rigidbody components to the mouse",
+      "B": "By using the Transform component",
+      "C": "By modifying Input Actions to adjust sensitivity",
+      "D": "By enabling Sprite Renderer on the mouse pointer"
+    },
+    "answer": "C",
+    "topic": "Input System",
+    "explanation": "Trong Unity Input System mới, người dùng có thể tùy chỉnh đầu vào của chuột (độ nhạy, vùng chết, tỷ lệ, đảo ngược trục...) bằng cách chỉnh sửa các thuộc tính và gắn các Processor trong Input Actions."
+  },
+  {
+    "id": 41,
+    "question": "How do you keep a GameObject across scene loads?",
+    "options": {
+      "A": "Make it static",
+      "B": "DontDestroyOnLoad(gameObject)",
+      "C": "Set HideFlags",
+      "D": "Use Resources folder"
+    },
+    "answer": "B",
+    "topic": "Scene Management & Lifecycle",
+    "explanation": "Phương thức DontDestroyOnLoad(gameObject) của Unity yêu cầu không phá hủy đối tượng khi tải scene mới, giúp đối tượng tồn tại xuyên suốt giữa các cảnh khác nhau."
+  },
+  {
+    "id": 42,
+    "question": "What is the significance of using generic functions in scripting, such as those with a type name in angle brackets?",
+    "options": {
+      "A": "They allow you to specify the types of parameters and/or the return type when calling the function",
+      "B": "They automatically handle memory management for objects and/or the return type when calling the function",
+      "C": "They provide built-in support for animations and/or the return type when calling the function",
+      "D": "They simplify the creation of user interfaces and/or the return type when calling the function"
+    },
+    "answer": "A",
+    "topic": "C# Scripting & Generics",
+    "explanation": "Các hàm generic (như GetComponent<T>()) cho phép lập trình viên truyền tham số kiểu dữ liệu cụ thể khi gọi hàm, đảm bảo tính an toàn kiểu (type safety), tránh boxing/unboxing và loại bỏ nhu cầu ép kiểu thủ công."
+  },
+  {
+    "id": 43,
+    "question": "Which property makes movement frame-rate-independent?",
+    "options": {
+      "A": "Time.timeScale",
+      "B": "Time.deltaTime",
+      "C": "Time.fixedDeltaTime",
+      "D": "Time.realtimeSinceStartup"
+    },
+    "answer": "B",
+    "topic": "Time & Movement",
+    "explanation": "Time.deltaTime là khoảng thời gian tính bằng giây giữa frame trước và frame hiện tại. Khi nhân giá trị di chuyển với Time.deltaTime trong Update(), tốc độ di chuyển sẽ được chuẩn hóa theo giây, giúp chuyển động độc lập với tốc độ khung hình."
+  },
+  {
+    "id": 44,
+    "question": "How do you stop a running coroutine in Unity?",
+    "options": {
+      "A": "StopCoroutine(coroutineReference);",
+      "B": "EndCoroutine(coroutineReference);",
+      "C": "AbortCoroutine(coroutineReference);",
+      "D": "TerminateCoroutine(coroutineReference);"
+    },
+    "answer": "A",
+    "topic": "C# Scripting & Coroutines",
+    "explanation": "Trong Unity MonoBehaviour, để dừng một Coroutine đang chạy, ta gọi phương thức StopCoroutine() và truyền vào tham chiếu Coroutine, hàm IEnumerator hoặc tên phương thức dưới dạng chuỗi."
+  },
+  {
+    "id": 45,
+    "question": "What is the primary purpose of Unity's Input System?",
+    "options": {
+      "A": "To manage the appearance of game objects",
+      "B": "To control lighting in the scene",
+      "C": "To handle user input from devices, touch, or gestures",
+      "D": "To define the physics behavior of objects"
+    },
+    "answer": "C",
+    "topic": "Input System",
+    "explanation": "Mục đích chính của hệ thống Input System trong Unity là tiếp nhận và xử lý tín hiệu đầu vào của người dùng từ các thiết bị ngoại vi như bàn phím, chuột, gamepad điều khiển, màn hình cảm ứng hoặc các cử chỉ."
+  },
+  {
+    "id": 46,
+    "question": "Which Unity method is best used for physics-related updates?",
+    "options": {
+      "A": "Update()",
+      "B": "Start()",
+      "C": "FixedUpdate()",
+      "D": "Awake()"
+    },
+    "answer": "C",
+    "topic": "Physics & Lifecycle",
+    "explanation": "FixedUpdate() được gọi theo chu kỳ thời gian cố định đồng bộ trực tiếp với chu kỳ tính toán của hệ thống vật lý (Physics engine), vì thế đây là phương thức thích hợp nhất cho các cập nhật liên quan đến Rigidbody và lực."
+  },
+  {
+    "id": 47,
+    "question": "What is a key feature of coroutines compared to regular functions or methods in computer programming?",
+    "options": {
+      "A": "They execute synchronously and block the program until completion",
+      "B": "They allow for non-blocking execution and can be paused and resumed",
+      "C": "They are used only for mathematical calculations",
+      "D": "They require manual memory management"
+    },
+    "answer": "B",
+    "topic": "C# Scripting & Coroutines",
+    "explanation": "Đặc điểm chính của Coroutine trong Unity là khả năng thực thi không chặn (non-blocking), có thể tạm dừng thực thi tại vị trí yield return và phục hồi tiếp tục từ điểm dừng đó ở các frame tiếp theo."
+  },
+  {
+    "id": 48,
+    "question": "Given the following script:\n```csharp\nusing UnityEngine;\nusing UnityEngine.SceneManagement;\n\npublic class SceneLoader : MonoBehaviour\n{\n    void Start()\n    {\n        StartCoroutine(LoadSceneAsync(\"GameScene\"));\n    }\n\n    IEnumerator LoadSceneAsync(string sceneName)\n    {\n        AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(sceneName);\n        while (!asyncLoad.isDone)\n        {\n            Debug.Log(\"Loading progress: \" + asyncLoad.progress);\n            yield return null;\n        }\n    }\n}\n```\nWhat does this script do?",
+    "options": {
+      "A": "Loads the scene instantly without delay",
+      "B": "Loads the scene asynchronously while printing progress",
+      "C": "Loads the scene in a blocking manner",
+      "D": "Throws an error because Coroutine can't return AsyncOperation"
+    },
+    "answer": "B",
+    "topic": "Scene Management & Coroutines",
+    "explanation": "Script thực hiện nạp scene có tên 'GameScene' dưới dạng bất đồng bộ bằng LoadSceneAsync() bên trong Coroutine và liên tục in ra tiến độ nạp (asyncLoad.progress) qua từng frame trong khi chờ quá trình tải hoàn tất."
+  },
+  {
+    "id": 49,
+    "question": "Which of the following tasks are Unity coroutines best suited for?",
+    "options": {
+      "A": "Heavy mathematical computations",
+      "B": "Direct database access",
+      "C": "Animations, delays, or scene loading",
+      "D": "File encryption"
+    },
+    "answer": "C",
+    "topic": "C# Scripting & Coroutines",
+    "explanation": "Coroutine rất thích hợp cho các tác vụ cần phân bổ thời gian thực thi qua nhiều frame như tạo khoảng chờ (delay), chuyển động hoạt ảnh tuần tự hoặc chờ tải tài nguyên/scene bất đồng bộ."
+  },
+  {
+    "id": 50,
+    "question": "The movement script modifies which component of GameObject?",
+    "options": {
+      "A": "Sprite",
+      "B": "Mesh",
+      "C": "Transform",
+      "D": "Animator"
+    },
+    "answer": "C",
+    "topic": "Transform & Movement",
+    "explanation": "Các script điều khiển di chuyển trong Unity thông thường thao tác trực tiếp trên component Transform của GameObject (thay đổi transform.position, gọi transform.Translate...) để dịch chuyển đối tượng trong không gian game."
+  }
+]

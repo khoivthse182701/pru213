@@ -1,0 +1,327 @@
+[
+  {
+    "id": 1,
+    "question": "How do you assign a script function to a UI Button click in Unity?",
+    "options": {
+      "A": "Drag the script to the EventSystem",
+      "B": "Assign the function via the Button's On Click() event in the Inspector",
+      "C": "Attach the function in Start()",
+      "D": "Use AddComponent<Button>() in code"
+    },
+    "answer": "B",
+    "topic": "Unity UI",
+    "explanation": "Để gán một hàm từ script vào sự kiện click của UI Button trong Unity Editor, ta chọn đối tượng Button, tìm đến component Button trong cửa sổ Inspector, tại mục 'On Click ()' nhấn dấu '+' để thêm sự kiện, kéo GameObject chứa script vào ô đối tượng và chọn hàm public tương ứng từ danh sách dropdown."
+  },
+  {
+    "id": 2,
+    "question": "How does the principle of immediate feedback enhance user experience in UI design?",
+    "options": {
+      "A": "By providing extensive tutorials",
+      "B": "By giving users instant responses to their actions",
+      "C": "By making the interface visually complex",
+      "D": "By maintaining uniformity in design elements"
+    },
+    "answer": "B",
+    "topic": "UI/UX Design Principles",
+    "explanation": "Nguyên tắc 'immediate feedback' (phản hồi tức thì) trong thiết kế giao diện người dùng (UI/UX) giúp nâng cao trải nghiệm bằng cách phản hồi ngay lập tức cho người dùng biết hành động của họ đã được hệ thống ghi nhận (ví dụ: đổi màu nút bấm, phát âm thanh click, hiện vòng xoay tải), giúp người dùng không bị bối rối hoặc thao tác lặp lại không cần thiết."
+  },
+  {
+    "id": 3,
+    "question": "Which Unity UI component is used to display textual information such as labels and titles?",
+    "options": {
+      "A": "Button",
+      "B": "Text",
+      "C": "Image",
+      "D": "Canvas"
+    },
+    "answer": "B",
+    "topic": "Unity UI",
+    "explanation": "Component Text (thuộc hệ thống Unity UI / TextMeshPro) được dùng chuyên biệt để hiển thị văn bản như nhãn, tiêu đề, hướng dẫn hoặc điểm số trong giao diện trò chơi."
+  },
+  {
+    "id": 4,
+    "question": "Why would you use Layout Groups in Unity's UI design?",
+    "options": {
+      "A": "To manage the lighting of a scene",
+      "B": "To automatically arrange and align UI elements",
+      "C": "To control the audio settings of the game",
+      "D": "To apply physics properties to UI elements"
+    },
+    "answer": "B",
+    "topic": "Unity UI",
+    "explanation": "Layout Groups (như Horizontal Layout Group, Vertical Layout Group, Grid Layout Group) trong Unity UI được sử dụng để tự động sắp xếp vị trí, kích thước và căn chỉnh các phần tử giao diện con một cách có tổ chức mà không cần căn chỉnh thủ công."
+  },
+  {
+    "id": 5,
+    "question": "What is a recommended optimization technique for button assets in Unity?",
+    "options": {
+      "A": "Using Unity's animation system to animate buttons",
+      "B": "Scripting custom button behaviors",
+      "C": "Assigning functions or methods to buttons for specific actions",
+      "D": "Using sprite atlases or sprite sheets to minimize draw calls and improve performance"
+    },
+    "answer": "D",
+    "topic": "Unity UI & Optimization",
+    "explanation": "Kỹ thuật tối ưu hóa được khuyến nghị hàng đầu cho các asset hình ảnh UI (như button, icon) là sử dụng Sprite Atlas hoặc Sprite Sheet để gom nhiều texture nhỏ vào một texture lớn duy nhất. Điều này giúp Unity thực hiện dynamic batching, giảm thiểu số lượng draw call và tăng hiệu năng render."
+  },
+  {
+    "id": 6,
+    "question": "When using Unity Animation Events, what is their primary purpose?",
+    "options": {
+      "A": "To control the speed of animations",
+      "B": "To trigger specific actions or functions during an animation",
+      "C": "To define the visual appearance of game objects",
+      "D": "To create smooth transitions between animations"
+    },
+    "answer": "B",
+    "topic": "Animation & Rigging",
+    "explanation": "Mục đích chính của Animation Events trong Unity là kích hoạt (trigger) các hàm hoặc hành vi cụ thể trong script tại những thời điểm (khung hình) chính xác của một clip animation (chẳng hạn như phát âm thanh tiếng bước chân khi chân chạm đất, hoặc kích hoạt hitbox khi vũ khí vung tới vị trí xác định)."
+  },
+  {
+    "id": 7,
+    "question": "What are some of the customization options available for buttons in Unity?",
+    "options": {
+      "A": "Text Formatting, Rotation, and Scaling",
+      "B": "Color Transitions, Audio Effects, and Particle Systems",
+      "C": "Images, Color Transitions, and Text Formatting",
+      "D": "Shadows, Blur Effects, and Gradient Overlays"
+    },
+    "answer": "C",
+    "topic": "Unity UI",
+    "explanation": "Trong Unity UI, các tùy chọn tùy biến trực tiếp và phổ biến nhất có sẵn trên component Button (và đối tượng con mặc định của nó) bao gồm: thay đổi hình ảnh (Target Graphic / Image), các hiệu ứng chuyển đổi trạng thái màu sắc (Color Transitions trong Transition), và định dạng văn bản (Text Formatting thông qua Text/TextMeshPro đi kèm)."
+  },
+  {
+    "id": 8,
+    "question": "In Unity 2D, which component must be attached to a GameObject to play animations through script?",
+    "options": {
+      "A": "AudioSource",
+      "B": "Rigidbody2D",
+      "C": "Animator",
+      "D": "Canvas"
+    },
+    "answer": "C",
+    "topic": "Animation & Rigging",
+    "explanation": "Để một GameObject trong Unity (kể cả 2D lẫn 3D) có thể phát và điều khiển các animation thông qua script, đối tượng đó bắt buộc phải được gắn component Animator (liên kết với một Animator Controller)."
+  },
+  {
+    "id": 9,
+    "question": "What is the main purpose of UI hierarchy?",
+    "options": {
+      "A": "Prevent errors",
+      "B": "Arrange UI by importance",
+      "C": "Animate transitions",
+      "D": "Improve button interaction"
+    },
+    "answer": "B",
+    "topic": "UI/UX Design Principles",
+    "explanation": "Mục đích chính của việc phân cấp trực quan UI (UI Hierarchy) là tổ chức và sắp xếp các phần tử giao diện theo mức độ quan trọng (arrange UI by importance), giúp dẫn dắt mắt người dùng đến các yếu tố quan trọng trước và nắm bắt cấu trúc thông tin nhanh chóng, trực quan."
+  },
+  {
+    "id": 10,
+    "question": "How would you set a parameter in a C# script to trigger an animation transition in Unity?",
+    "options": {
+      "A": "animator.SetTrigger(\"Jump\");",
+      "B": "animator.SetFloat(\"IsJumping\", true);",
+      "C": "animator.SetBool(\"Speed\", 1.0f);",
+      "D": "animator.SetInteger(\"Run\", 1);"
+    },
+    "answer": "A",
+    "topic": "Animation & Rigging",
+    "explanation": "Để kích hoạt một chuyển đổi hoạt ảnh bằng tham số dạng Trigger trong Animator, cú pháp C# chuẩn là `animator.SetTrigger(\"Jump\");`. Các phương án B và C đều sai kiểu dữ liệu (SetFloat không nhận bool, SetBool không nhận float), còn phương án A dùng đúng hàm SetTrigger được thiết kế riêng để trigger transition."
+  },
+  {
+    "id": 11,
+    "question": "Why is testing and refining transitions between animation states important?",
+    "options": {
+      "A": "To reduce file size to compress the whole game when installing",
+      "B": "To make the animation transitions smooth and responsive",
+      "C": "To increase frame rate to make objects to move smoother",
+      "D": "To prevent runtime errors during installation phase after built"
+    },
+    "answer": "B",
+    "topic": "Animation & Rigging",
+    "explanation": "Việc kiểm thử và tinh chỉnh các transition (chuyển đổi) giữa các trạng thái animation trong Animator Controller là rất quan trọng để đảm bảo nhân vật/đối tượng chuyển động mượt mà (smooth) và phản hồi kịp thời (responsive) với các thao tác điều khiển của người chơi, tránh hiện tượng giật cục hoặc trễ hành động."
+  },
+  {
+    "id": 12,
+    "question": "What component is required to make a button clickable in Unity?",
+    "options": {
+      "A": "SpriteRenderer",
+      "B": "EventSystem",
+      "C": "Rigidbody2D",
+      "D": "AudioSource"
+    },
+    "answer": "B",
+    "topic": "Unity UI",
+    "explanation": "Để các phần tử giao diện UI (như Button) có thể tiếp nhận và xử lý các sự kiện click, hover hoặc tương tác từ chuột/cảm ứng, trong Scene bắt buộc phải có một GameObject chứa component EventSystem và Input Module tương ứng."
+  },
+  {
+    "id": 13,
+    "question": "What is the primary role of the Rigidbody component in Unity when creating physics-based puzzles?",
+    "options": {
+      "A": "To add visual effects to objects during collisions",
+      "B": "To enable objects to respond to physics simulations, such as gravity and collisions, affecting their movement and rotation",
+      "C": "To define the graphical representation of objects in the game world",
+      "D": "To play audio effects when objects interact with the environment"
+    },
+    "answer": "B",
+    "topic": "Physics & Rigidbody",
+    "explanation": "Vai trò chính của Rigidbody trong Unity là đưa GameObject vào hệ thống mô phỏng vật lý, cho phép đối tượng phản ứng với các định luật vật lý thực tế như trọng lực, lực đẩy, ma sát và va chạm, qua đó tác động trực tiếp lên vị trí và chuyển động xoay của nó."
+  },
+  {
+    "id": 14,
+    "question": "Which Collider component in Unity is best suited for objects like balls or other round entities?",
+    "options": {
+      "A": "Box Collider",
+      "B": "Sphere Collider",
+      "C": "Capsule Collider",
+      "D": "Cylinder Collider"
+    },
+    "answer": "B",
+    "topic": "Physics & Colliders",
+    "explanation": "Sphere Collider được thiết kế với hình dạng khối cầu hoàn hảo, là lựa chọn tối ưu và chính xác nhất cho các vật thể tròn trịa như quả bóng, viên bi hoặc các thực thể hình cầu khác."
+  },
+  {
+    "id": 15,
+    "question": "Which Rigidbody property affects how quickly an object comes to rest due to air resistance?",
+    "options": {
+      "A": "Mass",
+      "B": "Drag",
+      "C": "Angular Drag",
+      "D": "Use Gravity"
+    },
+    "answer": "B",
+    "topic": "Physics & Rigidbody",
+    "explanation": "Thuộc tính `Drag` trên Rigidbody đại diện cho lực cản không khí đối với chuyển động tịnh tiến. Giá trị Drag càng cao thì đối tượng chuyển động trong không gian càng nhanh chóng giảm vận tốc và dừng lại."
+  },
+  {
+    "id": 16,
+    "question": "Analyze the following code and determine what happens when the GameObject with this script enters a trigger zone tagged as \"Checkpoint\":\nusing UnityEngine;\n\npublic class CheckpointTrigger : MonoBehaviour\n{\n    public GameObject checkpointEffect;\n\n    void OnTriggerEnter(Collider other)\n    {\n        if (other.CompareTag(\"Checkpoint\"))\n        {\n            checkpointEffect.SetActive(true);\n            Debug.Log(\"Checkpoint Reached!\");\n        }\n    }\n}",
+    "options": {
+      "A": "The GameObject will change color",
+      "B": "A particle effect will be activated and a message logged",
+      "C": "The GameObject will stop moving",
+      "D": "The GameObject will increase in size"
+    },
+    "answer": "B",
+    "topic": "Physics & Colliders",
+    "explanation": "Trong hàm OnTriggerEnter, câu lệnh `if (other.CompareTag(\"Checkpoint\"))` kiểm tra va chạm với đối tượng gắn tag 'Checkpoint'. Khi thỏa mãn điều kiện, `checkpointEffect.SetActive(true);` sẽ kích hoạt hiệu ứng (particle effect / game object) và `Debug.Log(\"Checkpoint Reached!\");` sẽ ghi một thông điệp ra Console."
+  },
+  {
+    "id": 17,
+    "question": "Which callback detects trigger entry in 2D?",
+    "options": {
+      "A": "OnTriggerEnter()",
+      "B": "OnTriggerEnter2D()",
+      "C": "OnCollisionEnter()",
+      "D": "OnCollisionEnter2D()"
+    },
+    "answer": "B",
+    "topic": "Physics 2D",
+    "explanation": "Trong hệ thống vật lý 2D của Unity, phương thức callback được gọi khi một Collider2D khác đi vào vùng trigger là `OnTriggerEnter2D(Collider2D collision)`."
+  },
+  {
+    "id": 18,
+    "question": "What is the primary difference between using a Collider as a physical barrier and using it as a Trigger in Unity?",
+    "options": {
+      "A": "Colliders can only be used for 3D objects, whereas Triggers are exclusively for 2D objects.",
+      "B": "Triggers can physically interact and apply forces to objects, while Colliders cannot.",
+      "C": "Colliders act as physical barriers that objects cannot pass through, whereas Triggers do not physically stop objects but instead fire events when an object passes through.",
+      "D": "There is no difference; both Colliders and Triggers serve the same purpose in Unity."
+    },
+    "answer": "C",
+    "topic": "Physics & Colliders",
+    "explanation": "Sự khác biệt cốt lõi là: Collider thông thường hoạt động như một rào cản vật lý vững chắc ngăn chặn các vật thể đi xuyên qua nhau; trong khi Collider được tích chọn Is Trigger sẽ cho phép các đối tượng đi xuyên qua tự do và kích hoạt các hàm sự kiện trigger (như OnTriggerEnter) để xử lý logic game."
+  },
+  {
+    "id": 19,
+    "question": "Which Unity method is ideal for checking player input or game state continuously?",
+    "options": {
+      "A": "Start()",
+      "B": "Update()",
+      "C": "Awake()",
+      "D": "OnLoad()"
+    },
+    "answer": "B",
+    "topic": "C# Scripting & Lifecycle",
+    "explanation": "Hàm `Update()` trong MonoBehaviour được gọi liên tục trên mỗi khung hình (frame-by-frame), do đó nó là nơi lý tưởng nhất để tiếp nhận và phản hồi tức thì với các thao tác input từ bàn phím, chuột hoặc kiểm tra liên tục trạng thái của trò chơi."
+  },
+  {
+    "id": 20,
+    "question": "Given the following script for handling dynamic collision reactions, what will be the effect when the GameObject collides with another object?\nusing UnityEngine;\n\npublic class DynamicCollisionReaction : MonoBehaviour\n{\n    public float forceMagnitude = 10f;\n    private Rigidbody rb;\n\n    void Start()\n    {\n        rb = GetComponent<Rigidbody>();\n    }\n\n    void OnCollisionEnter(Collision collision)\n    {\n        Vector3 collisionForce = collision.impulse / Time.fixedDeltaTime;\n        Vector3 appliedForce = collisionForce.normalized * forceMagnitude;\n        rb.AddForce(appliedForce, ForceMode.Impulse);\n    }\n}",
+    "options": {
+      "A": "The GameObject will move randomly",
+      "B": "The GameObject will apply a force away from the collision",
+      "C": "The GameObject will stop moving",
+      "D": "The GameObject will change color"
+    },
+    "answer": "B",
+    "topic": "Physics & Rigidbody",
+    "explanation": "Trong đoạn mã trên, `collision.impulse` thể hiện xung lực sinh ra từ va chạm, có chiều hướng ra ngoài điểm va chạm. Khi xảy ra va chạm, script chuẩn hóa vector xung lực này và nhân với `forceMagnitude`, sau đó tác dụng lực tức thời lên Rigidbody qua `AddForce`, làm đối tượng bị bật ngược ra xa khỏi điểm va chạm."
+  },
+  {
+    "id": 21,
+    "question": "What purpose do Layers and Masks serve in Unity Physics?",
+    "options": {
+      "A": "They calculate the force of gravity on objects",
+      "B": "They limit the movement of objects with Constraints and Joints",
+      "C": "They control which objects interact with each other",
+      "D": "They identify when two objects intersect and respond to collisions"
+    },
+    "answer": "C",
+    "topic": "Physics & Layers",
+    "explanation": "Trong hệ thống Physics của Unity, Layers và Layer Masks được sử dụng để phân loại đối tượng và kiểm soát đối tượng nào được phép va chạm hoặc tương tác với đối tượng nào khác (thông qua bảng Layer Collision Matrix trong Project Settings) cũng như lọc đối tượng trong các thao tác Raycast."
+  },
+  {
+    "id": 22,
+    "question": "What challenge may arise when blending ragdoll and animation?",
+    "options": {
+      "A": "Overlap",
+      "B": "Glitchy textures",
+      "C": "Unrealistic lighting",
+      "D": "Seamless transition"
+    },
+    "answer": "D",
+    "topic": "Animation & Physics",
+    "explanation": "Khi kết hợp (blending) giữa hoạt ảnh có sẵn (animation) và vật lý ragdoll, thách thức lớn nhất là tạo ra sự chuyển đổi liền mạch mượt mà ('Seamless transition') giữa trạng thái điều khiển bởi khung xương (kinematic) và vật lý thực tế (dynamic physics) mà không làm nhân vật bị giật (jitter), snap tư thế hay biến dạng khớp đột ngột."
+  },
+  {
+    "id": 23,
+    "question": "How does Unity Physics handle collision detection and resolution?",
+    "options": {
+      "A": "By controlling which objects interact with each other using Layers and Masks",
+      "B": "By simulating forces and interactions like gravity and explosions",
+      "C": "By limiting object movement with Constraints and Joints",
+      "D": "By identifying when two objects intersect and responding to collisions"
+    },
+    "answer": "D",
+    "topic": "Physics & Colliders",
+    "explanation": "Unity Physics xử lý va chạm qua 2 giai đoạn cốt lõi: phát hiện va chạm (Collision Detection - xác định khi nào hai collider giao nhau/tiếp xúc) và giải quyết va chạm (Collision Resolution - tính toán lực phản hồi, áp dụng vận tốc và ngăn chặn các vật thể đi xuyên qua nhau)."
+  },
+  {
+    "id": 24,
+    "question": "In Unity, what is a primary benefit of using prefabs for child classes?",
+    "options": {
+      "A": "They allow for reusable and consistent game objects.",
+      "B": "They automatically optimize the game's performance.",
+      "C": "They enable the use of complex shaders.",
+      "D": "They simplify the physics calculations for game objects."
+    },
+    "answer": "A",
+    "topic": "Unity Prefabs",
+    "explanation": "Lợi ích cốt lõi của Prefab trong Unity là cho phép tạo ra các mẫu đối tượng trò chơi có thể tái sử dụng nhiều lần (reusable) và duy trì sự nhất quán (consistent) trên toàn bộ dự án. Khi cập nhật prefab gốc, tất cả các bản thể (instance) liên quan đều tự động nhận các thay đổi đó."
+  },
+  {
+    "id": 25,
+    "question": "What is a Scene in Unity?",
+    "options": {
+      "A": "A code snippet that controls the behavior of game objects.",
+      "B": "A collection of assets like models, textures, and sounds.",
+      "C": "A container that holds all or part of a game or application, including objects and behaviors.",
+      "D": "A programming tool used for developing game logic."
+    },
+    "answer": "C",
+    "topic": "Unity Core Concepts",
+    "explanation": "Trong Unity, một Scene (cảnh) đóng vai trò như một vùng chứa (container) chứa toàn bộ hoặc một phần của trò chơi hoặc ứng dụng (chẳng hạn như menu chính, một màn chơi, hoặc màn kết thúc), bao gồm tất cả các GameObject, component, âm thanh, ánh sáng và các hành vi tương ứng."
+  }
+]

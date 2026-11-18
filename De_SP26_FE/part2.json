@@ -1,0 +1,327 @@
+[
+  {
+    "id": 26,
+    "question": "Which of the following allows us to view and edit the properties of the currently selected game object?",
+    "options": {
+      "A": "Inspector window",
+      "B": "Overlays",
+      "C": "Project window",
+      "D": "Status bar"
+    },
+    "answer": "A",
+    "topic": "Unity Interface & Editor",
+    "explanation": "Cửa sổ Inspector (Inspector window) trong Unity Editor cho phép người dùng xem và chỉnh sửa tất cả các thuộc tính, components và thiết lập của GameObject đang được chọn trong Hierarchy hoặc Project."
+  },
+  {
+    "id": 27,
+    "question": "In Unity C# scripting, what is the purpose of the MonoBehaviour class that all Unity scripts inherit from?",
+    "options": {
+      "A": "To define the main game mechanics and rules",
+      "B": "To provide a base class with methods and properties essential for scripting GameObject behaviors in Unity",
+      "C": "To act as the main entry point for Unity applications",
+      "D": "To manage the user interface elements of a Unity game"
+    },
+    "answer": "B",
+    "topic": "C# Scripting & Lifecycle",
+    "explanation": "MonoBehaviour là lớp cơ sở (base class) mà mọi script gắn vào GameObject trong Unity kế thừa. Nó cung cấp các biến, thuộc tính và các phương thức vòng đời thiết yếu (Start, Update, FixedUpdate, OnCollisionEnter,...) để lập trình hành vi cho GameObject."
+  },
+  {
+    "id": 28,
+    "question": "When implementing mouse dragging functionality in a Unity game, which combination of InputAction callbacks and conditions would you use in your C# script?",
+    "options": {
+      "A": "Use OnMouseDrag(InputAction.CallbackContext context) and check if context.performed is true for starting drag, and context.canceled for ending the drag.",
+      "B": "Implement OnMouseDown() and OnMouseUp() methods, and calculate the drag distance in Update() method.",
+      "C": "Register callbacks for OnMouseDown(InputAction.CallbackContext context) and OnMousePosition(InputAction.CallbackContext context), starting the drag on context.performed and tracking the mouse position until the button is released.",
+      "D": "Utilize OnLeftClick(InputAction.CallbackContext context) for detecting drag start, and track movement in OnMouseMove(InputAction.CallbackContext context) until context.canceled is true."
+    },
+    "answer": "C",
+    "topic": "Input System",
+    "explanation": "Khi triển khai kéo chuột bằng New Input System, ta cần kết hợp giữa hành động nhấn chuột (bắt đầu kéo khi context.performed và kết thúc khi thả nút chuột) và hành động đọc vị trí chuột (để cập nhật vị trí di chuyển liên tục trong suốt quá trình kéo)."
+  },
+  {
+    "id": 29,
+    "question": "In Unity, how are GameObject behaviors primarily controlled?",
+    "options": {
+      "A": "Through built-in Components exclusively",
+      "B": "Through attached Scripts",
+      "C": "Through external plugins",
+      "D": "Through visual scripting tools"
+    },
+    "answer": "B",
+    "topic": "Unity Core Concepts & Components",
+    "explanation": "Trong Unity, hành vi (behavior) của GameObject được điều khiển chủ yếu thông qua các script C# được gắn vào GameObject dưới dạng các component."
+  },
+  {
+    "id": 30,
+    "question": "What is the primary purpose of the FixedUpdate function in Unity scripts?",
+    "options": {
+      "A": "Initializing variables for script execution",
+      "B": "Executing game logic updates once per frame",
+      "C": "Handling frame updates for physics-related updates",
+      "D": "Executing late updates after all other functions have been called"
+    },
+    "answer": "C",
+    "topic": "C# Scripting & Lifecycle",
+    "explanation": "Hàm FixedUpdate được gọi ở một chu kỳ thời gian cố định độc lập với tốc độ khung hình (frame rate), được thiết kế chuyên biệt để xử lý các tính toán và cập nhật liên quan đến hệ thống vật lý (Physics/Rigidbody) trong Unity."
+  },
+  {
+    "id": 31,
+    "question": "When is the FixedUpdate() method called in Unity?",
+    "options": {
+      "A": "At a fixed time interval",
+      "B": "Once per frame",
+      "C": "When the object becomes enabled",
+      "D": "After LateUpdate()"
+    },
+    "answer": "A",
+    "topic": "C# Scripting & Lifecycle",
+    "explanation": "Phương thức FixedUpdate() được gọi ở một khoảng thời gian cố định (fixed time interval, mặc định 0.02 giây), không phụ thuộc vào FPS của game, giúp các tính toán vật lý diễn ra ổn định và nhất quán."
+  },
+  {
+    "id": 32,
+    "question": "What is the purpose of the OnEnable() method in Unity?",
+    "options": {
+      "A": "To perform actions when the object becomes disabled",
+      "B": "To initialize variables when the object becomes enabled",
+      "C": "To perform actions when the object becomes enabled and active",
+      "D": "To update game logic continuously after the object becomes enabled"
+    },
+    "answer": "C",
+    "topic": "C# Scripting & Lifecycle",
+    "explanation": "OnEnable() được Unity tự động gọi ngay khi script/GameObject được kích hoạt (enabled and active). Phương thức này thường được dùng để khởi tạo trạng thái, đăng ký sự kiện (event subscription) khi đối tượng bắt đầu hoạt động."
+  },
+  {
+    "id": 33,
+    "question": "How do Animation Events enhance interactivity within Unity's Animation System?",
+    "options": {
+      "A": "By allowing animations to loop indefinitely until stopped by a script",
+      "B": "By triggering specific C# script functions at designated points in an animation clip's timeline",
+      "C": "By automatically adjusting the animation's frame rate based on the game's performance",
+      "D": "By enabling the Animator Controller to switch between different animation layers"
+    },
+    "answer": "B",
+    "topic": "Animation & Rigging",
+    "explanation": "Animation Events cho phép kích hoạt trực tiếp các hàm trong C# script tại các mốc thời gian cụ thể trên dòng thời gian (timeline) của Animation Clip, giúp đồng bộ hóa các hiệu ứng âm thanh, hạt (particles) hoặc hành vi gameplay chính xác theo từng chuyển động của nhân vật."
+  },
+  {
+    "id": 34,
+    "question": "What feature in Unity allows you to create a visual distinction between different button states such as Normal, Highlighted, Pressed, and Disabled?",
+    "options": {
+      "A": "Animation Controller",
+      "B": "State Transitions",
+      "C": "Canvas Renderer",
+      "D": "Scriptable Objects"
+    },
+    "answer": "B",
+    "topic": "Unity UI",
+    "explanation": "Thuộc tính Transition (State Transitions) trong component Selectable/Button của Unity UI cho phép người dùng tùy biến phản hồi trực quan (thay đổi màu sắc - Color Tint, thay đổi hình ảnh - Sprite Swap, hoặc chạy hoạt ảnh - Animation) tương ứng với các trạng thái khác nhau của nút bấm: Normal, Highlighted, Pressed, Selected và Disabled."
+  },
+  {
+    "id": 35,
+    "question": "Which uGUI component is useful for handling scrollable content, particularly for long lists or content that doesn't fit in a fixed area?",
+    "options": {
+      "A": "Slider",
+      "B": "Dropdown",
+      "C": "Toggle",
+      "D": "Scroll View"
+    },
+    "answer": "D",
+    "topic": "Unity UI",
+    "explanation": "Scroll View (sử dụng component Scroll Rect kết hợp với Mask) là thành phần chuyên dụng trong Unity UI dùng để hiển thị và cuộn các nội dung dài hoặc vượt quá kích thước vùng hiển thị cố định."
+  },
+  {
+    "id": 36,
+    "question": "What are the bendable parts of a model called?",
+    "options": {
+      "A": "Rigid parts",
+      "B": "Texture maps",
+      "C": "Bones",
+      "D": "Joints"
+    },
+    "answer": "D",
+    "topic": "Animation & Rigging",
+    "explanation": "Trong đồ họa 3D và cấu trúc khung xương (skeleton/rigging), các điểm nối cho phép uốn cong, xoay và khớp nối chuyển động được gọi là các khớp (Joints), trong khi các đoạn xương cứng nối giữa các khớp được gọi là Bones."
+  },
+  {
+    "id": 37,
+    "question": "What is a recommended optimization technique for button assets in Unity?",
+    "options": {
+      "A": "Using Unity's animation system to animate buttons",
+      "B": "Scripting custom button behaviors",
+      "C": "Assigning functions or methods to buttons for specific actions",
+      "D": "Using sprite atlases or sprite sheets to minimize draw calls and improve performance"
+    },
+    "answer": "D",
+    "topic": "Performance Optimization & UI",
+    "explanation": "Sử dụng Sprite Atlas (hoặc Sprite Sheet) để đóng gói nhiều hình ảnh giao diện vào một kết cấu (texture) duy nhất là kỹ thuật tối ưu cốt lõi trong Unity UI, giúp engine gộp các lệnh vẽ (Batching), từ đó giảm số lượng Draw Calls và tăng tốc độ xử lý đồ họa."
+  },
+  {
+    "id": 38,
+    "question": "What is an example of a scripted animation transition in Unity?",
+    "options": {
+      "A": "Triggering the transition from idle to walk state when the player presses the forward key",
+      "B": "Automatically switching between cameras views when the game starts",
+      "C": "Making the object rotate continuously without player input",
+      "D": "Changing the background music based on the game's progress"
+    },
+    "answer": "A",
+    "topic": "Animation & Rigging",
+    "explanation": "Chuyển tiếp hoạt ảnh bằng script (scripted animation transition) xảy ra khi code C# thay đổi các tham số của Animator (ví dụ: animator.SetBool(\"isWalking\", true)) dựa trên tín hiệu đầu vào của người chơi (như nhấn phím tiến), khiến Animator Controller chuyển đổi từ trạng thái Idle sang Walk."
+  },
+  {
+    "id": 39,
+    "question": "What are animation triggers used for in Unity?",
+    "options": {
+      "A": "To manage the camera view during gameplay",
+      "B": "To control animations based on in-game interactions",
+      "C": "To handle player movement and physics",
+      "D": "To save and load game data"
+    },
+    "answer": "B",
+    "topic": "Animation & Rigging",
+    "explanation": "Animation Trigger là một loại tham số trong Animator Controller dùng để kích hoạt các bước chuyển đổi hoạt ảnh khi có tương tác hoặc sự kiện gameplay xảy ra (ví dụ: kích hoạt hoạt ảnh nhảy, đánh kiếm, hoặc trúng đạn)."
+  },
+  {
+    "id": 40,
+    "question": "In Unity's physics system, what purpose do colliders serve when developing interactive physics-based puzzles?",
+    "options": {
+      "A": "They act as triggers for starting or stopping animations on game objects.",
+      "B": "They define the physical shape of an object for collision detection, enabling objects to interact with each other physically in the game world.",
+      "C": "They are used exclusively for rendering realistic lighting effects on game objects.",
+      "D": "They control the audio volume level when two objects collide in the game environment."
+    },
+    "answer": "B",
+    "topic": "Physics & Rigidbody",
+    "explanation": "Collider xác định hình dạng vật lý của GameObject để engine nhận diện va chạm (collision detection), cho phép các vật thể tương tác vật lý thực tế với nhau (như đè lên nhau, đẩy nhau, ngăn không cho vật thể rơi xuyên qua sàn) trong các câu đố vật lý."
+  },
+  {
+    "id": 41,
+    "question": "What is the primary difference between using a Collider as a physical barrier and using it as a Trigger in Unity?",
+    "options": {
+      "A": "Colliders can only be used for 3D objects, whereas Triggers are exclusively for 2D objects.",
+      "B": "Triggers can physically interact and apply forces to objects, while Colliders cannot.",
+      "C": "Colliders act as physical barriers that objects cannot pass through, whereas Triggers do not physically stop objects but instead fire events when an object passes through.",
+      "D": "There is no difference; both Colliders and Triggers serve the same purpose in Unity."
+    },
+    "answer": "C",
+    "topic": "Physics & Rigidbody",
+    "explanation": "Collider thông thường (Is Trigger = false) đóng vai trò như rào chắn vật lý tạo phản lực ngăn cản các vật thể xuyên qua nhau (OnCollisionEnter). Khi bật Is Trigger = true, đối tượng không tạo phản lực cản trở mà cho phép vật thể đi xuyên qua, đồng thời kích hoạt các sự kiện Trigger (OnTriggerEnter) để xử lý logic trong game."
+  },
+  {
+    "id": 42,
+    "question": "Which Collider component in Unity is best suited for objects like balls or other round entities?",
+    "options": {
+      "A": "Box Collider",
+      "B": "Sphere Collider",
+      "C": "Capsule Collider",
+      "D": "Cylinder Collider"
+    },
+    "answer": "B",
+    "topic": "Physics & Rigidbody",
+    "explanation": "Sphere Collider là collider dạng hình cầu, tối ưu nhất về mặt hiệu năng tính toán và phản hồi va chạm chân thực cho các đối tượng hình tròn như quả bóng."
+  },
+  {
+    "id": 43,
+    "question": "What is the primary purpose of Broad-Phase Collision Detection in Unity?",
+    "options": {
+      "A": "To efficiently identify potential collisions among a large number of objects",
+      "B": "To determine if potential collision pairs are indeed colliding",
+      "C": "To check the precise shapes defined by the colliders",
+      "D": "To detect collisions without physically interacting with other objects"
+    },
+    "answer": "A",
+    "topic": "Physics Engine & Collision Detection",
+    "explanation": "Trong hệ thống vật lý, giai đoạn Broad-Phase sử dụng các thuật toán đơn giản (như kiểm tra hộp bao Bounding Box / AABB) để nhanh chóng loại trừ các đối tượng ở xa và lọc ra danh sách các cặp đối tượng tiềm năng có thể xảy ra va chạm mà không tốn nhiều chi phí tính toán."
+  },
+  {
+    "id": 44,
+    "question": "What does Narrow-Phase Collision Detection in Unity involve?",
+    "options": {
+      "A": "A detailed examination of potential collision pairs to determine if they are indeed colliding",
+      "B": "Quickly identifying potential collisions among a large number of objects",
+      "C": "Detecting collisions without physically interacting with other objects",
+      "D": "Checking the precise shapes defined by the colliders"
+    },
+    "answer": "A",
+    "topic": "Physics Engine & Collision Detection",
+    "explanation": "Giai đoạn Narrow-Phase tiếp nhận danh sách các cặp đối tượng tiềm năng từ Broad-Phase và thực hiện tính toán chi tiết, kiểm tra hình dạng hình học cụ thể để xác định chính xác chúng có đang va chạm hay không, đồng thời tính các điểm tiếp xúc (contact points) và lực va chạm."
+  },
+  {
+    "id": 45,
+    "question": "What purpose do Layers and Masks serve in Unity Physics?",
+    "options": {
+      "A": "They calculate the force of gravity on objects",
+      "B": "They limit the movement of objects with Constraints and Joints",
+      "C": "They control which objects interact with each other",
+      "D": "They identify when two objects intersect and respond to collisions"
+    },
+    "answer": "C",
+    "topic": "Physics & Rigidbody",
+    "explanation": "Layers và LayerMasks cho phép phân nhóm các đối tượng và cấu hình trong ma trận va chạm (Layer Collision Matrix) hoặc trong các hàm Raycast để kiểm soát chính xác các nhóm đối tượng nào có thể tương tác hoặc va chạm với nhau."
+  },
+  {
+    "id": 46,
+    "question": "Which type of joint in Unity restricts rotation around a single axis, simulating a door hinge or swinging pendulum?",
+    "options": {
+      "A": "Hinge joint",
+      "B": "Fixed joint",
+      "C": "Spring joint",
+      "D": "Configurable joint"
+    },
+    "answer": "A",
+    "topic": "Physics & Rigidbody",
+    "explanation": "HingeJoint giới hạn chuyển động của hai Rigidbody sao cho chúng chỉ có thể xoay quanh một trục duy nhất, mô phỏng các vật thể như bản lề cánh cửa hay con lắc đung đưa."
+  },
+  {
+    "id": 47,
+    "question": "Which of the following best describes events in C#?",
+    "options": {
+      "A": "Objects that hold data and methods that operate on the data",
+      "B": "Special methods used for asynchronous programming and I/O tasks",
+      "C": "Type definitions that specify the methods signature",
+      "D": "Delegate that enables one object to notify other objects about actions"
+    },
+    "answer": "D",
+    "topic": "C# Scripting & Programming Concepts",
+    "explanation": "Trong C#, Event là một cơ chế dựa trên Delegate (hoạt động theo mẫu thiết kế Publisher-Subscriber) cho phép một đối tượng gửi thông báo đến các đối tượng khác khi một hành động hoặc biến cố cụ thể xảy ra."
+  },
+  {
+    "id": 48,
+    "question": "Which of the following statements about delegates in C# is NOT true?",
+    "options": {
+      "A": "Delegates are essentially a reference type that holds the reference to a method.",
+      "B": "Delegates can be used to create callback mechanisms.",
+      "C": "Delegates cannot be invoked like a regular method.",
+      "D": "Delegates allow one object to call methods on another object without knowing its specific type."
+    },
+    "answer": "C",
+    "topic": "C# Scripting & Programming Concepts",
+    "explanation": "Phát biểu C là KHÔNG đúng vì Delegate hoàn toàn có thể được gọi thực thi trực tiếp giống như một phương thức thông thường bằng cú pháp myDelegate() hoặc myDelegate.Invoke()."
+  },
+  {
+    "id": 49,
+    "question": "What is the role of the Animator Component in Unity?",
+    "options": {
+      "A": "To store animation data, including keyframes, curves, and events",
+      "B": "To organize animation states and transitions based on the assigned Animator Controller",
+      "C": "To control animation playback based on the assigned Animator Controller",
+      "D": "To create audio effects for animations based on the assigned Animator Controller"
+    },
+    "answer": "C",
+    "topic": "Animation & Rigging",
+    "explanation": "Component Animator được gắn trực tiếp vào GameObject để điều khiển việc phát các hoạt ảnh (animation playback) của đối tượng đó dựa trên cấu hình cỗ máy trạng thái từ Animator Controller được gán."
+  },
+  {
+    "id": 50,
+    "question": "Where are UI elements placed in Unity?",
+    "options": {
+      "A": "On a Sprite Renderer",
+      "B": "In a Scene Manager",
+      "C": "On a Canvas component",
+      "D": "In a Transform component"
+    },
+    "answer": "C",
+    "topic": "Unity UI",
+    "explanation": "Trong Unity UI, tất cả các thành phần giao diện người dùng (như Button, Text, Image) bắt buộc phải được đặt làm con của một GameObject có chứa component Canvas để có thể được hiển thị và tương tác."
+  }
+]

@@ -1,0 +1,327 @@
+[
+  {
+    "id": 1,
+    "question": "How can you create engaging effects for buttons in Unity?",
+    "options": {
+      "A": "By using sprite atlases or sprite sheets for optimization",
+      "B": "Through scripting to define custom behaviors",
+      "C": "By assigning functions or methods to buttons",
+      "D": "Using Unity's animation system or event triggers"
+    },
+    "answer": "D",
+    "topic": "Unity UI",
+    "explanation": "Trong Unity UI, để tạo các hiệu ứng sinh động và hấp dẫn (engaging effects) cho Button như phóng to/thu nhỏ khi hover, hiệu ứng nảy, đổi màu mượt mà..., ta có thể sử dụng hệ thống Animation (chọn Transition là Animation) hoặc sử dụng Event Trigger (bắt các sự kiện PointerEnter, PointerExit, PointerDown...) để kích hoạt hiệu ứng."
+  },
+  {
+    "id": 2,
+    "question": "What is the primary function of a rig when animating a model?",
+    "options": {
+      "A": "To create realistic textures",
+      "B": "To determine the model's color palette",
+      "C": "To specify which parts of the model can move",
+      "D": "To generate environmental effects"
+    },
+    "answer": "C",
+    "topic": "Animation & Rigging",
+    "explanation": "Rig (bộ xương / khung xương) trong hoạt ảnh 3D có chức năng cơ bản là liên kết với mô hình lưới (mesh) thông qua quá trình skinning nhằm xác định các bộ phận, khớp nối nào của mô hình có thể cử động, xoay và biến dạng khi thực hiện animation."
+  },
+  {
+    "id": 3,
+    "question": "How does the principle of Immediate Feedback enhance user experience in UI design?",
+    "options": {
+      "A": "By providing extensive tutorials",
+      "B": "By giving users instant responses to their actions",
+      "C": "By making the interface visually complex",
+      "D": "By maintaining uniformity in design elements"
+    },
+    "answer": "B",
+    "topic": "UI/UX Design",
+    "explanation": "Nguyên tắc Phản hồi tức thì (Immediate Feedback) trong thiết kế UI/UX giúp người dùng nhận được phản hồi ngay lập tức (như âm thanh nhấn nút, đổi màu tương tác, rung nhẹ...) ngay sau thao tác của họ, xác nhận rằng hành động đã được hệ thống ghi nhận và xử lý, từ đó nâng cao trải nghiệm người dùng."
+  },
+  {
+    "id": 4,
+    "question": "How can you trigger a transition between states using a script?",
+    "options": {
+      "A": "By directly changing the animation clip",
+      "B": "By setting a parameter in the Animator",
+      "C": "By enabling a Transitioning property of the Animator",
+      "D": "By calling Animator.TransitionToState()"
+    },
+    "answer": "B",
+    "topic": "Animation & Rigging",
+    "explanation": "Trong hệ thống Animator Controller của Unity, các bước chuyển đổi giữa các trạng thái (Transitions) được điều khiển dựa trên các điều kiện tham số (Parameters: Float, Int, Bool, Trigger). Trong code C#, ta kích hoạt transition bằng cách gán giá trị cho các tham số này thông qua các hàm như SetBool(), SetTrigger(), SetFloat(), SetInteger()."
+  },
+  {
+    "id": 5,
+    "question": "How does the principle of Guidance help users in UI design?",
+    "options": {
+      "A": "By making the interface visually complex within the interface",
+      "B": "By providing clear instructions, cues, or assistance within the interface",
+      "C": "By allowing users to customize the interface extensively",
+      "D": "By focusing solely on aesthetic appeal within the interface"
+    },
+    "answer": "B",
+    "topic": "UI/UX Design",
+    "explanation": "Nguyên tắc Hướng dẫn (Guidance) trong thiết kế giao diện giúp người dùng nắm bắt và tương tác dễ dàng với hệ thống thông qua việc cung cấp các chỉ dẫn, gợi ý thị giác (visual cues), tooltips hoặc thông tin trợ giúp rõ ràng trực tiếp trên giao diện."
+  },
+  {
+    "id": 6,
+    "question": "What is the function of Rigidbody's 'drag' property in Unity?",
+    "options": {
+      "A": "To adjust the gravitational pull on the object",
+      "B": "To simulate air or fluid resistance, affecting how quickly an object slows down when moving through space",
+      "C": "To apply a constant force in a specific direction",
+      "D": "To control the rotational speed of the object"
+    },
+    "answer": "B",
+    "topic": "Physics & Rigidbody",
+    "explanation": "Thuộc tính Drag của Rigidbody trong Unity dùng để mô phỏng lực cản không khí hoặc lực cản môi trường chất lưu, quyết định mức độ giảm tốc độ di chuyển tịnh tiến của vật thể theo thời gian khi di chuyển trong không gian."
+  },
+  {
+    "id": 7,
+    "question": "Analyze the following code and determine what happens when the GameObject with this script enters a trigger zone tagged as \"Checkpoint\":\nusing UnityEngine;\n\npublic class CheckpointTrigger : MonoBehaviour\n{\n    public GameObject checkpointEffect;\n\n    void OnTriggerEnter(Collider other)\n    {\n        if (other.CompareTag(\"Checkpoint\"))\n        {\n            checkpointEffect.SetActive(true);\n            Debug.Log(\"Checkpoint Reached!\");\n        }\n    }\n}",
+    "options": {
+      "A": "The GameObject will change color",
+      "B": "A particle effect will be activated and a message logged",
+      "C": "The GameObject will stop moving",
+      "D": "The GameObject will increase in size"
+    },
+    "answer": "B",
+    "topic": "Physics & Scripting",
+    "explanation": "Khi GameObject có script này chạm vào Collider khác có isTrigger = true và gắn thẻ tag \"Checkpoint\", hàm OnTriggerEnter sẽ kiểm tra điều kiện other.CompareTag(\"Checkpoint\") là đúng, sau đó gọi checkpointEffect.SetActive(true) (kích hoạt GameObject hiệu ứng, thường là particle effect) và ghi dòng log \"Checkpoint Reached!\" ra console."
+  },
+  {
+    "id": 8,
+    "question": "Given the following script snippet attached to a GameObject with a Rigidbody component, what will happen when the space bar is pressed?\npublic Rigidbody rb;\npublic float forceMagnitude = 500;\n\nvoid Update()\n{\n    if (Input.GetKeyDown(KeyCode.Space))\n    {\n        rb.AddForce(Vector3.up * forceMagnitude);\n    }\n}",
+    "options": {
+      "A": "The GameObject will move downward with a force of 500 Newtons",
+      "B": "The GameObject will rotate around the Y-axis",
+      "C": "The GameObject will move upward with a force of 500 Newtons",
+      "D": "The GameObject's velocity will decrease by 500 units per second"
+    },
+    "answer": "C",
+    "topic": "Physics & Rigidbody",
+    "explanation": "Hàm AddForce nhận vector lực `Vector3.up * forceMagnitude`. Vì `Vector3.up` biểu thị hướng thẳng đứng lên trên (0, 1, 0) và forceMagnitude = 500, nên một lực hướng lên trên có độ lớn 500 sẽ được tác dụng lên Rigidbody, khiến GameObject di chuyển hướng lên trên."
+  },
+  {
+    "id": 9,
+    "question": "What is the primary function of a Fixed Joint in Unity?",
+    "options": {
+      "A": "Simulating a door hinge or swinging pendulum",
+      "B": "Applying a spring-like force between connected bodies",
+      "C": "Preventing relative motion between connected bodies",
+      "D": "Providing customizable constraints for defining complex object relationships and motion"
+    },
+    "answer": "C",
+    "topic": "Physics & Joints",
+    "explanation": "Fixed Joint trong Unity liên kết hai vật thể vật lý (Rigidbody) lại với nhau tại vị trí tương đối cố định, ngăn chặn hoàn toàn chuyển động tương đối (cả tịnh tiến lẫn xoay) giữa hai vật thể đó như thể chúng được gắn chặt với nhau."
+  },
+  {
+    "id": 10,
+    "question": "What is the primary role of the Rigidbody component in Unity when creating physics-based puzzles?",
+    "options": {
+      "A": "To add visual effects to objects during collisions",
+      "B": "To enable objects to respond to physics simulations, such as gravity and collisions, affecting their movement and rotation",
+      "C": "To define the graphical representation of objects in the game world",
+      "D": "To play audio effects when objects interact with the environment"
+    },
+    "answer": "B",
+    "topic": "Physics & Rigidbody",
+    "explanation": "Component Rigidbody đưa đối tượng dưới sự kiểm soát của hệ thống vật lý Unity PhysX, cho phép đối tượng phản hồi lại trọng lực, lực đẩy và các vụ va chạm, từ đó quyết định chính xác chuyển động tịnh tiến và chuyển động quay vật lý trong các câu đố dựa trên vật lý."
+  },
+  {
+    "id": 11,
+    "question": "Why might you choose to use a component-based design in Unity over an inheritance-based design?",
+    "options": {
+      "A": "Component-based design simplifies debugging and reduces the complexity of your scripts.",
+      "B": "Component-based design allows for greater flexibility and reusability of GameObject functionalities.",
+      "C": "Component-based design is more familiar to developers than inheritance-based design from GameObject.",
+      "D": "Component-based design ensures better performance across different platforms."
+    },
+    "answer": "B",
+    "topic": "Unity Architecture",
+    "explanation": "Mô hình thiết kế hướng thành phần (Component-based architecture) tuân theo nguyên lý 'Composition over Inheritance' (tổng hợp thay vì kế thừa). Cách tiếp cận này cho phép tái sử dụng linh hoạt các component riêng lẻ trên nhiều GameObject khác nhau mà không bị bó buộc bởi cây phả hệ kế thừa cứng nhắc, phức tạp."
+  },
+  {
+    "id": 12,
+    "question": "What is the first step in implementing a data saving and loading system in Unity?",
+    "options": {
+      "A": "Serialization",
+      "B": "Data Collection",
+      "C": "Storage Management",
+      "D": "Loading Process"
+    },
+    "answer": "B",
+    "topic": "Data Persistence",
+    "explanation": "Để lưu dữ liệu trong Unity, bước đầu tiên phải là Thu thập dữ liệu (Data Collection) — xác định và trích xuất các dữ liệu cần lưu từ các GameObject/Manager trong game (như vị trí, điểm số, trang bị...). Sau khi có dữ liệu mới tiến hành tuần tự hóa (Serialization) và ghi vào bộ nhớ (Storage Management)."
+  },
+  {
+    "id": 13,
+    "question": "(Choose 1 answer)\nWhat is the following tool used for?",
+    "options": {
+      "A": "Rotate game object",
+      "B": "Translate game object",
+      "C": "Move game object",
+      "D": "Scale game object"
+    },
+    "answer": "A",
+    "topic": "Unity Editor",
+    "explanation": "Hình ảnh thể hiện Rotate Tool (phím tắt 'E' trong Unity Editor) với các vòng tròn tương tác theo các trục đỏ (X), xanh lá (Y), xanh dương (Z) dùng để xoay đối tượng trong Scene View."
+  },
+  {
+    "id": 14,
+    "question": "Which of the following is NOT a common method to implement player movement in a 2D game?",
+    "options": {
+      "A": "Rigidbody2D with forces",
+      "B": "Transform.Translate",
+      "C": "Custom C# script for movement",
+      "D": "Particle System"
+    },
+    "answer": "D",
+    "topic": "2D Movement & Physics",
+    "explanation": "Particle System trong Unity được sử dụng để tạo hiệu ứng hình ảnh (VFX) như tia lửa, mưa, khói, lửa... chứ không phải là phương pháp hay công cụ dùng để triển khai chuyển động của nhân vật (Player Movement)."
+  },
+  {
+    "id": 15,
+    "question": "Which tool in Unity allows you to set breakpoints, inspect variables, and step through code execution?",
+    "options": {
+      "A": "Console Window",
+      "B": "Profiler",
+      "C": "Debugger",
+      "D": "Remote Debugging"
+    },
+    "answer": "C",
+    "topic": "Debugging & Profiling",
+    "explanation": "Debugger (trình gỡ lỗi tích hợp cùng IDE như Visual Studio/Rider kết nối với Unity) cho phép lập trình viên đặt breakpoints (điểm dừng), kiểm tra giá trị của biến theo thời gian thực và thực thi code từng bước (step through)."
+  },
+  {
+    "id": 16,
+    "question": "What is the primary function of an Animator Controller in Unity?",
+    "options": {
+      "A": "To store animation data for game objects",
+      "B": "To create visual effects for animations",
+      "C": "To organize animation states and transitions",
+      "D": "To manage physics interactions between animated objects"
+    },
+    "answer": "C",
+    "topic": "Animation & Rigging",
+    "explanation": "Animator Controller trong Unity hoạt động như một máy trạng thái (State Machine) dùng để tổ chức, sắp xếp các trạng thái hoạt ảnh (Animation States) và quản lý sự chuyển tiếp (Transitions) giữa các trạng thái dựa trên các tham số (parameters)."
+  },
+  {
+    "id": 17,
+    "question": "What does the Profiler in Unity provide?",
+    "options": {
+      "A": "Log messages and warnings",
+      "B": "Properties and components of game objects",
+      "C": "Performance metrics and analysis to identify bottlenecks",
+      "D": "Debugging for remote devices"
+    },
+    "answer": "C",
+    "topic": "Debugging & Profiling",
+    "explanation": "Unity Profiler cung cấp các số liệu hiệu năng phân tích chi tiết (thời gian tiêu thụ của CPU, GPU, mức độ chiếm dụng bộ nhớ RAM, Physics, Rendering...) giúp lập trình viên phát hiện và khắc phục các nút thắt cổ chai về hiệu năng (performance bottlenecks)."
+  },
+  {
+    "id": 18,
+    "question": "Which of the following is a Unity-specific class used for representing rotations?",
+    "options": {
+      "A": "Vector3",
+      "B": "Quaternion",
+      "C": "Rigidbody",
+      "D": "Transform"
+    },
+    "answer": "B",
+    "topic": "Mathematics & Transforms",
+    "explanation": "Trong Unity, cấu trúc Quaternion (gồm 4 thành phần x, y, z, w) là lớp chuẩn được sử dụng để biểu diễn mọi phép quay 3D, giúp loại bỏ triệt để hiện tượng khóa trục (gimbal lock) thường gặp của góc Euler."
+  },
+  {
+    "id": 19,
+    "question": "In Unity, what is the primary purpose of the Update function within a MonoBehaviour script?",
+    "options": {
+      "A": "Handling initialization tasks before gameplay",
+      "B": "Controlling GameObject actions for each frame during gameplay",
+      "C": "Responding to user input during gameplay",
+      "D": "Executing actions triggered by collisions"
+    },
+    "answer": "B",
+    "topic": "C# Scripting & Lifecycle",
+    "explanation": "Hàm Update() được Unity Engine tự động gọi ở mỗi khung hình (frame), là nơi chính để điều khiển các hành động, cập nhật trạng thái logic và hành vi của GameObject theo từng frame trong suốt quá trình gameplay."
+  },
+  {
+    "id": 20,
+    "question": "How does a script operate in Unity compared to a traditional program?",
+    "options": {
+      "A": "Unity runs the script continuously in a loop like a traditional program",
+      "B": "Unity intermittently passes control to the script by calling specific event functions",
+      "C": "Unity executes the script only once at the start of the game",
+      "D": "Unity requires manual updates every frame to run script"
+    },
+    "answer": "B",
+    "topic": "Unity Architecture & Lifecycle",
+    "explanation": "Khác với mô hình chương trình truyền thống với hàm main chạy liên tục, Unity nắm quyền kiểm soát chính và gián đoạn trao quyền thực thi cho script bằng cách gọi các hàm sự kiện định sẵn (event functions như Awake, Start, Update, FixedUpdate...) theo từng thời điểm trong vòng đời của game."
+  },
+  {
+    "id": 21,
+    "question": "How can mouse input be customized in Unity?",
+    "options": {
+      "A": "By adding Rigidbody component to the mouse",
+      "B": "By using the Transform component",
+      "C": "By modifying Input Actions to adjust sensitivity",
+      "D": "By enabling Sprite Renderer on the mouse pointer"
+    },
+    "answer": "C",
+    "topic": "Input Management",
+    "explanation": "Trong Unity Input System, các hành vi và phản hồi của chuột (như tốc độ rê chuột, độ nhạy, deadzone) được tùy biến thông qua cấu hình Input Actions bằng cách áp dụng các bộ xử lý (processors như Scale, Invert) vào Mouse Vector2 Action."
+  },
+  {
+    "id": 22,
+    "question": "What is the primary purpose of Unity's Input System?",
+    "options": {
+      "A": "To manage the appearance of game objects",
+      "B": "To control lighting in the scene",
+      "C": "To handle user input from devices, touch, or gestures",
+      "D": "To define the physics behavior of objects"
+    },
+    "answer": "C",
+    "topic": "Input Management",
+    "explanation": "Mục đích cốt lõi của Input System trong Unity là tiếp nhận, xử lý và quản lý các tín hiệu đầu vào từ người dùng qua đa dạng thiết bị phần cứng như bàn phím, chuột, tay cầm chơi game, màn hình cảm ứng hoặc cử chỉ."
+  },
+  {
+    "id": 23,
+    "question": "How would you make the character jump only when the \"W\" key is pressed once?",
+    "options": {
+      "A": "Use Input.GetKey(KeyCode.W) in FixedUpdate()",
+      "B": "Use Input.GetKeyDown(KeyCode.W) in Update()",
+      "C": "Use Input.GetKey(KeyCode.W) in Update()",
+      "D": "Use Input.GetKeyDown(KeyCode.W) in FixedUpdate()"
+    },
+    "answer": "B",
+    "topic": "Input Management & Scripting",
+    "explanation": "`Input.GetKeyDown` chỉ trả về true duy nhất tại khung hình mà phím được nhấn xuống lần đầu (phù hợp cho hành động nhảy một lần khi nhấn). Đồng thời việc kiểm tra Input luôn phải đặt trong `Update()` thay vì `FixedUpdate()` để tránh bị lỡ sự kiện bấm phím giữa các frame vật lý."
+  },
+  {
+    "id": 24,
+    "question": "When adjusting the Transform properties of a GameObject in Unity, how does the concept of parent-child relationship affect the Transform values of child GameObjects if the parent GameObject's Transform is modified?",
+    "options": {
+      "A": "The Transform values of the child GameObjects are not affected by changes to the parent GameObject",
+      "B": "The Transform values of the child GameObjects automatically update to match the parent GameObject's Transform values",
+      "C": "The Transform values of the child GameObjects change relative to their original values, depending on the modification applied to the parent GameObject",
+      "D": "The Transform values of the child GameObjects reset to (0, 0, 0) regardless of the parent GameObject's Transform modifications"
+    },
+    "answer": "C",
+    "topic": "Transforms & Hierarchy",
+    "explanation": "Trong phân cấp Cha - Con của Unity, các thuộc tính Transform của đối tượng con trong hệ tọa độ thế giới (world space) sẽ thay đổi tương đối theo sự thay đổi của đối tượng cha, trong khi các giá trị cục bộ (local transform: position, rotation, scale) so với cha vẫn giữ nguyên giá trị tương đối ban đầu."
+  },
+  {
+    "id": 25,
+    "question": "When managing multiple scenes in a Unity project, which Unity class provides functionalities for loading and unloading scenes?",
+    "options": {
+      "A": "GameObject",
+      "B": "MonoBehaviour",
+      "C": "UnityEngine.SceneManagement",
+      "D": "Transform"
+    },
+    "answer": "C",
+    "topic": "Scene Management",
+    "explanation": "Lớp/namespace `UnityEngine.SceneManagement` (cụ thể là lớp tiện ích `SceneManager` thuộc namespace này) cung cấp đầy đủ các phương thức để tải và dỡ bỏ các scene trong Unity tại runtime như `LoadScene()`, `LoadSceneAsync()`, `UnloadSceneAsync()`."
+  }
+]
