@@ -199,11 +199,21 @@ const unifiedHtml = `<!DOCTYPE html>
   <meta property="og:title" content="Ôn Tập">
   <meta property="og:site_name" content="Ôn Tập">
   <meta property="og:description" content="Ôn Tập">
-  
+  <meta property="og:image" content="https://khoivthse182701.github.io/pru213/thumbnail.jpg">
+  <meta property="og:image:secure_url" content="https://khoivthse182701.github.io/pru213/thumbnail.jpg">
+  <meta property="og:image:type" content="image/jpeg">
+  <meta property="og:image:alt" content="Ôn Tập">
+
   <!-- Twitter Card -->
-  <meta name="twitter:card" content="summary">
+  <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Ôn Tập">
   <meta name="twitter:description" content="Ôn Tập">
+  <meta name="twitter:image" content="https://khoivthse182701.github.io/pru213/thumbnail.jpg">
+
+  <!-- Favicon / Shortcut Icon -->
+  <link rel="icon" type="image/jpeg" href="thumbnail.jpg">
+  <link rel="shortcut icon" href="thumbnail.jpg">
+  <link rel="apple-touch-icon" href="thumbnail.jpg">
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
@@ -1916,7 +1926,7 @@ fs.writeFileSync(path.join(__dirname, 'index.html'), unifiedHtml, 'utf8');
 console.log('Generated unified root index.html (' + unifiedHtml.length + ' bytes)');
 
 // Also write redirect/unified entry points for all individual exam folders
-const makeRedirect = (examId) => `<!DOCTYPE html><html lang="vi"><head><meta charset="UTF-8"><title>Ôn Tập</title><meta property="og:title" content="Ôn Tập"><meta property="og:site_name" content="Ôn Tập"><meta property="og:description" content="Ôn Tập"><script>window.location.replace('../index.html?de=\${examId}');</script></head><body></body></html>`;
+const makeRedirect = (examId) => `<!DOCTYPE html><html lang="vi"><head><meta charset="UTF-8"><title>Ôn Tập</title><meta property="og:title" content="Ôn Tập"><meta property="og:site_name" content="Ôn Tập"><meta property="og:description" content="Ôn Tập"><meta property="og:image" content="https://khoivthse182701.github.io/pru213/thumbnail.jpg"><meta name="twitter:image" content="https://khoivthse182701.github.io/pru213/thumbnail.jpg"><link rel="icon" type="image/jpeg" href="../thumbnail.jpg"><script>window.location.replace('../index.html?de=\${examId}');</script></head><body></body></html>`;
 
 fs.writeFileSync(path.join(__dirname, 'De_SP26_FE', 'index.html'), makeRedirect('sp26'), 'utf8');
 fs.writeFileSync(path.join(__dirname, 'De_SU26_FE', 'index.html'), makeRedirect('su26'), 'utf8');
