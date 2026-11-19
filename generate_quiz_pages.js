@@ -192,7 +192,18 @@ const unifiedHtml = `<!DOCTYPE html>
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>Cổng Ôn Tập Trắc Nghiệm FPT - PRN222 & PRU213</title>
+  <title>Ôn Tập</title>
+  
+  <!-- Open Graph / Facebook / Zalo Preview -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Ôn Tập">
+  <meta property="og:site_name" content="Ôn Tập">
+  <meta property="og:description" content="Ôn Tập">
+  
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Ôn Tập">
+  <meta name="twitter:description" content="Ôn Tập">
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
@@ -772,7 +783,7 @@ const unifiedHtml = `<!DOCTYPE html>
 
   <footer class="bg-white border-t border-slate-200 py-4 text-center text-xs text-slate-500 mt-auto">
     <div class="max-w-7xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-2">
-      <div>Cổng Ôn Tập Trắc Nghiệm FPT University (PRN222 & PRU213)</div>
+      <div>Ôn Tập</div>
       <div class="flex items-center gap-4">
         <span>PRN222: 3 Đề + 1 Tổng hợp (150 Câu)</span>
         <span>•</span>
@@ -847,6 +858,7 @@ const unifiedHtml = `<!DOCTYPE html>
       stopTimer();
       activeExamId = examId;
       activeSubjectId = EXAMS[examId].subject || 'prn222';
+      document.title = 'Ôn Tập';
       localStorage.setItem('fpt_last_active_exam', examId);
 
       if (updateUrl && history.replaceState) {
@@ -1904,7 +1916,7 @@ fs.writeFileSync(path.join(__dirname, 'index.html'), unifiedHtml, 'utf8');
 console.log('Generated unified root index.html (' + unifiedHtml.length + ' bytes)');
 
 // Also write redirect/unified entry points for all individual exam folders
-const makeRedirect = (examId) => `<!DOCTYPE html><html lang="vi"><head><meta charset="UTF-8"><script>window.location.replace('../index.html?de=${examId}');</script></head><body></body></html>`;
+const makeRedirect = (examId) => `<!DOCTYPE html><html lang="vi"><head><meta charset="UTF-8"><title>Ôn Tập</title><meta property="og:title" content="Ôn Tập"><meta property="og:site_name" content="Ôn Tập"><meta property="og:description" content="Ôn Tập"><script>window.location.replace('../index.html?de=\${examId}');</script></head><body></body></html>`;
 
 fs.writeFileSync(path.join(__dirname, 'De_SP26_FE', 'index.html'), makeRedirect('sp26'), 'utf8');
 fs.writeFileSync(path.join(__dirname, 'De_SU26_FE', 'index.html'), makeRedirect('su26'), 'utf8');
