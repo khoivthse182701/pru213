@@ -133,7 +133,7 @@
     .animate-slide-up { animation: slideUp 0.22s cubic-bezier(0.16, 1, 0.3, 1); }
   </style>
 </head>
-<body class="bg-slate-50 text-slate-800 min-h-screen flex flex-col antialiased selection:bg-blue-100 selection:text-blue-700 pb-24 lg:pb-0">
+<body class="density-compact bg-slate-50 text-slate-800 min-h-screen flex flex-col antialiased selection:bg-blue-100 selection:text-blue-700 pb-24 lg:pb-0">
 
   <!-- Unified Sticky Header -->
   <header class="bg-white/95 border-b border-slate-200 sticky top-0 z-40 shadow-sm backdrop-blur-md transition-all duration-200" id="mainHeader">
@@ -174,7 +174,7 @@
           </div>
           <!-- Mobile Header Collapse Toggle -->
           <button onclick="toggleHeaderCollapse()" id="btnHeaderCollapseMobile" class="h-8 px-2 rounded-xl border border-slate-200 bg-white text-slate-700 text-xs font-bold flex items-center gap-1 active:scale-95 transition" title="Thu gọn / Mở rộng thanh công cụ">
-            <i id="iconHeaderCollapseMobile" class="fa-solid fa-compress text-indigo-500 text-[11px]"></i>
+            <i id="iconHeaderCollapseMobile" class="fa-solid fa-expand text-indigo-500 text-[11px]"></i>
           </button>
           <button onclick="toggleViewLayout()" id="btnLayoutMobile" title="Đổi giao diện Từng câu / Danh sách" class="h-8 px-2 rounded-xl border border-blue-200 bg-blue-50 text-blue-700 text-xs font-bold flex items-center gap-1 active:scale-95 transition">
             <i id="iconLayoutMobile" class="fa-solid fa-layer-group"></i>
@@ -210,8 +210,8 @@
 
           <!-- Header Collapse Button (Focus / Compact mode) -->
           <button onclick="toggleHeaderCollapse()" id="btnHeaderCollapseDesktop" class="px-2.5 py-1 text-xs font-semibold rounded-xl border border-slate-200 hover:bg-slate-100 text-slate-700 transition flex items-center gap-1.5 bg-white shadow-xs" title="Thu gọn/Mở rộng thanh công cụ">
-            <i id="iconHeaderCollapseDesktop" class="fa-solid fa-compress text-indigo-500"></i>
-            <span id="txtHeaderCollapseDesktop">Thu gọn</span>
+            <i id="iconHeaderCollapseDesktop" class="fa-solid fa-expand text-indigo-500"></i>
+            <span id="txtHeaderCollapseDesktop">Mở rộng</span>
           </button>
 
           <button onclick="toggleViewLayout()" id="btnLayoutDesktop" class="px-2.5 py-1 text-xs font-semibold rounded-xl border border-slate-200 hover:bg-slate-100 text-slate-700 transition flex items-center gap-1.5 bg-white shadow-xs">
@@ -230,7 +230,7 @@
       </div>
 
       <!-- Collapsible Container: Row 2 (Tabs) & Row 3 (Mobile Mode Switcher) -->
-      <div id="headerCollapsibleArea" class="flex flex-col gap-1.5 transition-all duration-200">
+      <div id="headerCollapsibleArea" class="hidden flex flex-col gap-1.5 transition-all duration-200">
         <!-- Row 2: Dynamic Exam Switcher Tabs for Current Subject -->
         <div class="flex items-center justify-between gap-2 pt-1 border-t border-slate-100">
           <div class="flex items-center gap-1.5 sm:gap-2 overflow-x-auto no-scrollbar py-0.5 w-full sm:w-auto" id="examTabsRow">
@@ -259,7 +259,7 @@
     </div>
 
     <!-- Mobile Live Progress Strip -->
-    <div id="mobileProgressStrip" class="lg:hidden bg-slate-50/90 border-t border-slate-200/80 px-3 py-1 flex items-center justify-between gap-3 text-[11px] transition-all">
+    <div id="mobileProgressStrip" class="hidden lg:hidden bg-slate-50/90 border-t border-slate-200/80 px-3 py-1 flex items-center justify-between gap-3 text-[11px] transition-all">
       <div class="flex items-center gap-2 font-semibold text-slate-600 shrink-0">
         <span>Đã làm: <strong id="mProgressAnswered" class="text-slate-900">0</strong>/<span id="mProgressTotal">50</span></span>
         <span class="text-slate-300">|</span>
@@ -278,7 +278,7 @@
   <main class="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 py-3 sm:py-4 flex-1 w-full grid grid-cols-1 lg:grid-cols-12 gap-4 sm:gap-6 items-start">
 
     <!-- Left Column: Quiz Questions (Can expand to col-span-12 when sidebar collapsed) -->
-    <div id="mainQuestionsColumn" class="lg:col-span-8 flex flex-col gap-3.5 transition-all duration-200">
+    <div id="mainQuestionsColumn" class="lg:col-span-12 flex flex-col gap-3.5 transition-all duration-200">
 
       <!-- Action & Filter Bar (Collapsible Component) -->
       <div class="bg-white rounded-2xl border border-slate-200 shadow-sm transition-all overflow-hidden" id="filterBarContainer">
@@ -288,26 +288,26 @@
             <span class="text-[11px] font-extrabold text-slate-700 uppercase tracking-wider flex items-center gap-1.5">
               <i class="fa-solid fa-sliders text-blue-600"></i> Bộ lọc & Tùy chọn
             </span>
-            <span id="filterSummaryBadge" class="hidden text-[10px] font-bold bg-blue-100 text-blue-700 px-2 py-0.5 rounded-full truncate">Tất cả</span>
+            <span id="filterSummaryBadge" class="text-[10px] font-bold bg-blue-100 text-blue-700 px-2 py-0.5 rounded-full truncate">Tất cả (50)</span>
           </div>
 
           <div class="flex items-center gap-1.5 shrink-0">
             <!-- Density Toggle (Xem gọn vs Xem thoáng) -->
             <button onclick="toggleDensityMode()" id="btnDensityToggle" class="px-2 py-1 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 text-slate-600 text-[11px] font-semibold flex items-center gap-1 transition" title="Xem gọn giảm khoảng cách câu">
-              <i id="iconDensityToggle" class="fa-solid fa-compress text-blue-500"></i>
-              <span id="txtDensityToggle">Xem gọn</span>
+              <i id="iconDensityToggle" class="fa-solid fa-expand text-blue-500"></i>
+              <span id="txtDensityToggle">Xem thoáng</span>
             </button>
 
             <!-- Collapse / Expand Filter Bar Button -->
             <button onclick="toggleFilterCollapse()" id="btnFilterCollapse" class="px-2 py-1 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 text-slate-600 text-[11px] font-semibold flex items-center gap-1 transition" title="Thu gọn / Mở rộng bộ lọc">
-              <span id="txtFilterCollapse">Thu gọn</span>
-              <i id="iconFilterCollapse" class="fa-solid fa-chevron-up text-[10px]"></i>
+              <span id="txtFilterCollapse">Mở rộng</span>
+              <i id="iconFilterCollapse" class="fa-solid fa-chevron-down text-[10px]"></i>
             </button>
           </div>
         </div>
 
         <!-- Filter Bar Body (Can collapse) -->
-        <div id="filterBarBody" class="p-3 sm:p-4 flex flex-col sm:flex-row sm:flex-wrap sm:items-center justify-between gap-2.5 sm:gap-3 text-sm transition-all">
+        <div id="filterBarBody" class="hidden p-3 sm:p-4 flex flex-col sm:flex-row sm:flex-wrap sm:items-center justify-between gap-2.5 sm:gap-3 text-sm transition-all">
           <div class="flex items-center gap-1.5 sm:gap-2 overflow-x-auto no-scrollbar pb-0.5 sm:pb-0 -mx-1 px-1">
             <button onclick="setFilter('all')" id="filterAll" class="px-2.5 py-1 text-xs rounded-xl font-semibold bg-blue-100 text-blue-700 border border-blue-200 shrink-0 transition">
               Tất cả (<span id="countAll">50</span>)
@@ -375,14 +375,14 @@
     </div>
 
     <!-- Right Column: Sidebar Danh Sách Đề + Palette & Quick Stats (Collapsible on Desktop) -->
-    <div id="sidebarColumn" class="hidden lg:flex lg:col-span-4 flex-col gap-3.5 sticky top-20 transition-all duration-200">
+    <div id="sidebarColumn" class="hidden flex-col gap-3.5 sticky top-20 transition-all duration-200">
 
       <!-- Sidebar Top Action Row: Full Sidebar Collapse Toggle -->
       <div class="flex items-center justify-between px-1 text-xs">
         <span class="font-extrabold text-slate-500 uppercase tracking-wider text-[10px]">Tiện ích bên</span>
         <button onclick="toggleSidebarFull()" id="btnToggleSidebar" class="text-slate-500 hover:text-slate-800 font-semibold flex items-center gap-1 transition">
-          <i id="iconToggleSidebar" class="fa-solid fa-chevron-right text-[10px]"></i>
-          <span id="txtToggleSidebar">Thu gọn Sidebar</span>
+          <i id="iconToggleSidebar" class="fa-solid fa-chevron-left text-[10px]"></i>
+          <span id="txtToggleSidebar">Hiện Sidebar</span>
         </button>
       </div>
 
@@ -473,7 +473,7 @@
     </div>
 
     <!-- Floating Expand Button for Sidebar (Shown when sidebar is completely collapsed) -->
-    <div id="sidebarExpandFloating" class="hidden fixed right-4 bottom-20 lg:bottom-6 z-30">
+    <div id="sidebarExpandFloating" class="fixed right-4 bottom-20 lg:bottom-6 z-30">
       <button onclick="toggleSidebarFull()" class="py-2.5 px-3.5 rounded-2xl bg-slate-900 text-white font-bold text-xs flex items-center gap-2 shadow-xl hover:bg-slate-800 active:scale-95 transition">
         <i class="fa-solid fa-bars"></i>
         <span>Hiện Sidebar</span>
@@ -8954,11 +8954,11 @@
     let timeRemaining = 50 * 60;
     let examSubmitted = false;
 
-    // Collapsible Component States
-    let isHeaderCollapsed = false;
-    let isFilterCollapsed = false;
-    let isSidebarCollapsed = false;
-    let isCompactDensity = false;
+    // Collapsible Component States - Default to FULLY COLLAPSED
+    let isHeaderCollapsed = true;
+    let isFilterCollapsed = true;
+    let isSidebarCollapsed = true;
+    let isCompactDensity = true;
     let openExplanations = new Set(); // Track which explanation accordion is opened
 
     function getStorageKey(examId) {
@@ -9177,7 +9177,7 @@
     function toggleHeaderCollapse() {
       isHeaderCollapsed = !isHeaderCollapsed;
       applyHeaderCollapseUI();
-      localStorage.setItem('fpt_ui_header_collapsed', isHeaderCollapsed ? '1' : '0');
+      sessionStorage.setItem('fpt_ui_header_collapsed', isHeaderCollapsed ? '1' : '0');
     }
 
     function applyHeaderCollapseUI() {
@@ -9205,7 +9205,7 @@
     function toggleFilterCollapse() {
       isFilterCollapsed = !isFilterCollapsed;
       applyFilterCollapseUI();
-      localStorage.setItem('fpt_ui_filter_collapsed', isFilterCollapsed ? '1' : '0');
+      sessionStorage.setItem('fpt_ui_filter_collapsed', isFilterCollapsed ? '1' : '0');
     }
 
     function applyFilterCollapseUI() {
@@ -9237,7 +9237,7 @@
     function toggleDensityMode() {
       isCompactDensity = !isCompactDensity;
       applyDensityUI();
-      localStorage.setItem('fpt_ui_compact_density', isCompactDensity ? '1' : '0');
+      sessionStorage.setItem('fpt_ui_compact_density', isCompactDensity ? '1' : '0');
     }
 
     function applyDensityUI() {
@@ -9257,7 +9257,7 @@
     function toggleSidebarFull() {
       isSidebarCollapsed = !isSidebarCollapsed;
       applySidebarFullUI();
-      localStorage.setItem('fpt_ui_sidebar_collapsed', isSidebarCollapsed ? '1' : '0');
+      sessionStorage.setItem('fpt_ui_sidebar_collapsed', isSidebarCollapsed ? '1' : '0');
     }
 
     function applySidebarFullUI() {
@@ -9348,11 +9348,25 @@
           }
         }
 
-        // Restore UI collapse preferences
-        isHeaderCollapsed = localStorage.getItem('fpt_ui_header_collapsed') === '1';
-        isFilterCollapsed = localStorage.getItem('fpt_ui_filter_collapsed') === '1';
-        isSidebarCollapsed = localStorage.getItem('fpt_ui_sidebar_collapsed') === '1';
-        isCompactDensity = localStorage.getItem('fpt_ui_compact_density') === '1';
+        // Clean up legacy keys
+        localStorage.removeItem('fpt_ui_header_collapsed');
+        localStorage.removeItem('fpt_ui_filter_collapsed');
+        localStorage.removeItem('fpt_ui_sidebar_collapsed');
+        localStorage.removeItem('fpt_ui_compact_density');
+
+        // ALWAYS DEFAULT TO ALL COLLAPSED on open
+        // Only expand if explicitly toggled within this session
+        const sHeader = sessionStorage.getItem('fpt_ui_header_collapsed');
+        isHeaderCollapsed = sHeader !== null ? sHeader === '1' : true;
+
+        const sFilter = sessionStorage.getItem('fpt_ui_filter_collapsed');
+        isFilterCollapsed = sFilter !== null ? sFilter === '1' : true;
+
+        const sSidebar = sessionStorage.getItem('fpt_ui_sidebar_collapsed');
+        isSidebarCollapsed = sSidebar !== null ? sSidebar === '1' : true;
+
+        const sDensity = sessionStorage.getItem('fpt_ui_compact_density');
+        isCompactDensity = sDensity !== null ? sDensity === '1' : true;
       } catch (e) {
         console.error('Error loading state:', e);
       }
