@@ -1,0 +1,652 @@
+[
+  {
+    "id": 1,
+    "question": "In NET, what class is used to register services for Dependency Injection?",
+    "options": {
+      "A": "DbContext",
+      "B": "ServiceCollection",
+      "C": "WebRequest",
+      "D": "Task"
+    },
+    "answer": "B",
+    "topic": "Dependency Injection (DI)",
+    "explanation": "A. DbContext  Dùng để làm việc với cơ sở dữ liệu (Entity Framework Core). B. ServiceCollection  Dùng để đăng ký service cho DI. C. WebRequest  Dùng để gửi HTTP request (đã cũ). D. Task  Đại diện cho tác vụ bất đồng bộ (async/await)."
+  },
+  {
+    "id": 2,
+    "question": "What is \"Property Injection\"?",
+    "options": {
+      "A": "Injecting dependencies via constructors.",
+      "B": "Injecting dependencies via method parameters.",
+      "C": "Injecting dependencies by setting public properties.",
+      "D": "Injecting dependencies at compile time."
+    },
+    "answer": "C",
+    "topic": "C# & .NET Core",
+    "explanation": "roperty Injection (hay Setter Injection) là kỹ thuật cung cấp các thành phần phụ thuộc cho một đối tượng bằng cách gán giá trị trực tiếp vào các public property (hoặc hàm setter) của đối tượng đó sau khi nó đã được khởi tạo."
+  },
+  {
+    "id": 3,
+    "question": "Consider this C# code: rvices AddSingleton<ILogger, FileLogger>(); What happens when ILogger is injected into multiple classes?",
+    "options": {
+      "A": "A new instance of FileLogger is created each time",
+      "B": "The same FileLogger instance is shared across the application",
+      "C": "A new FileLogger instance is created per request",
+      "D": "The instance is disposed immediately"
+    },
+    "answer": "B",
+    "topic": "Dependency Injection (DI)",
+    "explanation": "Trong .NET Dependency Injection, dịch vụ được đăng ký với vòng đời Singleton (AddSingleton) sẽ chỉ tạo ra duy nhất 1 instance trong lần đầu tiên được gọi, và instance này sẽ được dùng chung cho tất cả các yêu cầu và lớp khác trong suốt vòng đời của ứng dụng. (Ghi chú: Phương án A tương ứng với AddTransient, còn phương án C tương ứng với AddScoped)."
+  },
+  {
+    "id": 4,
+    "question": "Which built-in container does .NET Core provide for DI?",
+    "options": {
+      "A": "Autofac",
+      "B": "Unity",
+      "C": "Microsoft Extensions.Dependencylnjection",
+      "D": "Ninject"
+    },
+    "answer": "C",
+    "topic": "C# & .NET Core",
+    "explanation": ".NET Core đi kèm với một IoC container cơ bản được tích hợp sẵn dưới thư viện Microsoft.Extensions.DependencyInjection. Các lựa chọn còn lại như Autofac, Unity, hay Ninject đều là các thư viện/framework từ bên thứ ba (third-party IoC containers)."
+  },
+  {
+    "id": 5,
+    "question": "Consider this C# code: rvices AddTransient<IEmailService, SmtpEmailService>(); What happens when IEmailService is requested multiple times?",
+    "options": {
+      "A": "Only one instance Is ever created",
+      "B": "A new instance is created each time it's requested",
+      "C": "One instance per request is created",
+      "D": "The DI container throws an exception"
+    },
+    "answer": "B",
+    "topic": "Dependency Injection (DI)",
+    "explanation": "Trong .NET Dependency Injection, dịch vụ được đăng ký với vòng đời Transient (AddTransient) có tuổi thọ ngắn nhất. Mỗi khi một thành phần/lớp yêu cầu giải quyết (resolve) dịch vụ này, DI container sẽ luôn tạo mới một instance riêng biệt. (Ghi chú: Phương án A tương ứng với AddSingleton, phương án C tương ứng với AddScoped)."
+  },
+  {
+    "id": 6,
+    "question": "Consider this C# code: rvices AddScoped<IRepository, CustomerRepository=>(); In an ASP.NET Core web app, how often is CustomerRepository created?",
+    "options": {
+      "A": "Once per application",
+      "B": "Once per request",
+      "C": "Once per controller",
+      "D": "Every time it's injected"
+    },
+    "answer": "B",
+    "topic": "Dependency Injection (DI)",
+    "explanation": "Trong ASP.NET Core, dịch vụ được đăng ký với vòng đời Scoped (AddScoped) sẽ được tạo ra một lần duy nhất cho mỗi yêu cầu HTTP (HTTP Request). Tất cả các thành phần/lớp cần dịch vụ này trong cùng một HTTP Request sẽ dùng chung instance đó, và instance sẽ bị hủy khi request kết thúc."
+  },
+  {
+    "id": 7,
+    "question": "Which directive is used for two-way data binding?",
+    "options": {
+      "A": "@bind",
+      "B": "@twoWay",
+      "C": "@model",
+      "D": "@dataBind"
+    },
+    "answer": "A",
+    "topic": "C# & .NET Core",
+    "explanation": "Trong Blazor (ASP.NET Core), chỉ thị @Bind được sử dụng để thực hiện two-way data binding (ràng buộc dữ liệu hai chiều). Nó đồng bộ hóa giá trị của biến C# với thuộc tính của phần tử HTML (hoặc Component) và tự động cập nhật lại biến khi người dùng thay đổi giá trị trên giao diện."
+  },
+  {
+    "id": 8,
+    "question": "Cus Multiple Choice What are the two primary rendering modes in Blazor?",
+    "options": {
+      "A": "Static and dynamic.",
+      "B": "Client-side and server-side.",
+      "C": "WebAssembly and Server.",
+      "D": "Local and remote."
+    },
+    "answer": "C",
+    "topic": "Blazor Framework",
+    "explanation": "Trong Blazor, hai mô hình/chế độ hiển thị chính (hosting models / render modes) bao gồm: Blazor Server: Chạy mã C# trên server, giao diện được cập nhật tới browser qua kết nối real-time SignalR. Blazor WebAssembly (WASM): Chạy mã C# trực tiếp trên trình duyệt client thông qua môi trường WebAssembly."
+  },
+  {
+    "id": 9,
+    "question": "What is a primary benefit of ASP.NET Core Blazor?",
+    "options": {
+      "A": "Reduced code reusability.",
+      "B": "Ability to write client-side logic in C#.",
+      "C": "Increased reliance on JavaScript.",
+      "D": "Limited cross-platform support."
+    },
+    "answer": "B",
+    "topic": "Blazor Framework",
+    "explanation": "Ưu điểm vượt trội nhất của Blazor là cho phép các lập trình viên C# xây dựng cả giao diện UI lẫn xử lý logic phía Client hoàn toàn bằng C# thay vì phải phụ thuộc vào JavaScript hay các framework JS như React/Angular/Vue."
+  },
+  {
+    "id": 10,
+    "question": "What is the purpose of the DbContext in a Blazor Web App with Entity Framework Core?",
+    "options": {
+      "A": "To manage user sessions.",
+      "B": "To represent a database session and provide methods for querying and saving data.",
+      "C": "To encrypt data.",
+      "D": "To render Ul components."
+    },
+    "answer": "B",
+    "topic": "Blazor Framework",
+    "explanation": "Trong Entity Framework Core, DbContext đóng vai trò là cầu nối chính giữa mã C# và cơ sở dữ liệu. Nó đại diện cho một phiên kết nối làm việc (database session) dùng để thực hiện các thao tác CRUD (truy vấn dữ liệu qua LINQ, thêm, sửa, xóa dữ liệu và lưu thay đổi xuống DB via SaveChangesAsync)."
+  },
+  {
+    "id": 11,
+    "question": "Cau Multiple Choice Which connection is used by Blazor Server for Ul updates?",
+    "options": {
+      "A": "HTTP",
+      "B": "gRPC",
+      "C": "SignalR",
+      "D": "WebSocket only"
+    },
+    "answer": "C",
+    "topic": "Blazor Framework",
+    "explanation": "Blazor Server duy trì kết nối thời gian thực (real-time) giữa trình duyệt và máy chủ thông qua SignalR. SignalR linh hoạt quản lý các kết nối này và sẽ ưu tiên sử dụng WebSocket, nhưng cũng có thể tự động hạ cấp xuống các giao thức khác (như Server-Sent Events hay Long Polling) nếu trình duyệt hoặc mạng không hỗ trợ WebSocket."
+  },
+  {
+    "id": 12,
+    "question": "What is the purpose of the @inject directive in Blazor?",
+    "options": {
+      "A": "To define a database connection.",
+      "B": "To inject dependencies into a component.",
+      "C": "To encrypt data.",
+      "D": "To manage user sessions."
+    },
+    "answer": "B",
+    "topic": "Blazor Framework",
+    "explanation": "Trong Blazor, chỉ thị @inject được sử dụng trong các tệp .razor để yêu cầu container Dependency Injection (DI) cung cấp một thể hiện (instance) của dịch vụ đã đăng ký vào component đó (tương đương với việc tiêm dependency qua constructor trong mã C# thông thường)."
+  },
+  {
+    "id": 13,
+    "question": "What is MessagePack?",
+    "options": {
+      "A": "A database query language.",
+      "B": "A binary serialization format used by SignalR.",
+      "C": "A JavaScript library.",
+      "D": "A network protocol."
+    },
+    "answer": "B",
+    "topic": "C# & .NET Core",
+    "explanation": "MessagePack là một định dạng tuần tự hóa dữ liệu nhị phân cực kỳ nhỏ gọn và hiệu quả (giống như JSON nhưng nhanh hơn và dung lượng truyền tải nhỏ hơn rất nhiều). Trong SignalR, MessagePack được tích hợp như một protocol thay thế cho JSON để tăng hiệu năng truyền nhận dữ liệu thời gian thực giữa server và client."
+  },
+  {
+    "id": 14,
+    "question": "Which of the following statements about hubs in SignalR are true? (More than one correct answer).",
+    "options": {
+      "A": "They manage client connections",
+      "B": "They can call methods on clients",
+      "C": "They store persistent messages",
+      "D": "They require HTTPS"
+    },
+    "answer": "A",
+    "topic": "SignalR & Real-time",
+    "explanation": "Trong SignalR, Hub là một pipeline mức cao cho phép server và client gọi các phương thức của nhau: A đúng: Hub tự động quản lý việc kết nối, ngắt kết nối và các nhóm (groups) kết nối của client. B đúng: Hub cho phép server chủ động gọi (invoke) các phương thức/hàm phía client (Remote Procedure Call - RPC). C sai: SignalR không phải là một message broker hay database, nó chỉ truyền dữ liệu thời gian thực chứ không tự động lưu trữ tin nhắn lâu dài. D sai: HTTPS được khuyến nghị sử dụng để bảo mật nhưng không phải là điều kiện bắt buộc bắt SignalR phải hoạt động."
+  },
+  {
+    "id": 15,
+    "question": "Which method is used to start a SignalR connection on the client-side?",
+    "options": {
+      "A": "connect()",
+      "B": "start()",
+      "C": "open()",
+      "D": "init()"
+    },
+    "answer": "B",
+    "topic": "SignalR & Real-time",
+    "explanation": "Trong thư viện SignalR client (cho cả JavaScript/TypeScript và C#/.NET), sau khi khởi tạo kết nối thông qua HubConnectionBuilder, bạn sử dụng phương thức connection.start() để thiết lập và khởi chạy kết nối bất đồng bộ tới Server Hub."
+  },
+  {
+    "id": 16,
+    "question": "Which method is used to add SignalR services to the DI container?",
+    "options": {
+      "A": "AddSignalR()",
+      "B": "UseSignalR()",
+      "C": "ConfigureSignalR()",
+      "D": "EnableSignalR()"
+    },
+    "answer": "A",
+    "topic": "SignalR & Real-time",
+    "explanation": "Trong ASP.NET Core, quy tắc đặt tên chuẩn cho các phương thức mở rộng đăng ký dịch vụ vào DI container (IServiceCollection) luôn bắt đầu bằng tiền tố Add.... Vì vậy, builder.Services.AddSignalR() được sử dụng để đăng ký các dịch vụ cần thiết cho SignalR. (Ghi chú: UseSignalR() trước đây được dùng trong middleware pipeline để cấu hình routing/endpoints, nhưng hiện nay đã được thay thế bằng MapHub&lt;THub&gt;())."
+  },
+  {
+    "id": 17,
+    "question": "In the context of real-time web applications, what does \"real-time\" primarily mean?",
+    "options": {
+      "A": "Data is updated once a day.",
+      "B": "Immediate response from server to client.",
+      "C": "Client periodically requests updates.",
+      "D": "Data is processed only after user refreshes the page."
+    },
+    "answer": "B",
+    "topic": "C# & .NET Core",
+    "explanation": "Trong các ứng dụng web thời gian thực (sử dụng công nghệ như SignalR, WebSocket), real-time có nghĩa là dữ liệu được đẩy (push) ngay lập tức từ máy chủ xuống máy khách ngay khi có sự thay đổi hoặc sự kiện xảy ra, không bắt người dùng phải tải lại trang hay đợi client gửi yêu cầu truy vấn (polling)."
+  },
+  {
+    "id": 18,
+    "question": "Which of the following is a key feature of SignalR for ASP.NET Core?",
+    "options": {
+      "A": "Server-side rendering only.",
+      "B": "Automatic reconnection handling.",
+      "C": "Limited support for modern web standards.",
+      "D": "Dependency on Internet Explorer."
+    },
+    "answer": "B",
+    "topic": "SignalR & Real-time",
+    "explanation": "Một trong những tính năng nổi bật của SignalR client trong ASP.NET Core là tính năng Tự động kết nối lại (Automatic Reconnection). Khi đường truyền mạng bị gián đoạn hoặc kết nối tới server bị ngắt, SignalR client có thể tự động thử cấu hình kết nối lại mà không cần người dùng phải chủ động tải lại trang hoặc viết thủ công quá nhiều mã xử lý."
+  },
+  {
+    "id": 19,
+    "question": "What is the main purpose of a SignalR hub?",
+    "options": {
+      "A": "To refresh the client browser automatically.",
+      "B": "To act as a high-level pipeline allowing clients and servers to call methods on each other.",
+      "C": "To send HTTP requests only from server to client.",
+      "D": "To replace all API controllers in ASP.NET Core."
+    },
+    "answer": "B",
+    "topic": "SignalR & Real-time",
+    "explanation": "Trong SignalR, Hub hoạt động như một cầu nối trung gian (pipeline) giữa Server và Client. Nó cho phép hai bên giao tiếp hai chiều theo cơ chế RPC (Remote Procedure Call): Server có thể gọi trực tiếp các phương thức chạy ở phía Client và ngược lại, Client cũng có thể gọi các phương thức định nghĩa trên Server."
+  },
+  {
+    "id": 20,
+    "question": "What is a \"firewall\" in network security?",
+    "options": {
+      "A": "A device that routes network traffic.",
+      "B": "A system designed to prevent unauthorized access to or from a private network.",
+      "C": "A network protocol.",
+      "D": "A type of network cable."
+    },
+    "answer": "B",
+    "topic": "Networking & Protocols",
+    "explanation": "Firewall (Tường lửa) là một hệ thống an ninh mạng (có thể là phần cứng hoặc phần mềm) giám sát và kiểm soát lưu lượng mạng truy cập vào và ra dựa trên các quy tắc bảo mật được thiết lập trước. Mục đích chính của nó là tạo rào chắn bảo vệ mạng nội bộ khỏi các kết nối nguy hiểm hoặc truy cập trái phép từ bên ngoài."
+  },
+  {
+    "id": 21,
+    "question": "What is HttpClient designed for?",
+    "options": {
+      "A": "Consuming HTTP web APIs",
+      "B": "Handling low-level TCP sockets",
+      "C": "Encrypting HTTP traffic",
+      "D": "Serving static files"
+    },
+    "answer": "A",
+    "topic": "Networking & Protocols",
+    "explanation": "Lớp HttpClient trong .NET được thiết kế để gửi các yêu cầu HTTP (HTTP requests) và nhận phản hồi HTTP (HTTP responses) từ một tài nguyên được xác định bởi URI. Công dụng phổ biến nhất của nó là tương tác, gửi và nhận dữ liệu từ các dịch vụ Web API hoặc RESTful services từ máy chủ."
+  },
+  {
+    "id": 22,
+    "question": "The WebRequest.Create(Uri) method is used to:",
+    "options": {
+      "A": "a. Initialize a new WebRequest for a specific URI scheme",
+      "B": "b. Open a database connection",
+      "C": "c. Create a physical network cable",
+      "D": "d. Define hardware IP addressing"
+    },
+    "answer": "A",
+    "topic": "Networking & Protocols",
+    "explanation": "Trong .NET, phương thức factory WebRequest.Create(Uri) khởi tạo và trả về một thể hiện mới của lớp kế thừa từ WebRequest (như HttpWebRequest hoặc FtpWebRequest) dựa trên giao thức/lược đồ URI được truyền vào (ví dụ: http://, https://, ftp://)."
+  },
+  {
+    "id": 23,
+    "question": "Which .NET class is used for creating a UDP client?",
+    "options": {
+      "A": "TcpListener",
+      "B": "UdpClient",
+      "C": "TcpClient",
+      "D": "Socket"
+    },
+    "answer": "B",
+    "topic": "Networking & Protocols",
+    "explanation": "Trong .NET, lớp UdpClient (thuộc namespace System.Net.Sockets) cung cấp các phương thức đơn giản để gửi và nhận dữ liệu không kết nối theo giao thức UDP (User Datagram Protocol)."
+  },
+  {
+    "id": 24,
+    "question": "What is the purpose of a port number in networking?",
+    "options": {
+      "A": "To identify a specific network.",
+      "B": "To identify a specific application or service on a host.",
+      "C": "To route network traffic.",
+      "D": "To encrypt network data."
+    },
+    "answer": "B",
+    "topic": "Networking & Protocols",
+    "explanation": "Trong mạng máy tính (giao thức TCP/UDP): Địa chỉ IP được dùng để xác định thiết bị/máy tính (host) nào trong mạng. Số cổng (Port number) được dùng để xác định chính xác ứng dụng hoặc dịch vụ nào (ví dụ: HTTP port 80, HTTPS port 443, SQL Server port 1433,...) đang chạy trên máy tính đó để dữ liệu truyền đến đúng tiến trình."
+  },
+  {
+    "id": 25,
+    "question": "Which protocol is typically included at the start of a URL?",
+    "options": {
+      "A": "HTTP/HTTPS",
+      "B": "TCP/UDP",
+      "C": "FTP",
+      "D": "All of the above"
+    },
+    "answer": "A",
+    "topic": "C# & .NET Core",
+    "explanation": "Định dạng tiêu chuẩn của một URL ứng dụng Web luôn bắt đầu bằng phần giao thức (scheme) theo sau bởi :// (ví dụ: http:// hoặc https://). Do đó, HTTP/HTTPS là giao thức phổ biến và đặc trưng nhất thường nằm ở đầu địa chỉ URL web."
+  },
+  {
+    "id": 26,
+    "question": "A Which folder typically contains static files (CSS, JavaScript, images) in an ASP.NET Core MVC project?",
+    "options": {
+      "A": "\"Views\"",
+      "B": "\"Models\"",
+      "C": "\"Controllers\"",
+      "D": "\"wwwroot\""
+    },
+    "answer": "D",
+    "topic": "ASP.NET Core MVC",
+    "explanation": "Trong dự án ASP.NET Core (bao gồm cả MVC, Razor Pages và Blazor), thư mục wwwroot được gọi là root của tài nguyên web (web root folder). Đây là thư mục duy nhất trên server mặc định cho phép trình duyệt truy cập công khai để tải các tệp tài nguyên tĩnh như CSS, JS, hình ảnh, font chữ,..."
+  },
+  {
+    "id": 27,
+    "question": "Which of the following attributes validates that two properties in a model match?",
+    "options": {
+      "A": "[Compare]",
+      "B": "[Required]",
+      "C": "[StringLength]",
+      "D": "[Range]"
+    },
+    "answer": "A",
+    "topic": "C# & .NET Core",
+    "explanation": "Trong .NET Data Annotations, attribute [Compare] (ví dụ: [Compare(\"Password\")]) được sử dụng để xác nhận rằng giá trị của hai thuộc tính trong model phải giống hệt nhau. Thuộc tính này thường được dùng nhất cho các trường như \"Xác nhận mật khẩu\" (Confirm Password) hoặc \"Xác nhận Email\" (Confirm Email)."
+  },
+  {
+    "id": 28,
+    "question": "Which of the following is an example of an \"Action Result\" in ASP.NET Core MVC?",
+    "options": {
+      "A": "DbContext",
+      "B": "ViewResult",
+      "C": "ServiceCollection",
+      "D": "Task"
+    },
+    "answer": "B",
+    "topic": "ASP.NET Core MVC",
+    "explanation": "Trong ASP.NET Core MVC, ViewResult là một lớp kế thừa từ ActionResult (thông qua ViewResultBase), đại diện cho kết quả trả về của một Action phương thức khi cần phản hồi/hiển thị một trang HTML View tới trình duyệt của người dùng."
+  },
+  {
+    "id": 29,
+    "question": "Consider this C# code: public |ActionResult Index() { ViewData[\"Count'] = \"10\" return View();  In Razor: <p>@((int)ViewData[\"Count\"] + 5)</p> What happens?",
+    "options": {
+      "A": "Displays 15",
+      "B": "Displays 105",
+      "C": "InvalidCastException",
+      "D": "Nothing"
+    },
+    "answer": "C",
+    "topic": "Razor Pages & Tag Helpers",
+    "explanation": "Trong C#, ViewData[\"Count\"] lưu trữ giá trị dưới dạng một chuỗi kí tự (kiểu string \"10\"). Việc ép kiểu trực tiếp một đối tượng string sang kiểu số nguyên int theo cách (int)ViewData[\"Count\"] (unbox/cast) không hợp lệ trong C# và sẽ gây ra ngoại lệ InvalidCastException khi ứng dụng thực thi. (Để chuyển đổi chuỗi \"10\" thành số nguyên đúng cách, cần sử dụng int.Parse(ViewData[\"Count\"].ToString()) hoặc Convert.ToInt32(...))."
+  },
+  {
+    "id": 30,
+    "question": "What is the purpose of the [Bind] attribute in ASP.NET Core MVC?",
+    "options": {
+      "A": "To specify which properties of a model should be bound from the request.",
+      "B": "To encrypt data.",
+      "C": "To manage database connections.",
+      "D": "To manage user sessions."
+    },
+    "answer": "A",
+    "topic": "ASP.NET Core MVC",
+    "explanation": "Thuộc tính [Bind] (ví dụ: [Bind(\"Id,Title,Price\")]) được sử dụng trong Model Binding của ASP.NET Core MVC để giới hạn danh sách các thuộc tính được phép lấy dữ liệu từ HTTP request. Điều này giúp ngăn chặn lỗ hổng bảo mật Overposting (khi kẻ tấn công cố tình truyền thêm các trường dữ liệu nguy hiểm như IsAdmin hoặc Balance để sửa đổi cơ sở dữ liệu)."
+  },
+  {
+    "id": 31,
+    "question": "Which statement is correct about Model Binding?",
+    "options": {
+      "A": "It only works with query strings",
+      "B": "It maps HTTP request data to controller action parameters",
+      "C": "It must always use TempData",
+      "D": "It cannot bind complex types"
+    },
+    "answer": "B",
+    "topic": "ASP.NET Core MVC",
+    "explanation": "Trong ASP.NET Core MVC, Model Binding là quá trình tự động trích xuất dữ liệu từ các thành phần của HTTP request (như Route data, Form fields, Query string, Request body) và ánh xạ (map) dữ liệu đó vào các tham số (parameters) của phương thức Controller Action hoặc các thuộc tính của Model."
+  },
+  {
+    "id": 32,
+    "question": "Which method is used in Program.cs to register Razor Pages services into the DI container?",
+    "options": {
+      "A": "builder.Services.AddControllers()",
+      "B": "builder.Services.AddRazorPages()",
+      "C": "builder.Services.AddMvc()",
+      "D": "builder.Services.AddViews()"
+    },
+    "answer": "B",
+    "topic": "Razor Pages & Tag Helpers",
+    "explanation": "Trong ASP.NET Core, phương thức mở rộng builder.Services.AddRazorPages() được sử dụng để đăng ký các dịch vụ cần thiết cho mô hình Razor Pages vào DI container. Sau khi đăng ký bằng phương thức này, ứng dụng mới có thể kích hoạt tính năng định tuyến và xử lý các trang .cshtml theo kiến trúc Razor Pages."
+  },
+  {
+    "id": 33,
+    "question": "What is the purpose of the @ symbol in Razor syntax?",
+    "options": {
+      "A": "To define a CSS rule.",
+      "B": "To indicate a JavaScript block.",
+      "C": "To switch between HTML and C# code.",
+      "D": "To define a database query."
+    },
+    "answer": "C",
+    "topic": "Razor Pages & Tag Helpers",
+    "explanation": "Trong cú pháp Razor của ASP.NET Core, ký tự @ là ký tự chuyển tiếp (transition character) dùng để bắt đầu nhúng mã C# trực tiếp vào giữa các thẻ markup HTML. Nó giúp trình biên dịch Razor nhận biết được đoạn mã phía sau là biểu thức hoặc câu lệnh C# cần được xử lý ở phía server trước khi xuất ra HTML cho client."
+  },
+  {
+    "id": 34,
+    "question": "By default, Razor Pages uses which folder as the root for routing?",
+    "options": {
+      "A": "[Controllers",
+      "B": "Views",
+      "C": "/Pages",
+      "D": "/Models"
+    },
+    "answer": "C",
+    "topic": "Razor Pages & Tag Helpers",
+    "explanation": "Trong mô hình Razor Pages của ASP.NET Core, cơ chế định tuyến dựa trên các tệp (file-based routing) mặc định tìm kiếm các trang Web trong thư mục /Pages. Ví dụ: tệp Pages/Contact.cshtml sẽ tự động được ánh xạ tới đường dẫn URL /Contact."
+  },
+  {
+    "id": 35,
+    "question": "What is the purpose of the @model directive in a Razor Page?",
+    "options": {
+      "A": "To define a database connection.",
+      "B": "To specify the PageModel type for the Razor Page.",
+      "C": "To encrypt data.",
+      "D": "To manage user sessions."
+    },
+    "answer": "B",
+    "topic": "Razor Pages & Tag Helpers",
+    "explanation": "Trong Razor Pages của ASP.NET Core, chỉ thị @model ở đầu tệp .cshtml được sử dụng để khai báo kiểu dữ liệu của Model (thường là một lớp kế thừa từ PageModel, ví dụ: @model IndexModel). Khai báo này cho phép trang View truy cập vào các thuộc tính và phương thức được định nghĩa trong lớp C# code-behind tương ứng thông qua cú pháp @Model."
+  },
+  {
+    "id": 36,
+    "question": "Which statement is true about Model Binding in Razor Pages?",
+    "options": {
+      "A": "Only works with GET requests",
+      "B": "Maps HTTP request data to PageModel properties",
+      "C": "Must always use TempData",
+      "D": "Cannot bind form values"
+    },
+    "answer": "B",
+    "topic": "Razor Pages & Tag Helpers",
+    "explanation": "Trong Razor Pages của ASP.NET Core, Model Binding là quá trình tự động lấy dữ liệu từ HTTP request (như form fields, route data, query string) và gán (ánh xạ) trực tiếp vào các thuộc tính (properties) được đánh dấu (thường dùng thuộc tính [BindProperty]) trong lớp PageModel."
+  },
+  {
+    "id": 37,
+    "question": "Which directive defines the page model in a Razor Page?",
+    "options": {
+      "A": "@page",
+      "B": "@model",
+      "C": "@pagemodel",
+      "D": "@controller"
+    },
+    "answer": "B",
+    "topic": "Razor Pages & Tag Helpers",
+    "explanation": "Trong Razor Pages của ASP.NET Core, chỉ thị @model được dùng ở đầu tệp .cshtml để chỉ định lớp Page Model tương ứng (ví dụ: @model IndexModel). Điều này cho phép trang HTML View kết nối và truy cập vào các dữ liệu, phương thức được định nghĩa trong lớp C# code-behind. (Lưu ý: @page dùng để đánh dấu tệp đó là một Razor Page, còn @model mới là chỉ thị khai báo kiểu Model)."
+  },
+  {
+    "id": 38,
+    "question": "a In a Razor Page handler method, how do you check if the model is valid after form submission? B public IActionResult OnPost() f (72?) // process data Page(); }",
+    "options": {
+      "A": "Model.Check()",
+      "B": "ModelState IsValid",
+      "C": "ValidateModel()",
+      "D": "Model .IsValid()"
+    },
+    "answer": "B",
+    "topic": "Razor Pages & Tag Helpers",
+    "explanation": "Trong ASP.NET Core (cả Razor Pages và MVC), thuộc tính ModelState.IsValid kiểm tra xem tất cả dữ liệu gửi từ biểu mẫu có vượt qua được các quy tắc kiểm tra tính hợp lệ (Data Annotations / Validation Rules) đã được định nghĩa trong Model hay không. Nếu không có lỗi kiểm tra nào, thuộc tính này sẽ trả về giá trị true."
+  },
+  {
+    "id": 39,
+    "question": "Which method should NOT be used for long-running background work in controllers?",
+    "options": {
+      "A": "Task Run()",
+      "B": "IHostedService",
+      "C": "BackgroundService",
+      "D": "Worker Service"
+    },
+    "answer": "A",
+    "topic": "ASP.NET Core MVC",
+    "explanation": "Trong ứng dụng ASP.NET Core: Việc gọi Task.Run() trong Controller để xử lý các công việc chạy ngầm kéo dài là một anti-pattern (thực hành không tốt). Nó sử dụng Thread Pool của Web Server, có nguy cơ làm cạn kiệt tài nguyên Thread, và nếu ứng dụng/AppDomain bị ngắt hoặc tái khởi động (recycle), tác vụ ngầm này sẽ bị hủy bỏ đột ngột mà không có cơ chế hoàn tất an toàn. Các lựa chọn IHostedService, BackgroundService, hoặc Worker Service là các giải pháp tiêu chuẩn được thiết kế riêng để quản lý vòng đời tác vụ chạy ngầm một cách an toàn và độc lập với Controller / HTTP request."
+  },
+  {
+    "id": 40,
+    "question": "Which interface must a class implement to be registered as a hosted service in NET?",
+    "options": {
+      "A": "IController",
+      "B": "IDbContext",
+      "C": "IHostedService",
+      "D": "IViewComponent"
+    },
+    "answer": "C",
+    "topic": "C# & .NET Core",
+    "explanation": "Interface IHostedService định nghĩa hai phương thức StartAsync và StopAsync để quản lý các tác vụ ngầm chạy lâu dài (background task) trong .NET / ASP.NET Core."
+  },
+  {
+    "id": 41,
+    "question": "Where is the Worker Service configured in a NET Core application?",
+    "options": {
+      "A": "Program.cs",
+      "B": "App.cs",
+      "C": "appsettings_json",
+      "D": "launchSettings_ json"
+    },
+    "answer": "A",
+    "topic": "C# & .NET Core",
+    "explanation": "Trong các ứng dụng .NET Core / .NET (bao gồm cả Worker Service), tập tin Program.cs là điểm khởi chạy chính (entry point) của ứng dụng. Đây là nơi xây dựng Host (thông qua Host.CreateDefaultBuilder hoặc HostApplicationBuilder), cấu hình các dịch vụ Dependency Injection (đăng ký AddHostedService&lt;Worker&gt;()), và khởi chạy background servic"
+  },
+  {
+    "id": 42,
+    "question": "Consider this C# code: public class EmailWorker : BackgroundService < : protected override async Task ExecuteAsync(CancellationToken stopping Token) while (!stoppingToken.IsCancellationRequested) SendEmails(); await Task Delay(60000, stoppingToken); } ht does this service do?",
+    "options": {
+      "A": "Sends emails every minute.",
+      "B": "Sends emails once.",
+      "C": "Logs emails only.",
+      "D": "Ignores shutdown signals."
+    },
+    "answer": "A",
+    "topic": "Parallel Programming & TPL",
+    "explanation": "Vòng lặp while (!stoppingToken.IsCancellationRequested) sẽ chạy liên tục cho đến khi ứng dụng nhận tín hiệu dừng. Bên trong vòng lặp, phương thức SendEmails() được gọi để gửi email, sau đó await Task.Delay(60000, stoppingToken) bắt chương trình dừng lại 60,000 ms (tương đương 60 giây hay 1 phút) trước khi lặp lại lần tiếp theo. Do đó, dịch vụ này sẽ tự động thực thi việc gửi email định kỳ 1 phút một lần."
+  },
+  {
+    "id": 43,
+    "question": "Which namespace contains the BackgroundService class?",
+    "options": {
+      "A": "System Threading",
+      "B": "Microsoft Extensions Hosting",
+      "C": "Microsoft. Extensions.Logging",
+      "D": "System. ServiceProcess"
+    },
+    "answer": "B",
+    "topic": "C# & .NET Core",
+    "explanation": "Trong .NET / .NET Core, lớp abstract BackgroundService (lớp cơ sở để triển khai các dịch vụ chạy ngầm) nằm trong không gian tên Microsoft.Extensions.Hosting. Lớp này triển khai interface IHostedService để giúp dễ dàng xây dựng các tác vụ ngầm chạy lâu dài."
+  },
+  {
+    "id": 44,
+    "question": "What is the primary purpose of a NET Worker Service?",
+    "options": {
+      "A": "To build web applications.",
+      "B": "To build desktop applications.",
+      "C": "To build long-running background tasks or services.",
+      "D": "To build mobile applications."
+    },
+    "answer": "C",
+    "topic": "C# & .NET Core",
+    "explanation": ".NET Worker Service là một mẫu dự án (template) được thiết kế chuyên biệt cho việc chạy các công việc ngầm không cần giao diện người dùng (non-UI). Nó thường được dùng để xử lý tin nhắn trong hàng đợi (message processing), chạy các tác vụ định kỳ (scheduled jobs), hoặc đồng bộ dữ liệu giữa các hệ thống."
+  },
+  {
+    "id": 45,
+    "question": "What is the Parallel. For method used for?",
+    "options": {
+      "A": "Asynchronous file operations.",
+      "B": "Executing a loop in parallel.",
+      "C": "Handling network requests.",
+      "D": "Creating user interfaces."
+    },
+    "answer": "B",
+    "topic": "Parallel Programming & TPL",
+    "explanation": "Trong .NET (Task Parallel Library - TPL), phương thức Parallel.For được sử dụng để chia nhỏ các vòng lặp độc lập và thực thi chúng song song trên nhiều luồng (threads) khác nhau của CPU. Điều này giúp tối ưu hóa hiệu năng khi xử lý danh sách hoặc dữ liệu lớn trên các bộ vi xử lý đa nhân."
+  },
+  {
+    "id": 46,
+    "question": "Which namespace does Task Parallel Library (TPL) belong to?",
+    "options": {
+      "A": "System Threading. Tasks",
+      "B": "System. Ling",
+      "C": "System Collections",
+      "D": "System. lO"
+    },
+    "answer": "A",
+    "topic": "Parallel Programming & TPL",
+    "explanation": "Trong .NET, Task Parallel Library (TPL) chứa các kiểu dữ liệu và API như Task, Task&lt;TResult&gt;, Parallel.For, Parallel.ForEach... Tất cả các thành phần cốt lõi này đều nằm trong không gian tên System.Threading.Tasks."
+  },
+  {
+    "id": 47,
+    "question": "What is the purpose of the await keyword in C#?",
+    "options": {
+      "A": "To define a constant.",
+      "B": "To pause execution until an asynchronous operation completes.",
+      "C": "To create a new thread.",
+      "D": "To handle exceptions."
+    },
+    "answer": "B",
+    "topic": "C# & .NET Core",
+    "explanation": "Trong mô hình lập trình bất đồng bộ (async/await) của C#, từ khóa await được đặt trước một tác vụ bất đồng bộ (Task). Nó giúp tạm dừng việc thực thi phương thức hiện tại một cách không nghẽn (non-blocking) để trả lại luồng cho hệ thống xử lý công việc khác. Khi tác vụ bất đồng bộ hoàn thành, phương thức sẽ tự động tiếp tục chạy từ điểm dừng đó."
+  },
+  {
+    "id": 48,
+    "question": "You need to write a WPF app that fetches data from the web without freezing the UI. Which technique should you use?",
+    "options": {
+      "B": "Task.Run() + await",
+      "C": "PLINQ",
+      "D": "BackgroundWorker (obsolete)",
+      "A": "Thread.Sleep()"
+    },
+    "answer": "B",
+    "topic": "C# & .NET Core",
+    "explanation": "Trong các ứng dụng desktop như WPF, việc xử lý các tác vụ tốn thời gian (như gọi API hoặc tải dữ liệu từ web) trực tiếp trên UI Thread sẽ làm giao diện bị đơ/treo. Kết hợp Task.Run() (để đẩy công việc xuống luồng ngầm) cùng với từ khóa await (để chờ hoàn thành một cách bất đồng bộ không gây nghẽn UI) là giải pháp tiêu chuẩn và hiện đại nhất để giữ cho giao diện ứng dụng luôn mượt mà."
+  },
+  {
+    "id": 49,
+    "question": "Which architecture does a mono-processor system use?",
+    "options": {
+      "A": "Von Neumann architecture",
+      "B": "Harvard architecture",
+      "C": "MIMD",
+      "D": "SIMD"
+    },
+    "answer": "A",
+    "topic": "C# & .NET Core",
+    "explanation": "Kiến trúc Von Neumann là kiến trúc máy tính kinh điển cho các hệ thống đơn bộ xử lý (mono-processor), nơi mà bộ nhớ dùng chung để lưu trữ cả dữ liệu lẫn câu lệnh (instructions) và CPU xử lý từng lệnh một tuần tự. Các lựa chọn như MIMD hay SIMD thuộc phân loại của Flynn dành cho kiến trúc xử lý song song / đa xử lý (multi-processor / parallel processing)."
+  },
+  {
+    "id": 50,
+    "question": "In C#, what is the primary role of the TaskScheduler class?",
+    "options": {
+      "A": "To create new threads directly",
+      "B": "To handle queuing of tasks onto threads",
+      "C": "To manage garbage collection of tasks",
+      "D": "To provide thread synchronization"
+    },
+    "answer": "B",
+    "topic": "Parallel Programming & TPL",
+    "explanation": "Trong .NET (Task Parallel Library), lớp TaskScheduler chịu trách nhiệm xử lý việc lập lịch, đưa các đối tượng Task vào hàng đợi và phân phối/áp ánh chúng lên các luồng (ThreadPool threads) thích hợp để thực thi. Bộ lập lịch mặc định (TaskScheduler.Default) sẽ tự động tối ưu hóa số lượng luồng thực thi dựa trên ThreadPool của hệ thống."
+  }
+]

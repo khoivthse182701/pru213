@@ -1,11 +1,12 @@
 const fs = require('fs');
 const path = require('path');
 
+// 1. Load PRU213 Questions
 const sp26Questions = JSON.parse(fs.readFileSync(path.join(__dirname, 'De_SP26_FE', 'questions.json'), 'utf8'));
 const su26Questions = JSON.parse(fs.readFileSync(path.join(__dirname, 'De_SU26_FE', 'questions.json'), 'utf8'));
 
-// Combined 100 questions (1-50 from SP26, 51-100 from SU26)
-const allQuestions = [
+// PRU213 Combined 100 questions (1-50 from SP26, 51-100 from SU26)
+const pruAllQuestions = [
   ...sp26Questions.map(q => ({
     ...q,
     origId: q.id,
@@ -25,9 +26,122 @@ const allQuestions = [
   }))
 ];
 
+// 2. Load PRN222 Questions
+const prn1Questions = JSON.parse(fs.readFileSync(path.join(__dirname, 'De_PRN222_1', 'questions.json'), 'utf8'));
+const prn2Questions = JSON.parse(fs.readFileSync(path.join(__dirname, 'De_PRN222_2', 'questions.json'), 'utf8'));
+const prn3Questions = JSON.parse(fs.readFileSync(path.join(__dirname, 'De_PRN222_3', 'questions.json'), 'utf8'));
+
+// PRN222 Combined 150 questions (1-50 from De 1, 51-100 from De 2, 101-150 from De 3)
+const prnAllQuestions = [
+  ...prn1Questions.map(q => ({
+    ...q,
+    origId: q.id,
+    uid: 'prn1_' + q.id,
+    displayId: q.id,
+    examLabel: 'Đề 1'
+  })),
+  ...prn2Questions.map(q => ({
+    ...q,
+    id: q.id + 50,
+    origId: q.id,
+    uid: 'prn2_' + q.id,
+    displayId: q.id + 50,
+    examLabel: 'Đề 2'
+  })),
+  ...prn3Questions.map(q => ({
+    ...q,
+    id: q.id + 100,
+    origId: q.id,
+    uid: 'prn3_' + q.id,
+    displayId: q.id + 100,
+    examLabel: 'Đề 3'
+  }))
+];
+
+const SUBJECTS_DATA = {
+  prn222: {
+    id: 'prn222',
+    name: 'PRN222',
+    title: '.NET and C# Programming',
+    subtitle: 'Lập trình .NET & C#: Dependency Injection, ASP.NET Core MVC, Razor Pages, Blazor, SignalR, TPL, Networking',
+    icon: 'fa-bolt',
+    tagColor: 'indigo',
+    exams: ['prn222_1', 'prn222_2', 'prn222_3', 'prn222_all']
+  },
+  pru213: {
+    id: 'pru213',
+    name: 'PRU213',
+    title: 'Game Programming with C# / Unity',
+    subtitle: 'Lập trình Game Unity: UI Button, Animator, Rigging, Physics, Raycast & Game Loop',
+    icon: 'fa-gamepad',
+    tagColor: 'blue',
+    exams: ['sp26', 'su26', 'all']
+  }
+};
+
 const EXAMS_DATA = {
+  // PRN222 Exams
+  prn222_1: {
+    id: 'prn222_1',
+    subject: 'prn222',
+    code: 'PRN222 - ĐỀ 1',
+    shortName: 'Đề 1 PRN222',
+    title: 'Đề 1: PRN222 (.NET & C#)',
+    subtitle: 'Dependency Injection, ServiceCollection, Property/Constructor Injection, Singleton, Network Security, TaskScheduler',
+    storagePrefix: 'prn222_de1',
+    timeMinutes: 50,
+    questions: prn1Questions.map(q => ({
+      ...q,
+      origId: q.id,
+      examLabel: 'PRN222 Đề 1'
+    }))
+  },
+  prn222_2: {
+    id: 'prn222_2',
+    subject: 'prn222',
+    code: 'PRN222 - ĐỀ 2',
+    shortName: 'Đề 2 PRN222',
+    title: 'Đề 2: PRN222 (.NET Core & DI)',
+    subtitle: 'Service Lifetimes (Singleton, Scoped, Transient), SOLID principles, WebRequest, SignalR Hubs, TPL Library',
+    storagePrefix: 'prn222_de2',
+    timeMinutes: 50,
+    questions: prn2Questions.map(q => ({
+      ...q,
+      origId: q.id,
+      examLabel: 'PRN222 Đề 2'
+    }))
+  },
+  prn222_3: {
+    id: 'prn222_3',
+    subject: 'prn222',
+    code: 'PRN222 - ĐỀ 3',
+    shortName: 'Đề 3 PRN222',
+    title: 'Đề 3: PRN222 (Blazor, MVC & SignalR)',
+    subtitle: 'Blazor Components, HttpClient, Model Binding, IP & DNS, SignalR Groups, TempData, JsonResult, PLINQ, Tag Helpers',
+    storagePrefix: 'prn222_de3',
+    timeMinutes: 50,
+    questions: prn3Questions.map(q => ({
+      ...q,
+      origId: q.id,
+      examLabel: 'PRN222 Đề 3'
+    }))
+  },
+  prn222_all: {
+    id: 'prn222_all',
+    subject: 'prn222',
+    code: 'PRN222 - TỔNG HỢP 3 ĐỀ (150 CÂU)',
+    shortName: 'Tổng hợp 150 câu',
+    title: 'Tổng Hợp PRN222 (150 Câu)',
+    subtitle: 'Trọn bộ 150 câu trắc nghiệm PRN222 gộp từ cả 3 đề thi để tổng ôn toàn diện kiến thức .NET, C#, Blazor & MVC',
+    storagePrefix: 'prn222_all150',
+    timeMinutes: 90,
+    questions: prnAllQuestions
+  },
+
+  // PRU213 Exams
   sp26: {
     id: 'sp26',
+    subject: 'pru213',
     code: 'PRU213 - SP26 FE',
     shortName: 'Đề SP26 FE',
     title: 'Đề Thi FE PRU213 - SP26',
@@ -44,6 +158,7 @@ const EXAMS_DATA = {
   },
   su26: {
     id: 'su26',
+    subject: 'pru213',
     code: 'PRU213 - SU26 FE',
     shortName: 'Đề SU26 FE',
     title: 'Đề Thi FE PRU213 - SU26',
@@ -60,14 +175,15 @@ const EXAMS_DATA = {
   },
   all: {
     id: 'all',
-    code: 'TỔNG HỢP 2 ĐỀ (100 CÂU)',
+    subject: 'pru213',
+    code: 'PRU213 - TỔNG HỢP 2 ĐỀ (100 CÂU)',
     shortName: 'Tổng hợp 100 câu',
-    title: 'Tổng Hợp SP26 + SU26 (100 Câu)',
-    subtitle: 'Trọn bộ 100 câu trắc nghiệm Final Exam từ cả 2 kỳ Spring 2026 & Summer 2026 để tổng ôn toàn diện',
+    title: 'Tổng Hợp PRU213 (100 Câu)',
+    subtitle: 'Trọn bộ 100 câu trắc nghiệm Final Exam từ cả 2 kỳ Spring 2026 & Summer 2026 để tổng ôn toàn diện Unity',
     sourceUrl: 'https://fuoverflow.com/threads/pru213-sp26-fe.6240/',
     storagePrefix: 'pru213_all100',
     timeMinutes: 90,
-    questions: allQuestions
+    questions: pruAllQuestions
   }
 };
 
@@ -76,7 +192,7 @@ const unifiedHtml = `<!DOCTYPE html>
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>Ôn Tập Trắc Nghiệm PRU213 - Hệ Thống Gộp Đề SP26 & SU26</title>
+  <title>Cổng Ôn Tập Trắc Nghiệm FPT - PRN222 & PRU213</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
@@ -157,24 +273,30 @@ const unifiedHtml = `<!DOCTYPE html>
 
   <!-- Unified Sticky Header -->
   <header class="bg-white/95 border-b border-slate-200 sticky top-0 z-40 shadow-sm backdrop-blur-md">
-    <div class="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 py-2.5 sm:py-3 flex flex-col gap-2.5">
+    <div class="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 py-2 sm:py-2.5 flex flex-col gap-2">
       
-      <!-- Row 1: Brand + Exam Selector Dropdown/Modal Trigger + Quick Actions -->
+      <!-- Row 1: Brand + Subject Switcher Pills + Mobile Quick Actions + Desktop Controls -->
       <div class="flex items-center justify-between gap-2">
         <div class="flex items-center space-x-2.5 sm:space-x-3 min-w-0">
           <div onclick="openExamPickerModal()" class="cursor-pointer w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-gradient-to-tr from-sky-500 via-blue-600 to-indigo-600 flex items-center justify-center text-white font-bold shadow-md shadow-blue-500/20 hover:scale-105 active:scale-95 transition-transform shrink-0">
-            <i class="fa-solid fa-gamepad text-base sm:text-lg"></i>
+            <i id="headerBrandIcon" class="fa-solid fa-bolt text-base sm:text-lg"></i>
           </div>
           <div class="min-w-0">
-            <div class="flex items-center gap-1.5">
-              <span class="text-[10px] sm:text-xs font-bold text-blue-600 uppercase tracking-wider">FPT PRU213</span>
-              <span class="text-xs text-slate-300">•</span>
-              <span id="headerExamCode" class="text-[10px] sm:text-xs font-semibold text-slate-500 uppercase tracking-wider truncate">PRU213 - SP26 FE</span>
+            <!-- Subject Switcher Pills (PRN222 vs PRU213) -->
+            <div class="flex items-center gap-1.5 flex-wrap">
+              <button onclick="switchSubject('prn222')" id="subPill_prn222" class="px-2 py-0.5 rounded-lg text-[11px] font-extrabold flex items-center gap-1 transition bg-indigo-600 text-white shadow-xs">
+                <i class="fa-solid fa-bolt text-[10px]"></i> PRN222 (.NET)
+              </button>
+              <button onclick="switchSubject('pru213')" id="subPill_pru213" class="px-2 py-0.5 rounded-lg text-[11px] font-bold flex items-center gap-1 transition bg-slate-100 text-slate-600 hover:bg-slate-200">
+                <i class="fa-solid fa-gamepad text-[10px]"></i> PRU213 (Unity)
+              </button>
+              <span class="text-xs text-slate-300 hidden sm:inline">•</span>
+              <span id="headerExamCode" class="text-[10px] sm:text-xs font-semibold text-slate-500 uppercase tracking-wider truncate hidden sm:inline">PRN222 - ĐỀ 1</span>
             </div>
-            <button onclick="openExamPickerModal()" class="group flex items-center gap-1.5 text-left">
-              <h1 id="headerExamTitle" class="text-sm sm:text-lg font-extrabold text-slate-900 group-hover:text-blue-600 transition leading-tight truncate">Đề Thi FE PRU213 - SP26</h1>
-              <span class="inline-flex items-center justify-center w-5 h-5 rounded-md bg-slate-100 group-hover:bg-blue-50 text-slate-500 group-hover:text-blue-600 text-[10px] transition shrink-0">
-                <i class="fa-solid fa-chevron-down"></i>
+            <button onclick="openExamPickerModal()" class="group flex items-center gap-1.5 text-left mt-0.5">
+              <h1 id="headerExamTitle" class="text-xs sm:text-base font-extrabold text-slate-900 group-hover:text-blue-600 transition leading-tight truncate">Đề 1: PRN222 (.NET & C#)</h1>
+              <span class="inline-flex items-center justify-center w-4 h-4 rounded bg-slate-100 group-hover:bg-blue-50 text-slate-500 group-hover:text-blue-600 text-[10px] transition shrink-0">
+                <i class="fa-solid fa-chevron-down text-[9px]"></i>
               </span>
             </button>
           </div>
@@ -186,14 +308,14 @@ const unifiedHtml = `<!DOCTYPE html>
             <i class="fa-regular fa-clock animate-pulse text-[11px]"></i>
             <span id="timerTextMobile">50:00</span>
           </div>
-          <button onclick="toggleViewLayout()" id="btnLayoutMobile" title="Đổi giao diện Từng câu / Danh sách" class="h-9 px-2.5 rounded-xl border border-blue-200 bg-blue-50 text-blue-700 text-xs font-bold flex items-center gap-1 active:scale-95 transition">
+          <button onclick="toggleViewLayout()" id="btnLayoutMobile" title="Đổi giao diện Từng câu / Danh sách" class="h-8 px-2 rounded-xl border border-blue-200 bg-blue-50 text-blue-700 text-xs font-bold flex items-center gap-1 active:scale-95 transition">
             <i id="iconLayoutMobile" class="fa-solid fa-layer-group"></i>
             <span id="txtLayoutMobile">1 Câu</span>
           </button>
-          <button onclick="shuffleQuestions()" title="Xáo trộn câu hỏi" class="w-9 h-9 rounded-xl border border-slate-200 bg-white text-slate-700 active:bg-slate-100 flex items-center justify-center shadow-xs">
+          <button onclick="shuffleQuestions()" title="Xáo trộn câu hỏi" class="w-8 h-8 rounded-xl border border-slate-200 bg-white text-slate-700 active:bg-slate-100 flex items-center justify-center shadow-xs">
             <i class="fa-solid fa-shuffle text-blue-500 text-xs"></i>
           </button>
-          <button onclick="confirmReset()" title="Làm lại đề này" class="w-9 h-9 rounded-xl border border-slate-200 bg-white text-slate-700 active:bg-rose-50 flex items-center justify-center shadow-xs">
+          <button onclick="confirmReset()" title="Làm lại đề này" class="w-8 h-8 rounded-xl border border-slate-200 bg-white text-slate-700 active:bg-rose-50 flex items-center justify-center shadow-xs">
             <i class="fa-solid fa-rotate-right text-rose-500 text-xs"></i>
           </button>
         </div>
@@ -202,69 +324,45 @@ const unifiedHtml = `<!DOCTYPE html>
         <div class="hidden sm:flex items-center flex-wrap gap-2">
           <!-- Mode Tabs Desktop -->
           <div class="bg-slate-100 p-1 rounded-xl flex items-center border border-slate-200 text-xs font-medium">
-            <button id="btnPracticeModeDesktop" onclick="switchMode('practice')" class="px-3 py-1.5 rounded-lg transition-all font-semibold flex items-center gap-1.5 bg-white text-blue-600 shadow-xs">
+            <button id="btnPracticeModeDesktop" onclick="switchMode('practice')" class="px-2.5 py-1 rounded-lg transition-all font-semibold flex items-center gap-1.5 bg-white text-blue-600 shadow-xs">
               <i class="fa-solid fa-bolt-lightning text-amber-500"></i> <span>Luyện tập</span>
             </button>
-            <button id="btnExamModeDesktop" onclick="switchMode('exam')" class="px-3 py-1.5 rounded-lg transition-all font-semibold flex items-center gap-1.5 text-slate-600 hover:text-slate-900">
+            <button id="btnExamModeDesktop" onclick="switchMode('exam')" class="px-2.5 py-1 rounded-lg transition-all font-semibold flex items-center gap-1.5 text-slate-600 hover:text-slate-900">
               <i class="fa-solid fa-clock text-blue-500"></i> <span>Thi thử</span>
             </button>
-            <button id="btnStudyModeDesktop" onclick="switchMode('study')" class="px-3 py-1.5 rounded-lg transition-all font-semibold flex items-center gap-1.5 text-slate-600 hover:text-slate-900">
+            <button id="btnStudyModeDesktop" onclick="switchMode('study')" class="px-2.5 py-1 rounded-lg transition-all font-semibold flex items-center gap-1.5 text-slate-600 hover:text-slate-900">
               <i class="fa-solid fa-book-open text-indigo-500"></i> <span>Đọc đáp án</span>
             </button>
           </div>
 
-          <div id="examTimer" class="hidden items-center gap-2 bg-amber-50 text-amber-700 px-3 py-1.5 rounded-xl border border-amber-200 text-xs font-bold">
+          <div id="examTimer" class="hidden items-center gap-2 bg-amber-50 text-amber-700 px-2.5 py-1 rounded-xl border border-amber-200 text-xs font-bold">
             <i class="fa-regular fa-clock animate-pulse"></i>
             <span id="timerText">50:00</span>
           </div>
 
-          <button onclick="toggleViewLayout()" id="btnLayoutDesktop" class="px-3 py-1.5 text-xs font-semibold rounded-xl border border-slate-200 hover:bg-slate-100 text-slate-700 transition flex items-center gap-1.5 bg-white shadow-xs">
+          <button onclick="toggleViewLayout()" id="btnLayoutDesktop" class="px-2.5 py-1 text-xs font-semibold rounded-xl border border-slate-200 hover:bg-slate-100 text-slate-700 transition flex items-center gap-1.5 bg-white shadow-xs">
             <i id="iconLayoutDesktop" class="fa-solid fa-layer-group text-indigo-500"></i>
             <span id="txtLayoutDesktop">Xem từng câu</span>
           </button>
 
-          <button onclick="shuffleQuestions()" class="px-3 py-1.5 text-xs font-semibold rounded-xl border border-slate-200 hover:bg-slate-100 text-slate-700 transition flex items-center gap-1.5 bg-white shadow-xs">
+          <button onclick="shuffleQuestions()" class="px-2.5 py-1 text-xs font-semibold rounded-xl border border-slate-200 hover:bg-slate-100 text-slate-700 transition flex items-center gap-1.5 bg-white shadow-xs">
             <i class="fa-solid fa-shuffle text-blue-500"></i> Xáo câu
           </button>
 
-          <button onclick="confirmReset()" class="px-3 py-1.5 text-xs font-semibold rounded-xl border border-slate-200 hover:bg-rose-50 hover:text-rose-600 hover:border-rose-200 text-slate-700 transition flex items-center gap-1.5 bg-white shadow-xs">
+          <button onclick="confirmReset()" class="px-2.5 py-1 text-xs font-semibold rounded-xl border border-slate-200 hover:bg-rose-50 hover:text-rose-600 hover:border-rose-200 text-slate-700 transition flex items-center gap-1.5 bg-white shadow-xs">
             <i class="fa-solid fa-rotate-right text-rose-500"></i> Làm lại
           </button>
         </div>
       </div>
 
-      <!-- Row 2: Danh Sách Đề Thi (Unified Exam Switcher Bar - Mobile & Desktop) -->
+      <!-- Row 2: Dynamic Exam Switcher Tabs for Current Subject -->
       <div class="flex items-center justify-between gap-2 pt-1 border-t border-slate-100">
-        <div class="flex items-center gap-1.5 sm:gap-2 overflow-x-auto no-scrollbar py-0.5 w-full sm:w-auto">
-          <span class="text-[11px] font-bold text-slate-400 uppercase tracking-wider shrink-0 hidden md:inline mr-1">
-            <i class="fa-solid fa-folder-open mr-1 text-blue-500"></i>Chọn đề:
-          </span>
-
-          <!-- Exam Tab 1: SP26 -->
-          <button onclick="switchExam('sp26')" id="tabExam_sp26" class="px-3 py-1.5 rounded-xl text-xs font-bold transition flex items-center gap-2 shrink-0 bg-blue-600 text-white shadow-sm shadow-blue-500/20">
-            <i class="fa-solid fa-file-lines"></i>
-            <span>Đề 1: SP26 FE</span>
-            <span id="badgeTab_sp26" class="px-1.5 py-0.2 rounded-md text-[10px] bg-white/20 text-white font-extrabold">0/50</span>
-          </button>
-
-          <!-- Exam Tab 2: SU26 -->
-          <button onclick="switchExam('su26')" id="tabExam_su26" class="px-3 py-1.5 rounded-xl text-xs font-bold transition flex items-center gap-2 shrink-0 bg-slate-100 text-slate-600 hover:bg-slate-200">
-            <i class="fa-solid fa-file-signature"></i>
-            <span>Đề 2: SU26 FE</span>
-            <span id="badgeTab_su26" class="px-1.5 py-0.2 rounded-md text-[10px] bg-slate-200 text-slate-600 font-extrabold">0/50</span>
-          </button>
-
-          <!-- Exam Tab 3: Combined 100 Questions -->
-          <button onclick="switchExam('all')" id="tabExam_all" class="px-3 py-1.5 rounded-xl text-xs font-bold transition flex items-center gap-2 shrink-0 bg-slate-100 text-slate-600 hover:bg-slate-200">
-            <i class="fa-solid fa-layer-group"></i>
-            <span>Tổng hợp (100 Câu)</span>
-            <span id="badgeTab_all" class="px-1.5 py-0.2 rounded-md text-[10px] bg-slate-200 text-slate-600 font-extrabold">0/100</span>
-          </button>
+        <div class="flex items-center gap-1.5 sm:gap-2 overflow-x-auto no-scrollbar py-0.5 w-full sm:w-auto" id="examTabsRow">
+          <!-- Populated dynamically based on active subject -->
         </div>
 
-        <!-- Button open full exam overview modal -->
-        <button onclick="openExamPickerModal()" class="hidden md:flex items-center gap-1.5 text-xs font-semibold text-blue-600 hover:text-blue-700 bg-blue-50 hover:bg-blue-100 px-3 py-1.5 rounded-xl transition shrink-0">
-          <i class="fa-solid fa-table-list"></i> Chi tiết bộ đề
+        <button onclick="openExamPickerModal()" class="hidden md:flex items-center gap-1.5 text-xs font-semibold text-blue-600 hover:text-blue-700 bg-blue-50 hover:bg-blue-100 px-2.5 py-1 rounded-xl transition shrink-0">
+          <i class="fa-solid fa-table-list"></i> Toàn bộ đề
         </button>
       </div>
 
@@ -300,7 +398,7 @@ const unifiedHtml = `<!DOCTYPE html>
   </header>
 
   <!-- Main Content Layout -->
-  <main class="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 py-3.5 sm:py-6 flex-1 w-full grid grid-cols-1 lg:grid-cols-12 gap-4 sm:gap-6 items-start">
+  <main class="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 py-3 sm:py-5 flex-1 w-full grid grid-cols-1 lg:grid-cols-12 gap-4 sm:gap-6 items-start">
 
     <!-- Left Column: Quiz Questions -->
     <div class="lg:col-span-8 flex flex-col gap-3.5 sm:gap-5">
@@ -326,7 +424,7 @@ const unifiedHtml = `<!DOCTYPE html>
         <div class="flex items-center justify-between sm:justify-end gap-3 text-xs border-t sm:border-t-0 border-slate-100 pt-2 sm:pt-0">
           <label class="flex items-center gap-1.5 cursor-pointer text-slate-600 select-none">
             <input type="checkbox" id="chkAutoCheck" checked onchange="toggleAutoCheck(this.checked)" class="rounded text-blue-600 focus:ring-blue-500 w-4 h-4">
-            <span class="font-medium">Hiện đáp án & giải thích ngay</span>
+            <span class="font-medium">Hiện đáp án & giải thích</span>
           </label>
           <label class="flex items-center gap-1.5 cursor-pointer text-slate-600 select-none" id="wrapAutoNext">
             <input type="checkbox" id="chkAutoNext" onchange="toggleAutoNext(this.checked)" class="rounded text-indigo-600 focus:ring-indigo-500 w-4 h-4">
@@ -374,15 +472,15 @@ const unifiedHtml = `<!DOCTYPE html>
     </div>
 
     <!-- Right Column: Sidebar Danh Sách Đề + Palette & Quick Stats (Desktop Sticky) -->
-    <div class="hidden lg:flex lg:col-span-4 flex-col gap-5 sticky top-28">
+    <div class="hidden lg:flex lg:col-span-4 flex-col gap-4 sticky top-28">
 
       <!-- Sidebar Exam Switcher Card -->
       <div class="bg-white p-4 rounded-2xl border border-slate-200 shadow-sm flex flex-col gap-2.5">
         <div class="flex items-center justify-between">
           <div class="font-bold text-slate-900 text-sm flex items-center gap-2">
-            <i class="fa-solid fa-layer-group text-blue-600"></i> Danh sách đề thi
+            <i class="fa-solid fa-layer-group text-blue-600"></i> Danh sách đề thi (<span id="sidebarSubjectLabel">PRN222</span>)
           </div>
-          <button onclick="openExamPickerModal()" class="text-xs text-blue-600 hover:underline font-semibold">Chi tiết</button>
+          <button onclick="openExamPickerModal()" class="text-xs text-blue-600 hover:underline font-semibold">Toàn bộ đề</button>
         </div>
         <div class="flex flex-col gap-1.5" id="sidebarExamList">
           <!-- Populated dynamically -->
@@ -471,7 +569,7 @@ const unifiedHtml = `<!DOCTYPE html>
       <!-- Open Exam Switcher Modal Button on Mobile Dock -->
       <button onclick="openExamPickerModal()" class="py-2.5 px-3 rounded-xl bg-blue-50 border border-blue-200 active:bg-blue-100 text-blue-700 font-extrabold text-xs flex items-center justify-center gap-1 shrink-0 shadow-xs" title="Đổi đề thi">
         <i class="fa-solid fa-folder-open"></i>
-        <span id="mobileDockExamName">SP26</span>
+        <span id="mobileDockExamName">PRN 1</span>
       </button>
 
       <!-- Next Question Button -->
@@ -489,7 +587,7 @@ const unifiedHtml = `<!DOCTYPE html>
         <div class="w-10 h-1.5 bg-slate-200 rounded-full mx-auto"></div>
         <div class="flex items-center justify-between">
           <div class="font-extrabold text-slate-900 text-base flex items-center gap-2">
-            <i class="fa-solid fa-grip text-indigo-600"></i> Bảng câu hỏi (<span id="mDrawerTitleExam">SP26 FE</span>)
+            <i class="fa-solid fa-grip text-indigo-600"></i> Bảng câu hỏi (<span id="mDrawerTitleExam">Đề 1</span>)
           </div>
           <button onclick="closeMobileDrawer()" class="w-8 h-8 rounded-full bg-slate-100 text-slate-500 flex items-center justify-center active:bg-slate-200">
             <i class="fa-solid fa-xmark"></i>
@@ -540,27 +638,27 @@ const unifiedHtml = `<!DOCTYPE html>
     </div>
   </div>
 
-  <!-- Modal: Danh Sách Đề Thi (Exam Picker & Progress Overview) -->
+  <!-- Modal: Danh Sách Bộ Đề (Exam Picker & Progress Overview for Both Subjects) -->
   <div id="examPickerModal" class="fixed inset-0 bg-slate-900/70 backdrop-blur-xs z-50 hidden items-end sm:items-center justify-center p-0 sm:p-4">
-    <div class="bg-white rounded-t-3xl sm:rounded-3xl max-w-2xl w-full max-h-[88vh] flex flex-col overflow-hidden shadow-2xl border border-slate-200 animate-slide-up safe-bottom">
-      <div class="px-5 py-4 border-b border-slate-100 flex items-center justify-between bg-slate-50">
+    <div class="bg-white rounded-t-3xl sm:rounded-3xl max-w-3xl w-full max-h-[90vh] flex flex-col overflow-hidden shadow-2xl border border-slate-200 animate-slide-up safe-bottom">
+      <div class="px-5 py-3.5 border-b border-slate-100 flex items-center justify-between bg-slate-50">
         <div>
-          <span class="text-[10px] font-bold text-blue-600 uppercase tracking-widest">FPT University • PRU213</span>
+          <span class="text-[10px] font-bold text-blue-600 uppercase tracking-widest">FPT University Exam Portal</span>
           <h3 class="text-base sm:text-lg font-extrabold text-slate-900 flex items-center gap-2">
-            <i class="fa-solid fa-folder-tree text-blue-600"></i> Danh sách bộ đề ôn tập
+            <i class="fa-solid fa-folder-tree text-blue-600"></i> Danh sách toàn bộ đề thi trắc nghiệm
           </h3>
         </div>
         <button onclick="closeExamPickerModal()" class="w-8 h-8 rounded-full bg-slate-200/70 hover:bg-slate-200 text-slate-600 flex items-center justify-center transition">
           <i class="fa-solid fa-xmark"></i>
         </button>
       </div>
-      <div class="p-4 sm:p-5 overflow-y-auto space-y-3" id="modalExamCards">
+      <div class="p-4 sm:p-5 overflow-y-auto space-y-5" id="modalExamCards">
         <!-- Populated dynamically -->
       </div>
     </div>
   </div>
 
-  <!-- Modal View Original Image -->
+  <!-- Modal View Original Image (for PRU213 questions with image) -->
   <div id="imageModal" class="fixed inset-0 bg-slate-900/80 backdrop-blur-sm z-50 hidden flex items-center justify-center p-2.5 sm:p-4">
     <div class="bg-white rounded-2xl max-w-4xl w-full max-h-[92vh] flex flex-col overflow-hidden shadow-2xl border border-slate-200">
       <div class="px-4 py-3 border-b border-slate-200 flex items-center justify-between bg-slate-50">
@@ -579,19 +677,22 @@ const unifiedHtml = `<!DOCTYPE html>
 
   <footer class="bg-white border-t border-slate-200 py-5 text-center text-xs text-slate-500 mt-auto">
     <div class="max-w-7xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-2.5">
-      <div>PRU213 Trắc nghiệm ôn tập (Gộp đề SP26 & SU26) • FPT University</div>
+      <div>Cổng Ôn Tập Trắc Nghiệm FPT University (PRN222 & PRU213)</div>
       <div class="flex items-center gap-4">
-        <a href="https://fuoverflow.com/threads/pru213-sp26-fe.6240/" target="_blank" class="hover:text-blue-600">SP26 Thread</a>
-        <a href="https://fuoverflow.com/threads/pru213-su26-fe.6971/" target="_blank" class="hover:text-blue-600">SU26 Thread</a>
+        <span>PRN222: 3 Đề + 1 Tổng hợp (150 Câu)</span>
+        <span>•</span>
+        <span>PRU213: 2 Đề + 1 Tổng hợp (100 Câu)</span>
       </div>
     </div>
   </footer>
 
   <script>
+    const SUBJECTS = ${JSON.stringify(SUBJECTS_DATA, null, 2)};
     const EXAMS = ${JSON.stringify(EXAMS_DATA, null, 2)};
     const BASE_PREFIX = typeof window.ASSET_PREFIX === 'string' ? window.ASSET_PREFIX : '';
 
-    let activeExamId = 'sp26';
+    let activeSubjectId = 'prn222';
+    let activeExamId = 'prn222_1';
     let RAW_QUESTIONS = [];
     let questions = [];
     let userAnswers = {};
@@ -615,6 +716,7 @@ const unifiedHtml = `<!DOCTYPE html>
 
     function getExamStatsSummary(examId) {
       const ex = EXAMS[examId];
+      if (!ex) return { total: 0, answered: 0, correct: 0 };
       const total = ex.questions.length;
       let answered = 0;
       let correct = 0;
@@ -631,11 +733,19 @@ const unifiedHtml = `<!DOCTYPE html>
       return { total, answered, correct };
     }
 
+    function switchSubject(subId) {
+      if (!SUBJECTS[subId]) subId = 'prn222';
+      activeSubjectId = subId;
+      const firstExam = SUBJECTS[subId].exams[0];
+      switchExam(firstExam, true);
+    }
+
     function switchExam(examId, updateUrl = true) {
-      if (!EXAMS[examId]) examId = 'sp26';
+      if (!EXAMS[examId]) examId = 'prn222_1';
       stopTimer();
       activeExamId = examId;
-      localStorage.setItem('pru213_last_active_exam', examId);
+      activeSubjectId = EXAMS[examId].subject || 'prn222';
+      localStorage.setItem('fpt_last_active_exam', examId);
 
       if (updateUrl && history.replaceState) {
         const url = new URL(window.location.href);
@@ -656,8 +766,32 @@ const unifiedHtml = `<!DOCTYPE html>
       // Update Header Info
       document.getElementById('headerExamCode').innerText = exam.code;
       document.getElementById('headerExamTitle').innerText = exam.title;
-      document.getElementById('mobileDockExamName').innerText = examId.toUpperCase();
+      document.getElementById('headerBrandIcon').className = activeSubjectId === 'prn222' ? 'fa-solid fa-bolt text-base sm:text-lg' : 'fa-solid fa-gamepad text-base sm:text-lg';
+      
+      // Update Mobile dock label
+      let dockShort = exam.shortName;
+      if (examId === 'prn222_1') dockShort = 'PRN 1';
+      else if (examId === 'prn222_2') dockShort = 'PRN 2';
+      else if (examId === 'prn222_3') dockShort = 'PRN 3';
+      else if (examId === 'prn222_all') dockShort = 'PRN ALL';
+      else if (examId === 'sp26') dockShort = 'SP26';
+      else if (examId === 'su26') dockShort = 'SU26';
+      else if (examId === 'all') dockShort = 'PRU ALL';
+      document.getElementById('mobileDockExamName').innerText = dockShort;
       document.getElementById('mDrawerTitleExam').innerText = exam.shortName;
+      document.getElementById('sidebarSubjectLabel').innerText = SUBJECTS[activeSubjectId].name;
+
+      // Update Subject pills
+      ['prn222', 'pru213'].forEach(sId => {
+        const pill = document.getElementById('subPill_' + sId);
+        if (pill) {
+          if (sId === activeSubjectId) {
+            pill.className = 'px-2 py-0.5 rounded-lg text-[11px] font-extrabold flex items-center gap-1 transition ' + (sId === 'prn222' ? 'bg-indigo-600 text-white shadow-xs' : 'bg-blue-600 text-white shadow-xs');
+          } else {
+            pill.className = 'px-2 py-0.5 rounded-lg text-[11px] font-bold flex items-center gap-1 transition bg-slate-100 text-slate-600 hover:bg-slate-200';
+          }
+        }
+      });
 
       loadSavedState();
       setFilter('all');
@@ -668,30 +802,30 @@ const unifiedHtml = `<!DOCTYPE html>
     }
 
     function renderExamTabsAndCards() {
-      ['sp26', 'su26', 'all'].forEach(id => {
-        const st = getExamStatsSummary(id);
-        const btn = document.getElementById('tabExam_' + id);
-        const badge = document.getElementById('badgeTab_' + id);
-        const isActive = id === activeExamId;
-
-        if (btn && badge) {
-          badge.innerText = st.answered + '/' + st.total;
-          if (isActive) {
-            btn.className = 'px-3 py-1.5 rounded-xl text-xs font-bold transition flex items-center gap-2 shrink-0 bg-gradient-to-r from-blue-600 to-indigo-600 text-white shadow-sm shadow-blue-500/20';
-            badge.className = 'px-1.5 py-0.5 rounded-md text-[10px] bg-white/20 text-white font-extrabold';
-          } else {
-            btn.className = 'px-3 py-1.5 rounded-xl text-xs font-bold transition flex items-center gap-2 shrink-0 bg-slate-100 text-slate-600 hover:bg-slate-200';
-            badge.className = st.answered > 0
-              ? 'px-1.5 py-0.5 rounded-md text-[10px] bg-emerald-100 text-emerald-700 font-extrabold'
-              : 'px-1.5 py-0.5 rounded-md text-[10px] bg-slate-200 text-slate-600 font-extrabold';
-          }
-        }
-      });
+      // Render Exam Tabs Row for active subject
+      const tabsRow = document.getElementById('examTabsRow');
+      if (tabsRow) {
+        const sub = SUBJECTS[activeSubjectId];
+        tabsRow.innerHTML = sub.exams.map(eId => {
+          const ex = EXAMS[eId];
+          const st = getExamStatsSummary(eId);
+          const isActive = eId === activeExamId;
+          const activeBg = sub.id === 'prn222' ? 'bg-gradient-to-r from-indigo-600 to-purple-600' : 'bg-gradient-to-r from-blue-600 to-indigo-600';
+          return \`
+            <button onclick="switchExam('\${eId}')" id="tabExam_\${eId}" class="px-2.5 sm:px-3 py-1.5 rounded-xl text-xs font-bold transition flex items-center gap-1.5 sm:gap-2 shrink-0 \${isActive ? activeBg + ' text-white shadow-sm' : 'bg-slate-100 text-slate-600 hover:bg-slate-200'}">
+              <i class="fa-solid \${eId.includes('all') ? 'fa-layer-group' : 'fa-file-lines'} text-[11px]"></i>
+              <span>\${ex.shortName}</span>
+              <span class="px-1.5 py-0.2 rounded-md text-[10px] font-extrabold \${isActive ? 'bg-white/20 text-white' : (st.answered > 0 ? 'bg-emerald-100 text-emerald-700' : 'bg-slate-200 text-slate-600')}">\${st.answered}/\${st.total}</span>
+            </button>
+          \`;
+        }).join('');
+      }
 
       // Render Desktop Sidebar Exam List
       const sidebarList = document.getElementById('sidebarExamList');
       if (sidebarList) {
-        sidebarList.innerHTML = ['sp26', 'su26', 'all'].map(id => {
+        const sub = SUBJECTS[activeSubjectId];
+        sidebarList.innerHTML = sub.exams.map(id => {
           const ex = EXAMS[id];
           const st = getExamStatsSummary(id);
           const isActive = id === activeExamId;
@@ -711,31 +845,51 @@ const unifiedHtml = `<!DOCTYPE html>
         }).join('');
       }
 
-      // Render Modal Exam Cards
+      // Render Modal Exam Cards (Grouped by Subject)
       const modalContainer = document.getElementById('modalExamCards');
       if (modalContainer) {
-        modalContainer.innerHTML = ['sp26', 'su26', 'all'].map(id => {
-          const ex = EXAMS[id];
-          const st = getExamStatsSummary(id);
-          const isActive = id === activeExamId;
-          const pct = st.answered > 0 ? Math.round((st.correct / st.answered) * 100) : 0;
+        modalContainer.innerHTML = ['prn222', 'pru213'].map(sId => {
+          const sub = SUBJECTS[sId];
+          const examCardsHtml = sub.exams.map(eId => {
+            const ex = EXAMS[eId];
+            const st = getExamStatsSummary(eId);
+            const isActive = eId === activeExamId;
+            const pct = st.answered > 0 ? Math.round((st.correct / st.answered) * 100) : 0;
+            return \`
+              <div onclick="switchExam('\${eId}'); closeExamPickerModal();" class="cursor-pointer p-3.5 sm:p-4 rounded-2xl border transition flex flex-col gap-2 \${isActive ? 'border-blue-500 bg-blue-50/40 ring-2 ring-blue-500' : 'border-slate-200 hover:border-blue-300 bg-white'}">
+                <div class="flex items-center justify-between gap-2">
+                  <span class="px-2 py-0.5 rounded-lg text-[10px] font-bold \${isActive ? 'bg-blue-600 text-white' : 'bg-slate-100 text-slate-700'}">\${ex.code}</span>
+                  <span class="text-xs font-bold \${st.answered > 0 ? 'text-emerald-600' : 'text-slate-400'}">
+                    <i class="fa-solid fa-circle-check mr-1"></i>Đã làm \${st.answered}/\${st.total} (\${pct}% đúng)
+                  </span>
+                </div>
+                <div>
+                  <h5 class="text-sm sm:text-base font-extrabold text-slate-900">\${ex.title}</h5>
+                  <p class="text-xs text-slate-500 mt-0.5 leading-relaxed">\${ex.subtitle}</p>
+                </div>
+                <div class="flex items-center justify-between pt-2 border-t border-slate-100 text-xs">
+                  <span class="text-slate-500"><i class="fa-regular fa-clock mr-1"></i>\${ex.timeMinutes} phút • \${st.total} câu hỏi</span>
+                  <span class="font-bold text-blue-600 flex items-center gap-1">
+                    \${isActive ? 'Đang mở đề này' : 'Mở đề này'} <i class="fa-solid fa-arrow-right text-[10px]"></i>
+                  </span>
+                </div>
+              </div>
+            \`;
+          }).join('');
+
           return \`
-            <div onclick="switchExam('\${id}'); closeExamPickerModal();" class="cursor-pointer p-4 rounded-2xl border transition flex flex-col gap-2.5 \${isActive ? 'border-blue-500 bg-blue-50/40 ring-2 ring-blue-500' : 'border-slate-200 hover:border-blue-300 bg-white'}">
-              <div class="flex items-center justify-between gap-2">
-                <span class="px-2.5 py-0.5 rounded-lg text-[11px] font-bold \${isActive ? 'bg-blue-600 text-white' : 'bg-slate-100 text-slate-700'}">\${ex.code}</span>
-                <span class="text-xs font-bold \${st.answered > 0 ? 'text-emerald-600' : 'text-slate-400'}">
-                  <i class="fa-solid fa-circle-check mr-1"></i>Đã làm \${st.answered}/\${st.total} (\${pct}% đúng)
-                </span>
+            <div class="flex flex-col gap-2.5">
+              <div class="flex items-center justify-between">
+                <h4 class="text-xs sm:text-sm font-extrabold text-slate-900 flex items-center gap-2">
+                  <span class="w-6 h-6 rounded-lg \${sId === 'prn222' ? 'bg-indigo-100 text-indigo-700' : 'bg-blue-100 text-blue-700'} flex items-center justify-center text-xs">
+                    <i class="fa-solid \${sub.icon}"></i>
+                  </span>
+                  Môn \${sub.name} - \${sub.title}
+                </h4>
+                <span class="text-[11px] text-slate-400 font-semibold">\${sub.exams.length} Bộ đề</span>
               </div>
-              <div>
-                <h4 class="text-base font-extrabold text-slate-900">\${ex.title}</h4>
-                <p class="text-xs text-slate-500 mt-0.5 leading-relaxed">\${ex.subtitle}</p>
-              </div>
-              <div class="flex items-center justify-between pt-2 border-t border-slate-100 text-xs">
-                <span class="text-slate-500"><i class="fa-regular fa-clock mr-1"></i>\${ex.timeMinutes} phút • \${st.total} câu hỏi</span>
-                <span class="font-bold text-blue-600 flex items-center gap-1">
-                  \${isActive ? 'Đang mở đề này' : 'Chọn đề này'} <i class="fa-solid fa-arrow-right text-[10px]"></i>
-                </span>
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+                \${examCardsHtml}
               </div>
             </div>
           \`;
@@ -844,11 +998,11 @@ const unifiedHtml = `<!DOCTYPE html>
       if (isSingle) {
         txtM.innerText = '1 Câu';
         iconM.className = 'fa-solid fa-layer-group';
-        btnM.className = 'h-9 px-2.5 rounded-xl border border-blue-200 bg-blue-50 text-blue-700 text-xs font-bold flex items-center gap-1 active:scale-95 transition';
+        btnM.className = 'h-8 px-2 rounded-xl border border-blue-200 bg-blue-50 text-blue-700 text-xs font-bold flex items-center gap-1 active:scale-95 transition';
       } else {
         txtM.innerText = 'D.Sách';
         iconM.className = 'fa-solid fa-list-ul';
-        btnM.className = 'h-9 px-2.5 rounded-xl border border-slate-200 bg-white text-slate-700 text-xs font-bold flex items-center gap-1 active:scale-95 transition';
+        btnM.className = 'h-8 px-2 rounded-xl border border-slate-200 bg-white text-slate-700 text-xs font-bold flex items-center gap-1 active:scale-95 transition';
       }
 
       const txtD = document.getElementById('txtLayoutDesktop');
@@ -902,8 +1056,8 @@ const unifiedHtml = `<!DOCTYPE html>
         const btnM = document.getElementById(p.m);
         if (btnD) {
           btnD.className = isAct
-            ? \`px-3 py-1.5 rounded-lg transition-all font-semibold flex items-center gap-1.5 bg-white \${p.activeColor} shadow-xs\`
-            : 'px-3 py-1.5 rounded-lg transition-all font-semibold flex items-center gap-1.5 text-slate-600 hover:text-slate-900';
+            ? \`px-2.5 py-1 rounded-lg transition-all font-semibold flex items-center gap-1.5 bg-white \${p.activeColor} shadow-xs\`
+            : 'px-2.5 py-1 rounded-lg transition-all font-semibold flex items-center gap-1.5 text-slate-600 hover:text-slate-900';
         }
         if (btnM) {
           btnM.className = isAct
@@ -1105,11 +1259,11 @@ const unifiedHtml = `<!DOCTYPE html>
 
       if (viewLayout === 'single') {
         const q = filtered[currentIndex];
-        container.appendChild(createQuestionCard(q, currentIndex + 1, filtered.length));
+        container.appendChild(createQuestionCard(q));
         updateMobileNavState(currentIndex + 1, filtered.length);
       } else {
         filtered.forEach((q, idx) => {
-          container.appendChild(createQuestionCard(q, idx + 1, filtered.length));
+          container.appendChild(createQuestionCard(q));
         });
         updateMobileNavState(currentIndex + 1, filtered.length);
       }
@@ -1148,8 +1302,15 @@ const unifiedHtml = `<!DOCTYPE html>
       const showFeedback = currentMode === 'study' || examSubmitted || (isAnswered && autoCheck);
       const isStarred = starredQuestions.has(q.id);
 
-      const examBadgeHtml = activeExamId === 'all'
-        ? \`<span class="px-1.5 py-0.5 rounded text-[10px] font-bold \${q.examLabel === 'SP26' ? 'bg-blue-100/80 text-blue-800' : 'bg-indigo-100/80 text-indigo-800'}">\${q.examLabel} #\${q.origId}</span>\`
+      const isCombined = activeExamId.includes('all');
+      const examBadgeHtml = isCombined
+        ? \`<span class="px-1.5 py-0.5 rounded text-[10px] font-bold bg-blue-100/80 text-blue-800">\${q.examLabel} #\${q.origId}</span>\`
+        : '';
+
+      const imageBtnHtml = q.imagePath
+        ? \`<button onclick="openImageModal(\${q.id})" title="Xem ảnh chụp gốc từ đề" class="px-2 py-1 text-[11px] font-medium rounded border border-blue-200/80 bg-white/80 hover:bg-white text-slate-600 transition flex items-center gap-1">
+             <i class="fa-regular fa-image text-blue-600"></i> <span>Ảnh gốc</span>
+           </button>\`
         : '';
 
       let html = \`
@@ -1168,9 +1329,7 @@ const unifiedHtml = `<!DOCTYPE html>
           </div>
 
           <div class="flex items-center gap-1.5 shrink-0">
-            <button onclick="openImageModal(\${q.id})" title="Xem ảnh chụp gốc từ đề" class="px-2 py-1 text-[11px] font-medium rounded border border-blue-200/80 bg-white/80 hover:bg-white text-slate-600 transition flex items-center gap-1">
-              <i class="fa-regular fa-image text-blue-600"></i> <span>Ảnh gốc</span>
-            </button>
+            \${imageBtnHtml}
             <button id="star-btn-\${q.id}" onclick="toggleStar(\${q.id})" title="Đánh dấu câu hỏi này" class="\${isStarred ? 'text-amber-500 bg-amber-50 border-amber-200' : 'text-slate-400 hover:text-amber-500 bg-white/80 border-blue-200/80'} w-7 h-7 rounded border flex items-center justify-center text-sm transition active:scale-90">
               <i class="\${isStarred ? 'fa-solid' : 'fa-regular'} fa-star"></i>
             </button>
@@ -1422,7 +1581,7 @@ const unifiedHtml = `<!DOCTYPE html>
 
     function openImageModal(qId) {
       const q = RAW_QUESTIONS.find(item => item.id === qId);
-      if (!q) return;
+      if (!q || !q.imagePath) return;
       document.getElementById('modalImageTitle').innerText = 'Câu ' + q.id + ' (' + q.examLabel + ' #' + q.origId + ')';
       document.getElementById('modalImageSrc').src = BASE_PREFIX + q.imagePath;
       document.getElementById('imageModal').classList.remove('hidden');
@@ -1464,7 +1623,7 @@ const unifiedHtml = `<!DOCTYPE html>
 
     window.addEventListener('DOMContentLoaded', () => {
       const params = new URLSearchParams(window.location.search);
-      const urlExam = params.get('de') || window.DEFAULT_EXAM || localStorage.getItem('pru213_last_active_exam') || 'sp26';
+      const urlExam = params.get('de') || localStorage.getItem('fpt_last_active_exam') || 'prn222_1';
       switchExam(urlExam, false);
     });
   </script>
@@ -1475,10 +1634,21 @@ const unifiedHtml = `<!DOCTYPE html>
 fs.writeFileSync(path.join(__dirname, 'index.html'), unifiedHtml, 'utf8');
 console.log('Generated unified root index.html (' + unifiedHtml.length + ' bytes)');
 
-// Also write redirect/unified entry points for De_SP26_FE/index.html and De_SU26_FE/index.html so existing tabs/bookmarks seamlessly use the unified UI
-const sp26Redirect = `<!DOCTYPE html><html lang="vi"><head><meta charset="UTF-8"><script>window.location.replace('../index.html?de=sp26');</script></head><body></body></html>`;
-const su26Redirect = `<!DOCTYPE html><html lang="vi"><head><meta charset="UTF-8"><script>window.location.replace('../index.html?de=su26');</script></head><body></body></html>`;
+// Also write redirect/unified entry points for all individual exam folders
+const makeRedirect = (examId) => `<!DOCTYPE html><html lang="vi"><head><meta charset="UTF-8"><script>window.location.replace('../index.html?de=${examId}');</script></head><body></body></html>`;
 
-fs.writeFileSync(path.join(__dirname, 'De_SP26_FE', 'index.html'), sp26Redirect, 'utf8');
-fs.writeFileSync(path.join(__dirname, 'De_SU26_FE', 'index.html'), su26Redirect, 'utf8');
-console.log('Updated De_SP26_FE/index.html and De_SU26_FE/index.html to redirect to unified UI');
+fs.writeFileSync(path.join(__dirname, 'De_SP26_FE', 'index.html'), makeRedirect('sp26'), 'utf8');
+fs.writeFileSync(path.join(__dirname, 'De_SU26_FE', 'index.html'), makeRedirect('su26'), 'utf8');
+
+fs.mkdirSync(path.join(__dirname, 'De_PRN222_1'), { recursive: true });
+fs.mkdirSync(path.join(__dirname, 'De_PRN222_2'), { recursive: true });
+fs.mkdirSync(path.join(__dirname, 'De_PRN222_3'), { recursive: true });
+
+fs.writeFileSync(path.join(__dirname, 'De_PRN222_1', 'index.html'), makeRedirect('prn222_1'), 'utf8');
+fs.writeFileSync(path.join(__dirname, 'De_PRN222_2', 'index.html'), makeRedirect('prn222_2'), 'utf8');
+fs.writeFileSync(path.join(__dirname, 'De_PRN222_3', 'index.html'), makeRedirect('prn222_3'), 'utf8');
+
+// Write .nojekyll for GitHub Pages
+fs.writeFileSync(path.join(__dirname, '.nojekyll'), '', 'utf8');
+
+console.log('Successfully generated all index.html, redirects and .nojekyll!');

@@ -1,0 +1,652 @@
+[
+  {
+    "id": 1,
+    "question": "What is a Blazor Component?",
+    "options": {
+      "A": "A network protocol.",
+      "B": "Adatabase query.",
+      "C": "Areusable Ul element writtenin C# and HTML.",
+      "D": "A JavaScript function."
+    },
+    "answer": "C",
+    "topic": "Blazor Framework",
+    "explanation": "Trong Blazor, một Component (thành phần UI) là một khối mã nguồn có tệp mở rộng .razor. Nó kết hợp giữa cú pháp HTML để dựng giao diện và C# để xử lý logic (thay vì dùng JavaScript), cho phép tái sử dụng dễ dàng ở nhiều nơi trong ứng dụng."
+  },
+  {
+    "id": 2,
+    "question": "In .NET, which class is used to make HTTP requests and retrieve HTTP responses?",
+    "options": {
+      "A": "TepClient",
+      "B": "HttpClient",
+      "C": "UdpClient",
+      "D": "Socket"
+    },
+    "answer": "B",
+    "topic": "Networking & Protocols",
+    "explanation": "Trong .NET, lớp HttpClient (thuộc không gian tên System.Net.Http) cung cấp các API hiện đại, bất đồng bộ để gửi yêu cầu HTTP và nhận phản hồi từ tài nguyên được xác định bởi URI (như gửi các phương thức GET, POST, PUT, DELETE tới Web API)."
+  },
+  {
+    "id": 3,
+    "question": "What is \"Model Binding\" in ASP.NET Core MVC?",
+    "options": {
+      "A": "The process of managing user sessions.",
+      "B": "The process of encrypting data.",
+      "C": "The process of mapping HTTP request data to model objects.",
+      "D": "The process of validating user input."
+    },
+    "answer": "C",
+    "topic": "ASP.NET Core MVC",
+    "explanation": "Trong ASP.NET Core MVC, Model Binding là cơ chế tự động trích xuất dữ liệu từ các nguồn thuộc HTTP request (như form fields, route data, query string, request body) và gán/ánh xạ (map) dữ liệu đó vào các tham số hoặc đối tượng model của phương thức Controller."
+  },
+  {
+    "id": 4,
+    "question": "What does the term \"IP address” represent?",
+    "options": {
+      "A": "A network security measure.",
+      "B": "A network protocol.",
+      "C": "A unique identifier for a network interface.",
+      "D": "A type of network cable."
+    },
+    "answer": "C",
+    "topic": "Networking & Protocols",
+    "explanation": "Địa chỉ IP (Internet Protocol address) là một địa chỉ số duy nhất được gán cho mỗi thiết bị (hoặc giao diện mạng của thiết bị) khi tham gia vào một mạng máy tính sử dụng giao thức IP để giao tiếp, giúp nhận diện và định vị thiết bị đó trên mạng."
+  },
+  {
+    "id": 5,
+    "question": "(Choose 1 answer) What is Blazor?",
+    "options": {
+      "A": "A server-side scripting language.",
+      "B": "A database management system.",
+      "C": "A framework for building interactive web UIs using C# instead of JavaScript.",
+      "D": "A JavaScript framework."
+    },
+    "answer": "C",
+    "topic": "Blazor Framework",
+    "explanation": "Blazor là một web framework do Microsoft phát triển, cho phép lập trình viên xây dựng các giao diện web tương tác phía client (Interactive Web UI) bằng cách sử dụng C# và HTML thay vì phải viết mã JavaScript. Blazor có thể chạy C# trực tiếp trong trình duyệt thông qua WebAssembly hoặc chạy trên server qua SignalR connection"
+  },
+  {
+    "id": 6,
+    "question": "[6 | (Choose 1 answer) What is the root component of a Blazor app?",
+    "options": {
+      "A": "MainLayout.razor",
+      "B": "Routes.razor",
+      "C": "App.razor",
+      "D": "Index.razor"
+    },
+    "answer": "C",
+    "topic": "Blazor Framework",
+    "explanation": "Trong cấu trúc dự án Blazor, App.razor là thành phần gốc (root component) cao nhất. Nó thiết lập cơ chế định tuyến (routing) thông qua component <Router>, chịu trách nhiệm nạp các bố cục (layouts) và hiển thị các trang tương ứng với đường dẫn URL mà người dùng truy cập."
+  },
+  {
+    "id": 7,
+    "question": "(Choose 1 answer) What is the purpose of logging in a Worker Service?",
+    "options": {
+      "A": "To manage database connections.",
+      "B": "To encrypt data.",
+      "C": "Torecord information, errors, and warnings during the service's execution.",
+      "D": "To manage user sessions."
+    },
+    "answer": "C",
+    "topic": "C# & .NET Core",
+    "explanation": "Worker Service là ứng dụng chạy ngầm không có giao diện người dùng (UI). Do đó, logging (sử dụng ILogger) là cơ chế quan trọng nhất để giúp lập trình viên và quản trị viên theo dõi trạng thái hoạt động của hệ thống, ghi chép lịch sử thực thi, nhận biết lỗi phát sinh hoặc các cảnh báo trong quá trình dịch vụ chạy."
+  },
+  {
+    "id": 8,
+    "question": "(Choose 1 answer) What is the primary purpose of a network socket?",
+    "options": {
+      "A": "To manage IP addresses.",
+      "B": "To provide a communication endpoint between two applications.",
+      "C": "To encrypt network traffic.",
+      "D": "To route network nackets."
+    },
+    "answer": "B",
+    "topic": "Networking & Protocols",
+    "explanation": "Một Network Socket (ổ cắm mạng) là một điểm đầu cuối (endpoint) trong liên kết truyền thông hai chiều giữa hai chương trình/ứng dụng chạy trên mạng. Nó được xác định bởi sự kết hợp giữa Địa chỉ IP và Cổng (Port number), giúp hai ứng dụng gửi và nhận dữ liệu qua lại với nhau."
+  },
+  {
+    "id": 9,
+    "question": "Which code will block the current thread?",
+    "options": {
+      "A": "task.ContinueWith(...)",
+      "B": "task.Wait();",
+      "C": "await Task.WhenAll(tasks);",
+      "D": "await task;"
+    },
+    "answer": "B",
+    "topic": "Parallel Programming & TPL",
+    "explanation": "task.Wait() là phương thức đồng bộ (synchronous). Khi được gọi, luồng hiện tại sẽ bị ép buộc tạm dừng/đóng băng (blocked) và chờ đợi cho đến khi tác vụ task hoàn thành hoàn toàn mới chạy tiếp. Các lựa chọn khác như await hoặc ContinueWith đều xử lý theo cơ chế bất đồng bộ (asynchronous / non-blocking), nghĩa là luồng hiện tại được giải phóng để làm việc khác trong khi chờ tác vụ hoàn tất."
+  },
+  {
+    "id": 10,
+    "question": "View Components are preferred over Partial Pages when:",
+    "options": {
+      "A": "You want smaller HTML snippets",
+      "B": "No logic is required",
+      "C": "The page is static",
+      "D": "Logic and data retrieval are required"
+    },
+    "answer": "D",
+    "topic": "C# & .NET Core",
+    "explanation": "Partial Views phù hợp để chia nhỏ giao diện HTML đơn giản hoặc dùng chung model từ view mẹ mà không cần logic độc lập phức tạp. View Components cung cấp cơ chế tương tự nhưng mạnh mẽ hơn nhiều: nó có lớp C# riêng (ViewComponent), có khả năng inject các dependency, tự truy vấn dữ liệu từ CSDL và thực thi logic kinh doanh độc lập trước khi trả về giao diện. Vì vậy, khi một thành phần UI cần xử lý logic riêng và tự lấy dữ liệu, View Component là lựa chọn tối ưu."
+  },
+  {
+    "id": 11,
+    "question": "Which of the following is an example of a valid IP address?",
+    "options": {
+      "A": "HTTP/11",
+      "B": "192.168.1.1",
+      "C": "myaccount@gmail.com",
+      "D": "www.example.com.vn"
+    },
+    "answer": "B",
+    "topic": "Networking & Protocols",
+    "explanation": "192.168.1.1 là định dạng tiêu chuẩn của một địa chỉ IPv4 (gồm 4 nhóm số phân cách nhau bởi dấu chấm, mỗi nhóm có giá trị từ 0 đến 255). HTTP/1.1 là tên một giao thức truyền tải web. myaccount@gmail.com là địa chỉ email. www.example.com.vn là tên miền (Domain Name)."
+  },
+  {
+    "id": 12,
+    "question": "When writing parallel programs, which principle should be prioritized?",
+    "options": {
+      "A": "Splitting tasks without control",
+      "B": "Avoiding synchronization at all costs",
+      "C": "Low coupling, high cohesion",
+      "D": "Sharing as many variables as possible"
+    },
+    "answer": "C",
+    "topic": "Parallel Programming & TPL",
+    "explanation": "Low coupling (Khớp nối thấp): Giảm thiểu sự phụ thuộc lẫn nhau giữa các tác vụ/luồng để các luồng có thể chạy độc lập mà không phải chờ đợi hay tranh chấp dữ liệu với nhau. High cohesion (Độ gắn kết cao): Đảm bảo mỗi module/tác vụ tập trung xử lý trọn vẹn một nhiệm vụ cụ thể. Việc tuân thủ nguyên tắc này giúp chương trình song song dễ mở rộng, tối ưu hiệu năng và tránh các lỗi kinh điển như Deadlock hay Race Condition."
+  },
+  {
+    "id": 13,
+    "question": "(Choose 1 answer) What is the advantage of using a Worker Service over a console application for background tasks?",
+    "options": {
+      "A": "Console applications can be deployed to mobile devices.",
+      "B": "Console applications have better performance.",
+      "C": "Worker Services integrate seamlessly with ASP.NET Core’s hosting and configuration.",
+      "D": "Console applications can run in the browser."
+    },
+    "answer": "C",
+    "topic": "Parallel Programming & TPL",
+    "explanation": "Worker Service được xây dựng trên nền tảng Generic Host của .NET, giúp nó tự động tích hợp sẵn các tính năng cao cấp như: Dependency Injection (DI), Logging, Configuration (đọc file appsettings.json), và quản lý vòng đời ứng dụng (Hosted Services). Ngoài ra, Worker Service còn rất dễ dàng cài đặt để chạy như một Windows Service hoặc systemd service trên Linux, điều mà ứng dụng Console thông thường phải tự viết thêm nhiều mã để thiết lập."
+  },
+  {
+    "id": 14,
+    "question": "Asynchronous programming improves applications by:",
+    "options": {
+      "A": "Improving performance for I/O-bound operations",
+      "B": "Never blocking a thread",
+      "C": "Automatically turning them into multi-threaded",
+      "D": "Alwavs runnina faster than synchronous code"
+    },
+    "answer": "A",
+    "topic": "Parallel Programming & TPL",
+    "explanation": "Lập trình bất đồng bộ giải phóng luồng trong lúc chờ đợi các tác vụ I/O-bound (vào/ra dữ liệu như mạng, ổ đĩa, cơ sở dữ liệu) hoàn tất, giúp máy chủ / ứng dụng phục vụ được nhiều yêu cầu hơn đồng thời và giao diện không bị treo. Lưu ý phân biệt: Bát đồng bộ không làm cho một tác vụ đơn lẻ chạy nhanh hơn, cũng không hoàn toàn thay thế đa luồng hay đảm bảo không bao giờ block luồng nếu viết mã sai cách."
+  },
+  {
+    "id": 15,
+    "question": "Which scenarios are most suitable for Worker Services?",
+    "options": {
+      "A": "Displaying Razor Pages",
+      "B": "Hosting REST APIs only",
+      "C": "Running Blazor Ul",
+      "D": "Processing queue messages"
+    },
+    "answer": "D",
+    "topic": "C# & .NET Core",
+    "explanation": "Worker Service được thiết kế chuyên biệt cho các tác vụ chạy ngầm (background processing) kéo dài, không giao diện. Một trong những kịch bản ứng dụng điển hình nhất của Worker Service là liên tục lắng nghe và xử lý các tin nhắn từ hàng đợi (Queue messages) như RabbitMQ, Azure Queue Storage, hoặc MSMQ để xử lý dữ liệu bất đồng bộ. các lựa chọn A, B, C đều là những kịch bản liên quan đến giao diện (UI) hoặc phục vụ yêu cầu web (Web API/Page)."
+  },
+  {
+    "id": 16,
+    "question": "(Choose 1 answer) async/await in C# is based on which pattern?",
+    "options": {
+      "A": "Asynchronous Programming Model (APM)",
+      "B": "Event-based Asynchronous Pattern (EAP)",
+      "C": "Delegate pattern",
+      "D": "Task-based Asynchronous Pattern (TAP)"
+    },
+    "answer": "D",
+    "topic": "Parallel Programming & TPL",
+    "explanation": "Từ phiên bản .NET Framework 4.5 và C# 5.0 trở đi, từ khóa async và await được xây dựng dựa trên mô hình TAP (Task-based Asynchronous Pattern). Mô hình này sử dụng các đối tượng System.Threading.Tasks.Task và Task&lt;TResult&gt; để đại diện cho các thao tác bất đồng bộ, thay thế hoàn toàn cho các mô hình cũ như APM hay EAP."
+  },
+  {
+    "id": 17,
+    "question": "(Choose 1 answer) What does the Worker Service template provide in .NET?",
+    "options": {
+      "A": "A pre-configured database project.",
+      "B": "A pre-configured mobile application.",
+      "C": "A pre-configured background service project.",
+      "D": "A pre-configured web application."
+    },
+    "answer": "C",
+    "topic": "C# & .NET Core",
+    "explanation": "Template Worker Service trong .NET được thiết kế để tạo nhanh các dự án chạy các tác vụ nền/chạy ngầm (background tasks) lâu dài. Khi tạo dự án từ template này, .NET đã cấu hình sẵn Generic Host, hệ thống Logging, Dependency Injection và một lớp dịch vụ nền kế thừa từ BackgroundService để bạn có thể bắt tay vào viết logic chạy ngầm ngay lập tức"
+  },
+  {
+    "id": 18,
+    "question": "Which of the following is a Tag Helper in ASP.NET Core?",
+    "options": {
+      "A": "<span asp-code=\"C#\">",
+      "B": "<div data-tag=\"helper\">",
+      "C": "<script asp-helper=\"true\">",
+      "D": "<form asp-action=\"Create\">"
+    },
+    "answer": "D",
+    "topic": "Razor Pages & Tag Helpers",
+    "explanation": "Trong ASP.NET Core MVC / Razor Pages, Tag Helper cho phép mã phía server tham gia vào quá trình tạo và hiển thị các phần tử HTML trong file Razor. asp-action (đi kèm với asp-controller) là một Form Tag Helper chuẩn của ASP.NET Core, dùng để tự động tạo thuộc tính action chỉ định URL sẽ nhận yêu cầu POST/GET gửi từ form (trong trường hợp này là gọi action Create). Các thẻ và thuộc tính như asp-code, data-tag=\"helper\", hay asp-helper ở các phương án A, B, C không phải là Tag Helper chuẩn do ASP.NET Core cung cấp."
+  },
+  {
+    "id": 19,
+    "question": "What is the function of a DNS (Domain Name System)?",
+    "options": {
+      "A": "To route network packets.",
+      "B": "To translate hostnames into IP addresses.",
+      "C": "To manage network security.",
+      "D": "To direct network traffic."
+    },
+    "answer": "B",
+    "topic": "Networking & Protocols",
+    "explanation": "NS hoạt động giống như một \"danh bạ điện thoại\" của Internet. Vì máy tính truyền thông với nhau qua các địa chỉ IP dạng số (như 192.0.2.1), trong khi con người dễ nhớ các tên miền dạng chữ (như google.com), DNS giúp tự động ánh xạ và chuyển đổi tên miền/hostname thành địa chỉ IP tương ứng để trình duyệt kết nối đúng máy chủ."
+  },
+  {
+    "id": 20,
+    "question": "What is the purpose of the Group feature in SignalR?",
+    "options": {
+      "A": "To encrypt data.",
+      "B": "To manage user sessions.",
+      "C": "To send messages to a specific subset of connected clients.",
+      "D": "To encrypt connections."
+    },
+    "answer": "C",
+    "topic": "SignalR & Real-time",
+    "explanation": "Trong ASP.NET Core SignalR, Group là một cơ chế giúp nhóm các kết nối (clients) lại với nhau theo một tên tập hợp (group name). Việc này cho phép máy chủ gửi thông điệp/tin nhắn đến một nhóm người dùng cụ thể (ví dụ: phòng chat riêng, nhóm nhận thông báo phòng ban) thay vì phải phát bản tin tới tất cả mọi người (All) hoặc gửi riêng lẻ từng người (Client)."
+  },
+  {
+    "id": 21,
+    "question": "How long does data stored in TempData typically persist?",
+    "options": {
+      "A": "Until explicitly removed.",
+      "B": "For the duration of the current request and the next request.",
+      "C": "Until the application is restarted.",
+      "D": "Until the user closes the browser."
+    },
+    "answer": "B",
+    "topic": "ASP.NET Core MVC",
+    "explanation": "Trong ASP.NET Core MVC / Razor Pages, TempData là một từ điển (dictionary) dùng để chuyển dữ liệu từ yêu cầu hiện tại sang chính xác một yêu cầu tiếp theo (thường dùng trong mô hình Redirect-To-Action để truyền thông báo). Sau khi yêu cầu thứ hai đọc xong giá trị đó, dữ liệu trong TempData sẽ tự động bị xóa bỏ."
+  },
+  {
+    "id": 22,
+    "question": "SignalR was created by:",
+    "options": {
+      "A": "Anders Hejlsberg",
+      "B": "Scott Guthrie",
+      "C": "David Fowler & Damian Edwards",
+      "D": "Satya Nadella"
+    },
+    "answer": "C",
+    "topic": "SignalR & Real-time",
+    "explanation": "ASP.NET SignalR ban đầu được phát triển bởi David Fowler và Damian Edwards (hai kỹ sư phần mềm nổi tiếng tại Microsoft) vào năm 2011 như một dự án mã nguồn mở, trước khi được tích hợp chính thức vào hệ sinh thái ASP.NET của Microsoft. Thông tin thêm về các phương án khác: Anders Hejlsberg: Cha đẻ của ngôn ngữ C# và TypeScript. Scott Guthrie: Phó chủ tịch cấp cao mảng Cloud and AI của Microsoft (người tạo ra ASP.NET ban đầu). Satya Nadella: CEO hiện tại của Microsoft."
+  },
+  {
+    "id": 23,
+    "question": "Who coined the acronym SOLID?",
+    "options": {
+      "A": "Michael Feathers",
+      "B": "Robert C. Martin",
+      "C": "Martin Fowler",
+      "D": "Kent Beck"
+    },
+    "answer": "A",
+    "topic": "Software Architecture & SOLID",
+    "explanation": "Robert C. Martin (thường gọi là \"Uncle Bob\") là người đã giới thiệu 5 nguyên tắc thiết kế hướng đối tượng cơ bản trong các bài viết của ông vào khoảng năm 2000. Tuy nhiên, chính Michael Feathers mới là người đã ghép các chữ cái đầu của 5 nguyên tắc đó lại với nhau để tạo ra thuật ngữ viết tắt \"SOLID\" cho dễ nhớ."
+  },
+  {
+    "id": 24,
+    "question": "What does the name Blazor come from?",
+    "options": {
+      "A": "Blended + Razor",
+      "B": "Blaze + Razor",
+      "C": "Basic + Razor",
+      "D": "Browser + Razor"
+    },
+    "answer": "D",
+    "topic": "Blazor Framework",
+    "explanation": "Tên gọi Blazor là sự kết hợp giữa Browser (trình duyệt) và Razor (cú pháp Razor template của ASP.NET). Ý tưởng cốt lõi của Blazor là mang cú pháp Razor (vốn trước đây chỉ chạy phía server) trực tiếp vào Browser để thực thi mã C# phía client thông qua WebAssembly."
+  },
+  {
+    "id": 25,
+    "question": "(Choose 1 answer) Which principle is emphasized by DI in Razor Pages?",
+    "options": {
+      "A": "Don't Repeat Yourself (DRY)",
+      "B": "Procedural Programming",
+      "C": "Maximum Reuse",
+      "D": "Loose Session Coupling"
+    },
+    "answer": "D",
+    "topic": "Razor Pages & Tag Helpers",
+    "explanation": "Mục đích chính của Dependency Injection (DI) trong thiết kế phần mềm nói chung và trong ASP.NET Core Razor Pages nói riêng là đạt được Loose Coupling (liên kết lỏng lẻo) giữa các thành phần. Nhờ DI, các lớp (classes) không tự khởi tạo trực tiếp các lớp phụ thuộc khác bằng từ khóa new, giúp mã nguồn dễ bảo trì, mở rộng và dễ dàng viết unit test độc lập."
+  },
+  {
+    "id": 26,
+    "question": "What is Dependency Injection (DI)?",
+    "options": {
+      "A": "A design pattern where objects receive their dependencies from external sources.",
+      "B": "Amethod for encrypting data.",
+      "C": "A technique for optimizing database queries.",
+      "D": "A way to manage network connections."
+    },
+    "answer": "A",
+    "topic": "Dependency Injection (DI)",
+    "explanation": "ependency Injection (DI) là một mẫu thiết kế trong lập trình. Thay vì một đối tượng tự khởi tạo các phụ thuộc của nó (bằng cách dùng từ khóa new), các phụ thuộc này sẽ được \"tiêm\" (truyền) vào đối tượng đó từ bên ngoài (thường thông qua constructor, property, hoặc method) bởi một DI Container (như IoC Container trong .NET Core). Điều này giúp giảm sự phụ thuộc lẫn nhau giữa các lớp, dễ quản lý và viết Unit Test."
+  },
+  {
+    "id": 27,
+    "question": "(Choose 1 answer) How are handler methods typically named in a Razor PageModel?",
+    "options": {
+      "A": "OnGet(), OnPost()",
+      "B": "GetHandler(), PostHandler()",
+      "C": "ProcessGet(), ProcessPost()",
+      "D": "HandleGet(), HandlePost()"
+    },
+    "answer": "A",
+    "topic": "Razor Pages & Tag Helpers",
+    "explanation": "Trong ASP.NET Core Razor Pages, các handler method theo quy ước (convention) chuẩn sẽ bắt đầu bằng tiền tố On kết hợp với tên phương thức HTTP (HTTP verb). Khi nhận yêu cầu HTTP GET, Razor Pages sẽ tự động tìm và thực thi hàm OnGet() (hoặc OnGetAsync()). Khi nhận yêu cầu HTTP POST, nó sẽ tìm và thực thi hàm OnPost() (hoặc OnPostAsync())."
+  },
+  {
+    "id": 28,
+    "question": "] (Choose 1 answer) What is the purpose of the Redirect ToAction action result?",
+    "options": {
+      "A": "Toreturn a file download.",
+      "B": "To return a JSON response.",
+      "C": "Toreturn a view.",
+      "D": "To redirect the user to another action within the same controller or a different one."
+    },
+    "answer": "D",
+    "topic": "C# & .NET Core",
+    "explanation": "Trong ASP.NET Core MVC, phương thức RedirectToAction() trả về một RedirectToActionResult. Khi phương thức này được thực thi, nó sẽ phản hồi về trình duyệt mã trạng thái HTTP 302 (Found / Temporary Redirect) cùng với đường dẫn URL đến action mục tiêu, yêu cầu trình duyệt gửi một yêu cầu GET mới tới action đó (thường dùng sau khi nhận lệnh POST thành công để tránh việc người dùng bấm F5 bị gửi lại dữ liệu trùng lặp - mô hình POST-REDIRECT-GET)."
+  },
+  {
+    "id": 29,
+    "question": "B (Choose 1 answer) What is the primary purpose of ASP.NET Core Razor Pages?",
+    "options": {
+      "A": "Building desktop applications.",
+      "B": "Building page-centric web applications with simplified development.",
+      "C": "Building database management systems.",
+      "D": "Buildina mobile applications."
+    },
+    "answer": "B",
+    "topic": "Razor Pages & Tag Helpers",
+    "explanation": "Razor Pages là một mô hình lập trình web dựa trên từng trang (page-centric), giúp việc xây dựng các ứng dụng web theo hướng trang lẻ (như trang đăng ký, đăng nhập, danh sách sản phẩm,...) trở nên đơn giản, nhanh chóng và trực quan hơn so với mô hình MVC đầy đủ (không cần phân chia Controller và View riêng biệt cho từng trang đơn giản)."
+  },
+  {
+    "id": 30,
+    "question": "Why is MessagePack often preferred over JSON in SignalR?",
+    "options": {
+      "A": "A component used to connect to database in Entity Framework",
+      "B": "A protocol for sending emails",
+      "C": "A high-level pipeline for client-server RPC in SignalR",
+      "D": "A UI component in Blazor"
+    },
+    "answer": "B",
+    "topic": "SignalR & Real-time",
+    "explanation": "MessagePack là một định dạng truyền dữ liệu nhị phân (binary serialization format) cực kỳ hiệu quả. So với JSON (vốn là chuỗi văn bản/text-based), MessagePack mã hóa dữ liệu thành các byte nhị phân nên giúp kích thước gói tin nhỏ hơn đáng kể và tốc độ đóng gói/giải mã (serialize/deserialize) nhanh hơn, từ đó tối ưu băng thông và tăng hiệu năng truyền dữ liệu thời gian thực trong SignalR."
+  },
+  {
+    "id": 31,
+    "question": "What is the purpose of the JsonResult action result?",
+    "options": {
+      "A": "To redirect to another action.",
+      "B": "To return a file download.",
+      "C": "To return data in JSON format.",
+      "D": "To return a view."
+    },
+    "answer": "C",
+    "topic": "ASP.NET Core MVC",
+    "explanation": "Trong ASP.NET Core MVC, phương thức Json() trả về một đối tượng JsonResult. Kết quả này sẽ tự động tuần tự hóa (serialize) một đối tượng C# thành một chuỗi dữ liệu có định dạng JSON và gửi về cho client (thường dùng khi xây dựng API hoặc xử lý các yêu cầu AJAX gửi từ phía giao diện)."
+  },
+  {
+    "id": 32,
+    "question": "How many tasks does the following code create? for (inti=0;i<3;i++) { Task t = new Task(() => Console.WriteLine(i)); t.Start(); } Al",
+    "options": {
+      "A": "1",
+      "B": "2",
+      "C": "3",
+      "D": "4"
+    },
+    "answer": "C",
+    "topic": "Parallel Programming & TPL",
+    "explanation": "Vòng lặp for chạy 3 lần với 𝑖 = 0 , 1 , 2 i=0,1,2. Ở mỗi lần lặp, câu lệnh new Task(...) được gọi một lần để khởi tạo một đối tượng Task mới. Do đó, tổng cộng có 3 đối tượng Task được tạo ra và bắt đầu thực thi."
+  },
+  {
+    "id": 33,
+    "question": "(Choose 1 answer) What is the typical lifetime of a Worker Service?",
+    "options": {
+      "A": "Only for the duration of a user session.",
+      "B": "Only for the duration of a database transaction.",
+      "C": "Only for the duration of an HTTP request.",
+      "D": "Until the application is manually stopped."
+    },
+    "answer": "D",
+    "topic": "C# & .NET Core",
+    "explanation": "Worker Service trong .NET được thiết kế cho các tác vụ dịch vụ chạy ngầm (long-running background services / Windows Service / Linux Daemon). Nó khởi chạy cùng với ứng dụng và tiếp tục thực thi liên tục trong suốt thời gian hệ thống vận hành cho đến khi ứng dụng bị tắt hoặc dừng lại một cách chủ động (manually stopped hoặc nhận tín hiệu shutdown từ hệ điều hành)."
+  },
+  {
+    "id": 34,
+    "question": "With AddTransient<IEmailService, EmailService>(), injecting into a controller twice will produce:",
+    "options": {
+      "A": "Different instances",
+      "B": "Runtime error",
+      "C": "The same instance",
+      "D": "Null references"
+    },
+    "answer": "A",
+    "topic": "Dependency Injection (DI)",
+    "explanation": "Trong Dependency Injection của .NET Core, dịch vụ được đăng ký với vòng đời Transient (AddTransient) sẽ được khởi tạo mỗi lần được yêu cầu (every time it is requested). Do đó, nếu bạn tiêm IEmailService hai lần vào cùng một controller (hoặc trong cùng một HTTP request), DI container sẽ tạo ra 2 thể hiện (instance) độc lập khác nhau. (Phân biệt với AddScoped - trả về cùng 1 instance trong 1 request, và AddSingleton - trả về cùng 1 instance duy nhất trong suốt vòng đời ứng dụng)."
+  },
+  {
+    "id": 35,
+    "question": "(Choose 1 answer) Dependency Inversion Principle states:",
+    "options": {
+      "A": "High-level modules should depend on low-level modules",
+      "B": "Both high-level and low-level modules should depend on abstractions",
+      "C": "Interfaces should depend on classes",
+      "D": "Abstractions should depend on details"
+    },
+    "answer": "B",
+    "topic": "C# & .NET Core",
+    "explanation": "Phát biểu đầy đủ của nguyên tắc Dependency Inversion Principle (DIP) trong thiết kế phần mềm gồm 2 ý: Các module cấp cao không nên phụ thuộc vào các module cấp thấp. Cả hai nên phụ thuộc vào sự trừu tượng (abstractions). Sự trừu tượng không nên phụ thuộc vào chi tiết cụ thể. Ngược lại, chi tiết cụ thể phải phụ thuộc vào sự trừu tượng."
+  },
+  {
+    "id": 36,
+    "question": ") (Choose 1 answer) Which of the following is a drawback of Blazor WebAssembly?",
+    "options": {
+      "A": "No component model",
+      "B": "Larger initial download size",
+      "C": "Requires .NET runtime installed on the client",
+      "D": "No data binding support"
+    },
+    "answer": "B",
+    "topic": "Blazor Framework",
+    "explanation": "Khi ứng dụng Blazor WebAssembly chạy lần đầu tiên trên trình duyệt của người dùng, trình duyệt phải tải toàn bộ mã ứng dụng đã biên dịch, các thư viện phụ thuộc (dependencies) và một phiên bản .NET Runtime thu nhỏ (dưới dạng mã WebAssembly .wasm). Do đó, kích thước tệp cần tải về ở lần truy cập đầu tiên khá lớn, dẫn đến thời gian tải trang ban đầu (initial load time) lâu hơn so với các ứng dụng web truyền thống. (Lưu ý về phương án C: .NET Runtime được tải kèm và chạy trực tiếp bên trong trình duyệt nhờ WebAssembly, người dùng KHÔNG cần phải cài đặt trước .NET runtime lên máy tính của mình)."
+  },
+  {
+    "id": 37,
+    "question": "(Choose 1 answer) Given the code: builder.Services.AddScoped<IOrderService, OrderService>(); How will OrderService behave?",
+    "options": {
+      "A": "Same instance for the entire application",
+      "B": "Thread-local instance",
+      "C": "New instance for each HTTP request",
+      "D": "New instance everv time injected"
+    },
+    "answer": "C",
+    "topic": "Dependency Injection (DI)",
+    "explanation": "Trong Dependency Injection của .NET Core, phương thức AddScoped đăng ký dịch vụ với vòng đời Scoped. Một dịch vụ Scoped sẽ tạo ra một thể hiện (instance) duy nhất dùng chung cho toàn bộ một yêu cầu HTTP (HTTP request). Tất cả các thành phần xử lý trong cùng một HTTP Request khi gọi IOrderService sẽ nhận cùng 1 instance. Khi một HTTP Request mới gửi đến, DI container sẽ tạo ra 1 instance mới cho Request đó. (Ghi chú phân biệt: Phương án A là vòng đời Singleton, phương án D là vòng đời Transient)."
+  },
+  {
+    "id": 38,
+    "question": "] (Choose 1 answer) What is the purpose of the method GetStream() of the TcpClient class?",
+    "options": {
+      "A": "To get the IP address of the connected server.",
+      "B": "To get the port number of the connected server.",
+      "C": "To close the connection.",
+      "D": "To get the network stream used for sending and receiving data."
+    },
+    "answer": "D",
+    "topic": "Networking & Protocols",
+    "explanation": "Trong lập trình mạng với .NET, sau khi một đối tượng TcpClient đã kết nối thành công tới server, phương thức GetStream() sẽ trả về một đối tượng thuộc lớp NetworkStream. Luồng dữ liệu (stream) này cho phép ứng dụng đọc (Read) các dữ liệu đến và ghi (Write) dữ liệu đi thông qua kết nối TCP."
+  },
+  {
+    "id": 39,
+    "question": "In PLINQ, which method converts a LINQ query into a parallel query?",
+    "options": {
+      "A": "ToParallel()",
+      "B": "AsParallel()",
+      "C": "RunParallel()",
+      "D": "ParallelQuery()"
+    },
+    "answer": "B",
+    "topic": "Parallel Programming & TPL",
+    "explanation": "Trong .NET, PLINQ (Parallel LINQ) là một bản triển khai song song của LINQ. Phương thức mở rộng AsParallel() được gọi trên một nguồn dữ liệu IEnumerable&lt để chuyển đổi nó thành một ParallelQuery&lt;T&gt;, từ đó kích hoạt khả năng xử lý song song trên nhiều luồng (threads) của CPU nhằm tăng tốc độ truy vấn đối với tập dữ liệu lớn."
+  },
+  {
+    "id": 40,
+    "question": "What is a benefit of Blazor's component model?",
+    "options": {
+      "A": "Promotes reusability",
+      "B": "Requires JavaScript interop for Ul updates",
+      "C": "Avoids dependency injection",
+      "D": "Eliminates Razor syntax"
+    },
+    "answer": "A",
+    "topic": "Blazor Framework",
+    "explanation": "Mô hình thành phần (Component Model) trong Blazor cho phép bạn chia nhỏ giao diện người dùng thành các thành phần độc lập, tự đóng gói (được viết bằng C# và Razor syntax). Nhờ đó, bạn có thể dễ dàng tái sử dụng (reuse) các component này ở nhiều nơi khác nhau trong toàn bộ ứng dụng hoặc giữa các dự án khác nhau."
+  },
+  {
+    "id": 41,
+    "question": "What is the primary difference between real-time web applications and traditional web applications?",
+    "options": {
+      "A": "Real-time apps enable immediate, bidirectional communication, traditional apps rely on request-response cycles.",
+      "B": "Real-time apps use static HTML, traditional apps use dynamic content.",
+      "C": "Real-time apps are slower than traditional apps.",
+      "D": "Real-time apps use databases, traditional apps do not."
+    },
+    "answer": "A",
+    "topic": "C# & .NET Core",
+    "explanation": "Ứng dụng web truyền thống: Hoạt động theo mô hình Request-Response (Client gửi yêu cầu thì Server mới phản hồi). Server không thể tự chủ động gửi dữ liệu xuống Client khi chưa có yêu cầu. Ứng dụng thời gian thực (Real-time): Sử dụng các công nghệ như WebSockets / SignalR tạo kênh kết nối hai chiều (bidirectional) liên tục, cho phép Server đẩy (push) dữ liệu xuống Client ngay lập tức khi có sự thay đổi mà không cần Client phải gửi yêu cầu trước."
+  },
+  {
+    "id": 42,
+    "question": "What is the purpose of the User feature in SignalR?",
+    "options": {
+      "A": "To manage user sessions.",
+      "B": "To encrypt data.",
+      "C": "To send messages to clients based on their authenticated user identity.",
+      "D": "To manage database connections."
+    },
+    "answer": "C",
+    "topic": "SignalR & Real-time",
+    "explanation": "Trong SignalR, một người dùng (User) có thể kết nối từ nhiều thiết bị/trình duyệt khác nhau (mỗi kết nối có một ConnectionId riêng). Tính năng User cho phép Server gửi tin nhắn trực tiếp đến tất cả các kết nối thuộc về một tài khoản người dùng cụ thể dựa trên danh tính đã xác thực (ClaimsPrincipal / User.Identity.Name), thông qua phương thức Clients.User(userId).SendAsync(...)."
+  },
+  {
+    "id": 43,
+    "question": "What is a Worker Service in NET?",
+    "options": {
+      "A": "Areplacement for Windows Forms",
+      "B": "A project type for building background services",
+      "C": "A frontend Ul framework",
+      "D": "A Visual Studio extension"
+    },
+    "answer": "B",
+    "topic": "C# & .NET Core",
+    "explanation": "Trong .NET, Worker Service là một loại template dự án được thiết kế chuyên biệt để xây dựng các tác vụ xử lý chạy ngầm dài hạn (long-running background tasks) không có giao diện người dùng (UI). Các Worker Service thường được triển khai dưới dạng Windows Service hoặc Linux Daemon để xử lý định kỳ, xếp hàng tin nhắn (message processing), hoặc các tác vụ bảo trì hệ thống."
+  },
+  {
+    "id": 44,
+    "question": "Which are the three service lifetimes in NET Core DI?",
+    "options": {
+      "A": "Static, Dynamic, ThreadLocal",
+      "B": "Session, Application, Request",
+      "C": "Singleton, Scoped, Transient",
+      "D": "Transient, Singleton, Scoped"
+    },
+    "answer": "C",
+    "topic": "C# & .NET Core",
+    "explanation": "Trong .NET Core Dependency Injection, có 3 loại vòng đời dịch vụ chính: Transient (AddTransient): Được khởi tạo mới mỗi lần được yêu cầu/tiêm vào. Scoped (AddScoped): Được khởi tạo một lần duy nhất cho mỗi yêu cầu HTTP (HTTP Request). Singleton (AddSingleton): Được khởi tạo một lần duy nhất khi gọi lần đầu và dùng chung cho toàn bộ vòng đời của ứng dụng."
+  },
+  {
+    "id": 45,
+    "question": "What is the purpose of the [BindProperty] attribute in Razor Pages?",
+    "options": {
+      "A": "To define a database connection.",
+      "B": "To encrypt data.",
+      "C": "To manage user sessions.",
+      "D": "To bind form data to a PageModel property."
+    },
+    "answer": "D",
+    "topic": "Razor Pages & Tag Helpers",
+    "explanation": "Trong ASP.NET Core Razor Pages, khi bạn gắn thuộc tính [BindProperty] lên một property trong PageModel, hệ thống Model Binding sẽ tự động lấy dữ liệu được gửi lên từ biểu mẫu HTTP (chẳng hạn như form POST) và gán giá trị tương ứng vào property đó, giúp bạn xử lý dữ liệu form một cách nhanh chóng và tiện lợi mà không cần truyền tham số thủ công vào handler method."
+  },
+  {
+    "id": 46,
+    "question": "How do you handle events for a SignalR connection on the client-side?",
+    "options": {
+      "A": "By using static HTML files.",
+      "B": "By using database queries.",
+      "C": "By using JavaScript event listeners on the connection object.",
+      "D": "By writing CSS styles."
+    },
+    "answer": "C",
+    "topic": "SignalR & Real-time",
+    "explanation": "Ở phía client (JavaScript/TypeScript), bạn lắng nghe các sự kiện hoặc tin nhắn được gửi từ SignalR hub bằng cách sử dụng phương thức .on() trên đối tượng kết nối HubConnection. Ví dụ: connection.on(\"ReceiveMessage\", (user, message) =&gt; { ... });"
+  },
+  {
+    "id": 47,
+    "question": "(Choose 1 answer) The PageModel in Razor Pages is best described as:",
+    "options": {
+      "A": "A replacement for HTML",
+      "B": "A combination of Controller and ViewModel",
+      "C": "A database entity",
+      "D": "A network class"
+    },
+    "answer": "B",
+    "topic": "Razor Pages & Tag Helpers",
+    "explanation": "Trong kiến trúc Razor Pages của ASP.NET Core, lớp PageModel đóng đồng thời 2 vai trò: Controller: Xử lý các yêu cầu HTTP (thông qua các handler method như OnGet, OnPost). ViewModel: Chứa dữ liệu, trạng thái và các thuộc tính (properties) để hiển thị/ràng buộc dữ liệu trực tiếp với trang giao diện Razor (.cshtml)."
+  },
+  {
+    "id": 48,
+    "question": "] (Choose 1 answer) What happens when a SignalR client disconnects?",
+    "options": {
+      "A": "The database connection is closed.",
+      "B": "The server can detect the disconnection and handle it.",
+      "C": "The data is encrypted.",
+      "D": "The server is terminated."
+    },
+    "answer": "B",
+    "topic": "SignalR & Real-time",
+    "explanation": "Trong SignalR, lớp Hub cung cấp phương thức ảo OnDisconnectedAsync(Exception exception). Khi một client bị mất kết nối hoặc chủ động ngắt kết nối, SignalR Server sẽ tự động phát hiện sự kiện này và gọi phương thức OnDisconnectedAsync, cho phép nhà phát triển viết mã xử lý (như cập nhật trạng thái offline của người dùng, dọn dẹp tài nguyên hoặc thông báo cho các client khác)."
+  },
+  {
+    "id": 49,
+    "question": "How do you inject a service into a Razor PageModel?",
+    "options": {
+      "A": "By directly creating an instance of the service.",
+      "B": "By using static methods.",
+      "C": "By adding the service as a constructor parameter.",
+      "D": "By using global variables."
+    },
+    "answer": "C",
+    "topic": "Razor Pages & Tag Helpers",
+    "explanation": "Trong ASP.NET Core, phương pháp tiêu chuẩn và phổ biến nhất để thực hiện Dependency Injection (DI) vào một PageModel là Constructor Injection (tiêm qua hàm tạo). Bạn khai báo dịch vụ dưới dạng một tham số trong hàm khởi tạo (constructor) của lớp PageModel, hệ thống DI Container sẽ tự động khởi tạo và truyền thể hiện (instance) tương ứng của dịch vụ đó vào khi PageModel được gọi."
+  },
+  {
+    "id": 50,
+    "question": "Which role does the Controller play in MVC?",
+    "options": {
+      "A": "Storing domain-specific logic",
+      "B": "Handling requests and orchestrating logic",
+      "C": "Rendering HTML",
+      "D": "Maintaining session state"
+    },
+    "answer": "C",
+    "topic": "ASP.NET Core MVC",
+    "explanation": "Trong ASP.NET Core, phương pháp tiêu chuẩn và phổ biến nhất để thực hiện Dependency Injection (DI) vào một PageModel là Constructor Injection (tiêm qua hàm tạo). Bạn khai báo dịch vụ dưới dạng một tham số trong hàm khởi tạo (constructor) của lớp PageModel, hệ thống DI Container sẽ tự động khởi tạo và truyền thể hiện (instance) tương ứng của dịch vụ đó vào khi PageModel được gọi."
+  }
+]

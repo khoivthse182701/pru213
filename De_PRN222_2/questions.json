@@ -1,0 +1,652 @@
+[
+  {
+    "id": 1,
+    "question": "Which are the three service lifetimes in NET Core DI?",
+    "options": {
+      "A": "Singleton, Scoped, Transient",
+      "B": "Static, Dynamic, ThreadLocal",
+      "C": "Short, Medium, Long",
+      "D": "Session, Application, Request"
+    },
+    "answer": "A",
+    "topic": "C# & .NET Core",
+    "explanation": "Đáp án chính xác được xác nhận bởi cộng đồng sinh viên và đề thi FE."
+  },
+  {
+    "id": 2,
+    "question": "Which method is used to register a Singleton service in ServiceCollection?",
+    "options": {
+      "A": "AddTransient()",
+      "B": "AddScoped()",
+      "C": "AddSingleton()",
+      "D": "AddScopedTransient()"
+    },
+    "answer": "C",
+    "topic": "Dependency Injection (DI)",
+    "explanation": "Đáp án chính xác được xác nhận bởi cộng đồng sinh viên và đề thi FE."
+  },
+  {
+    "id": 3,
+    "question": "Who coined the acronym SOLID?",
+    "options": {
+      "A": "Robert C. Martin",
+      "B": "Michael Feathers",
+      "C": "Kent Beck",
+      "D": "Martin Fowle"
+    },
+    "answer": "B",
+    "topic": "Software Architecture & SOLID",
+    "explanation": "Đáp án chính xác được xác nhận bởi cộng đồng sinh viên và đề thi FE."
+  },
+  {
+    "id": 4,
+    "question": "What is a \"service lifetime\" in NET's DI container?",
+    "options": {
+      "A": "The duration for which a service instance is kept in memory.",
+      "B": "The number of dependencies a service can have.",
+      "C": "The size of the service's code.",
+      "D": "The network latency of the service."
+    },
+    "answer": "A",
+    "topic": "Dependency Injection (DI)",
+    "explanation": "Đáp án chính xác được xác nhận bởi cộng đồng sinh viên và đề thi FE."
+  },
+  {
+    "id": 5,
+    "question": "Which method is used to register a Transient service in ServiceCollection?",
+    "options": {
+      "A": "AddSingleton()",
+      "B": "AddScoped()",
+      "C": "AddTransient()",
+      "D": "AddScopedTransient()"
+    },
+    "answer": "C",
+    "topic": "Dependency Injection (DI)",
+    "explanation": "Đáp án chính xác được xác nhận bởi cộng đồng sinh viên và đề thi FE."
+  },
+  {
+    "id": 6,
+    "question": "Consider this C# code: var services = new ServiceCollection(); rvices AddTransient<lLogger, ConsoleLogger=>(); What does this code do?",
+    "options": {
+      "A": "Registers ILogger so that each request gets a new ConsoleLogger instance",
+      "B": "Registers ILogger as a singleton",
+      "C": "Registers ConsoleLogger directly without abstraction",
+      "D": "Throws an error since Logger is abstract"
+    },
+    "answer": "A",
+    "topic": "Dependency Injection (DI)",
+    "explanation": "Đáp án chính xác được xác nhận bởi cộng đồng sinh viên và đề thi FE."
+  },
+  {
+    "id": 7,
+    "question": "How does Blazor Server communicate with the browser?",
+    "options": {
+      "A": "Using REST APIs.",
+      "B": "Using SignalR.",
+      "C": "Using WebSockets.",
+      "D": "Using AJAX."
+    },
+    "answer": "B",
+    "topic": "Blazor Framework",
+    "explanation": "Đáp án chính xác được xác nhận bởi cộng đồng sinh viên và đề thi FE."
+  },
+  {
+    "id": 8,
+    "question": "What is the advantage of using Blazor WebAssembly over Blazor Server in terms of server load?",
+    "options": {
+      "A": "Blazor Server has lower server load.",
+      "B": "Blazor WebAssembly has lower server load.",
+      "C": "Both have the same server load.",
+      "D": "Blazor Server eliminates server load."
+    },
+    "answer": "B",
+    "topic": "Blazor Framework",
+    "explanation": "Đáp án chính xác được xác nhận bởi cộng đồng sinh viên và đề thi FE."
+  },
+  {
+    "id": 9,
+    "question": "In Blazor WebAssembly, where does the application execute?",
+    "options": {
+      "A": "On the SQL database",
+      "B": "On the server memory",
+      "C": "Inside the client's browser using WebAssembly",
+      "D": "On Azure Functions"
+    },
+    "answer": "C",
+    "topic": "Blazor Framework",
+    "explanation": "Đáp án chính xác được xác nhận bởi cộng đồng sinh viên và đề thi FE."
+  },
+  {
+    "id": 10,
+    "question": "In an ASP.NET Core Blazor app, which file serves as the entry point where services and middleware are onfigured?",
+    "options": {
+      "A": "App.razor",
+      "B": "Program.cs",
+      "C": "Startup.cs",
+      "D": "Routes razor"
+    },
+    "answer": "B",
+    "topic": "Blazor Framework",
+    "explanation": "Đáp án chính xác được xác nhận bởi cộng đồng sinh viên và đề thi FE."
+  },
+  {
+    "id": 11,
+    "question": "Which of the following is a drawback of Blazor WebAssembly?",
+    "options": {
+      "A": "Requires NET runtime installed on the client",
+      "B": "Larger initial download size",
+      "C": "No component model",
+      "D": "No data binding support"
+    },
+    "answer": "B",
+    "topic": "Blazor Framework",
+    "explanation": "Đáp án chính xác được xác nhận bởi cộng đồng sinh viên và đề thi FE."
+  },
+  {
+    "id": 12,
+    "question": "Which connection is used by Blazor Server for Ul updates?",
+    "options": {
+      "A": "HTTP",
+      "B": "gRPC",
+      "C": "SignalR",
+      "D": "WebSocket only"
+    },
+    "answer": "C",
+    "topic": "Blazor Framework",
+    "explanation": "Đáp án chính xác được xác nhận bởi cộng đồng sinh viên và đề thi FE."
+  },
+  {
+    "id": 13,
+    "question": "Which of the following is a key feature of SignalR for ASP.NET Core?",
+    "options": {
+      "A": "Server-side rendering only.",
+      "B": "Automatic reconnection handling.",
+      "C": "Limited support for modern web standards.",
+      "D": "Dependency on Internet Explorer."
+    },
+    "answer": "B",
+    "topic": "SignalR & Real-time",
+    "explanation": "Đáp án chính xác được xác nhận bởi cộng đồng sinh viên và đề thi FE."
+  },
+  {
+    "id": 14,
+    "question": "Which method registers SignalR services in Startup?",
+    "options": {
+      "A": "services AddHub()",
+      "B": "services AddSignalR()",
+      "C": "app.UseSignalR()",
+      "D": "services RegisterSignalR()"
+    },
+    "answer": "B",
+    "topic": "SignalR & Real-time",
+    "explanation": "Đáp án chính xác được xác nhận bởi cộng đồng sinh viên và đề thi FE."
+  },
+  {
+    "id": 15,
+    "question": "Which transport methods does SignalR support?",
+    "options": {
+      "A": "WebSockets",
+      "B": "Server-Sent Events",
+      "C": "Long Polling",
+      "D": "All of the above"
+    },
+    "answer": "D",
+    "topic": "SignalR & Real-time",
+    "explanation": "Đáp án chính xác được xác nhận bởi cộng đồng sinh viên và đề thi FE."
+  },
+  {
+    "id": 16,
+    "question": "Which method is used to receive messages from the server on the client-side?",
+    "options": {
+      "A": "receive()",
+      "B": "on()",
+      "C": "listen()",
+      "D": "get()"
+    },
+    "answer": "B",
+    "topic": "C# & .NET Core",
+    "explanation": "Đáp án chính xác được xác nhận bởi cộng đồng sinh viên và đề thi FE."
+  },
+  {
+    "id": 17,
+    "question": "How do you use hubs in SignalR for ASP.NET Core?",
+    "options": {
+      "A": "By defining JavaScript functions.",
+      "B": "By creating classes that inherit from Hub.",
+      "C": "By using static HTML files.",
+      "D": "By using database queries."
+    },
+    "answer": "B",
+    "topic": "SignalR & Real-time",
+    "explanation": "Đáp án chính xác được xác nhận bởi cộng đồng sinh viên và đề thi FE."
+  },
+  {
+    "id": 18,
+    "question": "How do you add the SignalR client library to a web application?",
+    "options": {
+      "A": "By writing CSS styles.",
+      "B": "By including the SignalR client JavaScript file.",
+      "C": "By using static HTML files.",
+      "D": "By using database queries."
+    },
+    "answer": "B",
+    "topic": "SignalR & Real-time",
+    "explanation": "Đáp án chính xác được xác nhận bởi cộng đồng sinh viên và đề thi FE."
+  },
+  {
+    "id": 19,
+    "question": "Which of the following statements about hubs in SignalR are true? (More than one correct answer).",
+    "options": {
+      "A": "They manage client connections",
+      "B": "They can call methods on clients",
+      "C": "They store persistent messages",
+      "D": "They require HTTPS"
+    },
+    "answer": "A",
+    "topic": "SignalR & Real-time",
+    "explanation": "Trong SignalR, Hub là cầu nối quản lý các kết nối client và có thể gọi các phương thức trực tiếp trên client (Remote Procedure Call - RPC)."
+  },
+  {
+    "id": 20,
+    "question": "The WebRequest Create(Uri) method is used to:",
+    "options": {
+      "A": "Initialize a new WebRequest for a specific URI scheme",
+      "B": "Open a database connection",
+      "C": "Create a physical network cable",
+      "D": "Define hardware IP addressing"
+    },
+    "answer": "A",
+    "topic": "Networking & Protocols",
+    "explanation": "Đáp án chính xác được xác nhận bởi cộng đồng sinh viên và đề thi FE."
+  },
+  {
+    "id": 21,
+    "question": "What is the primary purpose of a network socket?",
+    "options": {
+      "A": "To encrypt network traffic.",
+      "B": "To provide a communication endpoint between two applications.",
+      "C": "Tomanage IP addresses.",
+      "D": "To route network packets."
+    },
+    "answer": "B",
+    "topic": "Networking & Protocols",
+    "explanation": "Đáp án chính xác được xác nhận bởi cộng đồng sinh viên và đề thi FE."
+  },
+  {
+    "id": 22,
+    "question": "Which NET class is used for creating a TCP client connection?",
+    "options": {
+      "A": "Tcplistener",
+      "B": "UdpClient",
+      "C": "TcpClient",
+      "D": "Socket"
+    },
+    "answer": "C",
+    "topic": "Networking & Protocols",
+    "explanation": "Đáp án chính xác được xác nhận bởi cộng đồng sinh viên và đề thi FE."
+  },
+  {
+    "id": 23,
+    "question": "The AcceptSocketAsync() method in TepListener is used to:",
+    "options": {
+      "A": "Send data to a client",
+      "B": "Accept a pending client connection asynchronously",
+      "C": "Stop the listener",
+      "D": "Bind to an IP address"
+    },
+    "answer": "B",
+    "topic": "Parallel Programming & TPL",
+    "explanation": "Đáp án chính xác được xác nhận bởi cộng đồng sinh viên và đề thi FE."
+  },
+  {
+    "id": 24,
+    "question": "An IP address is primarily used to:",
+    "options": {
+      "A": "Identify a physical device on a local network only",
+      "B": "Provide logical addressing for devices across networks",
+      "C": "Encrypt data during transmission",
+      "D": "Define the maximum transmission speed"
+    },
+    "answer": "B",
+    "topic": "Networking & Protocols",
+    "explanation": "Đáp án chính xác được xác nhận bởi cộng đồng sinh viên và đề thi FE."
+  },
+  {
+    "id": 25,
+    "question": "Which NET class provides low-level control over network communication, including both TCP and UDP?",
+    "options": {
+      "A": "TcpClient",
+      "B": "UdpClient",
+      "C": "HttpClient",
+      "D": "Socket"
+    },
+    "answer": "D",
+    "topic": "Networking & Protocols",
+    "explanation": "Đáp án chính xác được xác nhận bởi cộng đồng sinh viên và đề thi FE."
+  },
+  {
+    "id": 26,
+    "question": "What is the default return type of an MVC action?",
+    "options": {
+      "A": "|ActionResult",
+      "B": "ActionResult",
+      "C": "string",
+      "D": "object"
+    },
+    "answer": "B",
+    "topic": "ASP.NET Core MVC",
+    "explanation": "Đáp án chính xác được xác nhận bởi cộng đồng sinh viên và đề thi FE."
+  },
+  {
+    "id": 27,
+    "question": "Which role does the Controller play in MVC?",
+    "options": {
+      "A": "Rendering HTML",
+      "B": "Handling requests and orchestrating logic",
+      "C": "Storing domain-specific logic",
+      "D": "Maintaining session state"
+    },
+    "answer": "B",
+    "topic": "ASP.NET Core MVC",
+    "explanation": "Đáp án chính xác được xác nhận bởi cộng đồng sinh viên và đề thi FE."
+  },
+  {
+    "id": 28,
+    "question": "What is the purpose of the RedirectToAction action result?",
+    "options": {
+      "A": "Toreturn a JSON response.",
+      "B": "To redirect the user to another action within the same controller or a different one.",
+      "C": "To return a file download.",
+      "D": "Toreturn a view."
+    },
+    "answer": "B",
+    "topic": "C# & .NET Core",
+    "explanation": "Đáp án chính xác được xác nhận bởi cộng đồng sinh viên và đề thi FE."
+  },
+  {
+    "id": 29,
+    "question": "Consider this C# code: public IActionResult Next() { var msg = TempData[\"Message\"]; var again = TempData['Message\"]; return Content($\"{msg} | {again}\"); } If TempData[\"Message\"] = \"Hi\"; was set in the previous request, what is displayed?",
+    "options": {
+      "A": "Hi| Hi",
+      "B": "Hi| null",
+      "C": "null | null",
+      "D": "Error"
+    },
+    "answer": "B",
+    "topic": "ASP.NET Core MVC",
+    "explanation": "- Reactions:: phuc282 minhlaHuy -10 Theo chapter 4 thì là A"
+  },
+  {
+    "id": 30,
+    "question": "What is the purpose of \"Tag Helpers\" in ASP.NET Core MVC?",
+    "options": {
+      "A": "To manage database connections.",
+      "B": "To generate HTML elements from server-side code.",
+      "C": "To encrypt data.",
+      "D": "To manage routing."
+    },
+    "answer": "B",
+    "topic": "Razor Pages & Tag Helpers",
+    "explanation": "Đáp án chính xác được xác nhận bởi cộng đồng sinh viên và đề thi FE."
+  },
+  {
+    "id": 31,
+    "question": "How long does data stored in TempData typically persist?",
+    "options": {
+      "A": "Until the application is restarted.",
+      "B": "Until the user closes the browser.",
+      "C": "For the duration of the current request and the next request.",
+      "D": "Until explicitly removed."
+    },
+    "answer": "C",
+    "topic": "ASP.NET Core MVC",
+    "explanation": "Đáp án chính xác được xác nhận bởi cộng đồng sinh viên và đề thi FE."
+  },
+  {
+    "id": 32,
+    "question": "How is dependency injection typically used in Razor Pages?",
+    "options": {
+      "A": "By directly creating instances of dependencies.",
+      "B": "By injecting dependencies into the PageModel constructor.",
+      "C": "By using global variables.",
+      "D": "By using static methods."
+    },
+    "answer": "B",
+    "topic": "Razor Pages & Tag Helpers",
+    "explanation": "Đáp án chính xác được xác nhận bởi cộng đồng sinh viên và đề thi FE."
+  },
+  {
+    "id": 33,
+    "question": "In Razor Pages, client-side validation is enabled by:",
+    "options": {
+      "A": "ASP.NET pipeline",
+      "B": "jQuery Unobtrusive Validation",
+      "C": "SignalR",
+      "D": "AJAX by default"
+    },
+    "answer": "B",
+    "topic": "Razor Pages & Tag Helpers",
+    "explanation": "Đáp án chính xác được xác nhận bởi cộng đồng sinh viên và đề thi FE."
+  },
+  {
+    "id": 34,
+    "question": "What is the purpose of the @model directive in a Razor Page?",
+    "options": {
+      "A": "To define a database connection.",
+      "B": "To specify the PageModel type for the Razor Page.",
+      "C": "To encrypt data.",
+      "D": "To manage user sessions."
+    },
+    "answer": "B",
+    "topic": "Razor Pages & Tag Helpers",
+    "explanation": "Đáp án chính xác được xác nhận bởi cộng đồng sinh viên và đề thi FE."
+  },
+  {
+    "id": 35,
+    "question": "What is the purpose of the [BindProperty] attribute in Razor Pages?",
+    "options": {
+      "A": "To define a database connection.",
+      "B": "To bind form data to a PageModel property.",
+      "C": "To encrypt data.",
+      "D": "To manage user sessions."
+    },
+    "answer": "B",
+    "topic": "Razor Pages & Tag Helpers",
+    "explanation": "Đáp án chính xác được xác nhận bởi cộng đồng sinh viên và đề thi FE."
+  },
+  {
+    "id": 36,
+    "question": "How does routing work in Razor Pages by default?",
+    "options": {
+      "A": "Based on controller actions.",
+      "B": "Based on the file path of the Razor Page.",
+      "C": "Based on database queries.",
+      "D": "Based on user sessions."
+    },
+    "answer": "B",
+    "topic": "Razor Pages & Tag Helpers",
+    "explanation": "Đáp án chính xác được xác nhận bởi cộng đồng sinh viên và đề thi FE."
+  },
+  {
+    "id": 37,
+    "question": "What are View Components in Razor Pages used for?",
+    "options": {
+      "A": "To manage database connections.",
+      "B": "To create reusable Ul components.",
+      "C": "To encrypt data.",
+      "D": "To manage routing."
+    },
+    "answer": "B",
+    "topic": "Razor Pages & Tag Helpers",
+    "explanation": "Đáp án chính xác được xác nhận bởi cộng đồng sinh viên và đề thi FE."
+  },
+  {
+    "id": 38,
+    "question": "Which directive defines the page model in a Razor Page?",
+    "options": {
+      "A": "@page",
+      "B": "@model",
+      "C": "@pagemodel",
+      "D": "@controller"
+    },
+    "answer": "B",
+    "topic": "Razor Pages & Tag Helpers",
+    "explanation": "Đáp án chính xác được xác nhận bởi cộng đồng sinh viên và đề thi FE."
+  },
+  {
+    "id": 39,
+    "question": "What is the main purpose of a Worker Service in NET?",
+    "options": {
+      "A": "To replace MVC controllers.",
+      "B": "To create a long-running background service.",
+      "C": "To manage static website hosting.",
+      "D": "To handle Ul rendering."
+    },
+    "answer": "B",
+    "topic": "C# & .NET Core",
+    "explanation": "Đáp án chính xác được xác nhận bởi cộng đồng sinh viên và đề thi FE."
+  },
+  {
+    "id": 40,
+    "question": "How do you implement a background task using a Worker Service?",
+    "options": {
+      "A": "By writing JavaScript functions.",
+      "B": "By overriding the ExecuteAsync(CancellationToken) method in a class derived from BackgroundService.",
+      "C": "By using static HTML files.",
+      "D": "By using database queries."
+    },
+    "answer": "B",
+    "topic": "Parallel Programming & TPL",
+    "explanation": "Đáp án chính xác được xác nhận bởi cộng đồng sinh viên và đề thi FE."
+  },
+  {
+    "id": 41,
+    "question": "How can you schedule a recurring task in a Worker Service?",
+    "options": {
+      "A": "By using JavaScript timers.",
+      "B": "By using System. Threading.Timer or System Threading. Tasks Delay.",
+      "C": "By using static HTML files.",
+      "D": "By using database triggers."
+    },
+    "answer": "B",
+    "topic": "Parallel Programming & TPL",
+    "explanation": "Đáp án chính xác được xác nhận bởi cộng đồng sinh viên và đề thi FE."
+  },
+  {
+    "id": 42,
+    "question": "What is the purpose of logging in a Worker Service?",
+    "options": {
+      "A": "To manage database connections.",
+      "B": "To record information, errors, and warnings during the service's execution.",
+      "C": "To encrypt data.",
+      "D": "To manage user sessions."
+    },
+    "answer": "B",
+    "topic": "C# & .NET Core",
+    "explanation": "Đáp án chính xác được xác nhận bởi cộng đồng sinh viên và đề thi FE."
+  },
+  {
+    "id": 43,
+    "question": "What is the purpose of dependency injection in a Worker Service?",
+    "options": {
+      "A": "To manage database connections.",
+      "B": "To provide necessary dependencies to the service.",
+      "C": "To encrypt data.",
+      "D": "To manage user sessions."
+    },
+    "answer": "B",
+    "topic": "Dependency Injection (DI)",
+    "explanation": "Đáp án chính xác được xác nhận bởi cộng đồng sinh viên và đề thi FE."
+  },
+  {
+    "id": 44,
+    "question": "Which method should NOT be used for long-running background work in controllers?",
+    "options": {
+      "A": "Task.Run()",
+      "B": "IHostedService",
+      "C": "BackgroundService",
+      "D": "Worker Service"
+    },
+    "answer": "A",
+    "topic": "ASP.NET Core MVC",
+    "explanation": "Đáp án chính xác được xác nhận bởi cộng đồng sinh viên và đề thi FE."
+  },
+  {
+    "id": 45,
+    "question": "Hyper-Threading (HT) technology is developed by:",
+    "options": {
+      "A": "AMD",
+      "B": "Intel",
+      "C": "IBM",
+      "D": "NVIDIA"
+    },
+    "answer": "B",
+    "topic": "Parallel Programming & TPL",
+    "explanation": "Đáp án chính xác được xác nhận bởi cộng đồng sinh viên và đề thi FE."
+  },
+  {
+    "id": 46,
+    "question": "What is the purpose of the Task class in NET?",
+    "options": {
+      "A": "To manage files.",
+      "B": "To represent an asynchronous operation.",
+      "C": "To handle network requests.",
+      "D": "To create user interfaces."
+    },
+    "answer": "B",
+    "topic": "Parallel Programming & TPL",
+    "explanation": "Đáp án chính xác được xác nhận bởi cộng đồng sinh viên và đề thi FE."
+  },
+  {
+    "id": 47,
+    "question": "What is the purpose of the Task. WhenAny() method?",
+    "options": {
+      "A": "To execute all tasks simultaneously.",
+      "B": "To wait for any one of the provided tasks to complete.",
+      "C": "To cancel all tasks.",
+      "D": "To create a new task."
+    },
+    "answer": "B",
+    "topic": "Parallel Programming & TPL",
+    "explanation": "Đáp án chính xác được xác nhận bởi cộng đồng sinh viên và đề thi FE."
+  },
+  {
+    "id": 48,
+    "question": "The main advantage of MIMD architecture is:",
+    "options": {
+      "A": "Simpler hardware design",
+      "B": "True parallelism",
+      "C": "Less power consumption",
+      "D": "Sequential execution"
+    },
+    "answer": "B",
+    "topic": "C# & .NET Core",
+    "explanation": "Đáp án chính xác được xác nhận bởi cộng đồng sinh viên và đề thi FE."
+  },
+  {
+    "id": 49,
+    "question": "Which of the following is an example of an I/O-bound operation suitable for asynchronous programming?",
+    "options": {
+      "A": "Sorting a large array.",
+      "B": "Rendering a complex 3D scene.",
+      "C": "Downloading a file from the internet.",
+      "D": "Performing a CPU-intensive calculation."
+    },
+    "answer": "C",
+    "topic": "Parallel Programming & TPL",
+    "explanation": "Đáp án chính xác được xác nhận bởi cộng đồng sinh viên và đề thi FE."
+  },
+  {
+    "id": 50,
+    "question": "What does TPL stand for?",
+    "options": {
+      "A": "Task Parallel Library",
+      "B": "Thread Programming Library",
+      "C": "Task Processing Layer",
+      "D": "Thread Parallel Logic"
+    },
+    "answer": "A",
+    "topic": "Parallel Programming & TPL",
+    "explanation": "Đáp án chính xác được xác nhận bởi cộng đồng sinh viên và đề thi FE."
+  }
+]
