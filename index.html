@@ -199,25 +199,25 @@
         </div>
 
         <!-- Mobile Quick Action Buttons (Compact & Neatly Aligned) -->
-        <div class="flex sm:hidden items-center gap-1 shrink-0">
-          <div id="examTimerMobile" class="hidden items-center gap-1 bg-amber-50 text-amber-700 px-1.5 py-1 rounded-lg border border-amber-200 text-[11px] font-bold">
-            <i class="fa-regular fa-clock animate-pulse text-[10px]"></i>
+        <div class="flex sm:hidden items-center gap-1.5 shrink-0">
+          <div id="examTimerMobile" class="hidden items-center gap-1 bg-amber-50 text-amber-700 px-2 py-1 rounded-xl border border-amber-200 text-xs font-bold">
+            <i class="fa-regular fa-clock animate-pulse text-[11px]"></i>
             <span id="timerTextMobile">50:00</span>
           </div>
           <!-- Toggle Layout Mobile: 1 Câu / D.Sách -->
-          <button onclick="toggleViewLayout()" id="btnLayoutMobile" title="Đổi giao diện Từng câu / Danh sách" class="h-7.5 px-2 rounded-lg border border-indigo-200 bg-indigo-50 text-indigo-700 text-[11px] font-bold flex items-center gap-1 active:scale-95 transition">
-            <i id="iconLayoutMobile" class="fa-solid fa-layer-group text-[11px]"></i>
+          <button onclick="toggleViewLayout()" id="btnLayoutMobile" title="Đổi giao diện Từng câu / Danh sách" class="h-9 px-2.5 rounded-xl border border-indigo-200 bg-indigo-50 text-indigo-700 text-xs font-bold flex items-center gap-1 active:scale-95 transition">
+            <i id="iconLayoutMobile" class="fa-solid fa-layer-group text-xs"></i>
             <span id="txtLayoutMobile">1 Câu</span>
           </button>
           <!-- Mobile Header Collapse Toggle -->
-          <button onclick="toggleHeaderCollapse()" id="btnHeaderCollapseMobile" class="w-7.5 h-7.5 rounded-lg border border-slate-200 bg-white text-slate-700 text-xs font-bold flex items-center justify-center active:scale-95 transition" title="Thu gọn / Mở rộng thanh công cụ">
-            <i id="iconHeaderCollapseMobile" class="fa-solid fa-expand text-indigo-500 text-[11px]"></i>
+          <button onclick="toggleHeaderCollapse()" id="btnHeaderCollapseMobile" class="w-9 h-9 rounded-xl border border-slate-200 bg-white text-slate-700 text-sm font-bold flex items-center justify-center active:scale-95 transition shadow-2xs" title="Thu gọn / Mở rộng thanh công cụ">
+            <i id="iconHeaderCollapseMobile" class="fa-solid fa-expand text-indigo-500 text-sm"></i>
           </button>
-          <button onclick="shuffleQuestions()" title="Xáo trộn câu hỏi" class="w-7.5 h-7.5 rounded-lg border border-slate-200 bg-white text-slate-700 active:bg-slate-100 flex items-center justify-center shadow-2xs">
-            <i class="fa-solid fa-shuffle text-blue-500 text-[11px]"></i>
+          <button onclick="shuffleQuestions()" title="Xáo trộn câu hỏi" class="w-9 h-9 rounded-xl border border-slate-200 bg-white text-slate-700 active:bg-slate-100 flex items-center justify-center active:scale-95 transition shadow-2xs">
+            <i class="fa-solid fa-shuffle text-blue-500 text-sm"></i>
           </button>
-          <button onclick="confirmReset()" title="Làm lại đề này" class="w-7.5 h-7.5 rounded-lg border border-slate-200 bg-white text-slate-700 active:bg-rose-50 flex items-center justify-center shadow-2xs">
-            <i class="fa-solid fa-rotate-right text-rose-500 text-[11px]"></i>
+          <button onclick="confirmReset()" title="Làm lại đề này" class="w-9 h-9 rounded-xl border border-slate-200 bg-white text-slate-700 active:bg-rose-50 flex items-center justify-center active:scale-95 transition shadow-2xs">
+            <i class="fa-solid fa-rotate-right text-rose-500 text-sm"></i>
           </button>
         </div>
 
@@ -11944,13 +11944,13 @@
       if (txtM && iconM && btnM) {
         if (isSingle) {
           txtM.innerText = '1 Câu';
-          iconM.className = 'fa-solid fa-layer-group text-[11px]';
-          btnM.className = 'h-7.5 px-2 rounded-lg border border-indigo-200 bg-indigo-50 text-indigo-700 text-[11px] font-bold flex items-center gap-1 active:scale-95 transition';
+          iconM.className = 'fa-solid fa-layer-group text-xs';
+          btnM.className = 'h-9 px-2.5 rounded-xl border border-indigo-200 bg-indigo-50 text-indigo-700 text-xs font-bold flex items-center gap-1 active:scale-95 transition';
           btnM.title = 'Đang xem từng câu - Bấm để chuyển sang xem danh sách';
         } else {
           txtM.innerText = 'D.Sách';
-          iconM.className = 'fa-solid fa-list-ul text-[11px]';
-          btnM.className = 'h-7.5 px-2 rounded-lg border border-slate-200 bg-white text-slate-700 text-[11px] font-bold flex items-center gap-1 active:scale-95 transition';
+          iconM.className = 'fa-solid fa-list-ul text-xs';
+          btnM.className = 'h-9 px-2.5 rounded-xl border border-slate-200 bg-white text-slate-700 text-xs font-bold flex items-center gap-1 active:scale-95 transition';
           btnM.title = 'Đang xem danh sách - Bấm để chuyển sang xem từng câu';
         }
       }
@@ -12251,8 +12251,13 @@
         .replace(/>/g, '&gt;');
     }
 
-    function formatRichText(str) {
+    function formatRichText(str, showAnswerKeyword = true) {
       if (!str) return '';
+      if (!showAnswerKeyword) {
+        str = str.replaceAll('<span class="keyword-answer text-rose-600 font-bold">', '')
+                 .replaceAll('<span class="text-rose-600 font-bold">', '')
+                 .replaceAll('</span>', '');
+      }
       return escapeHtml(str)
         .replaceAll('&lt;span class="keyword-question text-rose-600 font-bold"&gt;', '<span class="keyword-question text-rose-600 font-bold">')
         .replaceAll('&lt;span class="keyword-answer text-rose-600 font-bold"&gt;', '<span class="keyword-answer text-rose-600 font-bold">')
@@ -12347,7 +12352,7 @@
         html += `
           <button onclick="selectOption(${q.id}, '${k}')" class="eos-option ${stateClass} w-full text-left flex items-baseline gap-2 active:scale-[0.995]">
             <span class="shrink-0 select-none font-semibold">${k}.</span>
-            <span class="flex-1 leading-snug">${formatRichText(optText)}</span>
+            <span class="flex-1 leading-snug">${formatRichText(optText, showFeedback)}</span>
             ${iconHtml}
           </button>
         `;
