@@ -155,7 +155,22 @@
       
       <!-- Row 1: Brand + Subject Switcher Pills + Mobile Quick Actions + Desktop Controls -->
       <div class="flex items-center justify-between gap-2">
-        <div class="flex items-center space-x-2.5 sm:space-x-3 min-w-0">
+        <!-- Mobile Left: Compact Logo + Unified Clickable Exam Selector (Single Line, Never Wraps) -->
+        <div class="flex sm:hidden items-center gap-1.5 min-w-0 flex-1 mr-1">
+          <div onclick="openExamPickerModal()" class="cursor-pointer w-8 h-8 rounded-lg bg-gradient-to-tr from-sky-500 via-blue-600 to-indigo-600 flex items-center justify-center text-white font-bold shadow-xs active:scale-95 transition-transform shrink-0">
+            <i id="headerBrandIconMobile" class="fa-solid fa-bolt text-xs"></i>
+          </div>
+          <button onclick="openExamPickerModal()" class="group flex items-center gap-1 min-w-0 text-left active:opacity-80 transition py-0.5" title="Bấm để chọn đề thi khác">
+            <span id="headerSubjectBadgeMobile" class="px-1.5 py-0.5 rounded text-[10px] font-extrabold bg-indigo-100 text-indigo-700 shrink-0">PRN222</span>
+            <span id="headerExamTitleMobile" class="text-xs font-extrabold text-slate-900 group-hover:text-blue-600 transition leading-tight truncate max-w-[125px]">Đề 1: PRN222</span>
+            <span class="inline-flex items-center justify-center w-3.5 h-3.5 rounded bg-slate-100 text-slate-500 text-[9px] shrink-0">
+              <i class="fa-solid fa-chevron-down text-[8px]"></i>
+            </span>
+          </button>
+        </div>
+
+        <!-- Desktop Left: Full Brand + Subject Switcher Pills + Title -->
+        <div class="hidden sm:flex items-center space-x-2.5 sm:space-x-3 min-w-0">
           <div onclick="openExamPickerModal()" class="cursor-pointer w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-gradient-to-tr from-sky-500 via-blue-600 to-indigo-600 flex items-center justify-center text-white font-bold shadow-md shadow-blue-500/20 hover:scale-105 active:scale-95 transition-transform shrink-0">
             <i id="headerBrandIcon" class="fa-solid fa-bolt text-base sm:text-lg"></i>
           </div>
@@ -183,26 +198,26 @@
           </div>
         </div>
 
-        <!-- Mobile Quick Action Buttons -->
-        <div class="flex sm:hidden items-center gap-1.5 shrink-0">
-          <div id="examTimerMobile" class="hidden items-center gap-1 bg-amber-50 text-amber-700 px-2 py-1.5 rounded-xl border border-amber-200 text-xs font-bold">
-            <i class="fa-regular fa-clock animate-pulse text-[11px]"></i>
+        <!-- Mobile Quick Action Buttons (Compact & Neatly Aligned) -->
+        <div class="flex sm:hidden items-center gap-1 shrink-0">
+          <div id="examTimerMobile" class="hidden items-center gap-1 bg-amber-50 text-amber-700 px-1.5 py-1 rounded-lg border border-amber-200 text-[11px] font-bold">
+            <i class="fa-regular fa-clock animate-pulse text-[10px]"></i>
             <span id="timerTextMobile">50:00</span>
           </div>
           <!-- Toggle Layout Mobile: 1 Câu / D.Sách -->
-          <button onclick="toggleViewLayout()" id="btnLayoutMobile" title="Đổi giao diện Từng câu / Danh sách" class="h-8 px-2 rounded-xl border border-indigo-200 bg-indigo-50 text-indigo-700 text-xs font-bold flex items-center gap-1 active:scale-95 transition">
-            <i id="iconLayoutMobile" class="fa-solid fa-layer-group text-xs"></i>
+          <button onclick="toggleViewLayout()" id="btnLayoutMobile" title="Đổi giao diện Từng câu / Danh sách" class="h-7.5 px-2 rounded-lg border border-indigo-200 bg-indigo-50 text-indigo-700 text-[11px] font-bold flex items-center gap-1 active:scale-95 transition">
+            <i id="iconLayoutMobile" class="fa-solid fa-layer-group text-[11px]"></i>
             <span id="txtLayoutMobile">1 Câu</span>
           </button>
           <!-- Mobile Header Collapse Toggle -->
-          <button onclick="toggleHeaderCollapse()" id="btnHeaderCollapseMobile" class="h-8 px-2 rounded-xl border border-slate-200 bg-white text-slate-700 text-xs font-bold flex items-center gap-1 active:scale-95 transition" title="Thu gọn / Mở rộng thanh công cụ">
+          <button onclick="toggleHeaderCollapse()" id="btnHeaderCollapseMobile" class="w-7.5 h-7.5 rounded-lg border border-slate-200 bg-white text-slate-700 text-xs font-bold flex items-center justify-center active:scale-95 transition" title="Thu gọn / Mở rộng thanh công cụ">
             <i id="iconHeaderCollapseMobile" class="fa-solid fa-expand text-indigo-500 text-[11px]"></i>
           </button>
-          <button onclick="shuffleQuestions()" title="Xáo trộn câu hỏi" class="w-8 h-8 rounded-xl border border-slate-200 bg-white text-slate-700 active:bg-slate-100 flex items-center justify-center shadow-xs">
-            <i class="fa-solid fa-shuffle text-blue-500 text-xs"></i>
+          <button onclick="shuffleQuestions()" title="Xáo trộn câu hỏi" class="w-7.5 h-7.5 rounded-lg border border-slate-200 bg-white text-slate-700 active:bg-slate-100 flex items-center justify-center shadow-2xs">
+            <i class="fa-solid fa-shuffle text-blue-500 text-[11px]"></i>
           </button>
-          <button onclick="confirmReset()" title="Làm lại đề này" class="w-8 h-8 rounded-xl border border-slate-200 bg-white text-slate-700 active:bg-rose-50 flex items-center justify-center shadow-xs">
-            <i class="fa-solid fa-rotate-right text-rose-500 text-xs"></i>
+          <button onclick="confirmReset()" title="Làm lại đề này" class="w-7.5 h-7.5 rounded-lg border border-slate-200 bg-white text-slate-700 active:bg-rose-50 flex items-center justify-center shadow-2xs">
+            <i class="fa-solid fa-rotate-right text-rose-500 text-[11px]"></i>
           </button>
         </div>
 
@@ -250,6 +265,19 @@
 
       <!-- Collapsible Container: Row 2 (Tabs) & Row 3 (Mobile Mode Switcher) -->
       <div id="headerCollapsibleArea" class="hidden flex flex-col gap-1.5 transition-all duration-200">
+        <!-- Mobile Subject Switcher Row (when toolbar is expanded) -->
+        <div class="flex sm:hidden items-center gap-1.5 overflow-x-auto no-scrollbar pt-1 border-t border-slate-100">
+          <button onclick="switchSubject('prn222')" id="subPillMobile_prn222" class="px-2.5 py-1 rounded-lg text-[11px] font-extrabold flex items-center gap-1 transition bg-indigo-600 text-white shadow-xs shrink-0">
+            <i class="fa-solid fa-bolt text-[10px]"></i> PRN222
+          </button>
+          <button onclick="switchSubject('pru213')" id="subPillMobile_pru213" class="px-2.5 py-1 rounded-lg text-[11px] font-bold flex items-center gap-1 transition bg-slate-100 text-slate-600 shrink-0">
+            <i class="fa-solid fa-gamepad text-[10px]"></i> PRU213
+          </button>
+          <button onclick="switchSubject('tinhoc')" id="subPillMobile_tinhoc" class="px-2.5 py-1 rounded-lg text-[11px] font-bold flex items-center gap-1 transition bg-slate-100 text-slate-600 shrink-0">
+            <i class="fa-solid fa-desktop text-[10px]"></i> Tin Học
+          </button>
+        </div>
+
         <!-- Row 2: Dynamic Exam Switcher Tabs for Current Subject -->
         <div class="flex items-center justify-between gap-2 pt-1 border-t border-slate-100">
           <div class="flex items-center gap-1.5 sm:gap-2 overflow-x-auto no-scrollbar py-0.5 w-full" id="examTabsRow">
@@ -290,15 +318,15 @@
   </header>
 
   <!-- Main Content Layout -->
-  <main class="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 py-3 sm:py-4 flex-1 w-full grid grid-cols-1 lg:grid-cols-12 gap-4 sm:gap-6 items-start">
+  <main class="max-w-7xl mx-auto px-2.5 sm:px-6 lg:px-8 py-2 sm:py-4 flex-1 w-full grid grid-cols-1 lg:grid-cols-12 gap-2.5 sm:gap-6 items-start">
 
     <!-- Left Column: Quiz Questions (Can expand to col-span-12 when sidebar collapsed) -->
-    <div id="mainQuestionsColumn" class="lg:col-span-12 flex flex-col gap-3.5 transition-all duration-200">
+    <div id="mainQuestionsColumn" class="lg:col-span-12 flex flex-col gap-2.5 sm:gap-3.5 transition-all duration-200">
 
       <!-- Action & Filter Bar (Collapsible Component) -->
-      <div class="bg-white rounded-2xl border border-slate-200 shadow-sm transition-all overflow-hidden" id="filterBarContainer">
+      <div class="bg-white rounded-xl sm:rounded-2xl border border-slate-200/90 shadow-2xs transition-all overflow-hidden" id="filterBarContainer">
         <!-- Filter Bar Header / Toggle Bar -->
-        <div class="p-2.5 sm:p-3 flex items-center justify-between gap-2 border-b border-slate-100 bg-slate-50/50">
+        <div class="py-1.5 px-3 sm:p-3 flex items-center justify-between gap-2 border-b border-slate-100 bg-slate-50/50">
           <div class="flex items-center gap-2 min-w-0">
             <span class="text-[11px] font-extrabold text-slate-700 uppercase tracking-wider flex items-center gap-1.5">
               <i class="fa-solid fa-sliders text-blue-600"></i> Bộ lọc & Tùy chọn
@@ -308,9 +336,9 @@
 
           <div class="flex items-center gap-1.5 shrink-0">
             <!-- Collapse / Expand Filter Bar Button -->
-            <button onclick="toggleFilterCollapse()" id="btnFilterCollapse" class="px-2.5 py-1 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 text-slate-600 text-[11px] font-semibold flex items-center gap-1 transition" title="Thu gọn / Mở rộng bộ lọc">
+            <button onclick="toggleFilterCollapse()" id="btnFilterCollapse" class="px-2 py-0.5 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 text-slate-600 text-[11px] font-semibold flex items-center gap-1 transition" title="Thu gọn / Mở rộng bộ lọc">
               <span id="txtFilterCollapse">Mở rộng</span>
-              <i id="iconFilterCollapse" class="fa-solid fa-chevron-down text-[10px]"></i>
+              <i id="iconFilterCollapse" class="fa-solid fa-chevron-down text-[9px]"></i>
             </button>
           </div>
         </div>
@@ -353,8 +381,8 @@
         <button onclick="setFilter('all')" class="text-blue-600 hover:underline font-bold shrink-0 ml-2">Hiện tất cả</button>
       </div>
 
-      <!-- Single-Card Mode Navigation Header -->
-      <div id="singleModeHeader" class="hidden bg-gradient-to-r from-blue-600 to-indigo-600 text-white px-3.5 py-2 rounded-2xl shadow-sm items-center justify-between text-xs">
+      <!-- Single-Card Mode Navigation Header (Desktop only to save vertical space on mobile) -->
+      <div id="singleModeHeader" class="hidden sm:hidden md:flex bg-gradient-to-r from-blue-600 to-indigo-600 text-white px-3.5 py-2 rounded-xl shadow-xs items-center justify-between text-xs">
         <div class="flex items-center gap-2 font-bold">
           <i class="fa-solid fa-mobile-screen-button"></i>
           <span>Câu <span id="singleCurrentIdx">1</span> / <span id="singleTotalIdx">50</span></span>
@@ -366,7 +394,7 @@
       </div>
 
       <!-- Question List Container -->
-      <div id="questionList" class="flex flex-col gap-3 sm:gap-4">
+      <div id="questionList" class="flex flex-col gap-2.5 sm:gap-3.5">
         <!-- Rendered dynamically -->
       </div>
 
@@ -11434,6 +11462,25 @@
       document.getElementById('headerExamCode').innerText = exam.code;
       document.getElementById('headerExamTitle').innerText = exam.title;
       document.getElementById('headerBrandIcon').className = activeSubjectId === 'prn222' ? 'fa-solid fa-bolt text-base sm:text-lg' : (activeSubjectId === 'tinhoc' ? 'fa-solid fa-desktop text-base sm:text-lg' : 'fa-solid fa-gamepad text-base sm:text-lg');
+
+      // Update Mobile Header Elements
+      const mIcon = document.getElementById('headerBrandIconMobile');
+      if (mIcon) {
+        mIcon.className = activeSubjectId === 'prn222' ? 'fa-solid fa-bolt text-xs' : (activeSubjectId === 'tinhoc' ? 'fa-solid fa-desktop text-xs' : 'fa-solid fa-gamepad text-xs');
+      }
+      const mBadge = document.getElementById('headerSubjectBadgeMobile');
+      if (mBadge) {
+        mBadge.innerText = SUBJECTS[activeSubjectId].name;
+        mBadge.className = activeSubjectId === 'prn222'
+          ? 'px-1.5 py-0.5 rounded text-[10px] font-extrabold bg-indigo-100 text-indigo-700 shrink-0'
+          : (activeSubjectId === 'tinhoc'
+              ? 'px-1.5 py-0.5 rounded text-[10px] font-extrabold bg-emerald-100 text-emerald-700 shrink-0'
+              : 'px-1.5 py-0.5 rounded text-[10px] font-extrabold bg-blue-100 text-blue-700 shrink-0');
+      }
+      const mTitle = document.getElementById('headerExamTitleMobile');
+      if (mTitle) {
+        mTitle.innerText = exam.title;
+      }
       
       // Update Mobile dock label
       const dockExamEl = document.getElementById('mobileDockExamName');
@@ -11456,16 +11503,21 @@
       const sidebarSubjectEl = document.getElementById('sidebarSubjectLabel');
       if (sidebarSubjectEl) sidebarSubjectEl.innerText = SUBJECTS[activeSubjectId].name;
 
-      // Update Subject pills
+      // Update Subject pills (desktop & mobile toolbar)
       ['prn222', 'pru213', 'tinhoc'].forEach(sId => {
         const pill = document.getElementById('subPill_' + sId);
+        const mPill = document.getElementById('subPillMobile_' + sId);
+        const isAct = sId === activeSubjectId;
+        const activeColor = sId === 'prn222' ? 'bg-indigo-600 text-white shadow-xs' : (sId === 'tinhoc' ? 'bg-emerald-600 text-white shadow-xs' : 'bg-blue-600 text-white shadow-xs');
         if (pill) {
-          if (sId === activeSubjectId) {
-            let activeColor = sId === 'prn222' ? 'bg-indigo-600 text-white shadow-xs' : (sId === 'tinhoc' ? 'bg-emerald-600 text-white shadow-xs' : 'bg-blue-600 text-white shadow-xs');
-            pill.className = 'px-2 py-0.5 rounded-lg text-[11px] font-extrabold flex items-center gap-1 transition ' + activeColor;
-          } else {
-            pill.className = 'px-2 py-0.5 rounded-lg text-[11px] font-bold flex items-center gap-1 transition bg-slate-100 text-slate-600 hover:bg-slate-200';
-          }
+          pill.className = isAct
+            ? 'px-2 py-0.5 rounded-lg text-[11px] font-extrabold flex items-center gap-1 transition ' + activeColor
+            : 'px-2 py-0.5 rounded-lg text-[11px] font-bold flex items-center gap-1 transition bg-slate-100 text-slate-600 hover:bg-slate-200';
+        }
+        if (mPill) {
+          mPill.className = isAct
+            ? 'px-2.5 py-1 rounded-lg text-[11px] font-extrabold flex items-center gap-1 transition shrink-0 ' + activeColor
+            : 'px-2.5 py-1 rounded-lg text-[11px] font-bold flex items-center gap-1 transition bg-slate-100 text-slate-600 shrink-0';
         }
       });
 
@@ -11879,10 +11931,10 @@
       if (singleHeader) {
         if (isSingle) {
           singleHeader.classList.remove('hidden');
-          singleHeader.classList.add('flex');
+          singleHeader.classList.add('hidden', 'sm:flex');
         } else {
           singleHeader.classList.add('hidden');
-          singleHeader.classList.remove('flex');
+          singleHeader.classList.remove('sm:flex');
         }
       }
 
@@ -11892,13 +11944,13 @@
       if (txtM && iconM && btnM) {
         if (isSingle) {
           txtM.innerText = '1 Câu';
-          iconM.className = 'fa-solid fa-layer-group text-xs';
-          btnM.className = 'h-8 px-2 rounded-xl border border-indigo-200 bg-indigo-50 text-indigo-700 text-xs font-bold flex items-center gap-1 active:scale-95 transition';
+          iconM.className = 'fa-solid fa-layer-group text-[11px]';
+          btnM.className = 'h-7.5 px-2 rounded-lg border border-indigo-200 bg-indigo-50 text-indigo-700 text-[11px] font-bold flex items-center gap-1 active:scale-95 transition';
           btnM.title = 'Đang xem từng câu - Bấm để chuyển sang xem danh sách';
         } else {
           txtM.innerText = 'D.Sách';
-          iconM.className = 'fa-solid fa-list-ul text-xs';
-          btnM.className = 'h-8 px-2 rounded-xl border border-slate-200 bg-white text-slate-700 text-xs font-bold flex items-center gap-1 active:scale-95 transition';
+          iconM.className = 'fa-solid fa-list-ul text-[11px]';
+          btnM.className = 'h-7.5 px-2 rounded-lg border border-slate-200 bg-white text-slate-700 text-[11px] font-bold flex items-center gap-1 active:scale-95 transition';
           btnM.title = 'Đang xem danh sách - Bấm để chuyển sang xem từng câu';
         }
       }
@@ -12212,7 +12264,7 @@
     function createQuestionCard(q) {
       const div = document.createElement('div');
       div.id = 'question-card-' + q.id;
-      div.className = 'eos-card rounded-none sm:rounded-md overflow-hidden transition flex flex-col';
+      div.className = 'eos-card rounded-xl sm:rounded-md overflow-hidden transition flex flex-col shadow-xs';
 
       const selected = userAnswers[q.id];
       const isAnswered = selected !== undefined;
@@ -12238,7 +12290,7 @@
         <div class="eos-banner px-3 sm:px-6 py-1.5 sm:py-2 flex items-center justify-between gap-2">
           <div class="flex items-center gap-2 flex-wrap min-w-0">
             <span class="eos-title uppercase tracking-wide">MULTIPLE CHOICE</span>
-            <span class="text-xs text-blue-700/70 font-bold">• Câu ${q.id}</span>
+            <span class="text-xs text-blue-700/80 font-bold">• Câu ${q.id}${viewLayout === 'single' ? ' / ' + RAW_QUESTIONS.length : ''}</span>
             ${examBadgeHtml}
             <span class="hidden sm:inline-block text-[11px] text-slate-500 font-normal truncate">(${escapeHtml(q.topic)})</span>
             ${isAnswered && showFeedback ? (
@@ -12257,7 +12309,7 @@
         </div>
 
         <!-- Question & Options Body (EOS plain white style) -->
-        <div class="eos-body px-4 sm:px-8 pt-3 sm:pt-4 pb-4 sm:pb-5 bg-white flex flex-col gap-2.5 sm:gap-3">
+        <div class="eos-body px-3.5 sm:px-8 pt-3 sm:pt-4 pb-3 sm:pb-5 bg-white flex flex-col gap-2 sm:gap-3">
           <div class="eos-question-text font-normal">
             ${formatRichText(q.question)}
           </div>
