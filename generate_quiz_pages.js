@@ -62,7 +62,6 @@ const prnAllQuestions = [
 const tinhoc1Questions = JSON.parse(fs.readFileSync(path.join(__dirname, 'De_TINHOC_1', 'questions.json'), 'utf8'));
 const tinhoc2Questions = JSON.parse(fs.readFileSync(path.join(__dirname, 'De_TINHOC_2', 'questions.json'), 'utf8'));
 const tinhoc3Questions = JSON.parse(fs.readFileSync(path.join(__dirname, 'De_TINHOC_3', 'questions.json'), 'utf8'));
-const tinhocAllQuestions = JSON.parse(fs.readFileSync(path.join(__dirname, 'De_TINHOC_All', 'questions.json'), 'utf8'));
 
 const SUBJECTS_DATA = {
   prn222: {
@@ -90,7 +89,7 @@ const SUBJECTS_DATA = {
     subtitle: 'Chuẩn kỹ năng CNTT cơ bản: Phần cứng, Hệ điều hành Windows, Mạng máy tính & An toàn thông tin',
     icon: 'fa-desktop',
     tagColor: 'emerald',
-    exams: ['tinhoc_1', 'tinhoc_2', 'tinhoc_3', 'tinhoc_all']
+    exams: ['tinhoc_1', 'tinhoc_2', 'tinhoc_3']
   }
 };
 
@@ -242,20 +241,6 @@ const EXAMS_DATA = {
     questions: tinhoc3Questions.map(q => ({
       ...q,
       examLabel: 'Đề 3'
-    }))
-  },
-  tinhoc_all: {
-    id: 'tinhoc_all',
-    subject: 'tinhoc',
-    code: 'TIN HỌC - 50 CÂU CHUẨN (LỌC TRÙNG)',
-    shortName: 'Lọc trùng (50 câu)',
-    title: 'Tin Học: 50 Câu Chuẩn (Lọc Trùng)',
-    subtitle: 'Toàn bộ 50 câu hỏi độc bản không trùng lặp, kèm hình ảnh minh họa và mẹo từ khóa in đỏ',
-    storagePrefix: 'tinhoc_all_dedup',
-    timeMinutes: 50,
-    questions: tinhocAllQuestions.map(q => ({
-      ...q,
-      examLabel: 'Chuẩn'
     }))
   }
 };
@@ -842,19 +827,6 @@ const unifiedHtml = `<!DOCTYPE html>
     </div>
   </div>
 
-  <footer class="bg-white border-t border-slate-200 py-4 text-center text-xs text-slate-500 mt-auto">
-    <div class="max-w-7xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-2">
-      <div>Ôn Tập</div>
-      <div class="flex items-center gap-4 flex-wrap justify-center">
-        <span>PRN222: 3 Đề + 1 Tổng hợp (150 Câu)</span>
-        <span>•</span>
-        <span>PRU213: 2 Đề + 1 Tổng hợp (100 Câu)</span>
-        <span>•</span>
-        <span>Tin Học: 3 Đề + 1 Lọc trùng (50 Câu)</span>
-      </div>
-    </div>
-  </footer>
-
   <script>
     const SUBJECTS = ${JSON.stringify(SUBJECTS_DATA, null, 2)};
     const EXAMS = ${JSON.stringify(EXAMS_DATA, null, 2)};
@@ -960,7 +932,6 @@ const unifiedHtml = `<!DOCTYPE html>
         else if (examId === 'tinhoc_1') dockShort = 'TH 1';
         else if (examId === 'tinhoc_2') dockShort = 'TH 2';
         else if (examId === 'tinhoc_3') dockShort = 'TH 3';
-        else if (examId === 'tinhoc_all') dockShort = 'TH ALL';
         dockExamEl.innerText = dockShort;
       }
       const mDrawerTitle = document.getElementById('mDrawerTitleExam');
@@ -2112,12 +2083,10 @@ fs.writeFileSync(path.join(__dirname, 'De_PRN222_3', 'index.html'), makeRedirect
 fs.mkdirSync(path.join(__dirname, 'De_TINHOC_1'), { recursive: true });
 fs.mkdirSync(path.join(__dirname, 'De_TINHOC_2'), { recursive: true });
 fs.mkdirSync(path.join(__dirname, 'De_TINHOC_3'), { recursive: true });
-fs.mkdirSync(path.join(__dirname, 'De_TINHOC_All'), { recursive: true });
 
 fs.writeFileSync(path.join(__dirname, 'De_TINHOC_1', 'index.html'), makeRedirect('tinhoc_1'), 'utf8');
 fs.writeFileSync(path.join(__dirname, 'De_TINHOC_2', 'index.html'), makeRedirect('tinhoc_2'), 'utf8');
 fs.writeFileSync(path.join(__dirname, 'De_TINHOC_3', 'index.html'), makeRedirect('tinhoc_3'), 'utf8');
-fs.writeFileSync(path.join(__dirname, 'De_TINHOC_All', 'index.html'), makeRedirect('tinhoc_all'), 'utf8');
 
 // Write .nojekyll for GitHub Pages
 fs.writeFileSync(path.join(__dirname, '.nojekyll'), '', 'utf8');
