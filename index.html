@@ -175,6 +175,11 @@
             <i class="fa-regular fa-clock animate-pulse text-[11px]"></i>
             <span id="timerTextMobile">50:00</span>
           </div>
+          <!-- Toggle Layout Mobile: 1 Câu / D.Sách -->
+          <button onclick="toggleViewLayout()" id="btnLayoutMobile" title="Đổi giao diện Từng câu / Danh sách" class="h-8 px-2 rounded-xl border border-indigo-200 bg-indigo-50 text-indigo-700 text-xs font-bold flex items-center gap-1 active:scale-95 transition">
+            <i id="iconLayoutMobile" class="fa-solid fa-layer-group text-xs"></i>
+            <span id="txtLayoutMobile">1 Câu</span>
+          </button>
           <!-- Mobile Header Collapse Toggle -->
           <button onclick="toggleHeaderCollapse()" id="btnHeaderCollapseMobile" class="h-8 px-2 rounded-xl border border-slate-200 bg-white text-slate-700 text-xs font-bold flex items-center gap-1 active:scale-95 transition" title="Thu gọn / Mở rộng thanh công cụ">
             <i id="iconHeaderCollapseMobile" class="fa-solid fa-expand text-indigo-500 text-[11px]"></i>
@@ -206,6 +211,12 @@
             <i class="fa-regular fa-clock animate-pulse"></i>
             <span id="timerText">50:00</span>
           </div>
+
+          <!-- Desktop Layout Toggle: Xem từng câu / Danh sách -->
+          <button onclick="toggleViewLayout()" id="btnLayoutDesktop" class="px-2.5 py-1 text-xs font-semibold rounded-xl border border-slate-200 hover:bg-slate-100 text-slate-700 transition flex items-center gap-1.5 bg-white shadow-xs" title="Chuyển đổi giữa xem từng câu và xem toàn bộ danh sách">
+            <i id="iconLayoutDesktop" class="fa-solid fa-layer-group text-indigo-500"></i>
+            <span id="txtLayoutDesktop">Xem từng câu</span>
+          </button>
 
           <!-- Header Collapse Button (Focus / Compact mode) -->
           <button onclick="toggleHeaderCollapse()" id="btnHeaderCollapseDesktop" class="px-2.5 py-1 text-xs font-semibold rounded-xl border border-slate-200 hover:bg-slate-100 text-slate-700 transition flex items-center gap-1.5 bg-white shadow-xs" title="Thu gọn/Mở rộng thanh công cụ">
@@ -282,6 +293,11 @@
           </div>
 
           <div class="flex items-center gap-1.5 shrink-0">
+            <!-- Layout toggle button in filter bar -->
+            <button onclick="toggleViewLayout()" id="btnLayoutFilterBar" class="px-2.5 py-1 rounded-lg border border-indigo-200 bg-indigo-50 hover:bg-indigo-100 text-indigo-700 text-[11px] font-semibold flex items-center gap-1.5 transition" title="Đổi kiểu hiển thị câu hỏi">
+              <i id="iconLayoutFilterBar" class="fa-solid fa-layer-group text-xs"></i>
+              <span id="txtLayoutFilterBar">Xem danh sách</span>
+            </button>
             <!-- Collapse / Expand Filter Bar Button -->
             <button onclick="toggleFilterCollapse()" id="btnFilterCollapse" class="px-2.5 py-1 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 text-slate-600 text-[11px] font-semibold flex items-center gap-1 transition" title="Thu gọn / Mở rộng bộ lọc">
               <span id="txtFilterCollapse">Mở rộng</span>
@@ -334,9 +350,14 @@
           <i class="fa-solid fa-mobile-screen-button"></i>
           <span>Câu <span id="singleCurrentIdx">1</span> / <span id="singleTotalIdx">50</span></span>
         </div>
-        <span class="text-blue-100 text-[11px] flex items-center gap-1">
-          <i class="fa-solid fa-hand-pointer"></i> Vuốt trái/phải hoặc dùng thanh dưới để chuyển câu
-        </span>
+        <div class="flex items-center gap-2">
+          <span class="text-blue-100 text-[11px] hidden sm:inline flex items-center gap-1">
+            <i class="fa-solid fa-hand-pointer"></i> Vuốt trái/phải hoặc dùng thanh dưới để chuyển câu
+          </span>
+          <button onclick="toggleViewLayout()" class="px-2.5 py-1 rounded-xl bg-white/20 hover:bg-white/30 text-white text-[11px] font-bold transition flex items-center gap-1.5 cursor-pointer">
+            <i class="fa-solid fa-list-ul"></i> <span>Xem danh sách</span>
+          </button>
+        </div>
       </div>
 
       <!-- Question List Container -->
@@ -522,19 +543,21 @@
 
   <!-- Modal: Danh Sách Bộ Đề (Exam Picker & Progress Overview for Both Subjects) -->
   <div id="examPickerModal" class="fixed inset-0 bg-slate-900/70 backdrop-blur-xs z-50 hidden items-end sm:items-center justify-center p-0 sm:p-4">
-    <div class="bg-white rounded-t-3xl sm:rounded-3xl max-w-3xl w-full max-h-[90vh] flex flex-col overflow-hidden shadow-2xl border border-slate-200 animate-slide-up safe-bottom">
-      <div class="px-5 py-3.5 border-b border-slate-100 flex items-center justify-between bg-slate-50">
+    <div class="bg-white rounded-t-3xl sm:rounded-3xl max-w-2xl w-full max-h-[90vh] flex flex-col overflow-hidden shadow-2xl border border-slate-200 animate-slide-up safe-bottom">
+      <div class="px-4 sm:px-5 py-3 sm:py-3.5 border-b border-slate-100 flex items-center justify-between bg-slate-50">
         <div>
-          <span class="text-[10px] font-bold text-blue-600 uppercase tracking-widest">FPT University Exam Portal</span>
-          <h3 class="text-base sm:text-lg font-extrabold text-slate-900 flex items-center gap-2">
-            <i class="fa-solid fa-folder-tree text-blue-600"></i> Danh sách toàn bộ đề thi trắc nghiệm
+          <span class="text-[10px] font-bold text-amber-600 uppercase tracking-widest flex items-center gap-1">
+            <i class="fa-solid fa-folder text-amber-500"></i> Thư mục đề thi
+          </span>
+          <h3 class="text-sm sm:text-base font-extrabold text-slate-900 flex items-center gap-2">
+            Danh sách đề thi trắc nghiệm theo môn
           </h3>
         </div>
         <button onclick="closeExamPickerModal()" class="w-8 h-8 rounded-full bg-slate-200/70 hover:bg-slate-200 text-slate-600 flex items-center justify-center transition">
           <i class="fa-solid fa-xmark"></i>
         </button>
       </div>
-      <div class="p-4 sm:p-5 overflow-y-auto space-y-5" id="modalExamCards">
+      <div class="p-3 sm:p-4 overflow-y-auto space-y-3" id="modalExamCards">
         <!-- Populated dynamically -->
       </div>
     </div>
@@ -12520,32 +12543,48 @@
         }).join('');
       }
 
-      // Render Modal Exam Cards (Grouped by Subject)
+      // Render Modal Exam Cards as Folder-Style Directory Tree
       const modalContainer = document.getElementById('modalExamCards');
       if (modalContainer) {
         modalContainer.innerHTML = ['prn222', 'pru213', 'tinhoc'].map(sId => {
           const sub = SUBJECTS[sId];
-          const examCardsHtml = sub.exams.map(eId => {
+          const isCollapsed = collapsedFolders.has(sId);
+          const folderIcon = isCollapsed ? 'fa-folder' : 'fa-folder-open';
+          const chevronClass = isCollapsed ? 'transform -rotate-90' : '';
+          const bodyDisplay = isCollapsed ? 'hidden' : 'flex';
+          const subBadgeColor = sId === 'prn222' ? 'bg-indigo-100 text-indigo-700' : (sId === 'tinhoc' ? 'bg-emerald-100 text-emerald-700' : 'bg-blue-100 text-blue-700');
+
+          const examItemsHtml = sub.exams.map(eId => {
             const ex = EXAMS[eId];
             const st = getExamStatsSummary(eId);
             const isActive = eId === activeExamId;
             const pct = st.answered > 0 ? Math.round((st.correct / st.answered) * 100) : 0;
             return `
-              <div onclick="switchExam('${eId}'); closeExamPickerModal();" class="cursor-pointer p-3.5 sm:p-4 rounded-2xl border transition flex flex-col gap-2 ${isActive ? 'border-blue-500 bg-blue-50/40 ring-2 ring-blue-500' : 'border-slate-200 hover:border-blue-300 bg-white'}">
-                <div class="flex items-center justify-between gap-2">
-                  <span class="px-2 py-0.5 rounded-lg text-[10px] font-bold ${isActive ? 'bg-blue-600 text-white' : 'bg-slate-100 text-slate-700'}">${ex.code}</span>
-                  <span class="text-xs font-bold ${st.answered > 0 ? 'text-emerald-600' : 'text-slate-400'}">
-                    <i class="fa-solid fa-circle-check mr-1"></i>Đã làm ${st.answered}/${st.total} (${pct}% đúng)
+              <div onclick="switchExam('${eId}'); closeExamPickerModal();" 
+                   class="group cursor-pointer px-3 py-2 sm:py-2.5 rounded-xl border transition-all flex items-center justify-between gap-2.5 ${isActive ? 'bg-blue-50/90 border-blue-400 ring-1 ring-blue-400 text-blue-950 font-bold' : 'bg-white hover:bg-slate-50 border-slate-200/80 hover:border-blue-300 text-slate-800'}">
+                <div class="flex items-center gap-2.5 min-w-0">
+                  <span class="w-6 h-6 sm:w-7 sm:h-7 rounded-lg flex items-center justify-center shrink-0 ${isActive ? 'bg-blue-600 text-white shadow-xs' : 'bg-slate-100 text-slate-500 group-hover:bg-blue-100 group-hover:text-blue-700'} text-xs">
+                    <i class="fa-solid ${eId.includes('all') ? 'fa-layer-group' : 'fa-file-lines'}"></i>
                   </span>
+                  <div class="min-w-0 flex flex-col">
+                    <div class="flex items-center gap-2 flex-wrap">
+                      <span class="text-xs sm:text-[13px] font-bold truncate">${ex.title}</span>
+                      ${isActive ? '<span class="px-1.5 py-0.2 rounded text-[10px] font-extrabold bg-blue-600 text-white shrink-0">Đang học</span>' : ''}
+                    </div>
+                    <div class="flex items-center gap-1.5 sm:gap-2 text-[10px] sm:text-[11px] text-slate-500 flex-wrap">
+                      <span><i class="fa-regular fa-clock text-[10px]"></i> ${ex.timeMinutes}p</span>
+                      <span>•</span>
+                      <span>${st.total} câu</span>
+                      <span>•</span>
+                      <span class="${st.answered > 0 ? 'text-emerald-600 font-semibold' : 'text-slate-400'}">
+                        Đã làm ${st.answered}/${st.total} (${pct}% đúng)
+                      </span>
+                    </div>
+                  </div>
                 </div>
-                <div>
-                  <h5 class="text-sm sm:text-base font-extrabold text-slate-900">${ex.title}</h5>
-                  <p class="text-xs text-slate-500 mt-0.5 leading-relaxed">${ex.subtitle}</p>
-                </div>
-                <div class="flex items-center justify-between pt-2 border-t border-slate-100 text-xs">
-                  <span class="text-slate-500"><i class="fa-regular fa-clock mr-1"></i>${ex.timeMinutes} phút • ${st.total} câu hỏi</span>
-                  <span class="font-bold text-blue-600 flex items-center gap-1">
-                    ${isActive ? 'Đang mở đề này' : 'Mở đề này'} <i class="fa-solid fa-arrow-right text-[10px]"></i>
+                <div class="shrink-0 flex items-center pl-1">
+                  <span class="text-xs font-semibold ${isActive ? 'text-blue-700' : 'text-slate-400 group-hover:text-blue-600'} flex items-center gap-1">
+                    ${isActive ? '<i class="fa-solid fa-circle-check text-blue-600 text-sm"></i>' : '<span class="hidden sm:inline text-[11px]">Mở đề</span><i class="fa-solid fa-chevron-right text-[10px]"></i>'}
                   </span>
                 </div>
               </div>
@@ -12553,22 +12592,52 @@
           }).join('');
 
           return `
-            <div class="flex flex-col gap-2.5">
-              <div class="flex items-center justify-between">
-                <h4 class="text-xs sm:text-sm font-extrabold text-slate-900 flex items-center gap-2">
-                  <span class="w-6 h-6 rounded-lg ${sId === 'prn222' ? 'bg-indigo-100 text-indigo-700' : (sId === 'tinhoc' ? 'bg-emerald-100 text-emerald-700' : 'bg-blue-100 text-blue-700')} flex items-center justify-center text-xs">
-                    <i class="fa-solid ${sub.icon}"></i>
-                  </span>
-                  Môn ${sub.name} - ${sub.title}
-                </h4>
-                <span class="text-[11px] text-slate-400 font-semibold">${sub.exams.length} Bộ đề</span>
+            <div class="rounded-2xl border border-slate-200/90 bg-white overflow-hidden shadow-xs">
+              <div onclick="toggleFolderCollapse('${sId}')" class="px-3.5 py-2.5 sm:py-3 bg-slate-50 hover:bg-slate-100/80 cursor-pointer flex items-center justify-between gap-2 border-b border-slate-100 transition select-none">
+                <div class="flex items-center gap-2.5 min-w-0">
+                  <i class="fa-solid ${folderIcon} text-amber-500 text-base sm:text-lg shrink-0" id="folderIcon_${sId}"></i>
+                  <div class="flex items-center gap-1.5 truncate">
+                    <span class="font-extrabold text-xs sm:text-sm text-slate-900">${sub.name}</span>
+                    <span class="text-xs text-slate-400 hidden sm:inline">•</span>
+                    <span class="text-xs text-slate-600 hidden sm:inline truncate">${sub.title}</span>
+                  </div>
+                  <span class="text-[10px] font-bold px-1.5 py-0.2 rounded-full ${subBadgeColor} shrink-0">${sub.exams.length} Đề</span>
+                </div>
+                <div class="flex items-center gap-2 shrink-0">
+                  <i class="fa-solid fa-chevron-down text-slate-400 text-xs transition-transform duration-200 ${chevronClass}" id="folderChevron_${sId}"></i>
+                </div>
               </div>
-              <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
-                ${examCardsHtml}
+              <div id="folderBody_${sId}" class="${bodyDisplay} flex-col gap-1.5 p-2 sm:p-2.5 bg-slate-50/30">
+                ${examItemsHtml}
               </div>
             </div>
           `;
         }).join('');
+      }
+    }
+
+    const collapsedFolders = new Set();
+    function toggleFolderCollapse(sId) {
+      const fBody = document.getElementById('folderBody_' + sId);
+      const fChevron = document.getElementById('folderChevron_' + sId);
+      const fIcon = document.getElementById('folderIcon_' + sId);
+      if (!fBody) return;
+      if (collapsedFolders.has(sId)) {
+        collapsedFolders.delete(sId);
+        fBody.classList.remove('hidden');
+        fBody.classList.add('flex');
+        if (fChevron) {
+          fChevron.classList.remove('-rotate-90');
+        }
+        if (fIcon) fIcon.className = 'fa-solid fa-folder-open text-amber-500 text-base sm:text-lg shrink-0';
+      } else {
+        collapsedFolders.add(sId);
+        fBody.classList.add('hidden');
+        fBody.classList.remove('flex');
+        if (fChevron) {
+          fChevron.classList.add('-rotate-90');
+        }
+        if (fIcon) fIcon.className = 'fa-solid fa-folder text-amber-500 text-base sm:text-lg shrink-0';
       }
     }
 
@@ -12842,20 +12911,43 @@
       if (txtM && iconM && btnM) {
         if (isSingle) {
           txtM.innerText = '1 Câu';
-          iconM.className = 'fa-solid fa-layer-group';
-          btnM.className = 'h-8 px-2 rounded-xl border border-blue-200 bg-blue-50 text-blue-700 text-xs font-bold flex items-center gap-1 active:scale-95 transition';
+          iconM.className = 'fa-solid fa-layer-group text-xs';
+          btnM.className = 'h-8 px-2 rounded-xl border border-indigo-200 bg-indigo-50 text-indigo-700 text-xs font-bold flex items-center gap-1 active:scale-95 transition';
+          btnM.title = 'Đang xem từng câu - Bấm để chuyển sang xem danh sách';
         } else {
           txtM.innerText = 'D.Sách';
-          iconM.className = 'fa-solid fa-list-ul';
+          iconM.className = 'fa-solid fa-list-ul text-xs';
           btnM.className = 'h-8 px-2 rounded-xl border border-slate-200 bg-white text-slate-700 text-xs font-bold flex items-center gap-1 active:scale-95 transition';
+          btnM.title = 'Đang xem danh sách - Bấm để chuyển sang xem từng câu';
         }
       }
 
       const txtD = document.getElementById('txtLayoutDesktop');
       const iconD = document.getElementById('iconLayoutDesktop');
+      const btnD = document.getElementById('btnLayoutDesktop');
       if (txtD && iconD) {
         txtD.innerText = isSingle ? 'Xem danh sách' : 'Xem từng câu';
-        iconD.className = isSingle ? 'fa-solid fa-list-ul text-blue-600' : 'fa-solid fa-layer-group text-indigo-500';
+        iconD.className = isSingle ? 'fa-solid fa-list-ul text-indigo-500' : 'fa-solid fa-layer-group text-slate-500';
+        if (btnD) {
+          btnD.className = isSingle
+            ? 'px-2.5 py-1 text-xs font-semibold rounded-xl border border-indigo-200 bg-indigo-50 text-indigo-700 transition flex items-center gap-1.5 shadow-xs'
+            : 'px-2.5 py-1 text-xs font-semibold rounded-xl border border-slate-200 hover:bg-slate-100 text-slate-700 transition flex items-center gap-1.5 bg-white shadow-xs';
+        }
+      }
+
+      const txtF = document.getElementById('txtLayoutFilterBar');
+      const iconF = document.getElementById('iconLayoutFilterBar');
+      const btnF = document.getElementById('btnLayoutFilterBar');
+      if (txtF && iconF && btnF) {
+        if (isSingle) {
+          txtF.innerText = 'Xem danh sách';
+          iconF.className = 'fa-solid fa-list-ul text-xs';
+          btnF.className = 'px-2.5 py-1 rounded-lg border border-indigo-200 bg-indigo-50 hover:bg-indigo-100 text-indigo-700 text-[11px] font-semibold flex items-center gap-1.5 transition';
+        } else {
+          txtF.innerText = 'Xem từng câu';
+          iconF.className = 'fa-solid fa-layer-group text-xs';
+          btnF.className = 'px-2.5 py-1 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 text-slate-700 text-[11px] font-semibold flex items-center gap-1.5 transition';
+        }
       }
     }
 
