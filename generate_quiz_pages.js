@@ -58,6 +58,12 @@ const prnAllQuestions = [
   }))
 ];
 
+// 3. Load TINHOC Questions
+const tinhoc1Questions = JSON.parse(fs.readFileSync(path.join(__dirname, 'De_TINHOC_1', 'questions.json'), 'utf8'));
+const tinhoc2Questions = JSON.parse(fs.readFileSync(path.join(__dirname, 'De_TINHOC_2', 'questions.json'), 'utf8'));
+const tinhoc3Questions = JSON.parse(fs.readFileSync(path.join(__dirname, 'De_TINHOC_3', 'questions.json'), 'utf8'));
+const tinhocAllQuestions = JSON.parse(fs.readFileSync(path.join(__dirname, 'De_TINHOC_All', 'questions.json'), 'utf8'));
+
 const SUBJECTS_DATA = {
   prn222: {
     id: 'prn222',
@@ -76,6 +82,15 @@ const SUBJECTS_DATA = {
     icon: 'fa-gamepad',
     tagColor: 'blue',
     exams: ['sp26', 'su26', 'all']
+  },
+  tinhoc: {
+    id: 'tinhoc',
+    name: 'Tin Học',
+    title: 'Tin Học Cơ Bản (CNTT)',
+    subtitle: 'Chuẩn kỹ năng CNTT cơ bản: Phần cứng, Hệ điều hành Windows, Mạng máy tính & An toàn thông tin',
+    icon: 'fa-desktop',
+    tagColor: 'emerald',
+    exams: ['tinhoc_1', 'tinhoc_2', 'tinhoc_3', 'tinhoc_all']
   }
 };
 
@@ -184,6 +199,64 @@ const EXAMS_DATA = {
     storagePrefix: 'pru213_all100',
     timeMinutes: 90,
     questions: pruAllQuestions
+  },
+
+  // TINHOC Exams
+  tinhoc_1: {
+    id: 'tinhoc_1',
+    subject: 'tinhoc',
+    code: 'TIN HỌC - ĐỀ 1',
+    shortName: 'Đề 1 Tin Học',
+    title: 'Đề 1: Tin Học Cơ Bản (CB 8)',
+    subtitle: '50 câu hỏi trắc nghiệm Tin học cơ bản kèm hình ảnh minh họa và mẹo chọn đáp án từ khóa',
+    storagePrefix: 'tinhoc_de1',
+    timeMinutes: 50,
+    questions: tinhoc1Questions.map(q => ({
+      ...q,
+      examLabel: 'Đề 1'
+    }))
+  },
+  tinhoc_2: {
+    id: 'tinhoc_2',
+    subject: 'tinhoc',
+    code: 'TIN HỌC - ĐỀ 2',
+    shortName: 'Đề 2 Tin Học',
+    title: 'Đề 2: Tin Học Cơ Bản (CB 9)',
+    subtitle: '50 câu hỏi trắc nghiệm Tin học cơ bản đề số 2 kèm hình ảnh và mẹo từ khóa',
+    storagePrefix: 'tinhoc_de2',
+    timeMinutes: 50,
+    questions: tinhoc2Questions.map(q => ({
+      ...q,
+      examLabel: 'Đề 2'
+    }))
+  },
+  tinhoc_3: {
+    id: 'tinhoc_3',
+    subject: 'tinhoc',
+    code: 'TIN HỌC - ĐỀ 3',
+    shortName: 'Đề 3 Tin Học',
+    title: 'Đề 3: Tin Học Cơ Bản (CB 7)',
+    subtitle: '50 câu hỏi trắc nghiệm Tin học cơ bản đề số 3 kèm hình ảnh và mẹo từ khóa',
+    storagePrefix: 'tinhoc_de3',
+    timeMinutes: 50,
+    questions: tinhoc3Questions.map(q => ({
+      ...q,
+      examLabel: 'Đề 3'
+    }))
+  },
+  tinhoc_all: {
+    id: 'tinhoc_all',
+    subject: 'tinhoc',
+    code: 'TIN HỌC - 50 CÂU CHUẨN (LỌC TRÙNG)',
+    shortName: 'Lọc trùng (50 câu)',
+    title: 'Tin Học: 50 Câu Chuẩn (Lọc Trùng)',
+    subtitle: 'Toàn bộ 50 câu hỏi độc bản không trùng lặp, kèm hình ảnh minh họa và mẹo từ khóa in đỏ',
+    storagePrefix: 'tinhoc_all_dedup',
+    timeMinutes: 50,
+    questions: tinhocAllQuestions.map(q => ({
+      ...q,
+      examLabel: 'Chuẩn'
+    }))
   }
 };
 
@@ -335,13 +408,16 @@ const unifiedHtml = `<!DOCTYPE html>
             <i id="headerBrandIcon" class="fa-solid fa-bolt text-base sm:text-lg"></i>
           </div>
           <div class="min-w-0">
-            <!-- Subject Switcher Pills (PRN222 vs PRU213) -->
+            <!-- Subject Switcher Pills (PRN222 vs PRU213 vs TINHOC) -->
             <div class="flex items-center gap-1.5 flex-wrap">
               <button onclick="switchSubject('prn222')" id="subPill_prn222" class="px-2 py-0.5 rounded-lg text-[11px] font-extrabold flex items-center gap-1 transition bg-indigo-600 text-white shadow-xs">
                 <i class="fa-solid fa-bolt text-[10px]"></i> PRN222
               </button>
               <button onclick="switchSubject('pru213')" id="subPill_pru213" class="px-2 py-0.5 rounded-lg text-[11px] font-bold flex items-center gap-1 transition bg-slate-100 text-slate-600 hover:bg-slate-200">
                 <i class="fa-solid fa-gamepad text-[10px]"></i> PRU213
+              </button>
+              <button onclick="switchSubject('tinhoc')" id="subPill_tinhoc" class="px-2 py-0.5 rounded-lg text-[11px] font-bold flex items-center gap-1 transition bg-slate-100 text-slate-600 hover:bg-slate-200">
+                <i class="fa-solid fa-desktop text-[10px]"></i> Tin Học
               </button>
               <span class="text-xs text-slate-300 hidden sm:inline">•</span>
               <span id="headerExamCode" class="text-[10px] sm:text-xs font-semibold text-slate-500 uppercase tracking-wider truncate hidden sm:inline">PRN222 - ĐỀ 1</span>
@@ -746,10 +822,12 @@ const unifiedHtml = `<!DOCTYPE html>
   <footer class="bg-white border-t border-slate-200 py-4 text-center text-xs text-slate-500 mt-auto">
     <div class="max-w-7xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-2">
       <div>Ôn Tập</div>
-      <div class="flex items-center gap-4">
+      <div class="flex items-center gap-4 flex-wrap justify-center">
         <span>PRN222: 3 Đề + 1 Tổng hợp (150 Câu)</span>
         <span>•</span>
         <span>PRU213: 2 Đề + 1 Tổng hợp (100 Câu)</span>
+        <span>•</span>
+        <span>Tin Học: 3 Đề + 1 Lọc trùng (50 Câu)</span>
       </div>
     </div>
   </footer>
@@ -843,7 +921,7 @@ const unifiedHtml = `<!DOCTYPE html>
       // Update Header Info
       document.getElementById('headerExamCode').innerText = exam.code;
       document.getElementById('headerExamTitle').innerText = exam.title;
-      document.getElementById('headerBrandIcon').className = activeSubjectId === 'prn222' ? 'fa-solid fa-bolt text-base sm:text-lg' : 'fa-solid fa-gamepad text-base sm:text-lg';
+      document.getElementById('headerBrandIcon').className = activeSubjectId === 'prn222' ? 'fa-solid fa-bolt text-base sm:text-lg' : (activeSubjectId === 'tinhoc' ? 'fa-solid fa-desktop text-base sm:text-lg' : 'fa-solid fa-gamepad text-base sm:text-lg');
       
       // Update Mobile dock label
       const dockExamEl = document.getElementById('mobileDockExamName');
@@ -856,6 +934,10 @@ const unifiedHtml = `<!DOCTYPE html>
         else if (examId === 'sp26') dockShort = 'SP26';
         else if (examId === 'su26') dockShort = 'SU26';
         else if (examId === 'all') dockShort = 'PRU ALL';
+        else if (examId === 'tinhoc_1') dockShort = 'TH 1';
+        else if (examId === 'tinhoc_2') dockShort = 'TH 2';
+        else if (examId === 'tinhoc_3') dockShort = 'TH 3';
+        else if (examId === 'tinhoc_all') dockShort = 'TH ALL';
         dockExamEl.innerText = dockShort;
       }
       const mDrawerTitle = document.getElementById('mDrawerTitleExam');
@@ -864,11 +946,12 @@ const unifiedHtml = `<!DOCTYPE html>
       if (sidebarSubjectEl) sidebarSubjectEl.innerText = SUBJECTS[activeSubjectId].name;
 
       // Update Subject pills
-      ['prn222', 'pru213'].forEach(sId => {
+      ['prn222', 'pru213', 'tinhoc'].forEach(sId => {
         const pill = document.getElementById('subPill_' + sId);
         if (pill) {
           if (sId === activeSubjectId) {
-            pill.className = 'px-2 py-0.5 rounded-lg text-[11px] font-extrabold flex items-center gap-1 transition ' + (sId === 'prn222' ? 'bg-indigo-600 text-white shadow-xs' : 'bg-blue-600 text-white shadow-xs');
+            let activeColor = sId === 'prn222' ? 'bg-indigo-600 text-white shadow-xs' : (sId === 'tinhoc' ? 'bg-emerald-600 text-white shadow-xs' : 'bg-blue-600 text-white shadow-xs');
+            pill.className = 'px-2 py-0.5 rounded-lg text-[11px] font-extrabold flex items-center gap-1 transition ' + activeColor;
           } else {
             pill.className = 'px-2 py-0.5 rounded-lg text-[11px] font-bold flex items-center gap-1 transition bg-slate-100 text-slate-600 hover:bg-slate-200';
           }
@@ -892,7 +975,7 @@ const unifiedHtml = `<!DOCTYPE html>
           const ex = EXAMS[eId];
           const st = getExamStatsSummary(eId);
           const isActive = eId === activeExamId;
-          const activeBg = sub.id === 'prn222' ? 'bg-gradient-to-r from-indigo-600 to-purple-600' : 'bg-gradient-to-r from-blue-600 to-indigo-600';
+          const activeBg = sub.id === 'prn222' ? 'bg-gradient-to-r from-indigo-600 to-purple-600' : (sub.id === 'tinhoc' ? 'bg-gradient-to-r from-emerald-600 to-teal-600' : 'bg-gradient-to-r from-blue-600 to-indigo-600');
           return \`
             <button onclick="switchExam('\${eId}')" id="tabExam_\${eId}" class="px-2.5 sm:px-3 py-1.5 rounded-xl text-xs font-bold transition flex items-center gap-1.5 sm:gap-2 shrink-0 \${isActive ? activeBg + ' text-white shadow-sm' : 'bg-slate-100 text-slate-600 hover:bg-slate-200'}">
               <i class="fa-solid \${eId.includes('all') ? 'fa-layer-group' : 'fa-file-lines'} text-[11px]"></i>
@@ -930,7 +1013,7 @@ const unifiedHtml = `<!DOCTYPE html>
       // Render Modal Exam Cards (Grouped by Subject)
       const modalContainer = document.getElementById('modalExamCards');
       if (modalContainer) {
-        modalContainer.innerHTML = ['prn222', 'pru213'].map(sId => {
+        modalContainer.innerHTML = ['prn222', 'pru213', 'tinhoc'].map(sId => {
           const sub = SUBJECTS[sId];
           const examCardsHtml = sub.exams.map(eId => {
             const ex = EXAMS[eId];
@@ -963,7 +1046,7 @@ const unifiedHtml = `<!DOCTYPE html>
             <div class="flex flex-col gap-2.5">
               <div class="flex items-center justify-between">
                 <h4 class="text-xs sm:text-sm font-extrabold text-slate-900 flex items-center gap-2">
-                  <span class="w-6 h-6 rounded-lg \${sId === 'prn222' ? 'bg-indigo-100 text-indigo-700' : 'bg-blue-100 text-blue-700'} flex items-center justify-center text-xs">
+                  <span class="w-6 h-6 rounded-lg \${sId === 'prn222' ? 'bg-indigo-100 text-indigo-700' : (sId === 'tinhoc' ? 'bg-emerald-100 text-emerald-700' : 'bg-blue-100 text-blue-700')} flex items-center justify-center text-xs">
                     <i class="fa-solid \${sub.icon}"></i>
                   </span>
                   Môn \${sub.name} - \${sub.title}
@@ -1118,25 +1201,20 @@ const unifiedHtml = `<!DOCTYPE html>
     }
 
     function toggleSingleExplanation(qId) {
-      if (openExplanations.has(qId)) {
-        openExplanations.delete(qId);
-      } else {
-        openExplanations.add(qId);
-      }
       const explBody = document.getElementById('expl_body_' + qId);
       const explBtnTxt = document.getElementById('expl_btn_txt_' + qId);
       const explIcon = document.getElementById('expl_icon_' + qId);
-      if (explBody) {
-        const isOpen = openExplanations.has(qId);
-        if (isOpen) {
-          explBody.classList.remove('hidden');
-          if (explBtnTxt) explBtnTxt.innerText = 'Gập giải thích';
-          if (explIcon) explIcon.className = 'fa-solid fa-chevron-up text-[9px]';
-        } else {
-          explBody.classList.add('hidden');
-          if (explBtnTxt) explBtnTxt.innerText = 'Xem giải thích';
-          if (explIcon) explIcon.className = 'fa-solid fa-chevron-down text-[9px]';
-        }
+      const isCurrentlyOpen = explBody && !explBody.classList.contains('hidden');
+      if (isCurrentlyOpen) {
+        openExplanations.delete(qId);
+        if (explBody) explBody.classList.add('hidden');
+        if (explBtnTxt) explBtnTxt.innerText = 'Xem giải thích';
+        if (explIcon) explIcon.className = 'fa-solid fa-chevron-down text-[9px]';
+      } else {
+        openExplanations.add(qId);
+        if (explBody) explBody.classList.remove('hidden');
+        if (explBtnTxt) explBtnTxt.innerText = 'Gập giải thích';
+        if (explIcon) explIcon.className = 'fa-solid fa-chevron-up text-[9px]';
       }
     }
 
@@ -1567,9 +1645,11 @@ const unifiedHtml = `<!DOCTYPE html>
         ? \`<span class="px-1.5 py-0.5 rounded text-[10px] font-bold bg-blue-100/80 text-blue-800">\${q.examLabel} #\${q.origId}</span>\`
         : '';
 
-      const imageBtnHtml = q.imagePath
-        ? \`<button onclick="openImageModal(\${q.id})" title="Xem ảnh chụp gốc từ đề" class="px-2 py-1 text-[11px] font-medium rounded border border-blue-200/80 bg-white/80 hover:bg-white text-slate-600 transition flex items-center gap-1">
-             <i class="fa-regular fa-image text-blue-600"></i> <span>Ảnh gốc</span>
+      const hasImage = Boolean(q.image || q.imagePath);
+      const imgPath = q.image || q.imagePath;
+      const imageBtnHtml = hasImage
+        ? \`<button onclick="openImageModal(\${q.id})" title="Xem ảnh phóng to" class="px-2 py-1 text-[11px] font-medium rounded border border-blue-200/80 bg-white/80 hover:bg-white text-slate-600 transition flex items-center gap-1">
+             <i class="fa-regular fa-image text-blue-600"></i> <span>Phóng to ảnh</span>
            </button>\`
         : '';
 
@@ -1601,6 +1681,12 @@ const unifiedHtml = `<!DOCTYPE html>
           <div class="eos-question-text font-normal">
             \${escapeHtml(q.question)}
           </div>
+          \${hasImage ? \`
+            <div class="my-2.5 max-w-md mx-auto overflow-hidden rounded-xl border border-slate-200 bg-slate-50 flex flex-col items-center p-2 shadow-xs">
+              <img src="\${escapeHtml(BASE_PREFIX + imgPath)}" alt="Hình ảnh minh họa câu hỏi" class="max-h-72 w-auto object-contain rounded-lg cursor-pointer hover:opacity-95 transition" onclick="openImageModal(\${q.id})" />
+              <span class="text-[10px] text-slate-400 mt-1 flex items-center gap-1"><i class="fa-solid fa-magnifying-glass-plus"></i> Chạm ảnh để phóng to</span>
+            </div>
+          \` : ''}
 
           <!-- Options List: A. B. C. D. -->
           <div class="flex flex-col gap-1 sm:gap-1.5 pt-0.5">
@@ -1639,7 +1725,17 @@ const unifiedHtml = `<!DOCTYPE html>
 
       // Collapsible Explanation Box
       if (showFeedback) {
-        const isOpen = openExplanations.has(q.id);
+        const isOpen = currentMode === 'study' || openExplanations.has(q.id);
+        const tipHtml = q.tip ? \`
+          <div class="mb-2 p-2.5 rounded-xl bg-amber-50/90 border border-amber-200 text-slate-800 text-xs sm:text-[13px] leading-relaxed shadow-xs flex items-start gap-2">
+            <span class="text-amber-500 text-base mt-0.5 shrink-0"><i class="fa-solid fa-lightbulb"></i></span>
+            <div class="flex-1">
+              <span class="font-extrabold text-amber-800 uppercase tracking-wide text-[11px] block mb-0.5">💡 Mẹo chọn đáp án & từ khóa:</span>
+              <div class="leading-snug">\${q.tip}</div>
+            </div>
+          </div>
+        \` : '';
+
         html += \`
           <div class="mt-2 pt-2 border-t border-slate-100 text-[13px] text-slate-700 flex flex-col gap-1">
             <button onclick="toggleSingleExplanation(\${q.id})" class="w-full text-left flex items-center justify-between text-xs py-1 hover:text-blue-600 transition">
@@ -1652,8 +1748,12 @@ const unifiedHtml = `<!DOCTYPE html>
                 <i id="expl_icon_\${q.id}" class="fa-solid \${isOpen ? 'fa-chevron-up' : 'fa-chevron-down'} text-[9px]"></i>
               </span>
             </button>
-            <div id="expl_body_\${q.id}" class="\${isOpen ? 'block' : 'hidden'} text-slate-600 leading-relaxed text-xs sm:text-[13px] pt-1 pl-4 border-l-2 border-blue-200 bg-slate-50/60 p-2.5 rounded-r-xl">
-              \${escapeHtml(q.explanation)}
+            <div id="expl_body_\${q.id}" class="\${isOpen ? 'block' : 'hidden'} flex flex-col gap-1.5 pt-1">
+              \${tipHtml}
+              <div class="text-slate-600 leading-relaxed text-xs sm:text-[13px] pl-4 border-l-2 border-blue-200 bg-slate-50/60 p-2.5 rounded-r-xl">
+                <span class="font-bold text-slate-700 block mb-0.5">Chi tiết giải thích:</span>
+                \${q.explanation}
+              </div>
             </div>
           </div>
         \`;
@@ -1849,9 +1949,10 @@ const unifiedHtml = `<!DOCTYPE html>
 
     function openImageModal(qId) {
       const q = RAW_QUESTIONS.find(item => item.id === qId);
-      if (!q || !q.imagePath) return;
-      document.getElementById('modalImageTitle').innerText = 'Câu ' + q.id + ' (' + q.examLabel + ' #' + q.origId + ')';
-      document.getElementById('modalImageSrc').src = BASE_PREFIX + q.imagePath;
+      const imgPath = q?.image || q?.imagePath;
+      if (!q || !imgPath) return;
+      document.getElementById('modalImageTitle').innerText = 'Câu ' + q.id + (q.examLabel ? ' (' + q.examLabel + (q.origId ? ' #' + q.origId : '') + ')' : '');
+      document.getElementById('modalImageSrc').src = BASE_PREFIX + imgPath;
       document.getElementById('imageModal').classList.remove('hidden');
     }
 
@@ -1915,6 +2016,16 @@ fs.mkdirSync(path.join(__dirname, 'De_PRN222_3'), { recursive: true });
 fs.writeFileSync(path.join(__dirname, 'De_PRN222_1', 'index.html'), makeRedirect('prn222_1'), 'utf8');
 fs.writeFileSync(path.join(__dirname, 'De_PRN222_2', 'index.html'), makeRedirect('prn222_2'), 'utf8');
 fs.writeFileSync(path.join(__dirname, 'De_PRN222_3', 'index.html'), makeRedirect('prn222_3'), 'utf8');
+
+fs.mkdirSync(path.join(__dirname, 'De_TINHOC_1'), { recursive: true });
+fs.mkdirSync(path.join(__dirname, 'De_TINHOC_2'), { recursive: true });
+fs.mkdirSync(path.join(__dirname, 'De_TINHOC_3'), { recursive: true });
+fs.mkdirSync(path.join(__dirname, 'De_TINHOC_All'), { recursive: true });
+
+fs.writeFileSync(path.join(__dirname, 'De_TINHOC_1', 'index.html'), makeRedirect('tinhoc_1'), 'utf8');
+fs.writeFileSync(path.join(__dirname, 'De_TINHOC_2', 'index.html'), makeRedirect('tinhoc_2'), 'utf8');
+fs.writeFileSync(path.join(__dirname, 'De_TINHOC_3', 'index.html'), makeRedirect('tinhoc_3'), 'utf8');
+fs.writeFileSync(path.join(__dirname, 'De_TINHOC_All', 'index.html'), makeRedirect('tinhoc_all'), 'utf8');
 
 // Write .nojekyll for GitHub Pages
 fs.writeFileSync(path.join(__dirname, '.nojekyll'), '', 'utf8');

@@ -1,0 +1,460 @@
+NGUỒN: https://azota.vn/vi/test/take-training/1541702/0/m1mvuh?backto=%2Fde-thi%2Fm1mvuh
+TỔNG SỐ CÂU QUÉT ĐƯỢC: 50
+
+========================================
+Câu 1: Hình ảnh dưới đây là biểu tượng của phần mềm nào?
+[Hình ảnh đính kèm đã tải]: Cau_1.png
+Các lựa chọn:
+A. Paint
+B. Microsoft office word 2016
+C. Winrar
+D. Photoshop
+=> ĐÁP ÁN ĐÚNG: D
+
+========================================
+Câu 2: Chỉ ra các bước tạo thư mục trên Desktop.
+Các lựa chọn:
+A. Chuột phải vào khoảng trống 🡪 Chọn New để hiển thị submenu 🡪 Chọn folder
+B. Chuột phải vào khoảng trống 🡪 Chọn New để hiển thị submenu 🡪 Chọn Shortcut 🡪 Chọn folder
+C. Chọn New để hiển thị submenu 🡪 Chuột phải vào khoảng trống 🡪 Chọn folder
+D. Chuột phải vào khoảng trống 🡪 Chọn New để hiển thị submenu 🡪 Chọn Shortcut
+=> ĐÁP ÁN ĐÚNG: A
+
+========================================
+Câu 3: Dấu hiệu nào dưới đây báo hiệu máy tính của bạn đã bị tấn công?
+Các lựa chọn:
+A. Các chương trinh hoạt động bình thường
+B. Đăng nhập vào máy tính bình thường
+C. Chương trình Task manager bị vô hiệu hóa
+D. Không có phần mềm lạ nào trong máy tính
+=> ĐÁP ÁN ĐÚNG: D
+
+========================================
+Câu 4: Đâu là phát biểu đúng khi chạy chương trình dọn đĩa (Disk cleanup)?
+Các lựa chọn:
+A. Diệt Virus
+B. Giúp máy tính kết nối mạng Internet nhanh hơn
+C. Xóa tệp tin rác.
+D. Chọn tệp tin cần xóa
+=> ĐÁP ÁN ĐÚNG: D
+
+========================================
+Câu 5: Phần mềm mã nguồn mở là phần mềm:
+Các lựa chọn:
+A. Là phần mềm máy tính mà mã nguồn được công bố mà không có giới hạn bản quyền và không phải trả phí.
+B. Là phần mềm không phải trả phí, nhưng bị giới hạn một số quyền: sao chép, phân phối,…
+C. Là phần mềm phải trả phí rất ít.
+D. Là phiên bản của các phần mềm thương mại được công bố để dùng thử.
+=> ĐÁP ÁN ĐÚNG: A
+
+========================================
+Câu 6: Máy tính vẫn hoạt động bình thường mà không cần có thiết bị nào dưới đây?
+Các lựa chọn:
+A. Ổ đĩa mềm
+B. CPU
+C. Bộ nguồn
+D. Bộ nhớ RAM
+=> ĐÁP ÁN ĐÚNG: A
+
+========================================
+Câu 7: Hình ảnh dưới đây là thiết bị nào của máy tính?
+[Hình ảnh đính kèm đã tải]: Cau_7.png
+Các lựa chọn:
+A. CPU
+B. Nguồn máy tính
+C. RAM
+D. Ổ cứng
+=> ĐÁP ÁN ĐÚNG: A
+
+========================================
+Câu 8: Các thành phần của CPU bao gồm:
+Các lựa chọn:
+A. Clock, Control Unit, ALU.
+B. Clock, Control Unit, ALU, ROM.
+C. Clock, Control Unit, ALU, Registers.
+D. Clock, Control Unit, BUS, Registers.
+=> ĐÁP ÁN ĐÚNG: D
+
+========================================
+Câu 9: Muốn xem tổng dung lượng RAM và tốc độ của bộ vi xử lý cần lựa chọn nhóm nào trong hình ảnh sau:
+[Hình ảnh đính kèm đã tải]: Cau_9.png
+Các lựa chọn:
+A. Ease of Access
+B. User Accounts and Family Safety
+C. Clock, Language, and Region
+D. System and Security
+=> ĐÁP ÁN ĐÚNG: Không xác định (Bỏ qua)
+
+========================================
+Câu 10: Lựa chọn nào trong hình ảnh dưới đây cho phép tắt máy tính và lưu trữ thông tin, trạng thái các chương trình đang hoạt động vào ổ đĩa cứng?
+[Hình ảnh đính kèm đã tải]: Cau_10.png
+Các lựa chọn:
+A. Sleep
+B. Restart
+C. Shut down
+D. Hibernate
+=> ĐÁP ÁN ĐÚNG: Không xác định (Bỏ qua)
+
+========================================
+Câu 11: Trong máy tính điện tử, thiết bị nào không cần thiết phải có trong quá trình khởi động ?
+Các lựa chọn:
+A. CPU
+B. Ổ đọc ghi đĩa.
+C. ROM
+D. RAM
+=> ĐÁP ÁN ĐÚNG: C
+
+========================================
+Câu 12: Điều gì xảy ra khi một máy tính được đặt trong chế độ Switch User?
+Các lựa chọn:
+A. Không tắt chương trình của user hiện tại, có thể đăng nhập tài khoản user khác.
+B. Tắt các chương trình, đăng xuất ra màn hình đăng nhập.
+C. Tắt các chương trình, khởi động lại máy tính.
+D. Không tắt chương trình, hiện màn hình đăng nhập.
+=> ĐÁP ÁN ĐÚNG: A
+
+========================================
+Câu 13: Thuật ngữ Share dùng trong Công nghệ thông tin có ý nghĩa gì?
+Các lựa chọn:
+A. Một phần mềm hỗ trợ sử dụng mạng cục bộ
+B. Chia sẻ tài nguyên
+C. Nhãn hiệu của một thiết bị kết nối mạng
+D. Thực hiện lệnh in trong mạng cục bộ
+=> ĐÁP ÁN ĐÚNG: C
+
+========================================
+Câu 14: Hình ảnh dưới đây là thiết bị nào của máy tính?
+[Hình ảnh đính kèm đã tải]: Cau_14.png
+Các lựa chọn:
+A. Nguồn máy tính
+B. Ổ cứng
+C. Bo mạch chủ (Mainboard)
+D. CPU
+=> ĐÁP ÁN ĐÚNG: D
+
+========================================
+Câu 15: Hãy chỉ ra cách phân biệt một thư mục là shortcut?
+Các lựa chọn:
+A. Chúng được hiển thị phía trên trái màn hình Desktop
+B. Chúng được hiển thị với một mũi tên nhỏ góc dưới bên trái của biểu tượng
+C. Chúng được lưu trong một thư mục đặc biệt có tên là shortcut
+D. Khi di chuyển chuột qua chúng sẽ tự động đổi màu
+=> ĐÁP ÁN ĐÚNG: C
+
+========================================
+Câu 16: Thiết bị nào là máy tính chủ (server) trong hình dưới đây?
+[Hình ảnh đính kèm đã tải]: Cau_16.png
+Các lựa chọn:
+A. (1)
+B. (3)
+C. (4)
+D. (2)
+=> ĐÁP ÁN ĐÚNG: A
+
+========================================
+Câu 17: Hình ảnh dưới đây là nhóm thiết bị nào của máy tính?
+[Hình ảnh đính kèm đã tải]: Cau_17.png
+Các lựa chọn:
+A. Nhóm thiết bị nhập
+B. Nhóm thiết bị xuất
+C. Nhóm thiết bị vừa nhập, vừa xuất
+D. Nhóm thiết bị lưu trữ
+=> ĐÁP ÁN ĐÚNG: C
+
+========================================
+Câu 18: Đâu là phát biểu đúng khi nói về ổ cứng SSD so với ổ cứng HDD?
+Các lựa chọn:
+A. Giá rẻ hơn
+B. Ổ cứng SSD chỉ sử dụng cho máy tính để bàn.
+C. Có tốc độ đọc ghi dữ liệu nhanh hơn
+D. Có độ bền kém hơn
+=> ĐÁP ÁN ĐÚNG: D
+
+========================================
+Câu 19: Trong hệ điều hành Windows, muốn chọn tất cả các file trong một thư mục, ta mở thư mục đó và sử dụng tổ hợp phím nào?
+Các lựa chọn:
+A. Bấm Alt + F12
+B. Bấm Ctrl + A
+C. Bấm Shift + F4
+D. Bấm Ctrl + J
+=> ĐÁP ÁN ĐÚNG: C
+
+========================================
+Câu 20: Phần mềm máy tính nói chung rất phong phú và đa dạng. Tổng quát, phần mềm có thể chia thành mấy loại?
+Các lựa chọn:
+A. 02 loại.
+B. 03 loại.
+C. 05 loại.
+D. 04 loại.
+=> ĐÁP ÁN ĐÚNG: A
+
+========================================
+Câu 21: Phát biểu nào sau đây đúng nhất về Shortcut trong hệ điều hành Windows?
+Các lựa chọn:
+A. Giúp người dùng truy cập nhanh vào đối tượng thường sử dụng
+B. Là phần mềm chuyên dụng giúp máy tính chạy nhanh hơn
+C. Giúp người dùng ngăn chặn Virus
+D. Giúp người dùng mở nhanh My Computer
+=> ĐÁP ÁN ĐÚNG: A
+
+========================================
+Câu 22: Phần mềm nào sau đây không phải là phần mềm mã nguồn mở
+Các lựa chọn:
+A. Microsoft Office PowerPoint 2016
+B. Open Office
+C. Linux
+D. Ubuntu
+=> ĐÁP ÁN ĐÚNG: A
+
+========================================
+Câu 23: Phát biểu nào dưới đây là sai:
+Các lựa chọn:
+A. Các chương trình của phần mềm hệ thống này thường được xây dựng bởi các chuyên viên phát triển hệ thống.
+B. Phần mềm hệ thống là những chương trình có khả năng tổ chức và điều hành sự hoạt động phối hợp của các thành phần khác nhau trong máy tính.
+C. Phần mềm hệ thống là những chương trình có khả năng giải quyết một nhu cầu cụ thể nào đó của người sử dụng.
+D. Hệ điều hành, chương trình dịch là các phần mềm hệ thống thông dụng
+=> ĐÁP ÁN ĐÚNG: D
+
+========================================
+Câu 24: Chọn phát biểu đúng?
+Các lựa chọn:
+A. Tốc độ mạng được xác định bằng khả năng truyền tải thông tin
+B. Tất cả các phương án đều đúng
+C. Khả năng truyền tải thông tin được đo bằng số lượng bit
+D. Tốc độ truyền tải dữ liệu trong mạng được đo bằng số bit trong một giây (bps)
+=> ĐÁP ÁN ĐÚNG: C
+
+========================================
+Câu 25: Trong hệ điều hành Windows, để thực hiện chọn các file không liên tục trong danh sách file cần tực hiện thao tác nào sau đây?
+Các lựa chọn:
+A. Giữ phím Esc và kích chuột tại các file cần chọn
+B. Giữ phím Shift và kích chuột tại các file cần chọn
+C. Giữ phím Alt và kích chuột tại các file cần chọn
+D. Giữ phím Ctrl và kích chuột tại các file cần chọn
+=> ĐÁP ÁN ĐÚNG: Không xác định (Bỏ qua)
+
+========================================
+Câu 26: Trong các phát biểu dưới đây, hãy lựa chọn phát biểu đúng?
+Các lựa chọn:
+A. 1TB = 1000 GB
+B. 1KB = 1024 Bit
+C. 1GB = 1024 Byte
+D. 1TB = 1024 GB
+=> ĐÁP ÁN ĐÚNG: Không xác định (Bỏ qua)
+
+========================================
+Câu 27: Muốn gỡ bỏ một chương trình đã cài đặt trong máy tính, ta lựa chọn khu vực nào trong hình ảnh dưới đây?
+[Hình ảnh đính kèm đã tải]: Cau_27.png
+Các lựa chọn:
+A. User Accounts and Family Safety
+B. System and Sercurity
+C. Network and Internet
+D. Programs
+=> ĐÁP ÁN ĐÚNG: Không xác định (Bỏ qua)
+
+========================================
+Câu 28: Phát biểu nào sau đây là sai?
+Các lựa chọn:
+A. Bộ nhớ RAM dùng để lưu trữ lâu dài các thông tin và hỗ trợ cho bộ nhớ ngoài.
+B. Bộ nhớ ngoài dùng để lưu trữ lâu dài các thông tin.
+C. Thanh ghi là vùng nhớ được CPU sử dụng để lưu trữ tạm thời các chỉ thị chờ xử lí.
+D. Các thông tin lưu trữ trong bộ nhớ ngoài sẽ không mất khi tắt máy.
+=> ĐÁP ÁN ĐÚNG: A
+
+========================================
+Câu 29: Dãy bit nhị phân 1011110 là biểu diễn của số thập lục phân:
+Các lựa chọn:
+A. 5D
+B. 5E
+C. 5F
+D. 5C
+=> ĐÁP ÁN ĐÚNG: C
+
+========================================
+Câu 30: Khi khởi động máy tính, phần mềm nào sau đây sẽ được khởi động trước?
+Các lựa chọn:
+A. Phần mềm Micrsoft Office
+B. Phần mềm diệt Virus
+C. Hệ điều hành
+D. Phần mềm gõ tiếng Việt
+=> ĐÁP ÁN ĐÚNG: D
+
+========================================
+Câu 31: Phát biểu nào sau đây là sai?
+Các lựa chọn:
+A. ROM là thiết bị lưu trữ thông tin tạm thời.
+B. RAM là thiết bị lưu trữ thông tin tạm thời.
+C. Thanh ghi là bộ nhớ đệm được tích hợp bên trong CPU.
+D. Cache là bộ nhớ đệm được tích hợp bên trong CPU.
+=> ĐÁP ÁN ĐÚNG: A
+
+========================================
+Câu 32: Điều gì xảy ra khi một máy tính được đặt trong chế độ Lock?
+Các lựa chọn:
+A. Không tắt chương trình, hiện màn hình đăng nhập.
+B. Tắt các chương trình, tắt máy tính.
+C. Tắt các chương trình, đăng xuất ra màn hình đăng nhập.
+D. Không tắt chương trình của user hiện tại, có thể đăng nhập tài khoản user khác.
+=> ĐÁP ÁN ĐÚNG: A
+
+========================================
+Câu 33: Để thiết lập chế độ nghỉ màn hình (Screen Save) trong Windows 7, ta sử dụng lựa chọn nào trong hình ảnh dưới đây?
+[Hình ảnh đính kèm đã tải]: Cau_33.png
+Các lựa chọn:
+A. System and Security
+B. Network & Internet
+C. Appearance and Personalization
+D. Ease of Access
+=> ĐÁP ÁN ĐÚNG: D
+
+========================================
+Câu 34: Dãy bit nhị phân 1011110 là biểu diễn của số thập phân:
+Các lựa chọn:
+A. 94
+B. 93
+C. 90
+D. 95
+=> ĐÁP ÁN ĐÚNG: A
+
+========================================
+Câu 35: Phát biểu nào dưới đây là đúng?
+Các lựa chọn:
+A. Virus máy tính có khả năng ghi lại nhật ký duyệt web của người dùng. B. Virus máy tính không có khả năng lây nhiễm vào các tệp tin của người dùng. D. Virus máy tính không có khả năng tự sao chép và nhân bản.
+B. Virus máy tính có khả năng tự lây lan, tự sao chép và nhân bản.
+=> ĐÁP ÁN ĐÚNG: Không xác định (Bỏ qua)
+
+========================================
+Câu 36: Hệ điều hành nào sau đây không sử dụng cho máy tính?
+Các lựa chọn:
+A. UNIX
+B. IOS
+C. Windows 10
+D. MAC OS
+=> ĐÁP ÁN ĐÚNG: C
+
+========================================
+Câu 37: Thiết bị nào dưới đây ảnh hưởng tới tốc độ xử lý của máy tính?
+Các lựa chọn:
+A. USB
+B. Ổ đĩa mềm
+C. CPU
+D. Bộ nguồn
+=> ĐÁP ÁN ĐÚNG: D
+
+========================================
+Câu 38: Hành động nào nên thực hiện để tăng hiệu năng của máy tính?
+Các lựa chọn:
+A. Cài đặt phần mềm Microsoft Office
+B. Thực hiện sao lữu dữ liệu định kỳ
+C. Cài đặt tối thiểu hai chương trình phòng chống Virus
+D. Thực hiện chống phân mảnh ổ cứng định kỳ
+=> ĐÁP ÁN ĐÚNG: Không xác định (Bỏ qua)
+
+========================================
+Câu 39: Phát biểu nào sau đây là đúng?
+Các lựa chọn:
+A. RAM Là thiết bị lưu trữ thông tin không khả biến.
+B. Cache là bộ nhớ đệm được tích hợp trên mainboard.
+C. Thanh ghi là bộ nhớ đệm được tích hợp bên trong CPU.
+D. ROM là thiết bị lưu trữ thông tin khả biến.
+=> ĐÁP ÁN ĐÚNG: D
+
+========================================
+Câu 40: Hãy chỉ ra một tỷ lệ, kích thước độ phân giải màn hình? (Chiều dài x Chiều rộng)?
+Các lựa chọn:
+A. 1920x1080
+B. 1280x6981
+C. 1024x788
+D. 1080x1080
+=> ĐÁP ÁN ĐÚNG: A
+
+========================================
+Câu 41: Đơn vị nào không phải là đơn vị đo thông tin?
+Các lựa chọn:
+A. GB
+B. SB
+C. PB
+D. TB
+=> ĐÁP ÁN ĐÚNG: C
+
+========================================
+Câu 42: Theo nguyên tắc quản lý file, thư mục của hệ điều hành Windows, phát biểu nào sau đây KHÔNG đúng?
+Các lựa chọn:
+A. Trong một file có thể chứa các file và thư mục con khác
+B. Trong một file có thể không chứa thông tin
+C. Trong một thư mục có thể chứa các file và thư mục con khác
+D. Có thể đặt tên file, thư mục bằng Tiếng Việt có dấu
+=> ĐÁP ÁN ĐÚNG: A
+
+========================================
+Câu 43: Hình ảnh dưới đây là nhóm thiết bị nào của máy tính?
+[Hình ảnh đính kèm đã tải]: Cau_43.png
+Các lựa chọn:
+A. Nhóm thiết bị vừa nhập, vừa xuất
+B. Nhóm thiết bị lưu trữ
+C. Nhóm thiết bị nhập
+D. Nhóm thiết bị xuất
+=> ĐÁP ÁN ĐÚNG: D
+
+========================================
+Câu 44: Các tệp tin (file) sau khi được chọn và xóa bằng tổ hợp phím Shift + Delete sẽ:
+Các lựa chọn:
+A. Có thể phục hồi các tệp bằng cách mở Recycle Bin và phục hồi dữ liệu
+B. Không thể phục hồi các tệp bằng cách mở Recycle Bin và phục hồi dữ liệu
+C. Có thể phục hồi các tệp bằng cách mở My Documents và phục hồi dữ liệu
+D. Có thể phục hồi các tệp bằng cách mở My Computer và phục hồi dữ liệu
+=> ĐÁP ÁN ĐÚNG: C
+
+========================================
+Câu 45: Sự khác nhau về bản chất giữa bộ nhớ RAM và ROM là:
+Các lựa chọn:
+A. Bộ nhớ ROM không thể truy cập ngẫu nhiên, bộ nhớ RAM có thể truy cập ngẫu nhiên.
+B. Khi mất điện dữ liệu trên RAM mất đi, dữ liệu trên ROM vẫn được lưu trữ.
+C. Tất cả các phương án trên.
+D. Bộ nhớ RAM có thể ghi và đọc được thông tin, bộ nhớ ROM chỉ đọc.
+=> ĐÁP ÁN ĐÚNG: D
+
+========================================
+Câu 46: Đâu là dãy sắp xếp từ lớn đến nhỏ của đơn vị đo thông tin?
+Các lựa chọn:
+A. YB, PB, EB, GB
+B. KB, MB, TB, YB
+C. YB, EB, PB, GB
+D. KB, MB, TB, GB
+=> ĐÁP ÁN ĐÚNG: D
+
+========================================
+Câu 47: Hãy lựa chọn nhóm thiết bị ảnh hưởng đến tốc độ của máy tính?
+Các lựa chọn:
+A. CPU, Card đồ họa, ổ đĩa cứng, RAM
+B. Nguồn máy tính, BIOS, card âm thanh, card mạng
+C. Tất cả các phương án trên đều sai
+D. Thùng máy tính (Case), ổ đĩa mềm, ổ đĩa CD
+=> ĐÁP ÁN ĐÚNG: A
+
+========================================
+Câu 48: Điều gì xảy ra khi một máy tính được đặt trong chế độ Sleep?
+Các lựa chọn:
+A. Không tắt chương trình, hiện màn hình đăng nhập.
+B. Duy trì trạng thái hiện hành của tất cả chương trình và tập tin trong bộ nhớ và duy trì máy tính ở chế độ tiêu thụ ít điện năng.
+C. Lưu trạng thái hiện tại các chương trình vào đĩa cứng, tắt máy tính.
+D. Tắt các chương trình, đăng xuất ra màn hình đăng nhập.
+=> ĐÁP ÁN ĐÚNG: C
+
+========================================
+Câu 49: Chỉ ra sự khác nhau giữa RAM và HDD (Ổ đĩa cứng):
+Các lựa chọn:
+A. Dữ liệu khi được lưu ở RAM sẽ không bị mất sau khi tắt máy. Dữ liệu khi được lưu ở HDD sẽ bị mất sau khi tắt máy.
+B. Dữ liệu khi được lưu ở RAM sẽ lưu sang ROM sau khi tắt máy. Dữ liệu khi được lưu ở HDD sẽ bị mất sau khi tắt máy.
+C. Dữ liệu khi được lưu ở RAM sẽ bị mất sau khi tắt máy. Dữ liệu khi được lưu ở HDD sẽ không bị mất sau khi tắt máy
+D. Dữ liệu khi được lưu ở RAM sẽ lưu sang CPU sau khi tắt máy. Dữ liệu khi được lưu ở HDD sẽ bị mất sau khi tắt máy.
+=> ĐÁP ÁN ĐÚNG: D
+
+========================================
+Câu 50: Trong nhóm các phần mềm dưới đây, hãy lựa chọn nhóm phần mềm hệ điều hành:
+Các lựa chọn:
+A. Paint, Windows 7, Winrar, Android
+B. Mac OS, Windows 7, Winrar, Android
+C. Mac OS, Windows 7, Windows Vista, Android
+D. Mac OS, Windows 7, Winrar, Microsoft Office
+=> ĐÁP ÁN ĐÚNG: D
