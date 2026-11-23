@@ -339,6 +339,20 @@ const unifiedHtml = `<!DOCTYPE html>
       font-weight: 500;
     }
 
+    /* Keyword styling: Questions always red bold; Answers red bold except during exam mode */
+    .keyword-question {
+      color: #e11d48 !important;
+      font-weight: 700 !important;
+    }
+    .keyword-answer {
+      color: #e11d48 !important;
+      font-weight: 700 !important;
+    }
+    body.mode-exam:not(.exam-submitted) .keyword-answer {
+      color: inherit !important;
+      font-weight: inherit !important;
+    }
+
     /* Compact Density Overrides */
     body.density-compact .eos-card {
       margin-bottom: 0.25rem;
@@ -1464,6 +1478,8 @@ const unifiedHtml = `<!DOCTYPE html>
             : 'px-2 py-1.5 rounded-lg transition-all font-semibold flex items-center justify-center gap-1.5 text-slate-600';
         }
       });
+      document.body.classList.toggle('mode-exam', currentMode === 'exam');
+      document.body.classList.toggle('exam-submitted', Boolean(examSubmitted));
     }
 
     function startTimer() {
@@ -1692,6 +1708,16 @@ const unifiedHtml = `<!DOCTYPE html>
         .replace(/>/g, '&gt;');
     }
 
+    function formatRichText(str) {
+      if (!str) return '';
+      return escapeHtml(str)
+        .replaceAll('&lt;span class="keyword-question text-rose-600 font-bold"&gt;', '<span class="keyword-question text-rose-600 font-bold">')
+        .replaceAll('&lt;span class="keyword-answer text-rose-600 font-bold"&gt;', '<span class="keyword-answer text-rose-600 font-bold">')
+        .replaceAll('&lt;span class="text-rose-600 font-bold"&gt;', '<span class="text-rose-600 font-bold">')
+        .replaceAll('&lt;span class="text-emerald-700 font-bold"&gt;', '<span class="text-emerald-700 font-bold">')
+        .replaceAll('&lt;/span&gt;', '</span>');
+    }
+
     function createQuestionCard(q) {
       const div = document.createElement('div');
       div.id = 'question-card-' + q.id;
@@ -1742,7 +1768,7 @@ const unifiedHtml = `<!DOCTYPE html>
         <!-- Question & Options Body (EOS plain white style) -->
         <div class="eos-body px-4 sm:px-8 pt-3 sm:pt-4 pb-4 sm:pb-5 bg-white flex flex-col gap-2.5 sm:gap-3">
           <div class="eos-question-text font-normal">
-            \${escapeHtml(q.question)}
+            \${formatRichText(q.question)}
           </div>
           \${hasImage ? \`
             <div class="my-2.5 max-w-md mx-auto overflow-hidden rounded-xl border border-slate-200 bg-slate-50 flex flex-col items-center p-2 shadow-xs">
@@ -1778,7 +1804,7 @@ const unifiedHtml = `<!DOCTYPE html>
         html += \`
           <button onclick="selectOption(\${q.id}, '\${k}')" class="eos-option \${stateClass} w-full text-left flex items-baseline gap-2 active:scale-[0.995]">
             <span class="shrink-0 select-none font-semibold">\${k}.</span>
-            <span class="flex-1 leading-snug">\${escapeHtml(optText)}</span>
+            <span class="flex-1 leading-snug">\${formatRichText(optText)}</span>
             \${iconHtml}
           </button>
         \`;
@@ -1786,18 +1812,9 @@ const unifiedHtml = `<!DOCTYPE html>
 
       html += '</div>';
 
-      // Collapsible Explanation Box
+      // Collapsible Explanation Box (without tip box)
       if (showFeedback) {
         const isOpen = currentMode === 'study' || openExplanations.has(q.id);
-        const tipHtml = q.tip ? \`
-          <div class="mb-2 p-2.5 rounded-xl bg-amber-50/90 border border-amber-200 text-slate-800 text-xs sm:text-[13px] leading-relaxed shadow-xs flex items-start gap-2">
-            <span class="text-amber-500 text-base mt-0.5 shrink-0"><i class="fa-solid fa-lightbulb"></i></span>
-            <div class="flex-1">
-              <span class="font-extrabold text-amber-800 uppercase tracking-wide text-[11px] block mb-0.5">💡 Mẹo chọn đáp án & từ khóa:</span>
-              <div class="leading-snug">\${q.tip}</div>
-            </div>
-          </div>
-        \` : '';
 
         html += \`
           <div class="mt-2 pt-2 border-t border-slate-100 text-[13px] text-slate-700 flex flex-col gap-1">
@@ -1812,10 +1829,9 @@ const unifiedHtml = `<!DOCTYPE html>
               </span>
             </button>
             <div id="expl_body_\${q.id}" class="\${isOpen ? 'block' : 'hidden'} flex flex-col gap-1.5 pt-1">
-              \${tipHtml}
               <div class="text-slate-600 leading-relaxed text-xs sm:text-[13px] pl-4 border-l-2 border-blue-200 bg-slate-50/60 p-2.5 rounded-r-xl">
                 <span class="font-bold text-slate-700 block mb-0.5">Chi tiết giải thích:</span>
-                \${q.explanation}
+                \${formatRichText(q.explanation)}
               </div>
             </div>
           </div>
