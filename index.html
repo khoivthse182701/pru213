@@ -307,11 +307,6 @@
           </div>
 
           <div class="flex items-center gap-1.5 shrink-0">
-            <!-- Layout toggle button in filter bar -->
-            <button onclick="toggleViewLayout()" id="btnLayoutFilterBar" class="px-2.5 py-1 rounded-lg border border-indigo-200 bg-indigo-50 hover:bg-indigo-100 text-indigo-700 text-[11px] font-semibold flex items-center gap-1.5 transition" title="Đổi kiểu hiển thị câu hỏi">
-              <i id="iconLayoutFilterBar" class="fa-solid fa-layer-group text-xs"></i>
-              <span id="txtLayoutFilterBar">Xem danh sách</span>
-            </button>
             <!-- Collapse / Expand Filter Bar Button -->
             <button onclick="toggleFilterCollapse()" id="btnFilterCollapse" class="px-2.5 py-1 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 text-slate-600 text-[11px] font-semibold flex items-center gap-1 transition" title="Thu gọn / Mở rộng bộ lọc">
               <span id="txtFilterCollapse">Mở rộng</span>
@@ -364,13 +359,9 @@
           <i class="fa-solid fa-mobile-screen-button"></i>
           <span>Câu <span id="singleCurrentIdx">1</span> / <span id="singleTotalIdx">50</span></span>
         </div>
-        <div class="flex items-center gap-2">
-          <span class="text-blue-100 text-[11px] hidden sm:inline flex items-center gap-1">
-            <i class="fa-solid fa-hand-pointer"></i> Vuốt trái/phải hoặc dùng thanh dưới để chuyển câu
-          </span>
-          <button onclick="toggleViewLayout()" class="px-2.5 py-1 rounded-xl bg-white/20 hover:bg-white/30 text-white text-[11px] font-bold transition flex items-center gap-1.5 cursor-pointer">
-            <i class="fa-solid fa-list-ul"></i> <span>Xem danh sách</span>
-          </button>
+        <div class="flex items-center gap-2 text-blue-100 text-[11px]">
+          <i class="fa-solid fa-hand-pointer"></i>
+          <span class="hidden sm:inline">Vuốt trái/phải hoặc dùng thanh dưới để chuyển câu</span>
         </div>
       </div>
 
@@ -11919,21 +11910,6 @@
           btnD.className = isSingle
             ? 'px-2.5 py-1 text-xs font-semibold rounded-xl border border-indigo-200 bg-indigo-50 text-indigo-700 transition flex items-center gap-1.5 shadow-xs'
             : 'px-2.5 py-1 text-xs font-semibold rounded-xl border border-slate-200 hover:bg-slate-100 text-slate-700 transition flex items-center gap-1.5 bg-white shadow-xs';
-        }
-      }
-
-      const txtF = document.getElementById('txtLayoutFilterBar');
-      const iconF = document.getElementById('iconLayoutFilterBar');
-      const btnF = document.getElementById('btnLayoutFilterBar');
-      if (txtF && iconF && btnF) {
-        if (isSingle) {
-          txtF.innerText = 'Xem danh sách';
-          iconF.className = 'fa-solid fa-list-ul text-xs';
-          btnF.className = 'px-2.5 py-1 rounded-lg border border-indigo-200 bg-indigo-50 hover:bg-indigo-100 text-indigo-700 text-[11px] font-semibold flex items-center gap-1.5 transition';
-        } else {
-          txtF.innerText = 'Xem từng câu';
-          iconF.className = 'fa-solid fa-layer-group text-xs';
-          btnF.className = 'px-2.5 py-1 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 text-slate-700 text-[11px] font-semibold flex items-center gap-1.5 transition';
         }
       }
     }
