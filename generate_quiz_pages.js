@@ -1082,7 +1082,7 @@ const unifiedHtml = `<!DOCTYPE html>
       }
     }
 
-    const collapsedFolders = new Set();
+    const collapsedFolders = new Set(['prn222', 'pru213', 'tinhoc']);
     function toggleFolderCollapse(sId) {
       const fBody = document.getElementById('folderBody_' + sId);
       const fChevron = document.getElementById('folderChevron_' + sId);
@@ -1108,6 +1108,9 @@ const unifiedHtml = `<!DOCTYPE html>
     }
 
     function openExamPickerModal() {
+      // Always default all subject folders to collapsed state
+      collapsedFolders.clear();
+      ['prn222', 'pru213', 'tinhoc'].forEach(id => collapsedFolders.add(id));
       renderExamTabsAndCards();
       const m = document.getElementById('examPickerModal');
       m.classList.remove('hidden');
