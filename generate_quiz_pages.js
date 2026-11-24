@@ -392,7 +392,152 @@ const unifiedHtml = `<!DOCTYPE html>
       to { transform: translateY(0); opacity: 1; }
     }
     .animate-slide-up { animation: slideUp 0.22s cubic-bezier(0.16, 1, 0.3, 1); }
+
+    /* =========================================================
+       THEME: BOTANICAL CALM (CHẾ ĐỘ DỊU MẮT BẢO VỆ MẮT)
+       Tuân thủ ui-design-system-rules:
+       - 60% Nền nhạt #F4F7F4 giảm mỏi điều tiết mắt
+       - 30% Thẻ/Card #FFFFFF, viền #DCE5DF
+       - 10% Điểm nhấn Xanh rừng #2D5A3D
+       - Chữ mực than #1A241E WCAG AA không chói
+       - Từ khóa đỏ rượu vang #9F1239 không gay gắt
+       ========================================================= */
+    html.theme-botanical,
+    body.theme-botanical {
+      background-color: #f4f7f4 !important;
+      color: #1a241e !important;
+    }
+    body.theme-botanical ::selection {
+      background-color: #d1e7d6 !important;
+      color: #14532d !important;
+    }
+    body.theme-botanical #mainHeader {
+      background-color: rgba(244, 247, 244, 0.96) !important;
+      border-bottom-color: #dce5df !important;
+      box-shadow: 0 1px 3px rgba(26, 36, 30, 0.05) !important;
+    }
+    body.theme-botanical #headerExamTitle,
+    body.theme-botanical #headerExamTitleMobile {
+      color: #1a241e !important;
+    }
+    body.theme-botanical .eos-card {
+      background: #ffffff !important;
+      border-color: #dce5df !important;
+      box-shadow: 0 1px 2px rgba(26, 36, 30, 0.04) !important;
+    }
+    body.theme-botanical .eos-banner {
+      background-color: #ebf1ec !important;
+      border-bottom-color: #dce5df !important;
+    }
+    body.theme-botanical .eos-title {
+      color: #2d5a3d !important;
+    }
+    body.theme-botanical .eos-body {
+      background-color: #ffffff !important;
+    }
+    body.theme-botanical .eos-question-text,
+    body.theme-botanical .eos-option {
+      color: #1a241e !important;
+    }
+    body.theme-botanical .eos-option:hover {
+      background-color: #f2f6f3 !important;
+    }
+    body.theme-botanical .eos-option-selected {
+      background-color: #e8f0e9 !important;
+      border-color: #8bb194 !important;
+      color: #1a422a !important;
+    }
+    body.theme-botanical .eos-option-correct {
+      background-color: #edf7ee !important;
+      border-color: #86efac !important;
+      color: #14532d !important;
+    }
+    body.theme-botanical .eos-option-wrong {
+      background-color: #fef2f2 !important;
+      border-color: #fca5a5 !important;
+      color: #991b1b !important;
+    }
+    body.theme-botanical .keyword-question,
+    body.theme-botanical .keyword-answer {
+      color: #9f1239 !important;
+      font-weight: 700 !important;
+    }
+    body.theme-botanical #filterBox,
+    body.theme-botanical aside {
+      background-color: #ffffff !important;
+      border-color: #dce5df !important;
+    }
+    body.theme-botanical .bg-slate-50 {
+      background-color: #f4f7f4 !important;
+    }
+    body.theme-botanical .bg-slate-100 {
+      background-color: #eaf0eb !important;
+    }
+    body.theme-botanical .border-slate-200 {
+      border-color: #dce5df !important;
+    }
+    body.theme-botanical .border-slate-100 {
+      border-color: #e4ebe5 !important;
+    }
+    body.theme-botanical .text-slate-800,
+    body.theme-botanical .text-slate-900 {
+      color: #1a241e !important;
+    }
+    body.theme-botanical .text-slate-700 {
+      color: #2c3830 !important;
+    }
+    body.theme-botanical .text-slate-600 {
+      color: #526358 !important;
+    }
+    body.theme-botanical .text-slate-500 {
+      color: #6a7c70 !important;
+    }
+    body.theme-botanical .bg-blue-600,
+    body.theme-botanical .bg-indigo-600 {
+      background-color: #2d5a3d !important;
+    }
+    body.theme-botanical .text-blue-600,
+    body.theme-botanical .text-indigo-600 {
+      color: #2d5a3d !important;
+    }
+    body.theme-botanical .bg-blue-50,
+    body.theme-botanical .bg-indigo-50 {
+      background-color: #ebf2ec !important;
+    }
+    body.theme-botanical .border-blue-200,
+    body.theme-botanical .border-indigo-200 {
+      border-color: #cad8ce !important;
+    }
+    body.theme-botanical .text-blue-700,
+    body.theme-botanical .text-indigo-700 {
+      color: #244831 !important;
+    }
+    body.theme-botanical #singleModeHeader {
+      background: #2d5a3d !important;
+      border-color: #244831 !important;
+    }
+    body.theme-botanical #bottomMobileBar {
+      background-color: rgba(244, 247, 244, 0.96) !important;
+      border-top-color: #dce5df !important;
+    }
+    body.theme-botanical #btnNextBottom {
+      background-color: #2d5a3d !important;
+    }
+    body.theme-botanical .custom-scrollbar::-webkit-scrollbar-track {
+      background: #ebf1ec !important;
+    }
+    body.theme-botanical .custom-scrollbar::-webkit-scrollbar-thumb {
+      background: #cad7ce !important;
+    }
+    body.theme-botanical .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+      background: #a9beaf !important;
+    }
   </style>
+  <script>
+    if (localStorage.getItem('ontap_theme') === 'botanical') {
+      document.documentElement.classList.add('theme-botanical');
+    }
+  </script>
 </head>
 <body class="density-compact bg-slate-50 text-slate-800 min-h-screen flex flex-col antialiased selection:bg-blue-100 selection:text-blue-700 pb-24 lg:pb-0">
 
@@ -456,6 +601,10 @@ const unifiedHtml = `<!DOCTYPE html>
             <i id="iconLayoutMobile" class="fa-solid fa-layer-group text-xs"></i>
             <span id="txtLayoutMobile">1 Câu</span>
           </button>
+          <!-- Theme Toggle Mobile: Dịu mắt (Botanical Calm) -->
+          <button onclick="toggleTheme()" id="btnThemeMobile" class="w-9 h-9 rounded-xl border border-slate-200 bg-white text-slate-700 text-sm font-bold flex items-center justify-center active:scale-95 transition shadow-2xs" title="Bật/Tắt chế độ Dịu mắt (Botanical Calm)">
+            <i id="iconThemeMobile" class="fa-solid fa-leaf text-slate-400 text-sm"></i>
+          </button>
           <!-- Mobile Header Collapse Toggle -->
           <button onclick="toggleHeaderCollapse()" id="btnHeaderCollapseMobile" class="w-9 h-9 rounded-xl border border-slate-200 bg-white text-slate-700 text-sm font-bold flex items-center justify-center active:scale-95 transition shadow-2xs" title="Thu gọn / Mở rộng thanh công cụ">
             <i id="iconHeaderCollapseMobile" class="fa-solid fa-expand text-indigo-500 text-sm"></i>
@@ -492,6 +641,12 @@ const unifiedHtml = `<!DOCTYPE html>
           <button onclick="toggleViewLayout()" id="btnLayoutDesktop" class="px-2.5 py-1 text-xs font-semibold rounded-xl border border-slate-200 hover:bg-slate-100 text-slate-700 transition flex items-center gap-1.5 bg-white shadow-xs" title="Chuyển đổi giữa xem từng câu và xem toàn bộ danh sách">
             <i id="iconLayoutDesktop" class="fa-solid fa-layer-group text-indigo-500"></i>
             <span id="txtLayoutDesktop">Xem từng câu</span>
+          </button>
+
+          <!-- Desktop Theme Toggle: Dịu mắt / Chuẩn -->
+          <button onclick="toggleTheme()" id="btnThemeDesktop" class="px-2.5 py-1 text-xs font-semibold rounded-xl border border-slate-200 hover:bg-slate-100 text-slate-700 transition flex items-center gap-1.5 bg-white shadow-xs" title="Chuyển đổi chế độ Dịu mắt (Botanical Calm) bảo vệ mắt">
+            <i id="iconThemeDesktop" class="fa-solid fa-leaf text-slate-400"></i>
+            <span id="txtThemeDesktop">Dịu mắt</span>
           </button>
 
           <!-- Header Collapse Button (Focus / Compact mode) -->
@@ -1457,6 +1612,65 @@ const unifiedHtml = `<!DOCTYPE html>
       }
     }
 
+    function initTheme() {
+      const savedTheme = localStorage.getItem('ontap_theme') || 'default';
+      const isBotanical = savedTheme === 'botanical';
+      if (isBotanical) {
+        document.documentElement.classList.add('theme-botanical');
+        document.body.classList.add('theme-botanical');
+      } else {
+        document.documentElement.classList.remove('theme-botanical');
+        document.body.classList.remove('theme-botanical');
+      }
+      updateThemeUI(isBotanical);
+    }
+
+    function toggleTheme() {
+      const isBotanical = document.body.classList.toggle('theme-botanical');
+      if (isBotanical) {
+        document.documentElement.classList.add('theme-botanical');
+        localStorage.setItem('ontap_theme', 'botanical');
+      } else {
+        document.documentElement.classList.remove('theme-botanical');
+        localStorage.setItem('ontap_theme', 'default');
+      }
+      updateThemeUI(isBotanical);
+    }
+
+    function updateThemeUI(isBotanical) {
+      const btnD = document.getElementById('btnThemeDesktop');
+      const txtD = document.getElementById('txtThemeDesktop');
+      const iconD = document.getElementById('iconThemeDesktop');
+      const btnM = document.getElementById('btnThemeMobile');
+      const iconM = document.getElementById('iconThemeMobile');
+
+      if (btnD && txtD && iconD) {
+        if (isBotanical) {
+          btnD.className = 'px-2.5 py-1 text-xs font-bold rounded-xl border border-emerald-300 bg-emerald-50 text-emerald-800 transition flex items-center gap-1.5 shadow-xs';
+          txtD.innerText = 'Dịu mắt: Bật';
+          iconD.className = 'fa-solid fa-leaf text-emerald-700';
+          btnD.title = 'Đang bật chế độ Dịu mắt (Botanical Calm) - Bấm để chuyển về màu chuẩn';
+        } else {
+          btnD.className = 'px-2.5 py-1 text-xs font-semibold rounded-xl border border-slate-200 hover:bg-slate-100 text-slate-700 transition flex items-center gap-1.5 bg-white shadow-xs';
+          txtD.innerText = 'Dịu mắt';
+          iconD.className = 'fa-solid fa-leaf text-slate-400';
+          btnD.title = 'Bật chế độ Dịu mắt (Botanical Calm) bảo vệ mắt';
+        }
+      }
+
+      if (btnM && iconM) {
+        if (isBotanical) {
+          btnM.className = 'w-9 h-9 rounded-xl border border-emerald-300 bg-emerald-50 text-emerald-800 text-sm font-bold flex items-center justify-center active:scale-95 transition shadow-2xs';
+          iconM.className = 'fa-solid fa-leaf text-emerald-700 text-sm';
+          btnM.title = 'Đang bật chế độ Dịu mắt (Botanical Calm) - Bấm để chuyển về màu chuẩn';
+        } else {
+          btnM.className = 'w-9 h-9 rounded-xl border border-slate-200 bg-white text-slate-700 text-sm font-bold flex items-center justify-center active:scale-95 transition shadow-2xs';
+          iconM.className = 'fa-solid fa-leaf text-slate-400 text-sm';
+          btnM.title = 'Bật chế độ Dịu mắt (Botanical Calm) bảo vệ mắt';
+        }
+      }
+    }
+
     function switchMode(mode) {
       currentMode = mode;
       if (mode === 'exam') {
@@ -2106,6 +2320,7 @@ const unifiedHtml = `<!DOCTYPE html>
     });
 
     window.addEventListener('DOMContentLoaded', () => {
+      initTheme();
       const params = new URLSearchParams(window.location.search);
       const urlExam = params.get('de') || localStorage.getItem('fpt_last_active_exam') || 'prn222_1';
       switchExam(urlExam, false);
