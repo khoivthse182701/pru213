@@ -273,8 +273,12 @@
       background-color: rgba(244, 247, 244, 0.96) !important;
       border-top-color: #dce5df !important;
     }
+    body.theme-botanical #btnMobileNext,
     body.theme-botanical #btnNextBottom {
       background-color: #2d5a3d !important;
+    }
+    body.is-home-view {
+      padding-bottom: 2rem !important;
     }
     body.theme-botanical .custom-scrollbar::-webkit-scrollbar-track {
       background: #ebf1ec !important;
@@ -300,9 +304,20 @@
       
       <!-- Row 1: Brand + Subject Switcher Pills + Mobile Quick Actions + Desktop Controls -->
       <div class="flex items-center justify-between gap-2">
-        <!-- Mobile Left: Compact Logo + Unified Clickable Exam Selector (Single Line, Never Wraps) -->
-        <div class="flex sm:hidden items-center gap-1.5 min-w-0 flex-1 mr-1">
-          <div onclick="openExamPickerModal()" class="cursor-pointer w-8 h-8 rounded-lg bg-gradient-to-tr from-sky-500 via-blue-600 to-indigo-600 flex items-center justify-center text-white font-bold shadow-xs active:scale-95 transition-transform shrink-0">
+        <!-- Mobile Home Brand (Visible on Home view) -->
+        <div id="homeBrandMobile" class="hidden items-center gap-2 min-w-0 flex-1 mr-1">
+          <div class="w-8 h-8 rounded-lg bg-gradient-to-tr from-sky-500 via-blue-600 to-indigo-600 flex items-center justify-center text-white font-bold shadow-xs shrink-0">
+            <i class="fa-solid fa-graduation-cap text-xs"></i>
+          </div>
+          <div class="min-w-0 flex flex-col">
+            <span class="text-xs font-extrabold text-slate-900 leading-tight truncate">Ôn Tập Trắc Nghiệm</span>
+            <span class="text-[10px] font-semibold text-slate-500 leading-tight truncate">Danh Sách Bộ Đề</span>
+          </div>
+        </div>
+
+        <!-- Mobile Quiz Brand (Visible on Quiz view) -->
+        <div id="quizBrandMobile" class="flex sm:hidden items-center gap-1.5 min-w-0 flex-1 mr-1">
+          <div onclick="showHomeView()" class="cursor-pointer w-8 h-8 rounded-lg bg-gradient-to-tr from-sky-500 via-blue-600 to-indigo-600 flex items-center justify-center text-white font-bold shadow-xs active:scale-95 transition-transform shrink-0" title="Về danh sách đề thi">
             <i id="headerBrandIconMobile" class="fa-solid fa-bolt text-xs"></i>
           </div>
           <button onclick="openExamPickerModal()" class="group flex items-center gap-1 min-w-0 text-left active:opacity-80 transition py-0.5" title="Bấm để chọn đề thi khác">
@@ -314,14 +329,28 @@
           </button>
         </div>
 
-        <!-- Desktop Left: Full Brand + Subject Switcher Pills + Title -->
-        <div class="hidden sm:flex items-center space-x-2.5 sm:space-x-3 min-w-0">
-          <div onclick="openExamPickerModal()" class="cursor-pointer w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-gradient-to-tr from-sky-500 via-blue-600 to-indigo-600 flex items-center justify-center text-white font-bold shadow-md shadow-blue-500/20 hover:scale-105 active:scale-95 transition-transform shrink-0">
+        <!-- Desktop Home Brand (Visible on Home view) -->
+        <div id="homeBrandDesktop" class="hidden items-center space-x-3 min-w-0">
+          <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-sky-500 via-blue-600 to-indigo-600 flex items-center justify-center text-white font-bold shadow-md shadow-blue-500/20 shrink-0">
+            <i class="fa-solid fa-graduation-cap text-lg"></i>
+          </div>
+          <div class="min-w-0 flex flex-col">
+            <h1 class="text-base font-extrabold text-slate-900 leading-tight">Hệ Thống Ôn Tập Trắc Nghiệm</h1>
+            <p class="text-xs text-slate-500 font-medium">Chọn bộ đề và bắt đầu làm bài luyện tập trực tuyến</p>
+          </div>
+        </div>
+
+        <!-- Desktop Quiz Brand (Visible on Quiz view) -->
+        <div id="quizBrandDesktop" class="hidden sm:flex items-center space-x-2.5 sm:space-x-3 min-w-0">
+          <div onclick="showHomeView()" class="cursor-pointer w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-gradient-to-tr from-sky-500 via-blue-600 to-indigo-600 flex items-center justify-center text-white font-bold shadow-md shadow-blue-500/20 hover:scale-105 active:scale-95 transition-transform shrink-0" title="Về trang chủ danh sách đề">
             <i id="headerBrandIcon" class="fa-solid fa-bolt text-base sm:text-lg"></i>
           </div>
           <div class="min-w-0">
-            <!-- Subject Switcher Pills (PRN222 vs PRU213 vs TINHOC) -->
+            <!-- Subject Switcher Pills & Home Button -->
             <div class="flex items-center gap-1.5 flex-wrap">
+              <button onclick="showHomeView()" class="px-2 py-0.5 rounded-lg text-[11px] font-bold flex items-center gap-1 transition bg-slate-100 text-slate-700 hover:bg-slate-200 border border-slate-200/60 shadow-2xs" title="Về trang chủ danh sách đề">
+                <i class="fa-solid fa-house text-[10px] text-slate-500"></i> Trang chủ
+              </button>
               <button onclick="switchSubject('prn222')" id="subPill_prn222" class="px-2 py-0.5 rounded-lg text-[11px] font-extrabold flex items-center gap-1 transition bg-indigo-600 text-white shadow-xs">
                 <i class="fa-solid fa-bolt text-[10px]"></i> PRN222
               </button>
@@ -343,77 +372,81 @@
           </div>
         </div>
 
-        <!-- Mobile Quick Action Buttons (Compact & Neatly Aligned) -->
+        <!-- Mobile Right Area: Quiz Actions + Theme Toggle -->
         <div class="flex sm:hidden items-center gap-1.5 shrink-0">
-          <div id="examTimerMobile" class="hidden items-center gap-1 bg-amber-50 text-amber-700 px-2 py-1 rounded-xl border border-amber-200 text-xs font-bold">
-            <i class="fa-regular fa-clock animate-pulse text-[11px]"></i>
-            <span id="timerTextMobile">50:00</span>
+          <div id="quizControlsMobile" class="flex items-center gap-1.5 shrink-0">
+            <div id="examTimerMobile" class="hidden items-center gap-1 bg-amber-50 text-amber-700 px-2 py-1 rounded-xl border border-amber-200 text-xs font-bold">
+              <i class="fa-regular fa-clock animate-pulse text-[11px]"></i>
+              <span id="timerTextMobile">50:00</span>
+            </div>
+            <!-- Toggle Layout Mobile: 1 Câu / D.Sách -->
+            <button onclick="toggleViewLayout()" id="btnLayoutMobile" title="Đổi giao diện Từng câu / Danh sách" class="h-9 px-2.5 rounded-xl border border-indigo-200 bg-indigo-50 text-indigo-700 text-xs font-bold flex items-center gap-1 active:scale-95 transition">
+              <i id="iconLayoutMobile" class="fa-solid fa-layer-group text-xs"></i>
+              <span id="txtLayoutMobile">1 Câu</span>
+            </button>
+            <!-- Mobile Header Collapse Toggle -->
+            <button onclick="toggleHeaderCollapse()" id="btnHeaderCollapseMobile" class="w-9 h-9 rounded-xl border border-slate-200 bg-white text-slate-700 text-sm font-bold flex items-center justify-center active:scale-95 transition shadow-2xs" title="Thu gọn / Mở rộng thanh công cụ">
+              <i id="iconHeaderCollapseMobile" class="fa-solid fa-expand text-indigo-500 text-sm"></i>
+            </button>
+            <button onclick="shuffleQuestions()" title="Xáo trộn câu hỏi" class="w-9 h-9 rounded-xl border border-slate-200 bg-white text-slate-700 active:bg-slate-100 flex items-center justify-center active:scale-95 transition shadow-2xs">
+              <i class="fa-solid fa-shuffle text-blue-500 text-sm"></i>
+            </button>
+            <button onclick="confirmReset()" title="Làm lại đề này" class="w-9 h-9 rounded-xl border border-slate-200 bg-white text-slate-700 active:bg-rose-50 flex items-center justify-center active:scale-95 transition shadow-2xs">
+              <i class="fa-solid fa-rotate-right text-rose-500 text-sm"></i>
+            </button>
           </div>
-          <!-- Toggle Layout Mobile: 1 Câu / D.Sách -->
-          <button onclick="toggleViewLayout()" id="btnLayoutMobile" title="Đổi giao diện Từng câu / Danh sách" class="h-9 px-2.5 rounded-xl border border-indigo-200 bg-indigo-50 text-indigo-700 text-xs font-bold flex items-center gap-1 active:scale-95 transition">
-            <i id="iconLayoutMobile" class="fa-solid fa-layer-group text-xs"></i>
-            <span id="txtLayoutMobile">1 Câu</span>
-          </button>
           <!-- Theme Toggle Mobile: Dịu mắt (Botanical Calm) -->
           <button onclick="toggleTheme()" id="btnThemeMobile" class="w-9 h-9 rounded-xl border border-slate-200 bg-white text-slate-700 text-sm font-bold flex items-center justify-center active:scale-95 transition shadow-2xs" title="Bật/Tắt chế độ Dịu mắt (Botanical Calm)">
             <i id="iconThemeMobile" class="fa-solid fa-leaf text-slate-400 text-sm"></i>
           </button>
-          <!-- Mobile Header Collapse Toggle -->
-          <button onclick="toggleHeaderCollapse()" id="btnHeaderCollapseMobile" class="w-9 h-9 rounded-xl border border-slate-200 bg-white text-slate-700 text-sm font-bold flex items-center justify-center active:scale-95 transition shadow-2xs" title="Thu gọn / Mở rộng thanh công cụ">
-            <i id="iconHeaderCollapseMobile" class="fa-solid fa-expand text-indigo-500 text-sm"></i>
-          </button>
-          <button onclick="shuffleQuestions()" title="Xáo trộn câu hỏi" class="w-9 h-9 rounded-xl border border-slate-200 bg-white text-slate-700 active:bg-slate-100 flex items-center justify-center active:scale-95 transition shadow-2xs">
-            <i class="fa-solid fa-shuffle text-blue-500 text-sm"></i>
-          </button>
-          <button onclick="confirmReset()" title="Làm lại đề này" class="w-9 h-9 rounded-xl border border-slate-200 bg-white text-slate-700 active:bg-rose-50 flex items-center justify-center active:scale-95 transition shadow-2xs">
-            <i class="fa-solid fa-rotate-right text-rose-500 text-sm"></i>
-          </button>
         </div>
 
-        <!-- Desktop Controls (Mode + Shuffle + Reset + Collapse) -->
+        <!-- Desktop Right Area: Quiz Actions + Theme Toggle -->
         <div class="hidden sm:flex items-center flex-wrap gap-2">
-          <!-- Mode Tabs Desktop -->
-          <div class="bg-slate-100 p-1 rounded-xl flex items-center border border-slate-200 text-xs font-medium">
-            <button id="btnPracticeModeDesktop" onclick="switchMode('practice')" class="px-2.5 py-1 rounded-lg transition-all font-semibold flex items-center gap-1.5 bg-white text-blue-600 shadow-xs">
-              <i class="fa-solid fa-bolt-lightning text-amber-500"></i> <span>Luyện tập</span>
+          <div id="quizControlsDesktop" class="flex items-center flex-wrap gap-2">
+            <!-- Mode Tabs Desktop -->
+            <div class="bg-slate-100 p-1 rounded-xl flex items-center border border-slate-200 text-xs font-medium">
+              <button id="btnPracticeModeDesktop" onclick="switchMode('practice')" class="px-2.5 py-1 rounded-lg transition-all font-semibold flex items-center gap-1.5 bg-white text-blue-600 shadow-xs">
+                <i class="fa-solid fa-bolt-lightning text-amber-500"></i> <span>Luyện tập</span>
+              </button>
+              <button id="btnExamModeDesktop" onclick="switchMode('exam')" class="px-2.5 py-1 rounded-lg transition-all font-semibold flex items-center gap-1.5 text-slate-600 hover:text-slate-900">
+                <i class="fa-solid fa-clock text-blue-500"></i> <span>Thi thử</span>
+              </button>
+              <button id="btnStudyModeDesktop" onclick="switchMode('study')" class="px-2.5 py-1 rounded-lg transition-all font-semibold flex items-center gap-1.5 text-slate-600 hover:text-slate-900">
+                <i class="fa-solid fa-book-open text-indigo-500"></i> <span>Đọc đáp án</span>
+              </button>
+            </div>
+
+            <div id="examTimer" class="hidden items-center gap-2 bg-amber-50 text-amber-700 px-2.5 py-1 rounded-xl border border-amber-200 text-xs font-bold">
+              <i class="fa-regular fa-clock animate-pulse"></i>
+              <span id="timerText">50:00</span>
+            </div>
+
+            <!-- Desktop Layout Toggle: Xem từng câu / Danh sách -->
+            <button onclick="toggleViewLayout()" id="btnLayoutDesktop" class="px-2.5 py-1 text-xs font-semibold rounded-xl border border-slate-200 hover:bg-slate-100 text-slate-700 transition flex items-center gap-1.5 bg-white shadow-xs" title="Chuyển đổi giữa xem từng câu và xem toàn bộ danh sách">
+              <i id="iconLayoutDesktop" class="fa-solid fa-layer-group text-indigo-500"></i>
+              <span id="txtLayoutDesktop">Xem từng câu</span>
             </button>
-            <button id="btnExamModeDesktop" onclick="switchMode('exam')" class="px-2.5 py-1 rounded-lg transition-all font-semibold flex items-center gap-1.5 text-slate-600 hover:text-slate-900">
-              <i class="fa-solid fa-clock text-blue-500"></i> <span>Thi thử</span>
+
+            <!-- Header Collapse Button (Focus / Compact mode) -->
+            <button onclick="toggleHeaderCollapse()" id="btnHeaderCollapseDesktop" class="px-2.5 py-1 text-xs font-semibold rounded-xl border border-slate-200 hover:bg-slate-100 text-slate-700 transition flex items-center gap-1.5 bg-white shadow-xs" title="Thu gọn/Mở rộng thanh công cụ">
+              <i id="iconHeaderCollapseDesktop" class="fa-solid fa-expand text-indigo-500"></i>
+              <span id="txtHeaderCollapseDesktop">Mở rộng</span>
             </button>
-            <button id="btnStudyModeDesktop" onclick="switchMode('study')" class="px-2.5 py-1 rounded-lg transition-all font-semibold flex items-center gap-1.5 text-slate-600 hover:text-slate-900">
-              <i class="fa-solid fa-book-open text-indigo-500"></i> <span>Đọc đáp án</span>
+
+            <button onclick="shuffleQuestions()" class="px-2.5 py-1 text-xs font-semibold rounded-xl border border-slate-200 hover:bg-slate-100 text-slate-700 transition flex items-center gap-1.5 bg-white shadow-xs">
+              <i class="fa-solid fa-shuffle text-blue-500"></i> Xáo câu
+            </button>
+
+            <button onclick="confirmReset()" class="px-2.5 py-1 text-xs font-semibold rounded-xl border border-slate-200 hover:bg-rose-50 hover:text-rose-600 hover:border-rose-200 text-slate-700 transition flex items-center gap-1.5 bg-white shadow-xs">
+              <i class="fa-solid fa-rotate-right text-rose-500"></i> Làm lại
             </button>
           </div>
-
-          <div id="examTimer" class="hidden items-center gap-2 bg-amber-50 text-amber-700 px-2.5 py-1 rounded-xl border border-amber-200 text-xs font-bold">
-            <i class="fa-regular fa-clock animate-pulse"></i>
-            <span id="timerText">50:00</span>
-          </div>
-
-          <!-- Desktop Layout Toggle: Xem từng câu / Danh sách -->
-          <button onclick="toggleViewLayout()" id="btnLayoutDesktop" class="px-2.5 py-1 text-xs font-semibold rounded-xl border border-slate-200 hover:bg-slate-100 text-slate-700 transition flex items-center gap-1.5 bg-white shadow-xs" title="Chuyển đổi giữa xem từng câu và xem toàn bộ danh sách">
-            <i id="iconLayoutDesktop" class="fa-solid fa-layer-group text-indigo-500"></i>
-            <span id="txtLayoutDesktop">Xem từng câu</span>
-          </button>
 
           <!-- Desktop Theme Toggle: Dịu mắt / Chuẩn -->
           <button onclick="toggleTheme()" id="btnThemeDesktop" class="px-2.5 py-1 text-xs font-semibold rounded-xl border border-slate-200 hover:bg-slate-100 text-slate-700 transition flex items-center gap-1.5 bg-white shadow-xs" title="Chuyển đổi chế độ Dịu mắt (Botanical Calm) bảo vệ mắt">
             <i id="iconThemeDesktop" class="fa-solid fa-leaf text-slate-400"></i>
             <span id="txtThemeDesktop">Dịu mắt</span>
-          </button>
-
-          <!-- Header Collapse Button (Focus / Compact mode) -->
-          <button onclick="toggleHeaderCollapse()" id="btnHeaderCollapseDesktop" class="px-2.5 py-1 text-xs font-semibold rounded-xl border border-slate-200 hover:bg-slate-100 text-slate-700 transition flex items-center gap-1.5 bg-white shadow-xs" title="Thu gọn/Mở rộng thanh công cụ">
-            <i id="iconHeaderCollapseDesktop" class="fa-solid fa-expand text-indigo-500"></i>
-            <span id="txtHeaderCollapseDesktop">Mở rộng</span>
-          </button>
-
-          <button onclick="shuffleQuestions()" class="px-2.5 py-1 text-xs font-semibold rounded-xl border border-slate-200 hover:bg-slate-100 text-slate-700 transition flex items-center gap-1.5 bg-white shadow-xs">
-            <i class="fa-solid fa-shuffle text-blue-500"></i> Xáo câu
-          </button>
-
-          <button onclick="confirmReset()" class="px-2.5 py-1 text-xs font-semibold rounded-xl border border-slate-200 hover:bg-rose-50 hover:text-rose-600 hover:border-rose-200 text-slate-700 transition flex items-center gap-1.5 bg-white shadow-xs">
-            <i class="fa-solid fa-rotate-right text-rose-500"></i> Làm lại
           </button>
         </div>
       </div>
@@ -472,8 +505,25 @@
     </div>
   </header>
 
+  <!-- Home Page View (Shown when opening root without ?de=) -->
+  <section id="homeView" class="hidden max-w-4xl mx-auto px-3 sm:px-6 py-5 sm:py-8 flex-1 w-full flex flex-col gap-4 sm:gap-6 animate-fade-in">
+    <!-- Home Header Banner -->
+    <div class="border-b border-slate-200/80 pb-4 sm:pb-5">
+      <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-blue-50 text-blue-700 border border-blue-200/60 mb-2">
+        <i class="fa-solid fa-graduation-cap"></i> Hệ Thống Ôn Tập Trắc Nghiệm
+      </div>
+      <h2 class="text-xl sm:text-2xl font-extrabold text-slate-900 tracking-tight">Danh Sách Đề Thi Theo Môn</h2>
+      <p class="text-xs sm:text-sm text-slate-500 mt-1">Chọn một bộ đề thi dưới đây để bắt đầu làm bài luyện tập hoặc thi thử trực tuyến.</p>
+    </div>
+
+    <!-- Home Exam Directory Cards Container -->
+    <div id="homeExamCards" class="flex flex-col gap-3 sm:gap-4">
+      <!-- Generated dynamically -->
+    </div>
+  </section>
+
   <!-- Main Content Layout -->
-  <main class="max-w-7xl mx-auto px-2.5 sm:px-6 lg:px-8 py-2 sm:py-4 flex-1 w-full grid grid-cols-1 lg:grid-cols-12 gap-2.5 sm:gap-6 items-start">
+  <main id="quizMain" class="max-w-7xl mx-auto px-2.5 sm:px-6 lg:px-8 py-2 sm:py-4 flex-1 w-full grid grid-cols-1 lg:grid-cols-12 gap-2.5 sm:gap-6 items-start">
 
     <!-- Left Column: Quiz Questions (Can expand to col-span-12 when sidebar collapsed) -->
     <div id="mainQuestionsColumn" class="lg:col-span-12 flex flex-col gap-2.5 sm:gap-3.5 transition-all duration-200">
@@ -661,7 +711,7 @@
   </main>
 
   <!-- Mobile Bottom Navigation & Action Dock -->
-  <div class="lg:hidden fixed bottom-0 inset-x-0 bg-white/95 backdrop-blur-md border-t border-slate-200 z-40 safe-bottom shadow-[0_-4px_20px_rgba(15,23,42,0.08)]">
+  <div id="bottomMobileBar" class="lg:hidden fixed bottom-0 inset-x-0 bg-white/95 backdrop-blur-md border-t border-slate-200 z-40 safe-bottom shadow-[0_-4px_20px_rgba(15,23,42,0.08)]">
     <div class="max-w-xl mx-auto px-3 py-2 flex items-center justify-between gap-2">
       <!-- Previous Question Button -->
       <button onclick="prevQuestion()" id="btnMobilePrev" class="flex-1 py-2 px-3 rounded-xl bg-slate-100 active:bg-slate-200 text-slate-700 font-bold text-xs flex items-center justify-center gap-1.5 transition disabled:opacity-40">
@@ -11588,19 +11638,129 @@
       switchExam(firstExam, true);
     }
 
+    let isHomeActive = false;
+    const homeCollapsedFolders = new Set();
+    const modalCollapsedFolders = new Set(['prn222', 'pru213', 'tinhoc']);
+
+    function showHomeView(updateUrl = true) {
+      isHomeActive = true;
+      stopTimer();
+      document.title = 'Ôn Tập - Danh Sách Đề Thi';
+
+      if (updateUrl && history.pushState) {
+        const url = new URL(window.location.href);
+        url.searchParams.delete('de');
+        history.pushState({ de: null }, '', url.pathname + (url.search ? url.search : ''));
+      }
+
+      // Hide Quiz layout & mobile elements
+      const quizMain = document.getElementById('quizMain');
+      if (quizMain) quizMain.classList.add('hidden');
+      const homeView = document.getElementById('homeView');
+      if (homeView) homeView.classList.remove('hidden');
+
+      const bottomMobileBar = document.getElementById('bottomMobileBar');
+      if (bottomMobileBar) bottomMobileBar.classList.add('hidden');
+      const mobileProgressStrip = document.getElementById('mobileProgressStrip');
+      if (mobileProgressStrip) mobileProgressStrip.classList.add('hidden');
+      const sidebarExpandFloating = document.getElementById('sidebarExpandFloating');
+      if (sidebarExpandFloating) sidebarExpandFloating.classList.add('hidden');
+      const headerCollapsibleArea = document.getElementById('headerCollapsibleArea');
+      if (headerCollapsibleArea) headerCollapsibleArea.classList.add('hidden');
+
+      document.body.classList.add('is-home-view');
+
+      // Header Brand Switching
+      const homeBrandDesktop = document.getElementById('homeBrandDesktop');
+      if (homeBrandDesktop) {
+        homeBrandDesktop.classList.remove('hidden');
+        homeBrandDesktop.classList.add('flex');
+      }
+      const quizBrandDesktop = document.getElementById('quizBrandDesktop');
+      if (quizBrandDesktop) {
+        quizBrandDesktop.classList.add('hidden');
+        quizBrandDesktop.classList.remove('sm:flex');
+      }
+
+      const homeBrandMobile = document.getElementById('homeBrandMobile');
+      if (homeBrandMobile) {
+        homeBrandMobile.classList.remove('hidden');
+        homeBrandMobile.classList.add('flex');
+      }
+      const quizBrandMobile = document.getElementById('quizBrandMobile');
+      if (quizBrandMobile) {
+        quizBrandMobile.classList.add('hidden');
+        quizBrandMobile.classList.remove('flex');
+      }
+
+      // Header Controls Switching
+      const quizControlsDesktop = document.getElementById('quizControlsDesktop');
+      if (quizControlsDesktop) quizControlsDesktop.classList.add('hidden');
+      const quizControlsMobile = document.getElementById('quizControlsMobile');
+      if (quizControlsMobile) quizControlsMobile.classList.add('hidden');
+
+      renderHomeExamCards();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
     function switchExam(examId, updateUrl = true) {
       if (!EXAMS[examId]) examId = 'prn222_1';
+      isHomeActive = false;
       stopTimer();
       activeExamId = examId;
       activeSubjectId = EXAMS[examId].subject || 'prn222';
-      document.title = 'Ôn Tập';
+      document.title = EXAMS[examId].title + ' - Ôn Tập';
       localStorage.setItem('fpt_last_active_exam', examId);
 
-      if (updateUrl && history.replaceState) {
+      if (updateUrl && history.pushState) {
         const url = new URL(window.location.href);
         url.searchParams.set('de', examId);
-        history.replaceState(null, '', url.toString());
+        history.pushState({ de: examId }, '', url.toString());
       }
+
+      // Show Quiz layout, hide Home layout
+      const quizMain = document.getElementById('quizMain');
+      if (quizMain) quizMain.classList.remove('hidden');
+      const homeView = document.getElementById('homeView');
+      if (homeView) homeView.classList.add('hidden');
+
+      const bottomMobileBar = document.getElementById('bottomMobileBar');
+      if (bottomMobileBar) bottomMobileBar.classList.remove('hidden');
+      const mobileProgressStrip = document.getElementById('mobileProgressStrip');
+      if (mobileProgressStrip) mobileProgressStrip.classList.remove('hidden');
+      const sidebarExpandFloating = document.getElementById('sidebarExpandFloating');
+      if (sidebarExpandFloating && isSidebarCollapsed) sidebarExpandFloating.classList.remove('hidden');
+
+      document.body.classList.remove('is-home-view');
+
+      // Header Brand Switching
+      const homeBrandDesktop = document.getElementById('homeBrandDesktop');
+      if (homeBrandDesktop) {
+        homeBrandDesktop.classList.add('hidden');
+        homeBrandDesktop.classList.remove('flex');
+      }
+      const quizBrandDesktop = document.getElementById('quizBrandDesktop');
+      if (quizBrandDesktop) {
+        quizBrandDesktop.classList.remove('hidden');
+        quizBrandDesktop.classList.add('sm:flex');
+      }
+
+      const homeBrandMobile = document.getElementById('homeBrandMobile');
+      if (homeBrandMobile) {
+        homeBrandMobile.classList.add('hidden');
+        homeBrandMobile.classList.remove('flex');
+      }
+      const quizBrandMobile = document.getElementById('quizBrandMobile');
+      if (quizBrandMobile) {
+        quizBrandMobile.classList.remove('hidden');
+        quizBrandMobile.classList.add('flex');
+      }
+
+      // Header Controls Switching
+      const quizControlsDesktop = document.getElementById('quizControlsDesktop');
+      if (quizControlsDesktop) quizControlsDesktop.classList.remove('hidden');
+      const quizControlsMobile = document.getElementById('quizControlsMobile');
+      if (quizControlsMobile) quizControlsMobile.classList.remove('hidden');
 
       const exam = EXAMS[examId];
       RAW_QUESTIONS = [...exam.questions];
@@ -11684,6 +11844,124 @@
       updateStats();
     }
 
+    function toggleHomeFolderCollapse(sId) {
+      if (homeCollapsedFolders.has(sId)) {
+        homeCollapsedFolders.delete(sId);
+      } else {
+        homeCollapsedFolders.add(sId);
+      }
+      renderHomeExamCards();
+    }
+
+    function toggleFolderCollapse(sId) {
+      if (modalCollapsedFolders.has(sId)) {
+        modalCollapsedFolders.delete(sId);
+      } else {
+        modalCollapsedFolders.add(sId);
+      }
+      renderModalExamCards();
+    }
+
+    function renderSubjectFoldersList(isHome = false) {
+      const collapsedSet = isHome ? homeCollapsedFolders : modalCollapsedFolders;
+      const toggleFn = isHome ? 'toggleHomeFolderCollapse' : 'toggleFolderCollapse';
+
+      return ['prn222', 'pru213', 'tinhoc'].map(sId => {
+        const sub = SUBJECTS[sId];
+        const isCollapsed = collapsedSet.has(sId);
+        const folderIcon = isCollapsed ? 'fa-folder' : 'fa-folder-open';
+        const chevronClass = isCollapsed ? 'transform -rotate-90' : '';
+        const bodyDisplay = isCollapsed ? 'hidden' : 'flex';
+        const subBadgeColor = sId === 'prn222' ? 'bg-indigo-100 text-indigo-700' : (sId === 'tinhoc' ? 'bg-emerald-100 text-emerald-700' : 'bg-blue-100 text-blue-700');
+        const folderIconColor = sId === 'prn222' ? 'text-indigo-500' : (sId === 'tinhoc' ? 'text-emerald-500' : 'text-blue-500');
+
+        const examItemsHtml = sub.exams.map(eId => {
+          const ex = EXAMS[eId];
+          const st = getExamStatsSummary(eId);
+          const isActive = eId === activeExamId && !isHomeActive;
+          const pct = st.answered > 0 ? Math.round((st.correct / st.answered) * 100) : 0;
+          const clickAction = isHome
+            ? `switchExam('${eId}', true)`
+            : `switchExam('${eId}', true); closeExamPickerModal();`;
+
+          return `
+            <div onclick="${clickAction}" 
+                 class="group cursor-pointer px-3 sm:px-4 py-2.5 sm:py-3 rounded-xl border transition-all flex items-center justify-between gap-3 ${isActive ? 'bg-blue-50/90 border-blue-400 ring-1 ring-blue-400 text-blue-950 font-bold' : 'bg-white hover:bg-slate-50 border-slate-200/90 hover:border-blue-400/80 text-slate-800 shadow-2xs hover:shadow-xs'}">
+              <div class="flex items-center gap-3 min-w-0 flex-1">
+                <span class="w-8 h-8 sm:w-9 sm:h-9 rounded-xl flex items-center justify-center shrink-0 ${isActive ? 'bg-blue-600 text-white shadow-xs' : 'bg-slate-100 text-slate-500 group-hover:bg-blue-600 group-hover:text-white transition-colors'} text-sm">
+                  <i class="fa-solid ${eId.includes('all') ? 'fa-layer-group' : 'fa-file-lines'}"></i>
+                </span>
+                <div class="min-w-0 flex flex-col gap-0.5">
+                  <div class="flex items-center gap-2 flex-wrap">
+                    <span class="text-xs sm:text-sm font-bold truncate text-slate-900 group-hover:text-blue-600 transition-colors">${ex.title}</span>
+                    ${isActive ? '<span class="px-2 py-0.5 rounded text-[10px] font-extrabold bg-blue-600 text-white shrink-0">Đang học</span>' : ''}
+                  </div>
+                  <div class="flex items-center gap-1.5 sm:gap-2 text-[11px] text-slate-500 flex-wrap">
+                    <span><i class="fa-regular fa-clock text-[10px]"></i> ${ex.timeMinutes} phút</span>
+                    <span>•</span>
+                    <span>${st.total} câu</span>
+                    <span>•</span>
+                    <span class="${st.answered > 0 ? 'text-emerald-600 font-semibold' : 'text-slate-400'}">
+                      Đã làm ${st.answered}/${st.total} (${pct}% đúng)
+                    </span>
+                  </div>
+                </div>
+              </div>
+              <div class="shrink-0 flex items-center pl-1">
+                ${isHome ? `
+                  <button class="px-3 py-1.5 rounded-xl text-xs font-bold transition flex items-center gap-1.5 ${isActive ? 'bg-blue-600 text-white shadow-xs' : 'bg-slate-100 group-hover:bg-blue-600 text-slate-700 group-hover:text-white shadow-2xs'}">
+                    <span>${isActive ? 'Tiếp tục' : 'Làm bài'}</span>
+                    <i class="fa-solid fa-arrow-right text-[10px]"></i>
+                  </button>
+                ` : `
+                  <span class="text-xs font-semibold ${isActive ? 'text-blue-700' : 'text-slate-400 group-hover:text-blue-600'} flex items-center gap-1">
+                    ${isActive ? '<i class="fa-solid fa-circle-check text-blue-600 text-base"></i>' : '<span class="hidden sm:inline text-[11px]">Mở đề</span><i class="fa-solid fa-chevron-right text-[10px]"></i>'}
+                  </span>
+                `}
+              </div>
+            </div>
+          `;
+        }).join('');
+
+        return `
+          <div class="rounded-2xl border border-slate-200/90 bg-white overflow-hidden shadow-xs">
+            <div onclick="${toggleFn}('${sId}')" class="px-3.5 sm:px-4 py-2.5 sm:py-3.5 bg-slate-50 hover:bg-slate-100/80 cursor-pointer flex items-center justify-between gap-2 border-b border-slate-100 transition select-none">
+              <div class="flex items-center gap-2.5 sm:gap-3 min-w-0">
+                <i class="fa-solid ${folderIcon} ${folderIconColor} text-base sm:text-lg shrink-0"></i>
+                <div class="flex items-center gap-2 truncate">
+                  <span class="font-extrabold text-xs sm:text-sm text-slate-900">${sub.name}</span>
+                  <span class="text-xs text-slate-400 hidden sm:inline">•</span>
+                  <span class="text-xs sm:text-sm text-slate-600 hidden sm:inline truncate">${sub.title}</span>
+                </div>
+                <span class="text-[10px] sm:text-xs font-bold px-2 py-0.5 rounded-full ${subBadgeColor} shrink-0">${sub.exams.length} Đề</span>
+              </div>
+              <div class="flex items-center gap-2 shrink-0">
+                <span class="text-[11px] text-slate-400 font-medium hidden sm:inline">${isCollapsed ? 'Mở rộng' : 'Thu gọn'}</span>
+                <i class="fa-solid fa-chevron-down text-slate-400 text-xs transition-transform duration-200 ${chevronClass}"></i>
+              </div>
+            </div>
+            <div class="${bodyDisplay} flex-col gap-2 p-2 sm:p-2.5 bg-slate-50/30">
+              ${examItemsHtml}
+            </div>
+          </div>
+        `;
+      }).join('');
+    }
+
+    function renderHomeExamCards() {
+      const homeContainer = document.getElementById('homeExamCards');
+      if (homeContainer) {
+        homeContainer.innerHTML = renderSubjectFoldersList(true);
+      }
+    }
+
+    function renderModalExamCards() {
+      const modalContainer = document.getElementById('modalExamCards');
+      if (modalContainer) {
+        modalContainer.innerHTML = renderSubjectFoldersList(false);
+      }
+    }
+
     function renderExamTabsAndCards() {
       // Render Exam Tabs Row for active subject
       const tabsRow = document.getElementById('examTabsRow');
@@ -11728,109 +12006,15 @@
         }).join('');
       }
 
-      // Render Modal Exam Cards as Folder-Style Directory Tree
-      const modalContainer = document.getElementById('modalExamCards');
-      if (modalContainer) {
-        modalContainer.innerHTML = ['prn222', 'pru213', 'tinhoc'].map(sId => {
-          const sub = SUBJECTS[sId];
-          const isCollapsed = collapsedFolders.has(sId);
-          const folderIcon = isCollapsed ? 'fa-folder' : 'fa-folder-open';
-          const chevronClass = isCollapsed ? 'transform -rotate-90' : '';
-          const bodyDisplay = isCollapsed ? 'hidden' : 'flex';
-          const subBadgeColor = sId === 'prn222' ? 'bg-indigo-100 text-indigo-700' : (sId === 'tinhoc' ? 'bg-emerald-100 text-emerald-700' : 'bg-blue-100 text-blue-700');
-
-          const examItemsHtml = sub.exams.map(eId => {
-            const ex = EXAMS[eId];
-            const st = getExamStatsSummary(eId);
-            const isActive = eId === activeExamId;
-            const pct = st.answered > 0 ? Math.round((st.correct / st.answered) * 100) : 0;
-            return `
-              <div onclick="switchExam('${eId}'); closeExamPickerModal();" 
-                   class="group cursor-pointer px-3 py-2 sm:py-2.5 rounded-xl border transition-all flex items-center justify-between gap-2.5 ${isActive ? 'bg-blue-50/90 border-blue-400 ring-1 ring-blue-400 text-blue-950 font-bold' : 'bg-white hover:bg-slate-50 border-slate-200/80 hover:border-blue-300 text-slate-800'}">
-                <div class="flex items-center gap-2.5 min-w-0">
-                  <span class="w-6 h-6 sm:w-7 sm:h-7 rounded-lg flex items-center justify-center shrink-0 ${isActive ? 'bg-blue-600 text-white shadow-xs' : 'bg-slate-100 text-slate-500 group-hover:bg-blue-100 group-hover:text-blue-700'} text-xs">
-                    <i class="fa-solid ${eId.includes('all') ? 'fa-layer-group' : 'fa-file-lines'}"></i>
-                  </span>
-                  <div class="min-w-0 flex flex-col">
-                    <div class="flex items-center gap-2 flex-wrap">
-                      <span class="text-xs sm:text-[13px] font-bold truncate">${ex.title}</span>
-                      ${isActive ? '<span class="px-1.5 py-0.2 rounded text-[10px] font-extrabold bg-blue-600 text-white shrink-0">Đang học</span>' : ''}
-                    </div>
-                    <div class="flex items-center gap-1.5 sm:gap-2 text-[10px] sm:text-[11px] text-slate-500 flex-wrap">
-                      <span><i class="fa-regular fa-clock text-[10px]"></i> ${ex.timeMinutes}p</span>
-                      <span>•</span>
-                      <span>${st.total} câu</span>
-                      <span>•</span>
-                      <span class="${st.answered > 0 ? 'text-emerald-600 font-semibold' : 'text-slate-400'}">
-                        Đã làm ${st.answered}/${st.total} (${pct}% đúng)
-                      </span>
-                    </div>
-                  </div>
-                </div>
-                <div class="shrink-0 flex items-center pl-1">
-                  <span class="text-xs font-semibold ${isActive ? 'text-blue-700' : 'text-slate-400 group-hover:text-blue-600'} flex items-center gap-1">
-                    ${isActive ? '<i class="fa-solid fa-circle-check text-blue-600 text-sm"></i>' : '<span class="hidden sm:inline text-[11px]">Mở đề</span><i class="fa-solid fa-chevron-right text-[10px]"></i>'}
-                  </span>
-                </div>
-              </div>
-            `;
-          }).join('');
-
-          return `
-            <div class="rounded-2xl border border-slate-200/90 bg-white overflow-hidden shadow-xs">
-              <div onclick="toggleFolderCollapse('${sId}')" class="px-3.5 py-2.5 sm:py-3 bg-slate-50 hover:bg-slate-100/80 cursor-pointer flex items-center justify-between gap-2 border-b border-slate-100 transition select-none">
-                <div class="flex items-center gap-2.5 min-w-0">
-                  <i class="fa-solid ${folderIcon} text-amber-500 text-base sm:text-lg shrink-0" id="folderIcon_${sId}"></i>
-                  <div class="flex items-center gap-1.5 truncate">
-                    <span class="font-extrabold text-xs sm:text-sm text-slate-900">${sub.name}</span>
-                    <span class="text-xs text-slate-400 hidden sm:inline">•</span>
-                    <span class="text-xs text-slate-600 hidden sm:inline truncate">${sub.title}</span>
-                  </div>
-                  <span class="text-[10px] font-bold px-1.5 py-0.2 rounded-full ${subBadgeColor} shrink-0">${sub.exams.length} Đề</span>
-                </div>
-                <div class="flex items-center gap-2 shrink-0">
-                  <i class="fa-solid fa-chevron-down text-slate-400 text-xs transition-transform duration-200 ${chevronClass}" id="folderChevron_${sId}"></i>
-                </div>
-              </div>
-              <div id="folderBody_${sId}" class="${bodyDisplay} flex-col gap-1.5 p-2 sm:p-2.5 bg-slate-50/30">
-                ${examItemsHtml}
-              </div>
-            </div>
-          `;
-        }).join('');
-      }
-    }
-
-    const collapsedFolders = new Set(['prn222', 'pru213', 'tinhoc']);
-    function toggleFolderCollapse(sId) {
-      const fBody = document.getElementById('folderBody_' + sId);
-      const fChevron = document.getElementById('folderChevron_' + sId);
-      const fIcon = document.getElementById('folderIcon_' + sId);
-      if (!fBody) return;
-      if (collapsedFolders.has(sId)) {
-        collapsedFolders.delete(sId);
-        fBody.classList.remove('hidden');
-        fBody.classList.add('flex');
-        if (fChevron) {
-          fChevron.classList.remove('-rotate-90');
-        }
-        if (fIcon) fIcon.className = 'fa-solid fa-folder-open text-amber-500 text-base sm:text-lg shrink-0';
-      } else {
-        collapsedFolders.add(sId);
-        fBody.classList.add('hidden');
-        fBody.classList.remove('flex');
-        if (fChevron) {
-          fChevron.classList.add('-rotate-90');
-        }
-        if (fIcon) fIcon.className = 'fa-solid fa-folder text-amber-500 text-base sm:text-lg shrink-0';
-      }
+      renderModalExamCards();
+      renderHomeExamCards();
     }
 
     function openExamPickerModal() {
-      // Always default all subject folders to collapsed state
-      collapsedFolders.clear();
-      ['prn222', 'pru213', 'tinhoc'].forEach(id => collapsedFolders.add(id));
-      renderExamTabsAndCards();
+      // Always default all subject folders to collapsed state in modal
+      modalCollapsedFolders.clear();
+      ['prn222', 'pru213', 'tinhoc'].forEach(id => modalCollapsedFolders.add(id));
+      renderModalExamCards();
       const m = document.getElementById('examPickerModal');
       m.classList.remove('hidden');
       m.classList.add('flex');
@@ -12833,8 +13017,22 @@
     window.addEventListener('DOMContentLoaded', () => {
       initTheme();
       const params = new URLSearchParams(window.location.search);
-      const urlExam = params.get('de') || localStorage.getItem('fpt_last_active_exam') || 'prn222_1';
-      switchExam(urlExam, false);
+      const urlExam = params.get('de');
+      if (urlExam && EXAMS[urlExam]) {
+        switchExam(urlExam, false);
+      } else {
+        showHomeView(false);
+      }
+    });
+
+    window.addEventListener('popstate', (e) => {
+      const params = new URLSearchParams(window.location.search);
+      const urlExam = params.get('de');
+      if (urlExam && EXAMS[urlExam]) {
+        switchExam(urlExam, false);
+      } else {
+        showHomeView(false);
+      }
     });
   </script>
 </body>
