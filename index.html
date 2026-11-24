@@ -304,69 +304,48 @@
       
       <!-- Row 1: Brand + Subject Switcher Pills + Mobile Quick Actions + Desktop Controls -->
       <div class="flex items-center justify-between gap-2">
-        <!-- Mobile Home Brand (Visible on Home view) -->
-        <div id="homeBrandMobile" class="hidden items-center gap-2 min-w-0 flex-1 mr-1">
-          <div class="w-8 h-8 rounded-lg bg-gradient-to-tr from-sky-500 via-blue-600 to-indigo-600 flex items-center justify-center text-white font-bold shadow-xs shrink-0">
-            <i class="fa-solid fa-graduation-cap text-xs"></i>
+        <!-- Unified Single Header Brand / Nav Area (DRY, Zero Duplication) -->
+        <div class="flex items-center gap-2 sm:gap-3 min-w-0 flex-1 mr-1">
+          <!-- Single Brand Logo Button (Always single, never duplicated) -->
+          <div onclick="showHomeView()" 
+               id="headerBrandLogo"
+               class="cursor-pointer w-8 h-8 sm:w-10 sm:h-10 rounded-xl bg-gradient-to-tr from-sky-500 via-blue-600 to-indigo-600 flex items-center justify-center text-white font-bold shadow-xs sm:shadow-md sm:shadow-blue-500/20 hover:scale-105 active:scale-95 transition-transform shrink-0" 
+               title="Về danh sách đề thi">
+            <i id="headerBrandIcon" class="fa-solid fa-graduation-cap text-xs sm:text-base"></i>
           </div>
-          <div class="min-w-0 flex flex-col">
-            <span class="text-xs font-extrabold text-slate-900 leading-tight truncate">Ôn Tập Trắc Nghiệm</span>
-            <span class="text-[10px] font-semibold text-slate-500 leading-tight truncate">Danh Sách Bộ Đề</span>
-          </div>
-        </div>
 
-        <!-- Mobile Quiz Brand (Visible on Quiz view) -->
-        <div id="quizBrandMobile" class="flex sm:hidden items-center gap-1.5 min-w-0 flex-1 mr-1">
-          <div onclick="showHomeView()" class="cursor-pointer w-8 h-8 rounded-lg bg-gradient-to-tr from-sky-500 via-blue-600 to-indigo-600 flex items-center justify-center text-white font-bold shadow-xs active:scale-95 transition-transform shrink-0" title="Về danh sách đề thi">
-            <i id="headerBrandIconMobile" class="fa-solid fa-bolt text-xs"></i>
+          <!-- View A: Home Title (Visible on Home view only) -->
+          <div id="homeBrandTitle" class="min-w-0 flex flex-col justify-center">
+            <h1 class="text-xs sm:text-base font-extrabold text-slate-900 leading-tight truncate">Hệ Thống Ôn Tập Trắc Nghiệm</h1>
+            <p class="text-[10px] sm:text-xs font-semibold text-slate-500 leading-tight truncate">Danh Sách Bộ Đề Thi</p>
           </div>
-          <button onclick="openExamPickerModal()" class="group flex items-center gap-1 min-w-0 text-left active:opacity-80 transition py-0.5" title="Bấm để chọn đề thi khác">
-            <span id="headerSubjectBadgeMobile" class="px-1.5 py-0.5 rounded text-[10px] font-extrabold bg-indigo-100 text-indigo-700 shrink-0">PRN222</span>
-            <span id="headerExamTitleMobile" class="text-xs font-extrabold text-slate-900 group-hover:text-blue-600 transition leading-tight truncate max-w-[125px]">Đề 1: PRN222</span>
-            <span class="inline-flex items-center justify-center w-3.5 h-3.5 rounded bg-slate-100 text-slate-500 text-[9px] shrink-0">
-              <i class="fa-solid fa-chevron-down text-[8px]"></i>
-            </span>
-          </button>
-        </div>
 
-        <!-- Desktop Home Brand (Visible on Home view) -->
-        <div id="homeBrandDesktop" class="hidden items-center space-x-3 min-w-0">
-          <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-sky-500 via-blue-600 to-indigo-600 flex items-center justify-center text-white font-bold shadow-md shadow-blue-500/20 shrink-0">
-            <i class="fa-solid fa-graduation-cap text-lg"></i>
-          </div>
-          <div class="min-w-0 flex flex-col">
-            <h1 class="text-base font-extrabold text-slate-900 leading-tight">Hệ Thống Ôn Tập Trắc Nghiệm</h1>
-            <p class="text-xs text-slate-500 font-medium">Chọn bộ đề và bắt đầu làm bài luyện tập trực tuyến</p>
-          </div>
-        </div>
-
-        <!-- Desktop Quiz Brand (Visible on Quiz view) -->
-        <div id="quizBrandDesktop" class="hidden sm:flex items-center space-x-2.5 sm:space-x-3 min-w-0">
-          <div onclick="showHomeView()" class="cursor-pointer w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-gradient-to-tr from-sky-500 via-blue-600 to-indigo-600 flex items-center justify-center text-white font-bold shadow-md shadow-blue-500/20 hover:scale-105 active:scale-95 transition-transform shrink-0" title="Về trang chủ danh sách đề">
-            <i id="headerBrandIcon" class="fa-solid fa-bolt text-base sm:text-lg"></i>
-          </div>
-          <div class="min-w-0">
-            <!-- Subject Switcher Pills & Home Button -->
-            <div class="flex items-center gap-1.5 flex-wrap">
-              <button onclick="showHomeView()" class="px-2 py-0.5 rounded-lg text-[11px] font-bold flex items-center gap-1 transition bg-slate-100 text-slate-700 hover:bg-slate-200 border border-slate-200/60 shadow-2xs" title="Về trang chủ danh sách đề">
+          <!-- View B: Quiz Header Info (Visible on Quiz view only) -->
+          <div id="quizHeaderInfo" class="hidden min-w-0 flex-col justify-center flex-1">
+            <!-- Desktop: Subject Switcher Pills & Home Button -->
+            <div class="hidden sm:flex items-center gap-1.5 flex-nowrap overflow-x-auto no-scrollbar">
+              <button onclick="showHomeView()" class="px-2 py-0.5 rounded-lg text-[11px] font-bold flex items-center gap-1 transition bg-slate-100 text-slate-700 hover:bg-slate-200 border border-slate-200/60 shadow-2xs shrink-0" title="Về trang chủ danh sách đề">
                 <i class="fa-solid fa-house text-[10px] text-slate-500"></i> Trang chủ
               </button>
-              <button onclick="switchSubject('prn222')" id="subPill_prn222" class="px-2 py-0.5 rounded-lg text-[11px] font-extrabold flex items-center gap-1 transition bg-indigo-600 text-white shadow-xs">
+              <button onclick="switchSubject('prn222')" id="subPill_prn222" class="px-2 py-0.5 rounded-lg text-[11px] font-extrabold flex items-center gap-1 transition bg-indigo-600 text-white shadow-xs shrink-0">
                 <i class="fa-solid fa-bolt text-[10px]"></i> PRN222
               </button>
-              <button onclick="switchSubject('pru213')" id="subPill_pru213" class="px-2 py-0.5 rounded-lg text-[11px] font-bold flex items-center gap-1 transition bg-slate-100 text-slate-600 hover:bg-slate-200">
+              <button onclick="switchSubject('pru213')" id="subPill_pru213" class="px-2 py-0.5 rounded-lg text-[11px] font-bold flex items-center gap-1 transition bg-slate-100 text-slate-600 hover:bg-slate-200 shrink-0">
                 <i class="fa-solid fa-gamepad text-[10px]"></i> PRU213
               </button>
-              <button onclick="switchSubject('tinhoc')" id="subPill_tinhoc" class="px-2 py-0.5 rounded-lg text-[11px] font-bold flex items-center gap-1 transition bg-slate-100 text-slate-600 hover:bg-slate-200">
+              <button onclick="switchSubject('tinhoc')" id="subPill_tinhoc" class="px-2 py-0.5 rounded-lg text-[11px] font-bold flex items-center gap-1 transition bg-slate-100 text-slate-600 hover:bg-slate-200 shrink-0">
                 <i class="fa-solid fa-desktop text-[10px]"></i> Tin Học
               </button>
-              <span class="text-xs text-slate-300 hidden sm:inline">•</span>
-              <span id="headerExamCode" class="text-[10px] sm:text-xs font-semibold text-slate-500 uppercase tracking-wider truncate hidden sm:inline">PRN222 - ĐỀ 1</span>
+              <span class="text-xs text-slate-300 shrink-0">•</span>
+              <span id="headerExamCode" class="text-[10px] sm:text-xs font-semibold text-slate-500 uppercase tracking-wider truncate shrink-0">PRN222 - ĐỀ 1</span>
             </div>
-            <button onclick="openExamPickerModal()" class="group flex items-center gap-1.5 text-left mt-0.5">
+
+            <!-- Clickable Exam Selector Title Button (Desktop & Mobile) -->
+            <button onclick="openExamPickerModal()" class="group flex items-center gap-1 sm:gap-1.5 text-left py-0.5 mt-0.5 min-w-0" title="Bấm để chọn đề thi khác">
+              <span id="headerSubjectBadgeMobile" class="sm:hidden px-1.5 py-0.5 rounded text-[10px] font-extrabold bg-indigo-100 text-indigo-700 shrink-0">PRN222</span>
               <h1 id="headerExamTitle" class="text-xs sm:text-base font-extrabold text-slate-900 group-hover:text-blue-600 transition leading-tight truncate">Đề 1: PRN222 (.NET & C#)</h1>
-              <span class="inline-flex items-center justify-center w-4 h-4 rounded bg-slate-100 group-hover:bg-blue-50 text-slate-500 group-hover:text-blue-600 text-[10px] transition shrink-0">
-                <i class="fa-solid fa-chevron-down text-[9px]"></i>
+              <span class="inline-flex items-center justify-center w-3.5 h-3.5 sm:w-4 sm:h-4 rounded bg-slate-100 group-hover:bg-blue-50 text-slate-500 group-hover:text-blue-600 text-[9px] sm:text-[10px] transition shrink-0">
+                <i class="fa-solid fa-chevron-down text-[8px] sm:text-[9px]"></i>
               </span>
             </button>
           </div>
@@ -508,10 +487,7 @@
   <!-- Home Page View (Shown when opening root without ?de=) -->
   <section id="homeView" class="hidden max-w-4xl mx-auto px-3 sm:px-6 py-5 sm:py-8 flex-1 w-full flex flex-col gap-4 sm:gap-6 animate-fade-in">
     <!-- Home Header Banner -->
-    <div class="border-b border-slate-200/80 pb-4 sm:pb-5">
-      <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-blue-50 text-blue-700 border border-blue-200/60 mb-2">
-        <i class="fa-solid fa-graduation-cap"></i> Hệ Thống Ôn Tập Trắc Nghiệm
-      </div>
+    <div class="border-b border-slate-200/80 pb-3 sm:pb-4">
       <h2 class="text-xl sm:text-2xl font-extrabold text-slate-900 tracking-tight">Danh Sách Đề Thi Theo Môn</h2>
       <p class="text-xs sm:text-sm text-slate-500 mt-1">Chọn một bộ đề thi dưới đây để bắt đầu làm bài luyện tập hoặc thi thử trực tuyến.</p>
     </div>
@@ -11639,7 +11615,7 @@
     }
 
     let isHomeActive = false;
-    const homeCollapsedFolders = new Set();
+    const homeCollapsedFolders = new Set(['prn222', 'pru213', 'tinhoc']);
     const modalCollapsedFolders = new Set(['prn222', 'pru213', 'tinhoc']);
 
     function showHomeView(updateUrl = true) {
@@ -11670,35 +11646,27 @@
 
       document.body.classList.add('is-home-view');
 
-      // Header Brand Switching
-      const homeBrandDesktop = document.getElementById('homeBrandDesktop');
-      if (homeBrandDesktop) {
-        homeBrandDesktop.classList.remove('hidden');
-        homeBrandDesktop.classList.add('flex');
-      }
-      const quizBrandDesktop = document.getElementById('quizBrandDesktop');
-      if (quizBrandDesktop) {
-        quizBrandDesktop.classList.add('hidden');
-        quizBrandDesktop.classList.remove('sm:flex');
+      // Update Header Brand Logo Icon to graduation cap
+      const headerBrandIcon = document.getElementById('headerBrandIcon');
+      if (headerBrandIcon) headerBrandIcon.className = 'fa-solid fa-graduation-cap text-xs sm:text-base';
+
+      // Toggle Header Views: Show Home Brand Title, Hide Quiz Header Info
+      const homeBrandTitle = document.getElementById('homeBrandTitle');
+      if (homeBrandTitle) homeBrandTitle.classList.remove('hidden');
+      const quizHeaderInfo = document.getElementById('quizHeaderInfo');
+      if (quizHeaderInfo) {
+        quizHeaderInfo.classList.add('hidden');
+        quizHeaderInfo.classList.remove('flex');
       }
 
-      const homeBrandMobile = document.getElementById('homeBrandMobile');
-      if (homeBrandMobile) {
-        homeBrandMobile.classList.remove('hidden');
-        homeBrandMobile.classList.add('flex');
-      }
-      const quizBrandMobile = document.getElementById('quizBrandMobile');
-      if (quizBrandMobile) {
-        quizBrandMobile.classList.add('hidden');
-        quizBrandMobile.classList.remove('flex');
-      }
-
-      // Header Controls Switching
+      // Hide Quiz Controls (Timer, Mode tabs, Layout, Shuffle, Reset)
       const quizControlsDesktop = document.getElementById('quizControlsDesktop');
       if (quizControlsDesktop) quizControlsDesktop.classList.add('hidden');
       const quizControlsMobile = document.getElementById('quizControlsMobile');
       if (quizControlsMobile) quizControlsMobile.classList.add('hidden');
 
+      // Always reset folders to collapsed state on Home view
+      ['prn222', 'pru213', 'tinhoc'].forEach(id => homeCollapsedFolders.add(id));
       renderHomeExamCards();
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
@@ -11729,38 +11697,34 @@
       const mobileProgressStrip = document.getElementById('mobileProgressStrip');
       if (mobileProgressStrip) mobileProgressStrip.classList.remove('hidden');
       const sidebarExpandFloating = document.getElementById('sidebarExpandFloating');
-      if (sidebarExpandFloating && isSidebarCollapsed) sidebarExpandFloating.classList.remove('hidden');
+      if (sidebarExpandFloating && typeof isSidebarCollapsed !== 'undefined' && isSidebarCollapsed) {
+        sidebarExpandFloating.classList.remove('hidden');
+      }
 
       document.body.classList.remove('is-home-view');
 
-      // Header Brand Switching
-      const homeBrandDesktop = document.getElementById('homeBrandDesktop');
-      if (homeBrandDesktop) {
-        homeBrandDesktop.classList.add('hidden');
-        homeBrandDesktop.classList.remove('flex');
-      }
-      const quizBrandDesktop = document.getElementById('quizBrandDesktop');
-      if (quizBrandDesktop) {
-        quizBrandDesktop.classList.remove('hidden');
-        quizBrandDesktop.classList.add('sm:flex');
+      // Toggle Header Views: Hide Home Brand Title, Show Quiz Header Info
+      const homeBrandTitle = document.getElementById('homeBrandTitle');
+      if (homeBrandTitle) homeBrandTitle.classList.add('hidden');
+      const quizHeaderInfo = document.getElementById('quizHeaderInfo');
+      if (quizHeaderInfo) {
+        quizHeaderInfo.classList.remove('hidden');
+        quizHeaderInfo.classList.add('flex');
       }
 
-      const homeBrandMobile = document.getElementById('homeBrandMobile');
-      if (homeBrandMobile) {
-        homeBrandMobile.classList.add('hidden');
-        homeBrandMobile.classList.remove('flex');
-      }
-      const quizBrandMobile = document.getElementById('quizBrandMobile');
-      if (quizBrandMobile) {
-        quizBrandMobile.classList.remove('hidden');
-        quizBrandMobile.classList.add('flex');
-      }
-
-      // Header Controls Switching
+      // Show Quiz Controls (Timer, Mode tabs, Layout, Shuffle, Reset)
       const quizControlsDesktop = document.getElementById('quizControlsDesktop');
       if (quizControlsDesktop) quizControlsDesktop.classList.remove('hidden');
       const quizControlsMobile = document.getElementById('quizControlsMobile');
       if (quizControlsMobile) quizControlsMobile.classList.remove('hidden');
+
+      // Update Header Brand Logo Icon to match current subject
+      const headerBrandIcon = document.getElementById('headerBrandIcon');
+      if (headerBrandIcon) {
+        headerBrandIcon.className = activeSubjectId === 'prn222' 
+          ? 'fa-solid fa-bolt text-xs sm:text-base' 
+          : (activeSubjectId === 'tinhoc' ? 'fa-solid fa-desktop text-xs sm:text-base' : 'fa-solid fa-gamepad text-xs sm:text-base');
+      }
 
       const exam = EXAMS[examId];
       RAW_QUESTIONS = [...exam.questions];
@@ -11774,27 +11738,19 @@
       openExplanations.clear();
 
       // Update Header Info
-      document.getElementById('headerExamCode').innerText = exam.code;
-      document.getElementById('headerExamTitle').innerText = exam.title;
-      document.getElementById('headerBrandIcon').className = activeSubjectId === 'prn222' ? 'fa-solid fa-bolt text-base sm:text-lg' : (activeSubjectId === 'tinhoc' ? 'fa-solid fa-desktop text-base sm:text-lg' : 'fa-solid fa-gamepad text-base sm:text-lg');
+      const headerExamCode = document.getElementById('headerExamCode');
+      if (headerExamCode) headerExamCode.innerText = exam.code;
+      const headerExamTitle = document.getElementById('headerExamTitle');
+      if (headerExamTitle) headerExamTitle.innerText = exam.title;
 
-      // Update Mobile Header Elements
-      const mIcon = document.getElementById('headerBrandIconMobile');
-      if (mIcon) {
-        mIcon.className = activeSubjectId === 'prn222' ? 'fa-solid fa-bolt text-xs' : (activeSubjectId === 'tinhoc' ? 'fa-solid fa-desktop text-xs' : 'fa-solid fa-gamepad text-xs');
-      }
+      // Update Mobile Subject Badge
       const mBadge = document.getElementById('headerSubjectBadgeMobile');
       if (mBadge) {
         mBadge.innerText = SUBJECTS[activeSubjectId].name;
-        mBadge.className = activeSubjectId === 'prn222'
-          ? 'px-1.5 py-0.5 rounded text-[10px] font-extrabold bg-indigo-100 text-indigo-700 shrink-0'
-          : (activeSubjectId === 'tinhoc'
-              ? 'px-1.5 py-0.5 rounded text-[10px] font-extrabold bg-emerald-100 text-emerald-700 shrink-0'
-              : 'px-1.5 py-0.5 rounded text-[10px] font-extrabold bg-blue-100 text-blue-700 shrink-0');
-      }
-      const mTitle = document.getElementById('headerExamTitleMobile');
-      if (mTitle) {
-        mTitle.innerText = exam.title;
+        mBadge.className = 'sm:hidden px-1.5 py-0.5 rounded text-[10px] font-extrabold shrink-0 ' + 
+          (activeSubjectId === 'prn222' 
+            ? 'bg-indigo-100 text-indigo-700' 
+            : (activeSubjectId === 'tinhoc' ? 'bg-emerald-100 text-emerald-700' : 'bg-blue-100 text-blue-700'));
       }
       
       // Update Mobile dock label
