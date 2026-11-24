@@ -1993,11 +1993,10 @@ const unifiedHtml = `<!DOCTYPE html>
         : '';
 
       let html = \`
-        <!-- Top EOS Banner: MULTIPLE CHOICE -->
+        <!-- Top EOS Banner -->
         <div class="eos-banner px-3 sm:px-6 py-1.5 sm:py-2 flex items-center justify-between gap-2">
           <div class="flex items-center gap-2 flex-wrap min-w-0">
-            <span class="eos-title uppercase tracking-wide">MULTIPLE CHOICE</span>
-            <span class="text-xs text-blue-700/80 font-bold">• Câu \${q.id}\${viewLayout === 'single' ? ' / ' + RAW_QUESTIONS.length : ''}</span>
+            <span class="eos-title font-bold text-xs sm:text-sm">Câu \${q.id}\${viewLayout === 'single' ? ' / ' + RAW_QUESTIONS.length : ''}</span>
             \${examBadgeHtml}
             <span class="hidden sm:inline-block text-[11px] text-slate-500 font-normal truncate">(\${escapeHtml(q.topic)})</span>
             \${isAnswered && showFeedback ? (
